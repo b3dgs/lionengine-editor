@@ -4,6 +4,7 @@
 /build
 /dist
 /extra
+/lib
 *.class
 *.bat
 *xml.versionsBackup
