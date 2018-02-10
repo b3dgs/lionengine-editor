@@ -10,6 +10,13 @@
     <artifactId>com.b3dgs.lionengine.core.swt.test</artifactId>
     <name>LionEngine Core SWT Test</name>
     <packaging>eclipse-test-plugin</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>com.b3dgs.lionengine</groupId>
+            <artifactId>lionengine-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
     <build>
         <testSourceDirectory>src</testSourceDirectory>
         <plugins>

@@ -10,4 +10,11 @@
     <artifactId>com.b3dgs.lionengine.core.swt</artifactId>
     <name>LionEngine Core SWT</name>
     <packaging>eclipse-plugin</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>com.b3dgs.lionengine</groupId>
+            <artifactId>lionengine-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>
