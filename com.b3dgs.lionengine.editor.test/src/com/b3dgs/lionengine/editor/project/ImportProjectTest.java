@@ -34,7 +34,7 @@ import org.junit.runner.RunWith;
 import com.b3dgs.lionengine.LionEngineException;
 import com.b3dgs.lionengine.editor.Activator;
 import com.b3dgs.lionengine.editor.UtilNl;
-import com.b3dgs.lionengine.editor.dialog.Messages;
+import com.b3dgs.lionengine.editor.dialog.project.Messages;
 import com.b3dgs.lionengine.util.UtilFolder;
 
 /**
@@ -56,7 +56,7 @@ public class ImportProjectTest
     {
         final File projectFolder = copyProjectToTemp(clazz);
         bot.menu(UtilNl.get("menu.file.import-project"), true).click();
-        bot.waitUntil(Conditions.shellIsActive(UtilNl.get("menu.file.import-project")));
+        bot.waitUntil(Conditions.shellIsActive(Messages.ImportProjectDialog_Title));
 
         final SWTBotShell shell = bot.shell(UtilNl.get("menu.file.import-project"));
         final SWTBot dialog = shell.activate().bot();
@@ -74,7 +74,7 @@ public class ImportProjectTest
         dialog.text(3).setText("bin");
         dialog.text(4).setText("resources");
 
-        dialog.button(Messages.Finish).click();
+        dialog.button(com.b3dgs.lionengine.editor.dialog.Messages.Finish).click();
 
         bot.waitUntil(Conditions.shellCloses(shell));
 
