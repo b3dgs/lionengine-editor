@@ -1,6 +1,11 @@
 sudo: false
 language: java
 install: true
+before_install:
+ - sudo apt-get update
+ - sudo apt-get install gnome-themes-standard
+ - sudo apt-get install metacity
+ - sudo apt-get install libwebkit-dev
 addons:
   sonarcloud:
     organization: "djthunder-github"
@@ -20,10 +25,12 @@ jdk:
   - oraclejdk8
 env:
   global:
-    - AUDIODEV=null
     - DISPLAY=:99.0
-before_install:
-  - sh -e /etc/init.d/xvfb start - sleep 10
+before_script:
+ - sh -e /etc/init.d/xvfb start
+ - sleep 10
+ - metacity --sm-disable --replace &
+ - sleep 10
 script:
   - cd lionengine-editor-parent
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent verify sonar:sonar -Peditor -Dsonar.organization=djthunder-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=5524bf449ca45fcdb334698371466398321f3a82 -Dgpg.skip=true -Dmaven.javadoc.skip=true
