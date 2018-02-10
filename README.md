@@ -1,5 +1,5 @@
 # LionEngine
-[![Build Status](https://travis-ci.org/b3dgs/lionengine.svg?branch=lionengine-9.0.0)](https://travis-ci.org/b3dgs/lionengine) ![Coverage](https://img.shields.io/badge/coverage-96%25-brightgreen.svg) ![Lines of code](https://img.shields.io/badge/lines%20of%20code-49k-lightgrey.svg) 
+[![Build Status](https://travis-ci.org/b3dgs/lionengine-editor.svg?branch=lionengine-editor-9.0.0)](https://travis-ci.org/b3dgs/lionengine) ![Coverage](https://img.shields.io/badge/coverage-96%25-brightgreen.svg) ![Lines of code](https://img.shields.io/badge/lines%20of%20code-49k-lightgrey.svg) 
 [![License](https://img.shields.io/badge/license-GPL%20v2.0-lightgrey.svg)](http://www.gnu.org/licenses/old-licenses/gpl-2.0.fr.html)
 <table>
     <tr>
