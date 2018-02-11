@@ -105,6 +105,9 @@
                             <configuration>
                                 <destFile>${project.basedir}/../jacoco-ut.exec</destFile>
                                 <dataFile>${project.basedir}/../jacoco-ut.exec</dataFile>
+                                <excludes>
+                                    <exclude>**/*Test.java,**/*UtilNl.java</exclude>
+                                </excludes>
                                 <append>true</append>
                             </configuration>
                         </execution>
@@ -117,6 +120,9 @@
                             <configuration>
                                 <destFile>${project.basedir}/../jacoco-ut.exec</destFile>
                                 <dataFile>${project.basedir}/../jacoco-ut.exec</dataFile>
+                                <excludes>
+                                    <exclude>**/*Test.java,**/*UtilNl.java</exclude>
+                                </excludes>
                                 <append>true</append>
                             </configuration>
                         </execution>
