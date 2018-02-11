@@ -97,7 +97,7 @@ public final class ToolsSwt
      * 
      * @param width The image width.
      * @param height The image height.
-     * @param transparency The image transparency.
+     * @param transparency The image transparency, <code>null</code> if none.
      * @return The image.
      * @throws SWTException If error on getting data.
      */
@@ -107,9 +107,17 @@ public final class ToolsSwt
 
         final PaletteData palette = new PaletteData(0xff, 0xff00, 0xff0000);
         final ImageData data = new ImageData(width, height, 24, palette);
-        final int transparent = palette.getPixel(new RGB(transparency.getRed(),
-                                                         transparency.getGreen(),
-                                                         transparency.getBlue()));
+        final int transparent;
+        if (transparency != null)
+        {
+            transparent = palette.getPixel(new RGB(transparency.getRed(),
+                                                   transparency.getGreen(),
+                                                   transparency.getBlue()));
+        }
+        else
+        {
+            transparent = -1;
+        }
         data.transparentPixel = transparent;
 
         final int[] pixels = new int[data.width];
