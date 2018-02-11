@@ -18,6 +18,7 @@
 package com.b3dgs.lionengine.editor.dialog.project;
 
 import org.eclipse.e4.core.di.annotations.Execute;
+import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.swt.widgets.Shell;
 
 import com.b3dgs.lionengine.core.Medias;
@@ -56,6 +57,28 @@ public final class ProjectImportHandler
     }
 
     /**
+     * Import the project and update the view.
+     * 
+     * @param partService The part service reference.
+     * @param project The project to import.
+     */
+    public static void importProject(EPartService partService, Project project)
+    {
+        ProjectModel.INSTANCE.setProject(project);
+
+        final Factory factory = WorldModel.INSTANCE.getFactory();
+        factory.setClassLoader(project.getLoader().getClassLoader());
+
+        final WorldPart worldPart = WorldModel.INSTANCE.getServices().get(WorldPart.class);
+        worldPart.setToolBarEnabled(true);
+
+        Medias.setResourcesDirectory(project.getResourcesPath().getPath());
+
+        final ProjectPart projectPart = (ProjectPart) partService.findPart(ProjectPart.ID).getObject();
+        projectPart.setInput(project);
+    }
+
+    /**
      * Create handler.
      */
     public ProjectImportHandler()
@@ -66,10 +89,11 @@ public final class ProjectImportHandler
     /**
      * Execute the handler.
      * 
+     * @param partService The part service reference.
      * @param shell The shell reference.
      */
     @Execute
-    public void execute(Shell shell)
+    public void execute(EPartService partService, Shell shell)
     {
         final ProjectImportDialog dialog = new ProjectImportDialog(shell);
         dialog.open();
@@ -77,7 +101,7 @@ public final class ProjectImportHandler
         final Project project = dialog.getProject();
         if (project != null)
         {
-            importProject(project);
+            importProject(partService, project);
         }
     }
 }
