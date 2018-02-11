@@ -1,6 +1,5 @@
-# LionEngine
-[![Build Status](https://travis-ci.org/b3dgs/lionengine-editor.svg?branch=lionengine-editor-9.0.0)](https://travis-ci.org/b3dgs/lionengine) ![Coverage](https://img.shields.io/badge/coverage-96%25-brightgreen.svg) ![Lines of code](https://img.shields.io/badge/lines%20of%20code-20k-lightgrey.svg) 
-[![License](https://img.shields.io/badge/license-GPL%20v2.0-lightgrey.svg)](http://www.gnu.org/licenses/old-licenses/gpl-2.0.fr.html)
+# LionEngine Editor
+[![Build Status](https://travis-ci.org/b3dgs/lionengine-editor.svg?branch=lionengine-editor-9.0.0)](https://travis-ci.org/b3dgs/lionengine) [![Coverage](https://sonarcloud.io/api/badges/measure?key=com.b3dgs.lionengine.editor:lionengine-editor-parent:lionengine-editor-9.0.0&metric=coverage)](https://sonarcloud.io/component_measures?id=com.b3dgs.lionengine.editor:lionengine-editor-parent:lionengine-editor-9.0.0&metric=coverage) [![Lines of code](https://sonarcloud.io/api/badges/measure?key=com.b3dgs.lionengine.editor:lionengine-editor-parent:lionengine-editor-9.0.0&metric=ncloc)](https://sonarcloud.io/component_measures?id=com.b3dgs.lionengine.editor:lionengine-editor-parent:lionengine-editor-9.0.0&metric=ncloc) [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 <table>
     <tr>
         <td>
