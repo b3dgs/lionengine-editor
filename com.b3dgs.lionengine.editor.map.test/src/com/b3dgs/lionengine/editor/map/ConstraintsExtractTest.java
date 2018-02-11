@@ -36,6 +36,7 @@ import com.b3dgs.lionengine.editor.map.constaint.Messages;
 import com.b3dgs.lionengine.editor.project.ImportProjectTest;
 import com.b3dgs.lionengine.editor.project.Project;
 import com.b3dgs.lionengine.editor.project.ProjectModel;
+import com.b3dgs.lionengine.game.feature.tile.TileGroupsConfig;
 import com.b3dgs.lionengine.game.feature.tile.TileRef;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroupModel;
 import com.b3dgs.lionengine.game.feature.tile.map.transition.Transition;
@@ -86,8 +87,12 @@ public class ConstraintsExtractTest
         final Map<Transition, Collection<TileRef>> constraints = TransitionsConfig.imports(media);
 
         final String group = MapTileGroupModel.NO_GROUP_NAME;
-        final Collection<TileRef> tiles = constraints.get(new Transition(TransitionType.CENTER, group, group));
-        Assert.assertTrue(constraints.toString() + " " + tiles.toString(), tiles.contains(new TileRef(0, 0)));
+        final Collection<TileRef> expected = constraints.get(new Transition(TransitionType.CENTER, group, group));
+        final Collection<TileRef> all = TileGroupsConfig.imports(UtilEditorTests.getMedia(TileGroupsConfig.FILENAME))
+                                                        .iterator()
+                                                        .next()
+                                                        .getTiles();
+        Assert.assertTrue(expected.toString() + " " + all.toString(), all.containsAll(expected));
     }
 
     /**
