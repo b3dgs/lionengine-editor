@@ -60,7 +60,8 @@ public class ImportProjectTest
     {
         final File projectFolder = copyProjectToTemp(clazz);
         bot.menu(UtilNl.get("menu.file.import-project"), true).click();
-        bot.waitUntil(Conditions.shellIsActive(Messages.ImportProjectDialog_Title));
+        Verbose.info(Messages.ImportProjectDialog_Title);
+        bot.waitUntil(Conditions.shellIsActive("Import Project"));
 
         final SWTBotShell shell = bot.shell(UtilNl.get("menu.file.import-project"));
         final SWTBot dialog = shell.activate().bot();
