@@ -58,7 +58,7 @@ public class ImportProjectTest
         bot.menu(UtilNl.get("menu.file.import-project"), true).click();
         bot.waitUntil(Conditions.shellIsActive(Messages.ImportProjectDialog_Title));
 
-        final SWTBotShell shell = bot.shell(UtilNl.get("menu.file.import-project"));
+        final SWTBotShell shell = bot.shell("Import Project");
         final SWTBot dialog = shell.activate().bot();
 
         Display.getDefault().syncExec(() ->
