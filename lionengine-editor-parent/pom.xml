@@ -15,7 +15,7 @@
     <artifactId>lionengine-editor-parent</artifactId>
     <packaging>pom</packaging>
     <version>9.0.0-SNAPSHOT</version>
-    <name>LionEngine Editor Parent</name>
+    <name>LionEngine Editor</name>
     <description>Java 2D Game Engine</description>
     <url>https://github.com/b3dgs/lionengine-editor</url>
     <scm>
