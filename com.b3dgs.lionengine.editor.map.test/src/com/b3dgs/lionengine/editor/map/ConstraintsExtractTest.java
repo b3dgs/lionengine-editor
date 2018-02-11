@@ -31,6 +31,7 @@ import org.junit.runner.RunWith;
 import com.b3dgs.lionengine.Media;
 import com.b3dgs.lionengine.core.Medias;
 import com.b3dgs.lionengine.editor.UtilEditorTests;
+import com.b3dgs.lionengine.editor.map.constaint.ConstraintsExtractHandler;
 import com.b3dgs.lionengine.editor.map.constaint.Messages;
 import com.b3dgs.lionengine.editor.project.ImportProjectTest;
 import com.b3dgs.lionengine.editor.project.Project;
@@ -85,8 +86,8 @@ public class ConstraintsExtractTest
         final Map<Transition, Collection<TileRef>> constraints = TransitionsConfig.imports(media);
 
         final String group = MapTileGroupModel.NO_GROUP_NAME;
-        Assert.assertTrue(constraints.get(new Transition(TransitionType.CENTER, group, group))
-                                     .contains(new TileRef(0, 0)));
+        final Collection<TileRef> tiles = constraints.get(new Transition(TransitionType.CENTER, group, group));
+        Assert.assertTrue(constraints.toString() + " " + tiles.toString(), tiles.contains(new TileRef(0, 0)));
     }
 
     /**
@@ -100,7 +101,7 @@ public class ConstraintsExtractTest
         UtilEditorTests.copy(".map", Medias.create("groups.xml"));
         UtilEditorTests.copy(".map", Medias.create("0.png"));
 
-        BOT.menu(UtilNl.get("menu.map.extract-constraints"), true).click();
+        BOT.menu(UtilNl.get(ConstraintsExtractHandler.ID), true).click();
         fillDialog(BOT);
 
         checkResult();

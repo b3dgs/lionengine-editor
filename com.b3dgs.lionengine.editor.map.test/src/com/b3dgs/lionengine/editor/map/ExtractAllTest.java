@@ -43,7 +43,7 @@ public class ExtractAllTest
     {
         Assert.assertNotNull(ImportProjectTest.createProject(BOT, getClass()));
 
-        BOT.menu(UtilNl.get("menu.map.extract-all"), true).click();
+        BOT.menu(UtilNl.get(ExtractAllHandler.ID), true).click();
 
         final SWTBotShell shellMain = SheetsExtractTest.fillDialog(BOT);
         GroupsEditTest.fillDialogAssign(BOT);

@@ -20,8 +20,6 @@ package com.b3dgs.lionengine.editor.project;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.widgets.Display;
@@ -35,7 +33,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.b3dgs.lionengine.LionEngineException;
-import com.b3dgs.lionengine.Verbose;
 import com.b3dgs.lionengine.editor.Activator;
 import com.b3dgs.lionengine.editor.UtilNl;
 import com.b3dgs.lionengine.editor.dialog.project.Messages;
@@ -129,12 +126,6 @@ public class ImportProjectTest
         Assert.assertEquals("resources", project.getResources());
 
         final SWTBotTree tree = BOT.tree(0);
-        Verbose.info(Arrays.asList(tree.getAllItems())
-                           .stream()
-                           .map(i -> i.getText())
-                           .collect(Collectors.toList())
-                           .toString());
-        Verbose.info(projectFolder.getName());
         tree.getTreeItem(projectFolder.getName()).doubleClick();
 
         final File properties = new File(projectFolder, ProjectFactory.PROPERTIES_FILE);
