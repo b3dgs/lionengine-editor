@@ -62,7 +62,7 @@ public class AddRemoveTest
            .click();
 
         BOT.waitUntil(Conditions.shellIsActive(Messages.Title));
-        BOT.activeShell().pressShortcut(Keystrokes.CR);
+        BOT.shell(Messages.Title).pressShortcut(Keystrokes.CR);
 
         UtilEditorTests.waitResourcesCopied(BOT, projectFolder, 2);
 
@@ -77,8 +77,8 @@ public class AddRemoveTest
            .contextMenu(UtilNl.get("menu.object-delete"))
            .click();
 
-        BOT.sleep(500);
-        BOT.activeShell().pressShortcut(Keystrokes.CR);
+        BOT.waitUntil(Conditions.shellIsActive(Messages.RemoveObjectTitle));
+        BOT.shell(Messages.RemoveObjectTitle).pressShortcut(Keystrokes.CR);
         UtilEditorTests.waitResourcesCopied(BOT, projectFolder, 1);
 
         Assert.assertFalse(file.getPath(), file.isFile());
@@ -99,7 +99,7 @@ public class AddRemoveTest
            .click();
 
         BOT.waitUntil(Conditions.shellIsActive(Messages.Title));
-        BOT.activeShell().pressShortcut(Keystrokes.CR);
+        BOT.shell(Messages.Title).pressShortcut(Keystrokes.CR);
         UtilEditorTests.waitResourcesCopied(BOT, projectFolder, 2);
 
         final File file = new File(projectFolder, UtilFolder.getPath("resources", FeaturableConfig.DEFAULT_FILENAME));

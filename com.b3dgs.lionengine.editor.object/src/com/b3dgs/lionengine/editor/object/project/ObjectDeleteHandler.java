@@ -20,8 +20,7 @@ package com.b3dgs.lionengine.editor.object.project;
 import java.io.File;
 
 import org.eclipse.e4.core.di.annotations.Execute;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
 
 import com.b3dgs.lionengine.Media;
@@ -54,17 +53,13 @@ public final class ObjectDeleteHandler
         {
             if (file.delete())
             {
-                final MessageBox messageBox = new MessageBox(parent, SWT.ICON_INFORMATION);
-                messageBox.setText(Messages.RemoveObjectTitle);
-                messageBox.setMessage(Messages.RemoveObjectText + file);
-                messageBox.open();
+                MessageDialog.openInformation(parent, Messages.RemoveObjectTitle, Messages.RemoveObjectText + file);
             }
             else
             {
-                final MessageBox messageBox = new MessageBox(parent, SWT.ICON_ERROR);
-                messageBox.setText(com.b3dgs.lionengine.editor.validator.Messages.ErrorTitle);
-                messageBox.setMessage(com.b3dgs.lionengine.editor.validator.Messages.ErrorText + file);
-                messageBox.open();
+                MessageDialog.openInformation(parent,
+                                              com.b3dgs.lionengine.editor.validator.Messages.ErrorTitle,
+                                              com.b3dgs.lionengine.editor.validator.Messages.ErrorText + file);
             }
         }
     }
