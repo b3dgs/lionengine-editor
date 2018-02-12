@@ -5,6 +5,7 @@
     <properties>
         <buildtools-project>lionengine-editor-buildtools</buildtools-project>
         <radial.base-package>com.b3dgs.lionengine.editor</radial.base-package>
+        <sonar-branch>lionengine-editor-9.0.0</sonar-branch>
     </properties>
     <parent>
         <groupId>com.b3dgs</groupId>
@@ -52,7 +53,7 @@
     </repositories>
     <profiles>
         <profile>
-            <id>editor</id>
+            <id>release</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -74,6 +75,46 @@
                 <module>../com.b3dgs.lionengine.editor.repository</module>
                 <module>../com.b3dgs.lionengine.editor.product</module>
             </modules>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>sonar</id>
+            <modules>
+                <module>../com.b3dgs.lionengine.core.swt</module>
+                <module>../com.b3dgs.lionengine.editor</module>
+                <module>../com.b3dgs.lionengine.editor.object</module>
+                <module>../com.b3dgs.lionengine.editor.map</module>
+                <module>../com.b3dgs.lionengine.editor.animation</module>
+                <module>../com.b3dgs.lionengine.editor.collision</module>
+                <module>../com.b3dgs.lionengine.editor.pathfinding</module>
+            </modules>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>sonar-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sonar-runner</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sonar</goal>
+                                </goals>
+                                <configuration>
+                                    <sonar.branch>${sonar-branch}</sonar.branch>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
     <dependencies>
@@ -103,8 +144,8 @@
                                 <goal>prepare-agent</goal>
                             </goals>
                             <configuration>
-                                <destFile>${project.basedir}/../jacoco-ut.exec</destFile>
-                                <dataFile>${project.basedir}/../jacoco-ut.exec</dataFile>
+                                <destFile>${project.basedir}/../target/jacoco-ut.exec</destFile>
+                                <dataFile>${project.basedir}/../target/jacoco-ut.exec</dataFile>
                                 <append>true</append>
                             </configuration>
                         </execution>
@@ -115,36 +156,12 @@
                                 <goal>report</goal>
                             </goals>
                             <configuration>
-                                <destFile>${project.basedir}/../jacoco-ut.exec</destFile>
-                                <dataFile>${project.basedir}/../jacoco-ut.exec</dataFile>
+                                <destFile>${project.basedir}/../target/jacoco-ut.exec</destFile>
+                                <dataFile>${project.basedir}/../target/jacoco-ut.exec</dataFile>
                                 <append>true</append>
                             </configuration>
                         </execution>
                     </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>com.mobilepetroleum.radialencapsulation</groupId>
-                                        <artifactId>radial-encapsulation-maven-plugin</artifactId>
-                                        <versionRange>[1.0.0,)</versionRange>
-                                        <goals>
-                                            <goal>radial-encapsulation</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore></ignore>
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

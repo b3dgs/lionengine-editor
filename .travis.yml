@@ -34,4 +34,5 @@ before_script:
 script:
   - export
   - cd lionengine-editor-parent
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent verify sonar:sonar -Peditor -Dsonar.organization=djthunder-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=5524bf449ca45fcdb334698371466398321f3a82 -Dgpg.skip=true -Dmaven.javadoc.skip=true
+  - mvn clean verify -Dgpg.skip=true -Dmaven.javadoc.skip=true
+  - mvn sonar:sonar -Psonar -Dsonar.organization=djthunder-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=5524bf449ca45fcdb334698371466398321f3a82 -Dgpg.skip=true -Dmaven.javadoc.skip=true
