@@ -19,7 +19,7 @@
     <description>Java 2D Game Engine</description>
     <url>https://github.com/b3dgs/lionengine-editor</url>
     <scm>
-        <url>https://github.com/b3dgs/lionengine</url>
+        <url>https://github.com/b3dgs/lionengine-editor</url>
         <connection>scm:git:git@github.com:b3dgs/lionengine-editor.git</connection>
         <developerConnection>scm:git:git@github.com:b3dgs/lionengine-editor.git</developerConnection>
         <tag>HEAD</tag>
