@@ -8,6 +8,6 @@
         <relativePath>../lionengine-editor-parent</relativePath>
     </parent>
     <artifactId>com.b3dgs.lionengine.editor.object</artifactId>
-    <name>LionEngine Editor Object</name>
     <packaging>eclipse-plugin</packaging>
+    <name>LionEngine Editor Object</name>
 </project>

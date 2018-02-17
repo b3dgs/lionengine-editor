@@ -8,6 +8,6 @@
         <relativePath>../lionengine-editor-parent</relativePath>
     </parent>
     <artifactId>com.b3dgs.lionengine.editor.pathfinding</artifactId>
-    <name>LionEngine Editor Pathfinding</name>
     <packaging>eclipse-plugin</packaging>
+    <name>LionEngine Editor Pathfinding</name>
 </project>

@@ -8,6 +8,6 @@
         <relativePath>../lionengine-editor-test-parent</relativePath>
     </parent>
     <artifactId>com.b3dgs.lionengine.editor.animation.test</artifactId>
-    <name>LionEngine Editor Animation Test</name>
     <packaging>eclipse-test-plugin</packaging>
+    <name>LionEngine Editor Animation Test</name>
 </project>

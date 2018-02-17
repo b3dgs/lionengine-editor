@@ -8,6 +8,6 @@
         <relativePath>../lionengine-editor-test-parent</relativePath>
     </parent>
     <artifactId>com.b3dgs.lionengine.editor.map.test</artifactId>
-    <name>LionEngine Editor Map Test</name>
     <packaging>eclipse-test-plugin</packaging>
+    <name>LionEngine Editor Map Test</name>
 </project>

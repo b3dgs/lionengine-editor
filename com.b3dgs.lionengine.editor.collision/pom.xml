@@ -8,6 +8,6 @@
         <relativePath>../lionengine-editor-parent</relativePath>
     </parent>
     <artifactId>com.b3dgs.lionengine.editor.collision</artifactId>
-    <name>LionEngine Editor Collision</name>
     <packaging>eclipse-plugin</packaging>
+    <name>LionEngine Editor Collision</name>
 </project>

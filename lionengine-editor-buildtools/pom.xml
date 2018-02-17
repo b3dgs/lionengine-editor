@@ -8,8 +8,8 @@
         <relativePath>../lionengine-editor-parent</relativePath>
     </parent>
     <artifactId>lionengine-editor-buildtools</artifactId>
-    <name>LionEngine Editor Build Tools</name>
     <packaging>jar</packaging>
+    <name>LionEngine Editor Build Tools</name>
     <build>
         <plugins>
             <plugin>

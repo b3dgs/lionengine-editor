@@ -8,8 +8,8 @@
         <relativePath>../lionengine-editor-parent</relativePath>
     </parent>
     <artifactId>com.b3dgs.lionengine.core.swt.test</artifactId>
-    <name>LionEngine Core SWT Test</name>
     <packaging>eclipse-test-plugin</packaging>
+    <name>LionEngine Core SWT Test</name>
     <dependencies>
         <dependency>
             <groupId>com.b3dgs.lionengine</groupId>
