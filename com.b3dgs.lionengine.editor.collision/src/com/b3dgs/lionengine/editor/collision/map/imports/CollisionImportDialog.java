@@ -98,16 +98,16 @@ public class CollisionImportDialog extends AbstractDialog
         final MapTile map = WorldModel.INSTANCE.getMap();
         final File parentFile = map.getFeature(MapTileGroup.class).getGroupsConfig().getFile().getParentFile();
 
-        final File formulas = new File(parentFile, CollisionFormulaConfig.FILENAME);
-        if (MapCollisionTester.isFormulasConfig(project.getResourceMedia(formulas)))
+        final File formulasFile = new File(parentFile, CollisionFormulaConfig.FILENAME);
+        if (MapCollisionTester.isFormulasConfig(project.getResourceMedia(formulasFile)))
         {
-            this.formulas.setLocation(project.getResourceMedia(formulas).getPath());
+            formulas.setLocation(project.getResourceMedia(formulasFile).getPath());
         }
 
-        final File collisions = new File(parentFile, CollisionGroupConfig.FILENAME);
-        if (MapCollisionTester.isCollisionsConfig(project.getResourceMedia(collisions)))
+        final File collisionsFile = new File(parentFile, CollisionGroupConfig.FILENAME);
+        if (MapCollisionTester.isCollisionsConfig(project.getResourceMedia(collisionsFile)))
         {
-            this.collisions.setLocation(project.getResourceMedia(collisions).getPath());
+            collisions.setLocation(project.getResourceMedia(collisionsFile).getPath());
         }
     }
 

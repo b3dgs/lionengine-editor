@@ -72,7 +72,7 @@ public class PropertiesPart implements Focusable, PropertiesProviderObject, Prop
     }
 
     /** Properties tree. */
-    Tree properties;
+    private Tree properties;
     /** Extensions point object. */
     private Collection<PropertiesProviderObject> providersObject;
     /** Extensions point tile. */

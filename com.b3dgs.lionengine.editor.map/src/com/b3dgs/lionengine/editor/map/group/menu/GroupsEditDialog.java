@@ -181,14 +181,14 @@ public class GroupsEditDialog extends AbstractDialog
         final TileSheetsConfig config = TileSheetsConfig.imports(sheetsMedia);
         final GroupsAssignDialog assign = new GroupsAssignDialog(partService, dialog);
         final String folderPath = sheetsMedia.getParentPath();
-        final Collection<SpriteTiled> sheets = loadSheets(config, folderPath);
-        if (sheets.isEmpty())
+        final Collection<SpriteTiled> sheetsLoaded = loadSheets(config, folderPath);
+        if (sheetsLoaded.isEmpty())
         {
             UtilDialog.error(getParent(), Messages.ErrorSheet_Title, Messages.ErrorSheet_Message);
         }
         else
         {
-            assign.load(sheets, levelRips.getLevelRips());
+            assign.load(sheetsLoaded, levelRips.getLevelRips());
             assign.open();
             assign.setLocation(folderPath);
             assign.save();

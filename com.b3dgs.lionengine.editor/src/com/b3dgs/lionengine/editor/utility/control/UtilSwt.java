@@ -17,6 +17,8 @@
  */
 package com.b3dgs.lionengine.editor.utility.control;
 
+import java.util.Arrays;
+
 import org.eclipse.e4.ui.model.application.ui.MDirtyable;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.events.MouseEvent;
@@ -30,9 +32,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.ToolBar;
-import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swt.widgets.Widget;
 
 import com.b3dgs.lionengine.LionEngineException;
@@ -155,7 +155,7 @@ public final class UtilSwt
      */
     public static void setEnabled(Composite parent, boolean enabled)
     {
-        for (final Control control : parent.getChildren())
+        Arrays.asList(parent.getChildren()).forEach(control ->
         {
             if (control instanceof Composite)
             {
@@ -165,21 +165,15 @@ public final class UtilSwt
             {
                 if (parent instanceof ToolBar)
                 {
-                    for (final ToolItem item : ((ToolBar) parent).getItems())
-                    {
-                        item.setEnabled(enabled);
-                    }
+                    Arrays.asList(((ToolBar) parent).getItems()).forEach(item -> item.setEnabled(enabled));
                 }
                 else if (parent instanceof Tree)
                 {
-                    for (final TreeItem item : ((Tree) parent).getItems())
-                    {
-                        item.setGrayed(!enabled);
-                    }
+                    Arrays.asList(((Tree) parent).getItems()).forEach(item -> item.setGrayed(!enabled));
                 }
                 control.setEnabled(enabled);
             }
-        }
+        });
         parent.setEnabled(enabled);
     }
 

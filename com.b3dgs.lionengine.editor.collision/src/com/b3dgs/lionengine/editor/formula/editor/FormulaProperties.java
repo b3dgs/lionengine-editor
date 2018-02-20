@@ -428,15 +428,15 @@ public class FormulaProperties extends ObjectProperties<CollisionFormula>
     @Override
     protected CollisionFormula createObject(String name)
     {
-        final Axis output = (Axis) this.output.getData();
-        final int minX = Integer.parseInt(this.minX.getText());
-        final int maxX = Integer.parseInt(this.maxX.getText());
-        final int minY = Integer.parseInt(this.minY.getText());
-        final int maxY = Integer.parseInt(this.maxY.getText());
-        final CollisionFunctionType type = (CollisionFunctionType) this.type.getData();
+        final Axis collOutput = (Axis) output.getData();
+        final int collMinX = Integer.parseInt(minX.getText());
+        final int collMaxX = Integer.parseInt(maxX.getText());
+        final int collMinY = Integer.parseInt(minY.getText());
+        final int collMaxY = Integer.parseInt(maxY.getText());
+        final CollisionFunctionType collType = (CollisionFunctionType) type.getData();
 
-        final CollisionRange range = new CollisionRange(output, minX, maxX, minY, maxY);
-        final CollisionFunction function = createFunction(type);
+        final CollisionRange range = new CollisionRange(collOutput, collMinX, collMaxX, collMinY, collMaxY);
+        final CollisionFunction function = createFunction(collType);
         final CollisionConstraint constraint = new CollisionConstraint();
         addGroups(constraint, Orientation.NORTH, constraintsTop);
         addGroups(constraint, Orientation.SOUTH, constraintsBottom);

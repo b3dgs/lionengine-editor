@@ -61,35 +61,64 @@ public class WorldGridRenderer implements WorldRenderListener
     {
         if (world.isGridEnabled() && map.isCreated())
         {
-            g.setColor(COLOR_GRID);
             final Tile tile = findTileInView();
             if (tile != null)
             {
-                final double sx = camera.getViewpointX(tile.getX()) * scale;
-                final double sy = camera.getViewpointY(tile.getY()) * scale;
-                final double tw = map.getTileWidth() * scale;
-                final double th = map.getTileHeight() * scale;
                 final double widthScaled = camera.getWidth() * scale;
                 final double heightScaled = camera.getHeight() * scale;
 
-                for (double x = sx; x < widthScaled; x += tw)
-                {
-                    g.drawLine((int) Math.floor(x), 0, (int) Math.floor(x), (int) Math.floor(heightScaled));
-                }
-                for (double x = sx; x > 0; x -= tw)
-                {
-                    g.drawLine((int) Math.floor(x), 0, (int) Math.floor(x), (int) Math.floor(heightScaled));
-                }
-
-                for (double y = sy; y < heightScaled; y += th)
-                {
-                    g.drawLine(0, (int) Math.floor(y), (int) Math.floor(widthScaled), (int) Math.floor(y));
-                }
-                for (double y = sy; y > 0; y -= th)
-                {
-                    g.drawLine(0, (int) Math.floor(y), (int) Math.floor(widthScaled), (int) Math.floor(y));
-                }
+                g.setColor(COLOR_GRID);
+                renderHorizontalLines(g, tile, scale, widthScaled, heightScaled);
+                renderVerticalLines(g, tile, scale, widthScaled, heightScaled);
             }
+        }
+    }
+
+    /**
+     * Render horizontal lines.
+     * 
+     * @param g The graphic output.
+     * @param tile The tile to render.
+     * @param scale The scale value.
+     * @param widthScaled The width scaled.
+     * @param heightScaled The height scaled.
+     */
+    private void renderHorizontalLines(Graphic g, Tile tile, double scale, double widthScaled, double heightScaled)
+    {
+        final double sx = camera.getViewpointX(tile.getX()) * scale;
+        final double tw = map.getTileWidth() * scale;
+
+        for (double x = sx; x < widthScaled; x += tw)
+        {
+            g.drawLine((int) Math.floor(x), 0, (int) Math.floor(x), (int) Math.floor(heightScaled));
+        }
+        for (double x = sx; x > 0; x -= tw)
+        {
+            g.drawLine((int) Math.floor(x), 0, (int) Math.floor(x), (int) Math.floor(heightScaled));
+        }
+    }
+
+    /**
+     * Render verticals lines.
+     * 
+     * @param g The graphic output.
+     * @param tile The tile to render.
+     * @param scale The scale value.
+     * @param widthScaled The width scaled.
+     * @param heightScaled The height scaled.
+     */
+    private void renderVerticalLines(Graphic g, Tile tile, double scale, double widthScaled, double heightScaled)
+    {
+        final double sy = camera.getViewpointY(tile.getY()) * scale;
+        final double th = map.getTileHeight() * scale;
+
+        for (double y = sy; y < heightScaled; y += th)
+        {
+            g.drawLine(0, (int) Math.floor(y), (int) Math.floor(widthScaled), (int) Math.floor(y));
+        }
+        for (double y = sy; y > 0; y -= th)
+        {
+            g.drawLine(0, (int) Math.floor(y), (int) Math.floor(widthScaled), (int) Math.floor(y));
         }
     }
 

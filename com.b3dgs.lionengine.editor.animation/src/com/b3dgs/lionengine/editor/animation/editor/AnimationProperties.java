@@ -114,10 +114,10 @@ public class AnimationProperties extends ObjectProperties<Animation> implements 
     {
         final int first = Math.max(Animation.MINIMUM_FRAME, Math.min(Integer.parseInt(firstFrame.getText()), maxFrame));
         final int last = Math.max(Animation.MINIMUM_FRAME, Math.min(Integer.parseInt(lastFrame.getText()), maxFrame));
-        final double speed = Double.parseDouble(this.speed.getText());
+        final double animSpeed = Double.parseDouble(speed.getText());
         final boolean reverse = reverseAnim.getSelection();
         final boolean repeat = repeatAnim.getSelection();
-        return new Animation(name, Math.min(first, last), Math.max(first, last), speed, reverse, repeat);
+        return new Animation(name, Math.min(first, last), Math.max(first, last), animSpeed, reverse, repeat);
     }
 
     /*

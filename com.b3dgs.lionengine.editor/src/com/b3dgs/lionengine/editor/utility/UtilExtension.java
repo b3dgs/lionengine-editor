@@ -29,7 +29,6 @@ import org.eclipse.core.runtime.InvalidRegistryObjectException;
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
 
-import com.b3dgs.lionengine.Check;
 import com.b3dgs.lionengine.LionEngineException;
 import com.b3dgs.lionengine.Verbose;
 
@@ -177,94 +176,5 @@ public final class UtilExtension
     private UtilExtension()
     {
         throw new LionEngineException(LionEngineException.ERROR_PRIVATE_CONSTRUCTOR);
-    }
-
-    /**
-     * Represents an extension.
-     * 
-     * @param <T> The extension type.
-     */
-    private static final class Extension<T> implements Comparable<Extension<T>>
-    {
-        /** Extension instance. */
-        private final T instance;
-        /** Extension priority. */
-        private final int priority;
-
-        /**
-         * Create extension.
-         * 
-         * @param instance The extension instance.
-         * @param priority The extension priority.
-         */
-        Extension(T instance, int priority)
-        {
-            super();
-            Check.notNull(instance);
-            this.instance = instance;
-            this.priority = priority;
-        }
-
-        /**
-         * Get the extension instance.
-         * 
-         * @return The extension instance.
-         */
-        T getExtension()
-        {
-            return instance;
-        }
-
-        /*
-         * Comparable
-         */
-
-        @Override
-        public int compareTo(Extension<T> other)
-        {
-            final int value;
-            if (priority < other.priority)
-            {
-                value = 1;
-            }
-            else if (priority > other.priority)
-            {
-                value = -1;
-            }
-            else
-            {
-                value = 0;
-            }
-            return value;
-        }
-
-        /*
-         * Object
-         */
-
-        @Override
-        public int hashCode()
-        {
-            final int prime = 31;
-            int result = 1;
-            result = prime * result + instance.hashCode();
-            result = prime * result + priority;
-            return result;
-        }
-
-        @Override
-        public boolean equals(Object obj)
-        {
-            if (this == obj)
-            {
-                return true;
-            }
-            if (!(obj instanceof Extension))
-            {
-                return false;
-            }
-            final Extension<?> other = (Extension<?>) obj;
-            return priority == other.priority && getExtension().equals(other.getExtension());
-        }
     }
 }

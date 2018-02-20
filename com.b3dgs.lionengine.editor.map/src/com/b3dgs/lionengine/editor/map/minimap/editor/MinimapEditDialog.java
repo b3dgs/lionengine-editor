@@ -145,9 +145,9 @@ public class MinimapEditDialog extends AbstractDialog
     {
         int maxWidth = 0;
         int maxHeight = 0;
-        for (final Integer sheet : map.getSheets())
+        for (final Integer currentSheet : map.getSheets())
         {
-            final SpriteTiled sprite = map.getSheet(sheet);
+            final SpriteTiled sprite = map.getSheet(currentSheet);
             maxWidth = Math.max(maxWidth, sprite.getWidth());
             maxHeight = Math.max(maxHeight, sprite.getHeight());
         }
@@ -325,15 +325,16 @@ public class MinimapEditDialog extends AbstractDialog
     protected void onFinish()
     {
         final Map<TileRef, ColorRgba> tiles = new HashMap<>();
-        for (final Map.Entry<Integer, Map<Point, Color>> currentSheet : data.entrySet())
+        for (final Map.Entry<Integer, Map<Point, Color>> sheetEntry : data.entrySet())
         {
-            final Integer sheet = currentSheet.getKey();
-            for (final Map.Entry<Point, Color> current : currentSheet.getValue().entrySet())
+            final Integer currentSheet = sheetEntry.getKey();
+            for (final Map.Entry<Point, Color> current : sheetEntry.getValue().entrySet())
             {
                 final Point point = current.getKey();
-                final int number = point.getX() + point.getY() * map.getSheet(sheet).getTilesHorizontal();
+                final int number = point.getX() + point.getY() * map.getSheet(currentSheet).getTilesHorizontal();
                 final Color color = current.getValue();
-                tiles.put(new TileRef(sheet, number), new ColorRgba(color.getRed(), color.getGreen(), color.getBlue()));
+                tiles.put(new TileRef(currentSheet, number),
+                          new ColorRgba(color.getRed(), color.getGreen(), color.getBlue()));
             }
         }
 

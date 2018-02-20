@@ -142,16 +142,16 @@ public class WorldInteractionTile implements WorldMouseClickListener, WorldMouse
         {
             selectedTile = null;
         }
-        for (final TileSelectionListener listener : tileSelectionListeners)
+        for (final TileSelectionListener current : tileSelectionListeners)
         {
             if (selectedTile != null)
             {
-                listener.notifyTileSelected(click, selectedTile);
-                listener.notifyTileGroupSelected(mapGroup.getGroup(selectedTile));
+                current.notifyTileSelected(click, selectedTile);
+                current.notifyTileGroupSelected(mapGroup.getGroup(selectedTile));
             }
             else
             {
-                listener.notifyTileGroupSelected(MapTileGroupModel.NO_GROUP_NAME);
+                current.notifyTileGroupSelected(MapTileGroupModel.NO_GROUP_NAME);
             }
         }
     }
