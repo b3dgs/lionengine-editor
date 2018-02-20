@@ -66,7 +66,7 @@ public final class UtilText
      * @param match The expected match.
      * @see com.b3dgs.lionengine.editor.validator.InputValidator
      */
-    public static void addVerify(final Text text, final String match)
+    public static void addVerify(Text text, final String match)
     {
         text.addVerifyListener(event ->
         {
@@ -82,7 +82,7 @@ public final class UtilText
      * @param text The text reference.
      * @param enable <code>true</code> to enable dirty detection, <code>false</code> else.
      */
-    public static void registerDirty(final Text text, boolean enable)
+    public static void registerDirty(Text text, boolean enable)
     {
         final Object oldListener = text.getData(UtilSwt.KEY_DIRTY);
         if (oldListener instanceof ModifyListener)

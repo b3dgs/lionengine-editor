@@ -87,7 +87,7 @@ public final class UtilExtension
                 throw new LionEngineException(exception, ERROR_EXTENSION + element.getValue());
             }
         }
-        return extensions.stream().sorted().map(element -> element.getExtension()).collect(Collectors.toList());
+        return extensions.stream().sorted().map(Extension::getExtension).collect(Collectors.toList());
     }
 
     /**

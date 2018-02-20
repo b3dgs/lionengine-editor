@@ -53,7 +53,7 @@ public class PropertiesSetup implements PropertiesProviderObject
     {
         final TreeItem classItem = new TreeItem(properties, SWT.NONE);
         PropertiesPart.createLine(classItem, Messages.Setup, configObject.getSetupName());
-        classItem.setData(FeaturableConfig.SETUP);
+        classItem.setData(FeaturableConfig.ATT_SETUP);
         classItem.setImage(ICON_SETUP);
     }
 
@@ -83,7 +83,7 @@ public class PropertiesSetup implements PropertiesProviderObject
         if (setup != null)
         {
             final Xml root = configurer.getRoot();
-            final Xml setupNode = root.getChild(FeaturableConfig.SETUP);
+            final Xml setupNode = root.getChild(FeaturableConfig.ATT_SETUP);
             setupNode.setText(setup);
             item.setText(PropertiesPart.COLUMN_VALUE, setup);
             return true;
@@ -107,7 +107,7 @@ public class PropertiesSetup implements PropertiesProviderObject
     public void setInput(Tree properties, Configurer configurer)
     {
         final Xml root = configurer.getRoot();
-        if (root.hasChild(FeaturableConfig.SETUP))
+        if (root.hasChild(FeaturableConfig.ATT_SETUP))
         {
             createAttributeSetup(properties, FeaturableConfig.imports(configurer));
         }
@@ -117,7 +117,7 @@ public class PropertiesSetup implements PropertiesProviderObject
     public boolean updateProperties(TreeItem item, Configurer configurer)
     {
         final Object data = item.getData();
-        if (FeaturableConfig.SETUP.equals(data))
+        if (FeaturableConfig.ATT_SETUP.equals(data))
         {
             return updateSetup(item, configurer);
         }

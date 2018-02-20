@@ -46,11 +46,11 @@ public final class PropertiesFormulaTester extends PropertyTester
         final boolean result;
         if (PROPERTY_FORMULA_ADD.equals(property))
         {
-            result = CollisionFormulaConfig.FORMULAS.equals(data);
+            result = CollisionFormulaConfig.NODE_FORMULAS.equals(data);
         }
         else if (PROPERTY_FORMULA_REMOVE.equals(property) || PROPERTY_FORMULA_EDIT.equals(property))
         {
-            result = CollisionFormulaConfig.FORMULA.equals(data);
+            result = CollisionFormulaConfig.NODE_FORMULA.equals(data);
         }
         else
         {

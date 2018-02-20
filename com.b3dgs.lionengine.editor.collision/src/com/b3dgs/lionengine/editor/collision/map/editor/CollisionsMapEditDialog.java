@@ -101,7 +101,7 @@ public class CollisionsMapEditDialog extends AbstractDialog
 
             for (final CollisionFormula formula : collisionGroup.getFormulas())
             {
-                final Xml nodeFormula = nodeCollision.createChild(CollisionFormulaConfig.FORMULA);
+                final Xml nodeFormula = nodeCollision.createChild(CollisionFormulaConfig.NODE_FORMULA);
                 nodeFormula.setText(formula.getName());
             }
         }

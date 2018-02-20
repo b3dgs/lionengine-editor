@@ -24,8 +24,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import javax.inject.Inject;
-
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.swt.SWT;
@@ -100,21 +98,24 @@ public class GroupsAssignDialog extends AbstractDialog implements WorldView, Foc
     private final MapTile map;
     /** Map group. */
     private final MapTileGroup mapGroup;
+    /** Part service. */
+    private final EPartService partService;
     /** Folder destination. */
     private String destination;
     /** World view. */
     private Composite view;
-    /** Part service. */
-    @Inject private EPartService partService;
 
     /**
      * Create the dialog.
      * 
+     * @param partService The part service.
      * @param parent The parent reference.
      */
-    public GroupsAssignDialog(Shell parent)
+    public GroupsAssignDialog(EPartService partService, Shell parent)
     {
         super(parent, Messages.Title, Messages.HeaderTitle, Messages.HeaderDesc, ICON, SWT.SHELL_TRIM);
+
+        this.partService = partService;
 
         services.add(new Camera());
         services.add(new Handler(services));

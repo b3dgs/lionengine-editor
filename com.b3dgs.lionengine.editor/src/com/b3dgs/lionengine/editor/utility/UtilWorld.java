@@ -23,7 +23,7 @@ import java.util.HashSet;
 
 import com.b3dgs.lionengine.LionEngineException;
 import com.b3dgs.lionengine.Media;
-import com.b3dgs.lionengine.game.feature.Camera;
+import com.b3dgs.lionengine.Shape;
 import com.b3dgs.lionengine.game.feature.tile.Tile;
 import com.b3dgs.lionengine.game.feature.tile.TileConfig;
 import com.b3dgs.lionengine.game.feature.tile.TileGroupsConfig;
@@ -46,7 +46,7 @@ public final class UtilWorld
      * @param my The mouse Y.
      * @return The location found.
      */
-    public static Point getPoint(Camera camera, int mx, int my)
+    public static Point getPoint(Shape camera, int mx, int my)
     {
         final int x = (int) camera.getX() + mx;
         final int y = (int) camera.getY() - my + camera.getHeight();
@@ -62,7 +62,7 @@ public final class UtilWorld
      * @param my The mouse Y.
      * @return The tile found, <code>null</code> if none.
      */
-    public static Tile getTile(MapTile map, Camera camera, int mx, int my)
+    public static Tile getTile(MapTile map, Shape camera, int mx, int my)
     {
         final int x = (int) camera.getX() + mx;
         final int y = (int) camera.getY() - my + camera.getHeight();

@@ -125,7 +125,7 @@ public class WorldPart implements WorldView, Focusable
     }
 
     /** Part service. */
-    @Inject private EPartService partService;
+    private final EPartService partService;
     /** Composite. */
     private Canvas composite;
     /** Updater. */
@@ -135,10 +135,15 @@ public class WorldPart implements WorldView, Focusable
 
     /**
      * Create part.
+     * 
+     * @param partService The injected part service.
      */
-    public WorldPart()
+    @Inject
+    public WorldPart(EPartService partService)
     {
         super();
+
+        this.partService = partService;
     }
 
     /**

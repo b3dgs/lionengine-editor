@@ -20,6 +20,7 @@ package com.b3dgs.lionengine.editor.map;
 import java.util.Collection;
 
 import org.eclipse.e4.core.di.annotations.Execute;
+import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.swt.widgets.Shell;
 
 import com.b3dgs.lionengine.Media;
@@ -72,10 +73,11 @@ public final class ExtractAllHandler
     /**
      * Execute the handler.
      * 
+     * @param partService The part service reference.
      * @param shell The shell reference.
      */
     @Execute
-    public void execute(Shell shell)
+    public void execute(EPartService partService, Shell shell)
     {
         final SheetsExtractDialog sheetsExtractDialog = new SheetsExtractDialog(shell);
         sheetsExtractDialog.open();
@@ -85,7 +87,7 @@ public final class ExtractAllHandler
         {
             final Collection<Media> levels = sheetsExtractDialog.getLevelRips();
 
-            final GroupsAssignDialog groupsAssignDialog = new GroupsAssignDialog(shell);
+            final GroupsAssignDialog groupsAssignDialog = new GroupsAssignDialog(partService, shell);
             groupsAssignDialog.setLocation(sheetsExtractDialog.getFolder());
             groupsAssignDialog.load(sheets, levels);
             groupsAssignDialog.open();

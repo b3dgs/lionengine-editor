@@ -49,7 +49,7 @@ public final class FormulasAddHandler
     {
         InputValidator.getFile(parent, Messages.Title, Messages.Text, CollisionFormulaConfig.FILENAME, file ->
         {
-            final Xml root = new Xml(UtilFile.removeExtension(CollisionFormulaConfig.FORMULAS));
+            final Xml root = new Xml(UtilFile.removeExtension(CollisionFormulaConfig.NODE_FORMULAS));
             root.save(ProjectModel.INSTANCE.getProject().getResourceMedia(file));
         });
     }

@@ -33,6 +33,7 @@ import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.swt.widgets.Widget;
 
 import com.b3dgs.lionengine.LionEngineException;
 import com.b3dgs.lionengine.editor.utility.Focusable;
@@ -62,7 +63,7 @@ public final class UtilSwt
      * 
      * @param shell The shell to center.
      */
-    public static void center(Shell shell)
+    public static void center(Control shell)
     {
         final Monitor primary = shell.getMonitor();
         final Rectangle bounds = primary.getBounds();
@@ -137,7 +138,7 @@ public final class UtilSwt
      * @param shell The shell reference.
      * @param dirty <code>true</code> if dirty, <code>false</code> else.
      */
-    public static void setDirty(Shell shell, boolean dirty)
+    public static void setDirty(Widget shell, boolean dirty)
     {
         final Object data = shell.getData();
         if (data instanceof MDirtyable)

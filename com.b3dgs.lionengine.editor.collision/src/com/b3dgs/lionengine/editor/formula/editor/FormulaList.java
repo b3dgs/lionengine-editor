@@ -51,7 +51,7 @@ public class FormulaList extends ObjectList<CollisionFormula> implements ObjectL
     {
         final Xml node = new Xml(formulasConfig);
         final Collection<Xml> toRemove = new ArrayList<>();
-        for (final Xml nodeFormula : node.getChildren(CollisionFormulaConfig.FORMULA))
+        for (final Xml nodeFormula : node.getChildren(CollisionFormulaConfig.NODE_FORMULA))
         {
             if (CollisionGroup.same(nodeFormula.readString(TileGroupsConfig.ATTRIBUTE_GROUP_NAME), formula.getName()))
             {

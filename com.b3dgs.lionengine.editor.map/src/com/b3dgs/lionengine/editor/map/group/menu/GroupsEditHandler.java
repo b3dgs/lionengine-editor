@@ -18,6 +18,7 @@
 package com.b3dgs.lionengine.editor.map.group.menu;
 
 import org.eclipse.e4.core.di.annotations.Execute;
+import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.swt.widgets.Shell;
 
 /**
@@ -39,12 +40,13 @@ public final class GroupsEditHandler
     /**
      * Execute the handler.
      * 
+     * @param partService The part service reference.
      * @param shell The shell reference.
      */
     @Execute
-    public void execute(Shell shell)
+    public void execute(EPartService partService, Shell shell)
     {
-        final GroupsEditDialog groupsEditDialog = new GroupsEditDialog(shell);
+        final GroupsEditDialog groupsEditDialog = new GroupsEditDialog(partService, shell);
         groupsEditDialog.open();
     }
 }

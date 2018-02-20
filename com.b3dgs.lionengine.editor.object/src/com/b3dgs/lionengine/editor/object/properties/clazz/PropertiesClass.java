@@ -53,7 +53,7 @@ public class PropertiesClass implements PropertiesProviderObject
     {
         final TreeItem classItem = new TreeItem(properties, SWT.NONE);
         PropertiesPart.createLine(classItem, Messages.Class, configObject.getClassName());
-        classItem.setData(FeaturableConfig.CLASS);
+        classItem.setData(FeaturableConfig.ATT_CLASS);
         classItem.setImage(ICON_CLASS);
     }
 
@@ -83,7 +83,7 @@ public class PropertiesClass implements PropertiesProviderObject
         if (clazz != null)
         {
             final Xml root = configurer.getRoot();
-            final Xml classeNode = root.getChild(FeaturableConfig.CLASS);
+            final Xml classeNode = root.getChild(FeaturableConfig.ATT_CLASS);
             classeNode.setText(clazz);
             item.setText(PropertiesPart.COLUMN_VALUE, clazz);
             return true;
@@ -107,7 +107,7 @@ public class PropertiesClass implements PropertiesProviderObject
     public void setInput(Tree properties, Configurer configurer)
     {
         final Xml root = configurer.getRoot();
-        if (root.hasChild(FeaturableConfig.CLASS))
+        if (root.hasChild(FeaturableConfig.ATT_CLASS))
         {
             createAttributeClass(properties, FeaturableConfig.imports(configurer));
         }
@@ -117,7 +117,7 @@ public class PropertiesClass implements PropertiesProviderObject
     public boolean updateProperties(TreeItem item, Configurer configurer)
     {
         final Object data = item.getData();
-        if (FeaturableConfig.CLASS.equals(data))
+        if (FeaturableConfig.ATT_CLASS.equals(data))
         {
             return updateClass(item, configurer);
         }

@@ -10,5 +10,5 @@ Require-Bundle: org.eclipse.swt,
  com.b3dgs.lionengine.core.swt,
  org.junit;bundle-version="4.12.0"
 Bundle-ClassPath: .,
- lib/lionengine-core-9.0.0-20180210.161440-1-tests.jar
+ lib/lionengine-core-9.0.0-20180220.175902-2-tests.jar
 Export-Package: com.b3dgs.lionengine.core.swt

@@ -50,14 +50,14 @@ public class PropertiesFormula implements PropertiesProviderTile
     {
         final TreeItem item = new TreeItem(properties, SWT.NONE);
         item.setText(Messages.TileCollisionFormulas);
-        item.setData(CollisionFormulaConfig.FORMULAS);
+        item.setData(CollisionFormulaConfig.NODE_FORMULAS);
         item.setImage(PropertiesFormula.ICON_FORMULAS);
 
         for (final CollisionFormula formula : tile.getCollisionFormulas())
         {
             final TreeItem current = new TreeItem(item, SWT.NONE);
             PropertiesPart.createLine(current, Messages.TileCollisionFormula, formula.getName());
-            current.setData(CollisionFormulaConfig.FORMULA);
+            current.setData(CollisionFormulaConfig.NODE_FORMULA);
             current.setImage(PropertiesFormula.ICON_FORMULA);
         }
     }

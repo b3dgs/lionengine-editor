@@ -87,7 +87,7 @@ public class FormulasEditDialog extends AbstractDialog
     protected void onFinish()
     {
         list.save();
-        final Xml root = new Xml(CollisionFormulaConfig.FORMULAS);
+        final Xml root = new Xml(CollisionFormulaConfig.NODE_FORMULAS);
         root.writeString(Constant.XML_HEADER, Constant.ENGINE_WEBSITE);
 
         for (final TreeItem item : list.getTree().getItems())

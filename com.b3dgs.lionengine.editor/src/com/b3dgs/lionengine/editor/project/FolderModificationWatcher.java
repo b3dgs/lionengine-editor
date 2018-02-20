@@ -52,7 +52,7 @@ public final class FolderModificationWatcher
     private static final String ERROR_STARTED = "Watcher already started !";
 
     /** New tasks. */
-    final Queue<Task> newTasks = new ConcurrentLinkedQueue<>();
+    private final Queue<Task> newTasks = new ConcurrentLinkedQueue<>();
     /** Thread executor service. */
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
     /** Future task. */

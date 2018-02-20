@@ -20,6 +20,7 @@ package com.b3dgs.lionengine.editor.map.group.menu;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
@@ -73,6 +74,8 @@ public class GroupsEditDialog extends AbstractDialog
         return sheets;
     }
 
+    /** Part service. */
+    private final EPartService partService;
     /** Level rips widget. */
     private LevelRipWidget levelRips;
     /** Next button. */
@@ -83,11 +86,14 @@ public class GroupsEditDialog extends AbstractDialog
     /**
      * Create the dialog.
      * 
+     * @param partService The part service.
      * @param parent The parent reference.
      */
-    public GroupsEditDialog(Shell parent)
+    public GroupsEditDialog(EPartService partService, Shell parent)
     {
         super(parent, Messages.Title, Messages.HeaderTitle, Messages.HeaderDesc, ICON, SWT.SHELL_TRIM);
+
+        this.partService = partService;
 
         createDialog();
         dialog.setMinimumSize(640, 448);
@@ -173,7 +179,7 @@ public class GroupsEditDialog extends AbstractDialog
     {
         final Media sheetsMedia = sheets.getMedia();
         final TileSheetsConfig config = TileSheetsConfig.imports(sheetsMedia);
-        final GroupsAssignDialog assign = new GroupsAssignDialog(dialog);
+        final GroupsAssignDialog assign = new GroupsAssignDialog(partService, dialog);
         final String folderPath = sheetsMedia.getParentPath();
         final Collection<SpriteTiled> sheets = loadSheets(config, folderPath);
         if (sheets.isEmpty())
