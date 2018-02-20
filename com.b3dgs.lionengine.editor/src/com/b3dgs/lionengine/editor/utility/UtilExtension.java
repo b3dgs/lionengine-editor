@@ -84,7 +84,7 @@ public final class UtilExtension
             }
             catch (final InvalidRegistryObjectException | ReflectiveOperationException exception)
             {
-                throw new LionEngineException(exception, ERROR_EXTENSION, element.getValue());
+                throw new LionEngineException(exception, ERROR_EXTENSION + element.getValue());
             }
         }
         return extensions.stream().sorted().map(element -> element.getExtension()).collect(Collectors.toList());

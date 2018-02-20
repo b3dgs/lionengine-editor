@@ -57,11 +57,11 @@ public final class UtilBundle
                 }
                 catch (final IOException exception)
                 {
-                    throw new LionEngineException(exception, ERROR_PATH_INVALID, url.getPath());
+                    throw new LionEngineException(exception, ERROR_PATH_INVALID + url.getPath());
                 }
             }
         }
-        throw new LionEngineException(ERROR_PATH_NOT_FOUND, path);
+        throw new LionEngineException(ERROR_PATH_NOT_FOUND + path);
     }
 
     /**
@@ -87,9 +87,9 @@ public final class UtilBundle
         }
         catch (final IOException exception)
         {
-            throw new LionEngineException(exception, ERROR_PATH_INVALID, path);
+            throw new LionEngineException(exception, ERROR_PATH_INVALID + path);
         }
-        throw new LionEngineException(ERROR_PATH_NOT_FOUND, path);
+        throw new LionEngineException(ERROR_PATH_NOT_FOUND + path);
     }
 
     /**

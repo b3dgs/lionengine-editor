@@ -61,7 +61,7 @@ public final class UtilIcon
         final Image image = descriptor.createImage();
         if (image == null)
         {
-            throw new LionEngineException(UtilIcon.ERROR_ICON_CREATE, path);
+            throw new LionEngineException(UtilIcon.ERROR_ICON_CREATE + path);
         }
         return image;
     }

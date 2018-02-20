@@ -313,6 +313,6 @@ public class WorldPart implements WorldView, Focusable
                 return UtilToolbar.getToolItem(toolBar, item, clazz);
             }
         }
-        throw new LionEngineException(ERROR_ITEM, item);
+        throw new LionEngineException(ERROR_ITEM + item);
     }
 }

@@ -135,7 +135,7 @@ public final class UtilToolbar
                 return clazz.cast(((MToolControl) element).getObject());
             }
         }
-        throw new LionEngineException(ERROR_ITEM, name);
+        throw new LionEngineException(ERROR_ITEM + name);
     }
 
     /**

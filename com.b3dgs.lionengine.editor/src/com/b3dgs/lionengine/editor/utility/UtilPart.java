@@ -70,7 +70,7 @@ public final class UtilPart
                 return clazz.cast(part.getObject());
             }
         }
-        throw new LionEngineException(UtilPart.ERROR_PART, id);
+        throw new LionEngineException(UtilPart.ERROR_PART + id);
     }
 
     /**

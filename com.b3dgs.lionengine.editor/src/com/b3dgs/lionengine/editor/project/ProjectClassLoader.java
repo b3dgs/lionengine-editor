@@ -165,7 +165,7 @@ public class ProjectClassLoader
         }
         catch (final ClassNotFoundException | NoClassDefFoundError exception)
         {
-            throw new LionEngineException(exception, ERROR_LOAD_CLASS, name);
+            throw new LionEngineException(exception, ERROR_LOAD_CLASS + name);
         }
     }
 
@@ -190,7 +190,7 @@ public class ProjectClassLoader
         }
         catch (final LionEngineException exception)
         {
-            throw new LionEngineException(exception, media, ERROR_CLASS_CAST, clazz.getName());
+            throw new LionEngineException(exception, media, ERROR_CLASS_CAST + clazz.getName());
         }
     }
 
@@ -213,7 +213,7 @@ public class ProjectClassLoader
         }
         catch (final ReflectiveOperationException exception)
         {
-            throw new LionEngineException(exception, ERROR_CREATE_CLASS, clazzRef.getName());
+            throw new LionEngineException(exception, ERROR_CREATE_CLASS + clazzRef.getName());
         }
     }
 
