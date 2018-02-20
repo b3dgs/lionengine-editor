@@ -39,7 +39,6 @@ import com.b3dgs.lionengine.core.Medias;
 import com.b3dgs.lionengine.graphic.ColorRgba;
 import com.b3dgs.lionengine.graphic.Transparency;
 import com.b3dgs.lionengine.util.UtilEnum;
-import com.b3dgs.lionengine.util.UtilStream;
 import com.b3dgs.lionengine.util.UtilTests;
 
 /**
@@ -122,8 +121,10 @@ public class ToolsSwtTest
     public void testUtility() throws IOException
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
+
         final Display display = ToolsSwt.getDisplay();
         final Image image = ToolsSwt.createImage(100, 100, SWT.TRANSPARENCY_NONE);
+
         Assert.assertNotNull(image);
         Assert.assertNotNull(ToolsSwt.getRasterBuffer(image, 1, 1, 1, 1, 1, 1, 1));
         Assert.assertNotNull(ToolsSwt.flipHorizontal(image));
@@ -133,32 +134,24 @@ public class ToolsSwtTest
         Assert.assertNotNull(ToolsSwt.splitImage(image, 1, 1));
         Assert.assertNotNull(ToolsSwt.applyMask(image, ColorRgba.BLACK.getRgba()));
         Assert.assertNotNull(ToolsSwt.applyMask(image, ColorRgba.WHITE.getRgba()));
+
         image.dispose();
 
         final Media media = Medias.create("image.png");
 
-        InputStream input = null;
-        try
+        try (InputStream input = media.getInputStream())
         {
-            input = media.getInputStream();
             final Image buffer = ToolsSwt.getImage(display, input);
             Assert.assertNotNull(buffer);
 
-            InputStream input2 = null;
-            try
+            try (InputStream input2 = media.getInputStream())
             {
-                input2 = media.getInputStream();
                 Assert.assertNotNull(ToolsSwt.getImageData(input2));
             }
             finally
             {
-                UtilStream.close(input2);
                 buffer.dispose();
             }
-        }
-        finally
-        {
-            UtilStream.close(input);
         }
 
         Assert.assertNotNull(ToolsSwt.createHiddenCursor(display));
@@ -172,9 +165,16 @@ public class ToolsSwtTest
     {
         final Image image = ToolsSwt.createImage(100, 100, SWT.TRANSPARENCY_NONE);
         final Image copy = ToolsSwt.getImage(image);
-        Assert.assertEquals(image.getImageData().width, copy.getImageData().width);
-        image.dispose();
-        copy.dispose();
+
+        try
+        {
+            Assert.assertEquals(image.getImageData().width, copy.getImageData().width);
+        }
+        finally
+        {
+            image.dispose();
+            copy.dispose();
+        }
     }
 
     /**
@@ -188,32 +188,23 @@ public class ToolsSwtTest
         ScreenSwtTest.checkMultipleDisplaySupport();
         final Media media = Medias.create("image.png");
 
-        InputStream input = null;
-        try
+        try (InputStream input = media.getInputStream())
         {
-            input = media.getInputStream();
             final Image image = ToolsSwt.getImage(ToolsSwt.getDisplay(), input);
             Assert.assertNotNull(image);
 
             final Media save = Medias.create("test");
-            OutputStream output = null;
-            try
+            try (OutputStream output = save.getOutputStream())
             {
-                output = save.getOutputStream();
                 ToolsSwt.saveImage(image, output);
             }
             finally
             {
-                UtilStream.close(output);
                 image.dispose();
             }
             Assert.assertTrue(save.getFile().exists());
             Assert.assertTrue(save.getFile().delete());
             Assert.assertFalse(save.getFile().exists());
-        }
-        finally
-        {
-            UtilStream.close(input);
         }
     }
 
@@ -227,16 +218,11 @@ public class ToolsSwtTest
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final Media media = Medias.create("image.xml");
-        InputStream input = null;
-        try
+
+        try (InputStream input = media.getInputStream())
         {
-            input = media.getInputStream();
             final Image image = ToolsSwt.getImage(ToolsSwt.getDisplay(), input);
             Assert.assertNotNull(image);
-        }
-        finally
-        {
-            UtilStream.close(input);
         }
     }
 
@@ -250,16 +236,11 @@ public class ToolsSwtTest
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final Media media = Medias.create("raster.xml");
-        InputStream input = null;
-        try
+
+        try (InputStream input = media.getInputStream())
         {
-            input = media.getInputStream();
             final Image image = ToolsSwt.getImage(ToolsSwt.getDisplay(), input);
             Assert.assertNotNull(image);
-        }
-        finally
-        {
-            UtilStream.close(input);
         }
     }
 }
