@@ -35,6 +35,9 @@ import com.b3dgs.lionengine.util.UtilFolder;
  */
 final class Watcher implements Runnable
 {
+    /** Default check time in milliseconds. */
+    private static final int CHECK_TIME = 1000;
+
     /** Tasks. */
     private final Collection<Task> tasks = new HashSet<>();
     /** New tasks. */
@@ -133,7 +136,7 @@ final class Watcher implements Runnable
             }
             try
             {
-                Thread.sleep(FolderModificationWatcher.CHECK_TIME);
+                Thread.sleep(CHECK_TIME);
             }
             catch (@SuppressWarnings("unused") final InterruptedException exception)
             {

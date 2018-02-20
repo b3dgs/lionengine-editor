@@ -30,8 +30,6 @@ import com.b3dgs.lionengine.LionEngineException;
  */
 public final class FolderModificationWatcher
 {
-    /** Default check time in milliseconds. */
-    static final int CHECK_TIME = 1000;
     /** Watcher already started error. */
     private static final String ERROR_STARTED = "Watcher already started !";
 

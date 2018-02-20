@@ -38,6 +38,25 @@ import com.b3dgs.lionengine.Verbose;
  */
 final class Task
 {
+    /**
+     * Dispose item from its name.
+     * 
+     * @param tree The tree reference.
+     * @param name The item name.
+     */
+    private static void disposeItem(Tree tree, String name)
+    {
+        if (!tree.isDisposed())
+        {
+            final Object data = tree.getData(name);
+            if (data instanceof TreeItem)
+            {
+                final TreeItem item = (TreeItem) data;
+                item.dispose();
+            }
+        }
+    }
+
     /** New tasks. */
     private final Queue<Task> newTasks;
     /** Root folder. */
@@ -130,25 +149,6 @@ final class Task
                 {
                     Verbose.exception(exception);
                 }
-            }
-        }
-    }
-
-    /**
-     * Dispose item from its name.
-     * 
-     * @param tree The tree reference.
-     * @param name The item name.
-     */
-    private void disposeItem(Tree tree, String name)
-    {
-        if (!tree.isDisposed())
-        {
-            final Object data = tree.getData(name);
-            if (data instanceof TreeItem)
-            {
-                final TreeItem item = (TreeItem) data;
-                item.dispose();
             }
         }
     }
