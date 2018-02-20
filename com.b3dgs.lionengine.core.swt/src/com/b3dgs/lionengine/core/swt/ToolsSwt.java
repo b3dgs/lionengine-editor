@@ -172,10 +172,7 @@ public final class ToolsSwt
     {
         final Color white = device.getSystemColor(SWT.COLOR_WHITE);
         final Color black = device.getSystemColor(SWT.COLOR_BLACK);
-        final PaletteData palette = new PaletteData(new RGB[]
-        {
-            white.getRGB(), black.getRGB()
-        });
+        final PaletteData palette = new PaletteData(white.getRGB(), black.getRGB());
         final ImageData sourceData = new ImageData(16, 16, 1, palette);
         sourceData.transparentPixel = 0;
 

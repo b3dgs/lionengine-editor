@@ -38,6 +38,7 @@ import com.b3dgs.lionengine.game.SurfaceConfig;
 import com.b3dgs.lionengine.graphic.ImageHeader;
 import com.b3dgs.lionengine.graphic.ImageInfo;
 import com.b3dgs.lionengine.io.Xml;
+import com.b3dgs.lionengine.io.XmlReader;
 
 /**
  * Element properties part.
@@ -106,7 +107,7 @@ public class PropertiesFrames implements PropertiesProviderObject
      * @param root The root node.
      * @param framesNode The frames node.
      */
-    public static void updateSize(Configurer configurer, Xml root, Xml framesNode)
+    public static void updateSize(Configurer configurer, Xml root, XmlReader framesNode)
     {
         final Xml size;
         final File file = new File(configurer.getPath(),

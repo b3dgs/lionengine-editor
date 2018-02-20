@@ -27,6 +27,7 @@ import org.eclipse.swt.widgets.Text;
 import com.b3dgs.lionengine.Animation;
 import com.b3dgs.lionengine.editor.ObjectListListener;
 import com.b3dgs.lionengine.editor.ObjectProperties;
+import com.b3dgs.lionengine.graphic.SpriteAnimated;
 
 /**
  * Represents the animation properties edition view.
@@ -56,7 +57,9 @@ public class AnimationProperties extends ObjectProperties<Animation> implements 
     public AnimationProperties(AnimationRenderer animationRenderer)
     {
         super();
-        maxFrame = animationRenderer.surface.getFramesHorizontal() * animationRenderer.surface.getFramesVertical();
+
+        final SpriteAnimated surface = animationRenderer.getSurface();
+        maxFrame = surface.getFramesHorizontal() * surface.getFramesVertical();
     }
 
     /**

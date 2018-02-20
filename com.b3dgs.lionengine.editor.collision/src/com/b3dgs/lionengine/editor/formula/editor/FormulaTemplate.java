@@ -19,7 +19,7 @@ package com.b3dgs.lionengine.editor.formula.editor;
 
 import java.util.Locale;
 
-import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
+import com.b3dgs.lionengine.SurfaceTile;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.Axis;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionConstraint;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionFormula;
@@ -95,7 +95,7 @@ public enum FormulaTemplate
      * @param map The map reference.
      * @return The collision formula.
      */
-    public CollisionFormula getFormula(MapTile map)
+    public CollisionFormula getFormula(SurfaceTile map)
     {
         final CollisionRange original = formula.getRange();
 

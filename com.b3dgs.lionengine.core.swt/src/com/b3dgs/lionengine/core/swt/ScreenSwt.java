@@ -261,7 +261,7 @@ public abstract class ScreenSwt extends ScreenBase implements FocusListener
     {
         if (!display.isDisposed())
         {
-            display.syncExec(() -> frame.forceFocus());
+            display.syncExec(frame::forceFocus);
         }
     }
 

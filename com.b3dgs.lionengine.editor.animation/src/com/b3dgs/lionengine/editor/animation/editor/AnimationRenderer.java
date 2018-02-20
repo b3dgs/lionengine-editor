@@ -48,20 +48,19 @@ public final class AnimationRenderer implements PaintListener
     private static final int TIMER_INTERVAL_MILLI = 16;
 
     /** The parent. */
-    final Composite parent;
+    private final Composite parent;
     /** The animated surface. */
-    final SpriteAnimated surface;
-
+    private final SpriteAnimated surface;
     /** Animation runner. */
     private final AnimationRunner animationRunner;
     /** Graphic reference. */
     private final Graphic g;
     /** Animation player. */
-    AnimationPlayer animationPlayer;
+    private AnimationPlayer animationPlayer;
     /** Paused flag. */
-    boolean paused;
+    private boolean paused;
     /** Last played frame. */
-    int lastPlayedFrame;
+    private int lastPlayedFrame;
     /** Last first frame. */
     private int lastFirstFrame;
 
@@ -148,6 +147,16 @@ public final class AnimationRenderer implements PaintListener
     public Composite getParent()
     {
         return parent;
+    }
+
+    /**
+     * Get the surface.
+     * 
+     * @return The surface reference.
+     */
+    SpriteAnimated getSurface()
+    {
+        return surface;
     }
 
     /**

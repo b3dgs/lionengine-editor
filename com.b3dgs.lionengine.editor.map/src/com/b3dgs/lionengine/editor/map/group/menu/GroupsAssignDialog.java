@@ -89,7 +89,7 @@ public class GroupsAssignDialog extends AbstractDialog implements WorldView, Foc
     private static final Image ICON = UtilIcon.get("dialog", "import.png");
 
     /** Group types mapping. */
-    final Map<String, TileGroupType> groupsTypes = new HashMap<>();
+    private final Map<String, TileGroupType> groupsTypes = new HashMap<>();
     /** Service reference. */
     private final Services services = new Services();
     /** Group properties. */

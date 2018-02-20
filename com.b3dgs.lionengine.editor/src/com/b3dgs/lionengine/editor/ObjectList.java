@@ -35,6 +35,7 @@ import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.swt.widgets.Widget;
 
 import com.b3dgs.lionengine.Nameable;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
@@ -58,13 +59,13 @@ public abstract class ObjectList<T extends Nameable>
     private static final String DEFAULT_NEW_OBJECT_NAME = "new";
 
     /** Listeners. */
-    final Collection<ObjectListListener<T>> listeners = new ArrayList<>();
+    private final Collection<ObjectListListener<T>> listeners = new ArrayList<>();
     /** Class type. */
-    final Class<T> type;
+    private final Class<T> type;
     /** Properties. */
     private final ObjectProperties<T> properties;
     /** Objects list. */
-    Tree objectsTree;
+    private Tree objectsTree;
     /** Selected item. */
     private TreeItem selectedItem;
     /** Selected data. */
@@ -173,7 +174,7 @@ public abstract class ObjectList<T extends Nameable>
      * @param selection The selected item.
      * @param object The new object.
      */
-    public void update(TreeItem selection, T object)
+    public void update(Widget selection, T object)
     {
         if (!selection.isDisposed())
         {
