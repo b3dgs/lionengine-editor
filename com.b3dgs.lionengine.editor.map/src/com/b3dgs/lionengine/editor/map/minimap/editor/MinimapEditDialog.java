@@ -55,6 +55,7 @@ import com.b3dgs.lionengine.util.UtilMath;
 /**
  * Edit minimap dialog.
  */
+// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
 public class MinimapEditDialog extends AbstractDialog
 {
     /** Editor folder. */
@@ -65,6 +66,10 @@ public class MinimapEditDialog extends AbstractDialog
     private static final Image PREVIOUS = UtilIcon.get(EDITOR, "previous.png");
     /** Next. */
     private static final Image NEXT = UtilIcon.get(EDITOR, "next.png");
+    /** Dialog width. */
+    private static final int DIALOG_MIN_WIDTH = 64;
+    /** Dialog height. */
+    private static final int DIALOG_MIN_HEIGHT = 64;
 
     /**
      * Change the label color.
@@ -106,7 +111,7 @@ public class MinimapEditDialog extends AbstractDialog
         minimap = Medias.create(destination);
         load(parent.getDisplay());
         createDialog();
-        dialog.setMinimumSize(64, 64);
+        dialog.setMinimumSize(DIALOG_MIN_WIDTH, DIALOG_MIN_HEIGHT);
         finish.setEnabled(true);
     }
 
@@ -185,7 +190,8 @@ public class MinimapEditDialog extends AbstractDialog
 
         final Label colorLabel = new Label(colorArea, SWT.BORDER);
         colorLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, true, false));
-        colorLabel.setLayoutData(new GridData(colorPicker.computeSize(SWT.DEFAULT, SWT.DEFAULT).x + 1, 24));
+        final int labelHeight = 24;
+        colorLabel.setLayoutData(new GridData(colorPicker.computeSize(SWT.DEFAULT, SWT.DEFAULT).x + 1, labelHeight));
         colorPicker.addSelectionListener(new SelectionAdapter()
         {
             @Override
@@ -289,7 +295,8 @@ public class MinimapEditDialog extends AbstractDialog
         content.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
         final Composite area = new Composite(content, SWT.NONE);
-        area.setLayout(new GridLayout(3, false));
+        final int items = 3;
+        area.setLayout(new GridLayout(items, false));
         area.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, true, true));
 
         final Label sheetLabel = createSheetArea(area);

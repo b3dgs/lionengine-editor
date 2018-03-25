@@ -41,6 +41,10 @@ public class AboutDialog
 {
     /** About icon. */
     private static final Image ICON_ABOUT = UtilIcon.get("about.png");
+    /** Ok button width. */
+    private static final int BUTTON_OK_WIDTH = 72;
+    /** Dialog bottom margin. */
+    private static final int DIALOG_BOTTOM_MARGIN = 4;
 
     /**
      * Create the top part.
@@ -76,7 +80,7 @@ public class AboutDialog
     {
         final Button okButton = UtilButton.create(bottom, Messages.Ok, AbstractDialog.ICON_EXIT);
         final GridData data = new GridData();
-        data.widthHint = 72;
+        data.widthHint = BUTTON_OK_WIDTH;
         okButton.setLayoutData(data);
         UtilButton.setAction(okButton, dialog::dispose);
     }
@@ -108,8 +112,8 @@ public class AboutDialog
         bottom.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
 
         final GridLayout bottomLayout = new GridLayout(1, false);
-        bottomLayout.marginHeight = 4;
-        bottomLayout.marginWidth = 4;
+        bottomLayout.marginHeight = DIALOG_BOTTOM_MARGIN;
+        bottomLayout.marginWidth = DIALOG_BOTTOM_MARGIN;
         bottom.setLayout(bottomLayout);
         createBottom(dialog, bottom);
     }

@@ -45,6 +45,10 @@ public class MapCollisionAssignDialog extends AbstractDialog
     private static final Image ICON = UtilIcon.get("dialog", "assign-collision.png");
     /** Default offset value. */
     private static final String DEFAULT_OFFSET = "0";
+    /** Dialog width. */
+    private static final int DIALOG_WIDTH = 320;
+    /** Dialog height. */
+    private static final int DIALOG_HEIGHT = 160;
 
     /** Collision verifier. */
     private final CollisionVerifier verifier;
@@ -60,7 +64,7 @@ public class MapCollisionAssignDialog extends AbstractDialog
         super(parent, Messages.Title, Messages.HeaderTitle, Messages.HeaderDesc, ICON);
         this.verifier = verifier;
         createDialog();
-        dialog.setMinimumSize(320, 160);
+        dialog.setMinimumSize(DIALOG_WIDTH, DIALOG_HEIGHT);
         finish.setEnabled(false);
         finish.forceFocus();
     }
@@ -74,7 +78,8 @@ public class MapCollisionAssignDialog extends AbstractDialog
     {
         final Composite offsetArea = new Composite(content, SWT.NONE);
         offsetArea.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-        offsetArea.setLayout(new GridLayout(3, false));
+        final int items = 3;
+        offsetArea.setLayout(new GridLayout(items, false));
 
         final Label offsetLabel = new Label(offsetArea, SWT.NONE);
         offsetLabel.setText(Messages.Offset);

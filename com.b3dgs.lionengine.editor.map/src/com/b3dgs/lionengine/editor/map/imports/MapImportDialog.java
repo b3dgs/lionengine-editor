@@ -40,6 +40,10 @@ public class MapImportDialog extends AbstractDialog
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "map-import.png");
+    /** Dialog width. */
+    private static final int DIALOG_WIDTH = 512;
+    /** Dialog height. */
+    private static final int DIALOG_HEIGHT = 160;
 
     /** Level rip location. */
     private BrowseWidget levelRip;
@@ -57,7 +61,7 @@ public class MapImportDialog extends AbstractDialog
     {
         super(parent, Messages.Title, Messages.HeaderTitle, Messages.HeaderDesc, ICON);
         createDialog();
-        dialog.setMinimumSize(512, 160);
+        dialog.setMinimumSize(DIALOG_WIDTH, DIALOG_HEIGHT);
         finish.setEnabled(false);
         finish.forceFocus();
     }

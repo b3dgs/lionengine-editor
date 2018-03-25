@@ -130,8 +130,8 @@ public class AnimationProperties extends ObjectProperties<Animation> implements 
         setValueDefault(firstFrame, String.valueOf(animation.getFirst()));
         setValueDefault(lastFrame, String.valueOf(animation.getLast()));
         setValueDefault(speed, String.valueOf(animation.getSpeed()));
-        setButtonSelection(reverseAnim, animation.getReverse());
-        setButtonSelection(repeatAnim, animation.getRepeat());
+        setButtonSelection(reverseAnim, animation.hasReverse());
+        setButtonSelection(repeatAnim, animation.hasRepeat());
 
         frameSelector.setSelectedFrames(animation.getFirst(), animation.getLast());
     }

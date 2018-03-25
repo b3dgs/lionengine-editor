@@ -46,6 +46,10 @@ public class PathfindingEditDialog extends AbstractDialog
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "edit.png");
+    /** Dialog minimum width. */
+    private static final int DIALOG_MIN_WIDTH = 640;
+    /** Dialog minimum height. */
+    private static final int DIALOG_MIN_HEIGHT = 448;
 
     /** Category properties. */
     private final CategoryProperties properties = new CategoryProperties();
@@ -64,7 +68,7 @@ public class PathfindingEditDialog extends AbstractDialog
         super(parent, Messages.Title, Messages.HeaderTitle, Messages.HeaderDesc, ICON, SWT.SHELL_TRIM);
 
         createDialog();
-        dialog.setMinimumSize(640, 448);
+        dialog.setMinimumSize(DIALOG_MIN_WIDTH, DIALOG_MIN_HEIGHT);
         finish.setEnabled(false);
     }
 

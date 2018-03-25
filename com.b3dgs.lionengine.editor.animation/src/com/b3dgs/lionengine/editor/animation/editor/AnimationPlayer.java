@@ -80,7 +80,8 @@ public class AnimationPlayer
     public void createAnimationPlayer(Composite parent)
     {
         final Composite animatorPlayer = new Composite(parent, SWT.NONE);
-        animatorPlayer.setLayout(new GridLayout(5, true));
+        final int items = 5;
+        animatorPlayer.setLayout(new GridLayout(items, true));
         animatorPlayer.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, true, false));
 
         createButtonPreviousAnim(animatorPlayer);

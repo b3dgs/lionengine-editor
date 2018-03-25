@@ -44,6 +44,10 @@ public class SheetsExtractProgressDialog extends AbstractProgressDialog
     private static final Image ICON = UtilIcon.get("dialog", "import.png");
     /** Default horizontal tiles number. */
     private static final int DEFAULT_HORIZONTAL_TILES = 16;
+    /** Dialog width. */
+    private static final int DIALOG_MIN_WIDTH = 256;
+    /** Dialog height. */
+    private static final int DIALOG_MIN_HEIGHT = 256;
 
     /** Image width. */
     private final int horizontalTiles;
@@ -76,7 +80,7 @@ public class SheetsExtractProgressDialog extends AbstractProgressDialog
         finish.dispose();
         cancel.getParent().setLayout(new GridLayout(1, false));
         cancel.getParent().layout();
-        dialog.setMinimumSize(256, 256);
+        dialog.setMinimumSize(DIALOG_MIN_WIDTH, DIALOG_MIN_HEIGHT);
     }
 
     /**

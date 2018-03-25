@@ -69,7 +69,8 @@ public class BrowseWidget
     {
         final Composite area = new Composite(parent, SWT.NONE);
         area.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-        area.setLayout(new GridLayout(3, false));
+        final int items = 3;
+        area.setLayout(new GridLayout(items, false));
         final Label locationLabel = new Label(area, SWT.NONE);
         locationLabel.setText(label);
 

@@ -39,6 +39,7 @@ import com.b3dgs.lionengine.editor.utility.dialog.UtilDialog;
 /**
  * Widget that allows to select a list of level rips.
  */
+// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
 public class LevelRipWidget
 {
     /** Listeners. */
@@ -66,7 +67,8 @@ public class LevelRipWidget
 
         final Composite buttons = new Composite(area, SWT.NONE);
         buttons.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-        buttons.setLayout(new GridLayout(3, false));
+        final int items = 3;
+        buttons.setLayout(new GridLayout(items, false));
 
         final Label label = new Label(buttons, SWT.NONE);
         label.setText(Messages.AddRemoveRip);

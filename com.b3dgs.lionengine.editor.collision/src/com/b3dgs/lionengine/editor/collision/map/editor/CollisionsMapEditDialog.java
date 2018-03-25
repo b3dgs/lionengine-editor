@@ -45,6 +45,10 @@ public class CollisionsMapEditDialog extends AbstractDialog
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "edit.png");
+    /** Dialog width. */
+    private static final int DIALOG_WIDTH = 128;
+    /** Dialog height. */
+    private static final int DIALOG_HEIGHT = 320;
 
     /** Collisions properties. */
     private final CollisionGroupProperties collisionGroupProperties = new CollisionGroupProperties();
@@ -63,7 +67,7 @@ public class CollisionsMapEditDialog extends AbstractDialog
     {
         super(parent, Messages.Title, Messages.HeaderTitle, Messages.HeaderDesc, ICON);
         this.media = media;
-        dialog.setMinimumSize(128, 320);
+        dialog.setMinimumSize(DIALOG_WIDTH, DIALOG_HEIGHT);
         createDialog();
         finish.setEnabled(true);
     }

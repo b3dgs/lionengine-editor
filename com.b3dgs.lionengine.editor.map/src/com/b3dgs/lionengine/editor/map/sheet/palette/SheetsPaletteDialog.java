@@ -194,7 +194,8 @@ public final class SheetsPaletteDialog implements MouseListener, Focusable
         final Group area = new Group(shell, SWT.NONE);
         area.setText(Messages.Sheet);
         area.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-        area.setLayout(new GridLayout(3, false));
+        final int items = 3;
+        area.setLayout(new GridLayout(items, false));
 
         final int sheetsNumber = map.getSheets().size() - 1;
 

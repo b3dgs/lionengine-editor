@@ -73,7 +73,7 @@ public class TextSwtTest
     @Test
     public void testNormal()
     {
-        final Text text = Graphics.createText(Text.DIALOG, 12, TextStyle.NORMAL);
+        final Text text = Graphics.createText(Constant.FONT_DIALOG, 12, TextStyle.NORMAL);
 
         text.draw(g, 0, 0, VALUE);
         text.draw(g, 0, 0, Align.CENTER, VALUE);
@@ -103,7 +103,7 @@ public class TextSwtTest
     @Test
     public void testBold()
     {
-        final Text text = Graphics.createText(Text.DIALOG, 12, TextStyle.BOLD);
+        final Text text = Graphics.createText(Constant.FONT_DIALOG, 12, TextStyle.BOLD);
         text.draw(g, 0, 0, VALUE);
     }
 
@@ -113,7 +113,7 @@ public class TextSwtTest
     @Test
     public void testItalic()
     {
-        final Text text = Graphics.createText(Text.DIALOG, 12, TextStyle.ITALIC);
+        final Text text = Graphics.createText(Constant.FONT_DIALOG, 12, TextStyle.ITALIC);
         text.draw(g, 0, 0, VALUE);
     }
 
@@ -139,7 +139,7 @@ public class TextSwtTest
     @Test
     public void testAlignUnknown()
     {
-        final Text text = Graphics.createText(Text.DIALOG, 12, TextStyle.NORMAL);
+        final Text text = Graphics.createText(Constant.FONT_DIALOG, 12, TextStyle.NORMAL);
         final Graphic g = Graphics.createGraphic();
         final Image image = ToolsSwt.createImage(1, 1, java.awt.Transparency.OPAQUE);
         final GC gc = new GC(image);

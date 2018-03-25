@@ -58,6 +58,7 @@ import com.b3dgs.lionengine.graphic.ImageBuffer;
 /**
  * Represents the formulas properties edition view.
  */
+// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
 public class FormulaProperties extends ObjectProperties<CollisionFormula>
                                implements ObjectListListener<CollisionFormula>
 {
@@ -316,7 +317,8 @@ public class FormulaProperties extends ObjectProperties<CollisionFormula>
     {
         final Composite constraintArea = new Composite(parent, SWT.NONE);
         constraintArea.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-        constraintArea.setLayout(new GridLayout(4, true));
+        final int items = 4;
+        constraintArea.setLayout(new GridLayout(items, true));
 
         addConstraintsList(Orientation.NORTH.name(), constraintsTop, constraintArea);
         addConstraintsList(Orientation.SOUTH.name(), constraintsBottom, constraintArea);
@@ -395,7 +397,8 @@ public class FormulaProperties extends ObjectProperties<CollisionFormula>
     protected void createTextFields(Composite parent)
     {
         final Composite composite = new Composite(parent, SWT.NONE);
-        composite.setLayout(new GridLayout(3, false));
+        final int items = 3;
+        composite.setLayout(new GridLayout(items, false));
 
         final Group preview = new Group(composite, SWT.NONE);
         preview.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));

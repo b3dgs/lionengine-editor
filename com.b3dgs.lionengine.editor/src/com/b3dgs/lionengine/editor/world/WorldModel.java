@@ -37,6 +37,7 @@ import com.b3dgs.lionengine.game.feature.tile.map.viewer.MapTileViewerModel;
 /**
  * Contains the objects of the world.
  */
+// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
 public class WorldModel
 {
     /** World model. */

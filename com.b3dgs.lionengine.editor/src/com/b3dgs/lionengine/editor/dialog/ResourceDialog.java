@@ -52,6 +52,10 @@ public class ResourceDialog extends AbstractDialog
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "resource.png");
+    /** Dialog width. */
+    private static final int DIALOG_WIDTH = 512;
+    /** Dialog height. */
+    private static final int DIALOG_HEIGHT = 640;
 
     /**
      * Expand items.
@@ -116,7 +120,7 @@ public class ResourceDialog extends AbstractDialog
         }
 
         createDialog();
-        dialog.setMinimumSize(512, 640);
+        dialog.setMinimumSize(DIALOG_WIDTH, DIALOG_HEIGHT);
         finish.setEnabled(true);
     }
 

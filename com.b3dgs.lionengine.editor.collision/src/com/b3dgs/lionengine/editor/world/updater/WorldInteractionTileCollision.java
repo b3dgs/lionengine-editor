@@ -58,6 +58,7 @@ import com.b3dgs.lionengine.util.UtilMath;
 /**
  * Handle the interaction with tiles collision.
  */
+// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
 public class WorldInteractionTileCollision implements CollisionVerifier, WorldMouseClickListener, WorldMouseMoveListener
 {
     /**

@@ -41,6 +41,7 @@ import com.b3dgs.lionengine.graphic.Transparency;
 /**
  * Graphic factory implementation.
  */
+// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
 public final class FactoryGraphicSwt implements FactoryGraphic
 {
     /** Reading image message. */

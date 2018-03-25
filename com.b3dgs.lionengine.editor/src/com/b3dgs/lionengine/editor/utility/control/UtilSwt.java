@@ -20,11 +20,8 @@ package com.b3dgs.lionengine.editor.utility.control;
 import java.util.Arrays;
 
 import org.eclipse.e4.ui.model.application.ui.MDirtyable;
-import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseTrackListener;
-import org.eclipse.swt.events.MouseWheelListener;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -93,7 +90,7 @@ public final class UtilSwt
      * @param focusable The focusable element.
      * @return The listener instance.
      */
-    public static MouseTrackListener createFocusListener(final Focusable focusable)
+    public static MouseTrackListener createFocusListener(Focusable focusable)
     {
         return new MouseTrackListener()
         {
@@ -115,21 +112,6 @@ public final class UtilSwt
                 // Nothing to do
             }
         };
-    }
-
-    /**
-     * Install the mouse wheel scroll.
-     * 
-     * @param scrollable The scrollable component.
-     */
-    public static void installMouseWheelScroll(final ScrolledComposite scrollable)
-    {
-        final MouseWheelListener scroller = createMouseWheelScroller(scrollable);
-        if (scrollable.getParent() != null)
-        {
-            scrollable.getParent().addMouseWheelListener(scroller);
-        }
-        installMouseWheelScrollRecursively(scroller, scrollable);
     }
 
     /**
@@ -175,40 +157,6 @@ public final class UtilSwt
             }
         });
         parent.setEnabled(enabled);
-    }
-
-    /**
-     * Create the mouse wheel scroller.
-     * 
-     * @param scrollable The scrollable component.
-     * @return The scroller instance.
-     */
-    private static MouseWheelListener createMouseWheelScroller(final ScrolledComposite scrollable)
-    {
-        return e ->
-        {
-            final Point currentScroll = scrollable.getOrigin();
-            scrollable.setOrigin(currentScroll.x, currentScroll.y - e.count * 5);
-        };
-    }
-
-    /**
-     * Install the mouse wheel scroller for each sub component.
-     * 
-     * @param scroller The scroller listener.
-     * @param control The control reference.
-     */
-    private static void installMouseWheelScrollRecursively(MouseWheelListener scroller, Control control)
-    {
-        control.addMouseWheelListener(scroller);
-        if (control instanceof Composite)
-        {
-            final Composite comp = (Composite) control;
-            for (final Control child : comp.getChildren())
-            {
-                installMouseWheelScrollRecursively(scroller, child);
-            }
-        }
     }
 
     /**

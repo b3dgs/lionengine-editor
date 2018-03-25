@@ -33,6 +33,9 @@ import com.b3dgs.lionengine.LionEngineException;
  */
 public final class UtilText
 {
+    /** Minimum text width. */
+    private static final int TEXT_MIN_WIDTH = 64;
+
     /**
      * Create a text with its legend.
      * 
@@ -53,7 +56,7 @@ public final class UtilText
         final Text text = new Text(composite, SWT.SINGLE);
         text.setToolTipText(legend);
         final GridData data = new GridData(SWT.FILL, SWT.CENTER, true, false);
-        data.minimumWidth = 64;
+        data.minimumWidth = TEXT_MIN_WIDTH;
         text.setLayoutData(data);
 
         return text;
@@ -66,7 +69,7 @@ public final class UtilText
      * @param match The expected match.
      * @see com.b3dgs.lionengine.editor.validator.InputValidator
      */
-    public static void addVerify(Text text, final String match)
+    public static void addVerify(Text text, String match)
     {
         text.addVerifyListener(event ->
         {

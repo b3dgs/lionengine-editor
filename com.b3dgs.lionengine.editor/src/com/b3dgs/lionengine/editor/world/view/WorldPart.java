@@ -52,6 +52,7 @@ import com.b3dgs.lionengine.game.feature.Services;
 /**
  * Represents the world, where the global map is displayed.
  */
+// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
 public class WorldPart implements WorldView, Focusable
 {
     /** ID. */

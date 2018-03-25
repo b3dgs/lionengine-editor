@@ -49,6 +49,10 @@ public class GroupsEditDialog extends AbstractDialog
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "groups-edit.png");
+    /** Dialog width. */
+    private static final int DIALOG_WIDTH = 640;
+    /** Dialog height. */
+    private static final int DIALOG_HEIGHT = 448;
 
     /**
      * Load sheets from configuration file.
@@ -96,7 +100,7 @@ public class GroupsEditDialog extends AbstractDialog
         this.partService = partService;
 
         createDialog();
-        dialog.setMinimumSize(640, 448);
+        dialog.setMinimumSize(DIALOG_WIDTH, DIALOG_HEIGHT);
         finish.setEnabled(false);
     }
 

@@ -46,6 +46,10 @@ public class MapImportProgressDialog extends AbstractProgressDialog
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "import.png");
+    /** Dialog width. */
+    private static final int DIALOG_WIDTH = 128;
+    /** Dialog height. */
+    private static final int DIALOG_HEIGHT = 128;
 
     /** Media level. */
     private final Media levelRip;
@@ -72,7 +76,7 @@ public class MapImportProgressDialog extends AbstractProgressDialog
         finish.dispose();
         cancel.getParent().setLayout(new GridLayout(1, false));
         cancel.getParent().layout();
-        dialog.setMinimumSize(128, 128);
+        dialog.setMinimumSize(DIALOG_WIDTH, DIALOG_HEIGHT);
     }
 
     /**

@@ -45,6 +45,11 @@ import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroup;
  */
 public class GroupChooser extends AbstractDialog
 {
+    /** Dialog minimum width. */
+    private static final int DIALOG_MIN_WIDTH = 256;
+    /** Dialog minimum height. */
+    private static final int DIALOG_MIN_HEIGHT = 64;
+
     /** Groups values. */
     private final String[] groups;
     /** Combo box. */
@@ -63,7 +68,7 @@ public class GroupChooser extends AbstractDialog
         super(parent, Messages.Title, Messages.HeaderTitle, Messages.HeaderDesc, GroupsEditDialog.ICON);
         this.groups = groups.toArray(new String[groups.size()]);
         createDialog();
-        dialog.setMinimumSize(256, 64);
+        dialog.setMinimumSize(DIALOG_MIN_WIDTH, DIALOG_MIN_HEIGHT);
         finish.setEnabled(true);
     }
 
@@ -131,7 +136,8 @@ public class GroupChooser extends AbstractDialog
     {
         final Composite composite = new Composite(content, SWT.NONE);
         composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-        composite.setLayout(new GridLayout(3, false));
+        final int items = 3;
+        composite.setLayout(new GridLayout(items, false));
 
         final Label label = new Label(composite, SWT.NONE);
         label.setText(Messages.Choice);

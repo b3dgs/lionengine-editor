@@ -59,6 +59,7 @@ import com.b3dgs.lionengine.util.UtilFile;
 /**
  * Minimap dialog.
  */
+// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
 public final class MinimapDialog implements MouseListener, MouseMoveListener, MouseWheelListener,
                                  WorldMouseMoveListener, WorldMouseScrollListener, WorldKeyboardListener, Focusable
 {
@@ -208,7 +209,8 @@ public final class MinimapDialog implements MouseListener, MouseMoveListener, Mo
     {
         final Composite content = new Composite(parent, SWT.NONE);
         content.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-        content.setLayout(new GridLayout(3, false));
+        final int items = 3;
+        content.setLayout(new GridLayout(items, false));
 
         final Button browse = UtilButton.createBrowse(content);
         browse.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));

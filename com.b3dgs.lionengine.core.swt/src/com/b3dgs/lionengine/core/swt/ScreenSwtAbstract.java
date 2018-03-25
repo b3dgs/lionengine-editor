@@ -36,7 +36,7 @@ import com.b3dgs.lionengine.LionEngineException;
 import com.b3dgs.lionengine.Resolution;
 import com.b3dgs.lionengine.core.Engine;
 import com.b3dgs.lionengine.graphic.Graphic;
-import com.b3dgs.lionengine.graphic.ScreenBase;
+import com.b3dgs.lionengine.graphic.ScreenAbstract;
 import com.b3dgs.lionengine.graphic.ScreenListener;
 import com.b3dgs.lionengine.io.InputDeviceDirectional;
 import com.b3dgs.lionengine.io.InputDevicePointer;
@@ -49,7 +49,7 @@ import com.b3dgs.lionengine.io.swt.Mouse;
  * @see Keyboard
  * @see Mouse
  */
-public abstract class ScreenSwt extends ScreenBase implements FocusListener
+public abstract class ScreenSwtAbstract extends ScreenAbstract implements FocusListener
 {
     /** Max ready time in millisecond. */
     private static final long READY_TIMEOUT = 5000L;
@@ -84,7 +84,7 @@ public abstract class ScreenSwt extends ScreenBase implements FocusListener
      * @throws LionEngineException If renderer is <code>null</code>, engine has not been started or resolution is not
      *             supported.
      */
-    protected ScreenSwt(Config config)
+    protected ScreenSwtAbstract(Config config)
     {
         super(config, READY_TIMEOUT);
 

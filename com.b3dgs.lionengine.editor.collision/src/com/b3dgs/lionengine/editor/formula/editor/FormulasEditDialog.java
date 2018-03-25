@@ -43,6 +43,10 @@ public class FormulasEditDialog extends AbstractDialog
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "edit.png");
+    /** Dialog width. */
+    private static final int DIALOG_WIDTH = 128;
+    /** Dialog height. */
+    private static final int DIALOG_HEIGHT = 320;
 
     /** Formulas properties. */
     private final FormulaProperties properties = new FormulaProperties();
@@ -61,7 +65,7 @@ public class FormulasEditDialog extends AbstractDialog
     {
         super(parent, Messages.Title, Messages.HeaderTitle, Messages.HeaderDesc, ICON);
         this.formulas = formulas;
-        dialog.setMinimumSize(128, 320);
+        dialog.setMinimumSize(DIALOG_WIDTH, DIALOG_HEIGHT);
         createDialog();
         finish.setEnabled(true);
     }

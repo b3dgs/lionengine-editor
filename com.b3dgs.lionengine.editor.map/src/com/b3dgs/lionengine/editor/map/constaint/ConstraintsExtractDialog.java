@@ -44,6 +44,10 @@ public class ConstraintsExtractDialog extends AbstractDialog
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "constraints-extract.png");
+    /** Dialog width. */
+    private static final int DIALOG_WIDTH = 512;
+    /** Dialog height. */
+    private static final int DIALOG_HEIGHT = 160;
 
     /** Level rip list. */
     private LevelRipWidget levelRips;
@@ -65,7 +69,7 @@ public class ConstraintsExtractDialog extends AbstractDialog
     {
         super(parent, Messages.Title, Messages.HeaderTitle, Messages.HeaderDesc, ICON);
         createDialog();
-        dialog.setMinimumSize(512, 160);
+        dialog.setMinimumSize(DIALOG_WIDTH, DIALOG_HEIGHT);
         finish.setEnabled(true);
         finish.forceFocus();
     }

@@ -80,11 +80,16 @@ import com.b3dgs.lionengine.io.swt.Mouse;
 /**
  * Edit map tile groups dialog.
  */
+// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling|FanOutComplexity
 public class GroupsAssignDialog extends AbstractDialog implements WorldView, Focusable, KeyListener,
                                 TileSelectionListener, ObjectListListener<TileGroup>
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "import.png");
+    /** Dialog width. */
+    private static final int DIALOG_WIDTH = 900;
+    /** Dialog height. */
+    private static final int DIALOG_HEIGHT = 700;
 
     /** Group types mapping. */
     private final Map<String, TileGroupType> groupsTypes = new HashMap<>();
@@ -135,7 +140,7 @@ public class GroupsAssignDialog extends AbstractDialog implements WorldView, Foc
         services.add(palette);
 
         createDialog();
-        dialog.setMinimumSize(900, 700);
+        dialog.setMinimumSize(DIALOG_WIDTH, DIALOG_HEIGHT);
         finish.setEnabled(true);
     }
 

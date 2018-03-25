@@ -10,4 +10,7 @@
     <artifactId>com.b3dgs.lionengine.editor.map.test</artifactId>
     <packaging>eclipse-test-plugin</packaging>
     <name>LionEngine Editor Map Test</name>
+    <properties>
+        <sonar.skip>true</sonar.skip>
+    </properties>
 </project>

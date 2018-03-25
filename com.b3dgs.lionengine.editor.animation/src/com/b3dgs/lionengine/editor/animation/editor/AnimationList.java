@@ -29,6 +29,9 @@ import com.b3dgs.lionengine.game.Configurer;
  */
 public class AnimationList extends ObjectList<Animation>
 {
+    /** Animation default speed. */
+    private static final double DEFAULT_SPEED = 0.1;
+
     /** Configurer reference. */
     private final Configurer configurer;
 
@@ -65,13 +68,13 @@ public class AnimationList extends ObjectList<Animation>
                              animation.getFirst(),
                              animation.getLast(),
                              animation.getSpeed(),
-                             animation.getReverse(),
-                             animation.getRepeat());
+                             animation.hasReverse(),
+                             animation.hasRepeat());
     }
 
     @Override
     protected Animation createObject(String name)
     {
-        return new Animation(name, Animation.MINIMUM_FRAME, Animation.MINIMUM_FRAME + 1, 0.1, false, false);
+        return new Animation(name, Animation.MINIMUM_FRAME, Animation.MINIMUM_FRAME + 1, DEFAULT_SPEED, false, false);
     }
 }

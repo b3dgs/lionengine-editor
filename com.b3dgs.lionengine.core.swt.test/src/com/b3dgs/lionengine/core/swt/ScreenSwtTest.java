@@ -209,10 +209,10 @@ public class ScreenSwtTest
             }
         });
 
-        ((ScreenSwt) screen).focusGained(null);
+        ((ScreenSwtAbstract) screen).focusGained(null);
         Assert.assertTrue(focus.get());
 
-        ((ScreenSwt) screen).focusLost(null);
+        ((ScreenSwtAbstract) screen).focusLost(null);
         Assert.assertFalse(focus.get());
 
         screen.dispose();

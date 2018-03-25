@@ -10,4 +10,7 @@
     <artifactId>com.b3dgs.lionengine.editor.animation.test</artifactId>
     <packaging>eclipse-test-plugin</packaging>
     <name>LionEngine Editor Animation Test</name>
+    <properties>
+        <sonar.skip>true</sonar.skip>
+    </properties>
 </project>

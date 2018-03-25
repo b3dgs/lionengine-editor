@@ -44,6 +44,7 @@ import com.b3dgs.lionengine.editor.world.view.WorldPart;
 /**
  * Represents the abstract dialog.
  */
+// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
 public abstract class AbstractDialog extends Dialog implements MDirtyable
 {
     /** Dialog folder. */
@@ -62,6 +63,12 @@ public abstract class AbstractDialog extends Dialog implements MDirtyable
     protected static final Image ICON_ERROR = UtilIcon.get(DIALOG_FOLDER, "error.png");
     /** Maximum characters input. */
     protected static final int MAX_CHAR = 64;
+    /** Dialog width. */
+    private static final int DIALOG_WIDTH = 512;
+    /** Dialog height. */
+    private static final int DIALOG_HEIGHT = 640;
+    /** Dialog title height. */
+    private static final int DIALOG_TITLE_HEIGHT = 10;
 
     /** Dialog shell. */
     protected final Shell dialog;
@@ -118,7 +125,7 @@ public abstract class AbstractDialog extends Dialog implements MDirtyable
         this.headerDesc = headerDesc;
         this.headerIcon = headerIcon;
         dialog = new Shell(parent, type | SWT.APPLICATION_MODAL);
-        dialog.setMinimumSize(640, 100);
+        dialog.setMinimumSize(DIALOG_WIDTH, DIALOG_HEIGHT);
         dialog.setLayout(UtilSwt.borderless());
         dialog.setText(title);
         dialog.setImage(headerIcon);
@@ -204,7 +211,7 @@ public abstract class AbstractDialog extends Dialog implements MDirtyable
 
         final Label title = new Label(titleArea, SWT.NONE);
         final FontData data = title.getFont().getFontData()[0];
-        data.setHeight(10);
+        data.setHeight(DIALOG_TITLE_HEIGHT);
         data.setStyle(SWT.BOLD);
         title.setFont(new Font(title.getDisplay(), data));
         title.setBackground(title.getDisplay().getSystemColor(SWT.COLOR_WHITE));

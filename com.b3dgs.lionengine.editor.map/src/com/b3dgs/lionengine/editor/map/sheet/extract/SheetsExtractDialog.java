@@ -48,12 +48,17 @@ import com.b3dgs.lionengine.graphic.SpriteTiled;
 /**
  * Extract sheets dialog.
  */
+// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
 public class SheetsExtractDialog extends AbstractDialog
 {
     /** Sheets default extension. */
     public static final String SHEET_EXTENSION = ".png";
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "sheets-extract.png");
+    /** Dialog width. */
+    private static final int DIALOG_MIN_WIDTH = 192;
+    /** Dialog height. */
+    private static final int DIALOG_MIN_HEIGHT = 192;
 
     /** Level rips widget. */
     private LevelRipWidget levelRips;
@@ -79,7 +84,7 @@ public class SheetsExtractDialog extends AbstractDialog
         createDialog();
         setTipsMessage(ICON_ERROR, Messages.NoLevelRipDefined);
         tipsLabel.setVisible(true);
-        dialog.setMinimumSize(192, 192);
+        dialog.setMinimumSize(DIALOG_MIN_WIDTH, DIALOG_MIN_HEIGHT);
     }
 
     /**
@@ -161,7 +166,8 @@ public class SheetsExtractDialog extends AbstractDialog
     {
         final Group config = new Group(parent, SWT.NONE);
         config.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-        config.setLayout(new GridLayout(3, false));
+        final int items = 3;
+        config.setLayout(new GridLayout(items, false));
         config.setText(Messages.Config);
 
         tileWidth = new TextWidget(config, Messages.TileWidth, InputValidator.INTEGER_POSITIVE_STRICT_MATCH);

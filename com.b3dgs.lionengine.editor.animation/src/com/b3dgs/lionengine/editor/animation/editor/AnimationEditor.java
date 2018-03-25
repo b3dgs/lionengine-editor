@@ -37,6 +37,7 @@ import com.b3dgs.lionengine.io.Xml;
 /**
  * Animation editor dialog.
  */
+// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
 public class AnimationEditor extends AbstractEditor
 {
     /** Dialog icon. */

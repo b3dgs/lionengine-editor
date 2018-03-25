@@ -46,6 +46,7 @@ import com.b3dgs.lionengine.graphic.UtilColor;
 /**
  * Misc tools for SWT.
  */
+// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
 public final class ToolsSwt
 {
     /**
@@ -422,6 +423,7 @@ public final class ToolsSwt
      * @return The rastered image.
      * @throws SWTException If error on getting data.
      */
+    // CHECKSTYLE IGNORE LINE: ExecutableStatementCount
     public static Image getRasterBuffer(Image image, int fr, int fg, int fb, int er, int eg, int eb, int refSize)
     {
         final ImageData data = image.getImageData();

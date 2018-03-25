@@ -37,6 +37,7 @@ import com.b3dgs.lionengine.editor.utility.control.UtilButton;
 /**
  * Represents the abstract project dialog.
  */
+// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
 public abstract class AbstractProjectDialog extends AbstractDialog
 {
     /** Jar text. */
@@ -121,7 +122,8 @@ public abstract class AbstractProjectDialog extends AbstractDialog
     {
         final Composite nameArea = new Composite(content, SWT.NONE);
         nameArea.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-        nameArea.setLayout(new GridLayout(3, false));
+        final int items = 3;
+        nameArea.setLayout(new GridLayout(items, false));
 
         final Label locationLabel = new Label(nameArea, SWT.NONE);
         locationLabel.setText(Messages.AbstractProjectDialog_Location);
@@ -144,7 +146,8 @@ public abstract class AbstractProjectDialog extends AbstractDialog
     {
         final Composite classesArea = new Composite(content, SWT.NONE);
         classesArea.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-        classesArea.setLayout(new GridLayout(4, false));
+        final int items = 4;
+        classesArea.setLayout(new GridLayout(items, false));
 
         final Label classesLabel = new Label(classesArea, SWT.NONE);
         classesLabel.setText(Messages.AbstractProjectDialog_Classes);
@@ -167,7 +170,8 @@ public abstract class AbstractProjectDialog extends AbstractDialog
     {
         final Composite librariesArea = new Composite(content, SWT.NONE);
         librariesArea.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-        librariesArea.setLayout(new GridLayout(3, false));
+        final int items = 3;
+        librariesArea.setLayout(new GridLayout(items, false));
 
         final Label librariesLabel = new Label(librariesArea, SWT.NONE);
         librariesLabel.setText(Messages.AbstractProjectDialog_Libraries);
@@ -188,7 +192,8 @@ public abstract class AbstractProjectDialog extends AbstractDialog
     {
         final Composite resourcesArea = new Composite(content, SWT.NONE);
         resourcesArea.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-        resourcesArea.setLayout(new GridLayout(3, false));
+        final int items = 3;
+        resourcesArea.setLayout(new GridLayout(items, false));
 
         final Label resourcesLabel = new Label(resourcesArea, SWT.NONE);
         resourcesLabel.setText(Messages.AbstractProjectDialog_Resources);

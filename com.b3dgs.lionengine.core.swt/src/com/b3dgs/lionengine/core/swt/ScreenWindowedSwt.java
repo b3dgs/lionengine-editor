@@ -36,7 +36,7 @@ import com.b3dgs.lionengine.io.swt.Mouse;
  * @see Keyboard
  * @see Mouse
  */
-final class ScreenWindowedSwt extends ScreenSwt
+final class ScreenWindowedSwt extends ScreenSwtAbstract
 {
     /** Error message windowed. */
     private static final String ERROR_WINDOWED = "Windowed mode initialization failed !";

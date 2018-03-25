@@ -44,6 +44,10 @@ public class ProjectImportDialog extends AbstractProjectDialog
     private static final String VERBOSE_FROM = " from ";
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "project-import.png");
+    /** Dialog width. */
+    private static final int DIALOG_WIDTH = 512;
+    /** Dialog height. */
+    private static final int DIALOG_HEIGHT = 100;
 
     /** Already exists. */
     private boolean hasProject;
@@ -68,7 +72,7 @@ public class ProjectImportDialog extends AbstractProjectDialog
               ICON);
 
         createDialog();
-        dialog.setMinimumSize(512, 100);
+        dialog.setMinimumSize(DIALOG_WIDTH, DIALOG_HEIGHT);
         projectNameText.setEditable(false);
         projectLocationText.setEditable(false);
         projectClassesText.setEditable(false);

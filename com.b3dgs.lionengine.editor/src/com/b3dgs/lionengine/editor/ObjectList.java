@@ -49,6 +49,7 @@ import com.b3dgs.lionengine.editor.validator.InputValidator;
  * 
  * @param <T> The object type handled by the list.
  */
+// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
 public abstract class ObjectList<T extends Nameable>
 {
     /** Icon add. */
@@ -57,6 +58,10 @@ public abstract class ObjectList<T extends Nameable>
     public static final Image ICON_REMOVE = UtilIcon.get("remove.png");
     /** Default new object name. */
     private static final String DEFAULT_NEW_OBJECT_NAME = "new";
+    /** Minimum tree width. */
+    private static final int TREE_MIN_WIDTH = 128;
+    /** Minimum tree width. */
+    private static final int TREE_MIN_HEIGHT = 96;
 
     /** Listeners. */
     private final Collection<ObjectListListener<T>> listeners = new ArrayList<>();
@@ -144,7 +149,7 @@ public abstract class ObjectList<T extends Nameable>
      * 
      * @param parent The composite parent.
      */
-    public void createToolBar(final Composite parent)
+    public void createToolBar(Composite parent)
     {
         final ToolBar toolbar = new ToolBar(parent, SWT.HORIZONTAL);
         toolbar.setLayoutData(new GridData(SWT.RIGHT, SWT.TOP, true, false));
@@ -158,12 +163,12 @@ public abstract class ObjectList<T extends Nameable>
      * 
      * @param parent The composite parent.
      */
-    public void createTree(final Composite parent)
+    public void createTree(Composite parent)
     {
         objectsTree = new Tree(parent, SWT.SINGLE);
         final GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
-        data.minimumWidth = 128;
-        data.minimumHeight = 96;
+        data.minimumWidth = TREE_MIN_WIDTH;
+        data.minimumHeight = TREE_MIN_HEIGHT;
         objectsTree.setLayoutData(data);
         UtilTree.setAction(objectsTree, this::onSelection);
     }
@@ -438,7 +443,7 @@ public abstract class ObjectList<T extends Nameable>
      * 
      * @param toolbar The tool bar reference.
      */
-    private void createRemoveObjectToolItem(final ToolBar toolbar)
+    private void createRemoveObjectToolItem(ToolBar toolbar)
     {
         final ToolItem removeObject = new ToolItem(toolbar, SWT.PUSH);
         removeObject.setImage(ObjectList.ICON_REMOVE);
