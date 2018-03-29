@@ -55,12 +55,7 @@ public class PropertiesSurface implements PropertiesProviderObject
         PropertiesPart.createLine(surfaceItem, Messages.Surface, surface.getImage());
         surfaceItem.setData(SurfaceConfig.ATT_IMAGE);
         surfaceItem.setImage(ICON_SURFACE);
-
-        final String icon = surface.getIcon();
-        if (icon != null)
-        {
-            createAttributeIcon(properties, icon);
-        }
+        surface.getIcon().ifPresent(icon -> createAttributeIcon(properties, icon));
     }
 
     /**

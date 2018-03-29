@@ -94,14 +94,14 @@ public class CollisionsMapEditDialog extends AbstractDialog
     {
         collisionGroupList.save();
 
-        final Xml root = new Xml(CollisionGroupConfig.COLLISIONS);
+        final Xml root = new Xml(CollisionGroupConfig.NODE_COLLISIONS);
         root.writeString(Constant.XML_HEADER, Constant.ENGINE_WEBSITE);
 
         for (final TreeItem item : collisionGroupList.getTree().getItems())
         {
             final CollisionGroup collisionGroup = (CollisionGroup) item.getData();
-            final Xml nodeCollision = root.createChild(CollisionGroupConfig.COLLISION);
-            nodeCollision.writeString(CollisionGroupConfig.GROUP, collisionGroup.getName());
+            final Xml nodeCollision = root.createChild(CollisionGroupConfig.NODE_COLLISION);
+            nodeCollision.writeString(CollisionGroupConfig.ATT_GROUP, collisionGroup.getName());
 
             for (final CollisionFormula formula : collisionGroup.getFormulas())
             {

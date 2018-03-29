@@ -100,7 +100,7 @@ public final class UtilWorld
         for (final Xml nodeGroup : root.getChildren(TileGroupsConfig.NODE_GROUP))
         {
             removeOldGroup(nodeGroup, oldGroup, tile);
-            if (CollisionGroup.same(nodeGroup.readString(TileGroupsConfig.ATTRIBUTE_GROUP_NAME), newGroup))
+            if (CollisionGroup.same(nodeGroup.readString(TileGroupsConfig.ATT_GROUP_NAME), newGroup))
             {
                 final Point point = new Point(tile.getSheet().intValue(), tile.getNumber());
                 if (!toAdd.contains(point))
@@ -133,7 +133,7 @@ public final class UtilWorld
     private static void removeOldGroup(Xml nodeGroup, String oldGroup, Tile tile)
     {
         final Collection<Xml> toRemove = new ArrayList<>();
-        if (CollisionGroup.same(nodeGroup.readString(TileGroupsConfig.ATTRIBUTE_GROUP_NAME), oldGroup))
+        if (CollisionGroup.same(nodeGroup.readString(TileGroupsConfig.ATT_GROUP_NAME), oldGroup))
         {
             for (final Xml nodeTile : nodeGroup.getChildren(TileConfig.NODE_TILE))
             {
@@ -162,13 +162,13 @@ public final class UtilWorld
     {
         for (final Xml nodeGroup : node.getChildren(TileGroupsConfig.NODE_GROUP))
         {
-            if (newGroup.equals(nodeGroup.readString(TileGroupsConfig.ATTRIBUTE_GROUP_NAME)))
+            if (newGroup.equals(nodeGroup.readString(TileGroupsConfig.ATT_GROUP_NAME)))
             {
                 return nodeGroup;
             }
         }
         final Xml newGroupNode = node.createChild(TileGroupsConfig.NODE_GROUP);
-        newGroupNode.writeString(TileGroupsConfig.ATTRIBUTE_GROUP_NAME, newGroup);
+        newGroupNode.writeString(TileGroupsConfig.ATT_GROUP_NAME, newGroup);
 
         return newGroupNode;
     }

@@ -46,9 +46,9 @@ public class CollisionGroupList extends ObjectList<CollisionGroup> implements Ob
     {
         final Xml node = new Xml(collisionsConfig);
         final Collection<Xml> toRemove = new ArrayList<>();
-        for (final Xml nodeFormula : node.getChildren(CollisionGroupConfig.COLLISION))
+        for (final Xml nodeFormula : node.getChildren(CollisionGroupConfig.NODE_COLLISION))
         {
-            if (CollisionGroup.same(nodeFormula.readString(CollisionGroupConfig.GROUP), collision.getName()))
+            if (CollisionGroup.same(nodeFormula.readString(CollisionGroupConfig.ATT_GROUP), collision.getName()))
             {
                 toRemove.add(nodeFormula);
             }

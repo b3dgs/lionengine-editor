@@ -148,13 +148,13 @@ public class SheetsEditDialog extends AbstractDialog
         if (root.hasChild(TileSheetsConfig.NODE_TILE_SIZE))
         {
             final Xml tileSize = root.getChild(TileSheetsConfig.NODE_TILE_SIZE);
-            if (tileSize.hasAttribute(TileSheetsConfig.ATTRIBUTE_TILE_WIDTH))
+            if (tileSize.hasAttribute(TileSheetsConfig.ATT_TILE_WIDTH))
             {
-                tileWidthText.setText(tileSize.readString(TileSheetsConfig.ATTRIBUTE_TILE_WIDTH));
+                tileWidthText.setText(tileSize.readString(TileSheetsConfig.ATT_TILE_WIDTH));
             }
-            if (tileSize.hasAttribute(TileSheetsConfig.ATTRIBUTE_TILE_HEIGHT))
+            if (tileSize.hasAttribute(TileSheetsConfig.ATT_TILE_HEIGHT))
             {
-                tileHeightText.setText(tileSize.readString(TileSheetsConfig.ATTRIBUTE_TILE_HEIGHT));
+                tileHeightText.setText(tileSize.readString(TileSheetsConfig.ATT_TILE_HEIGHT));
             }
         }
     }
@@ -209,8 +209,8 @@ public class SheetsEditDialog extends AbstractDialog
         {
             tileSize = root.createChild(TileSheetsConfig.NODE_TILE_SIZE);
         }
-        tileSize.writeString(TileSheetsConfig.ATTRIBUTE_TILE_WIDTH, tileWidthText.getText());
-        tileSize.writeString(TileSheetsConfig.ATTRIBUTE_TILE_HEIGHT, tileHeightText.getText());
+        tileSize.writeString(TileSheetsConfig.ATT_TILE_WIDTH, tileWidthText.getText());
+        tileSize.writeString(TileSheetsConfig.ATT_TILE_HEIGHT, tileHeightText.getText());
 
         root.removeChildren(TileSheetsConfig.NODE_TILE_SHEET);
         for (final Button button : buttons)

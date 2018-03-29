@@ -83,7 +83,7 @@ public class CollisionCategoryEditDialog extends AbstractEditor
         list.save();
 
         final Xml root = configurer.getRoot();
-        root.removeChildren(CollisionCategoryConfig.CATEGORY);
+        root.removeChildren(CollisionCategoryConfig.NODE_CATEGORY);
 
         for (final TreeItem item : list.getTree().getItems())
         {

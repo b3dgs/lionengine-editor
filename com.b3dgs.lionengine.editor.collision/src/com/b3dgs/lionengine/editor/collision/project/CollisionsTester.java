@@ -71,7 +71,8 @@ public final class CollisionsTester extends PropertyTester
     {
         try
         {
-            return media.getFile().isFile() && CollisionGroupConfig.COLLISIONS.equals(new Xml(media).getNodeName());
+            return media.getFile().isFile()
+                   && CollisionGroupConfig.NODE_COLLISIONS.equals(new Xml(media).getNodeName());
         }
         catch (@SuppressWarnings("unused") final LionEngineException exception)
         {

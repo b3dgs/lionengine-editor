@@ -48,13 +48,13 @@ public final class PathfindableDisableHandler
     {
         final Tree tree = PropertiesModel.INSTANCE.getTree();
         final Configurer configurer = (Configurer) tree.getData();
-        configurer.getRoot().removeChildren(PathfindableConfig.PATHFINDABLE);
+        configurer.getRoot().removeChildren(PathfindableConfig.NODE_PATHFINDABLE);
         configurer.save();
 
         final PropertiesPart part = UtilPart.getPart(PropertiesPart.ID, PropertiesPart.class);
         for (final TreeItem item : tree.getItems())
         {
-            if (PathfindableConfig.PATHFINDABLE.equals(item.getData()))
+            if (PathfindableConfig.NODE_PATHFINDABLE.equals(item.getData()))
             {
                 part.clear(item);
             }

@@ -63,9 +63,9 @@ public class AboutDialog
         final StringBuilder text = new StringBuilder().append(Activator.PLUGIN_NAME)
                                                       .append(Constant.SPACE)
                                                       .append(Activator.PLUGIN_VERSION)
-                                                      .append(Constant.NEW_LINE)
+                                                      .append(System.lineSeparator())
                                                       .append(vendor)
-                                                      .append(Constant.NEW_LINE)
+                                                      .append(System.lineSeparator())
                                                       .append(Activator.PLUGIN_WEBSITE);
         aboutText.setText(text.toString());
     }

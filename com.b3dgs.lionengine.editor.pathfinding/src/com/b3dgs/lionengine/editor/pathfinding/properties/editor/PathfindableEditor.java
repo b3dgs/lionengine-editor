@@ -85,7 +85,7 @@ public class PathfindableEditor extends AbstractEditor
         list.save();
 
         final Xml root = configurer.getRoot();
-        root.removeChildren(PathfindableConfig.PATHFINDABLE);
+        root.removeChildren(PathfindableConfig.NODE_PATHFINDABLE);
 
         final TreeItem[] items = list.getTree().getItems();
         final Map<String, PathData> data = new HashMap<>(items.length);

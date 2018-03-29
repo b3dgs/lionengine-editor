@@ -48,13 +48,13 @@ public final class CollisionsDisableHandler
     {
         final Tree tree = PropertiesModel.INSTANCE.getTree();
         final Configurer configurer = (Configurer) tree.getData();
-        configurer.getRoot().removeChildren(CollisionConfig.COLLISION);
+        configurer.getRoot().removeChildren(CollisionConfig.NODE_COLLISION);
         configurer.save();
 
         final PropertiesPart part = UtilPart.getPart(PropertiesPart.ID, PropertiesPart.class);
         for (final TreeItem item : tree.getItems())
         {
-            if (CollisionConfig.COLLISION.equals(item.getData()))
+            if (CollisionConfig.NODE_COLLISION.equals(item.getData()))
             {
                 part.clear(item);
             }

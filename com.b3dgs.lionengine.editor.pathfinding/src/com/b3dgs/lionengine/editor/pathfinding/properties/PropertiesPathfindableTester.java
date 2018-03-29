@@ -48,12 +48,12 @@ public final class PropertiesPathfindableTester extends PropertyTester
         final boolean result;
         if (PROPERTY_PATHFINDABLE_ENABLE.equals(property))
         {
-            result = !PropertiesModel.INSTANCE.hasProperty(PathfindableConfig.PATHFINDABLE);
+            result = !PropertiesModel.INSTANCE.hasProperty(PathfindableConfig.NODE_PATHFINDABLE);
         }
-        else if (PathfindableConfig.PATHFINDABLE.equals(data)
+        else if (PathfindableConfig.NODE_PATHFINDABLE.equals(data)
                  && (PROPERTY_PATHFINDABLE_EDIT.equals(property) || PROPERTY_PATHFINDABLE_DISABLE.equals(property)))
         {
-            result = PropertiesModel.INSTANCE.hasProperty(PathfindableConfig.PATHFINDABLE);
+            result = PropertiesModel.INSTANCE.hasProperty(PathfindableConfig.NODE_PATHFINDABLE);
         }
         else
         {

@@ -82,7 +82,7 @@ public class CollisionsObjectEditDialog extends AbstractEditor
         list.save();
 
         final Xml root = configurer.getRoot();
-        root.removeChildren(CollisionConfig.COLLISION);
+        root.removeChildren(CollisionConfig.NODE_COLLISION);
 
         for (final TreeItem item : list.getTree().getItems())
         {

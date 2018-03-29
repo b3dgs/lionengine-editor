@@ -46,7 +46,7 @@ public class PropertiesPathfindable implements PropertiesProviderObject
     {
         final TreeItem animationsItem = new TreeItem(properties, SWT.NONE);
         animationsItem.setText(Messages.Pathfindable);
-        animationsItem.setData(PathfindableConfig.PATHFINDABLE);
+        animationsItem.setData(PathfindableConfig.NODE_PATHFINDABLE);
         animationsItem.setImage(ICON_PATHFINDING);
     }
 
@@ -66,7 +66,7 @@ public class PropertiesPathfindable implements PropertiesProviderObject
     public void setInput(Tree properties, Configurer configurer)
     {
         final Xml root = configurer.getRoot();
-        if (root.hasChild(PathfindableConfig.PATHFINDABLE))
+        if (root.hasChild(PathfindableConfig.NODE_PATHFINDABLE))
         {
             createAttributePathfindable(properties);
         }
@@ -76,7 +76,7 @@ public class PropertiesPathfindable implements PropertiesProviderObject
     public boolean updateProperties(TreeItem item, Configurer configurer)
     {
         final Object data = item.getData();
-        if (PathfindableConfig.PATHFINDABLE.equals(data))
+        if (PathfindableConfig.NODE_PATHFINDABLE.equals(data))
         {
             final PathfindableEditor editor = new PathfindableEditor(item.getParent(), configurer);
             editor.create();

@@ -49,7 +49,7 @@ public final class CollisionsAddHandler
     {
         InputValidator.getFile(parent, Messages.Title, Messages.Text, CollisionGroupConfig.FILENAME, file ->
         {
-            final Xml root = new Xml(UtilFile.removeExtension(CollisionGroupConfig.COLLISIONS));
+            final Xml root = new Xml(UtilFile.removeExtension(CollisionGroupConfig.NODE_COLLISIONS));
             root.save(ProjectModel.INSTANCE.getProject().getResourceMedia(file));
         });
     }

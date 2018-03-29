@@ -46,7 +46,7 @@ public class PropertiesCollisionCategory implements PropertiesProviderObject
     {
         final TreeItem item = new TreeItem(properties, SWT.NONE);
         item.setText(Messages.CollisionCategory);
-        item.setData(CollisionCategoryConfig.CATEGORY);
+        item.setData(CollisionCategoryConfig.NODE_CATEGORY);
         item.setImage(ICON_CATEGORY);
     }
 
@@ -66,7 +66,7 @@ public class PropertiesCollisionCategory implements PropertiesProviderObject
     public void setInput(Tree properties, Configurer configurer)
     {
         final Xml root = configurer.getRoot();
-        if (root.hasChild(CollisionCategoryConfig.CATEGORY))
+        if (root.hasChild(CollisionCategoryConfig.NODE_CATEGORY))
         {
             createAttributeCollisionCategories(properties);
         }
@@ -76,7 +76,7 @@ public class PropertiesCollisionCategory implements PropertiesProviderObject
     public boolean updateProperties(TreeItem item, Configurer configurer)
     {
         final Object data = item.getData();
-        if (CollisionCategoryConfig.CATEGORY.equals(data))
+        if (CollisionCategoryConfig.NODE_CATEGORY.equals(data))
         {
             final CollisionCategoryEditDialog editor = new CollisionCategoryEditDialog(item.getParent(), configurer);
             editor.create();

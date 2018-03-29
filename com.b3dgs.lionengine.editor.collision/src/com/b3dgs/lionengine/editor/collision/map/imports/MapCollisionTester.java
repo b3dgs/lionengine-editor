@@ -67,7 +67,7 @@ public final class MapCollisionTester extends PropertyTester
         try
         {
             final Xml node = new Xml(media);
-            return CollisionGroupConfig.COLLISIONS.equals(node.getNodeName());
+            return CollisionGroupConfig.NODE_COLLISIONS.equals(node.getNodeName());
         }
         catch (final LionEngineException exception)
         {
