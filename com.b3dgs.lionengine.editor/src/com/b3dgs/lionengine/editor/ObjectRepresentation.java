@@ -48,6 +48,39 @@ public class ObjectRepresentation extends FeaturableModel
     private static final String ERROR_ANIMATION = "Unable to get animation data from: ";
 
     /**
+     * Get sprite from setup.
+     * 
+     * @param setup The setup reference.
+     * @param transformable The transformable reference.
+     * @return The prepared sprite.
+     */
+    private static Sprite getSprite(Setup setup, Transformable transformable)
+    {
+        try
+        {
+            final SpriteAnimated sprite = getSprite(setup, setup.getSurface());
+            sprite.prepare();
+            transformable.setSize(sprite.getTileWidth(), sprite.getTileHeight());
+
+            return sprite;
+        }
+        catch (@SuppressWarnings("unused") final LionEngineException exception)
+        {
+            final ImageBuffer buffer = Graphics.createImageBuffer(16, 16);
+            final Graphic g = buffer.createGraphic();
+            g.setColor(ColorRgba.RED);
+            g.drawRect(0, 0, buffer.getWidth(), buffer.getHeight(), true);
+            g.dispose();
+
+            final Sprite sprite = Drawable.loadSprite(buffer);
+            sprite.prepare();
+            transformable.setSize(sprite.getWidth(), sprite.getHeight());
+
+            return sprite;
+        }
+    }
+
+    /**
      * Get the sprite depending of the configuration.
      * 
      * @param configurer The configurer reference.
@@ -84,27 +117,7 @@ public class ObjectRepresentation extends FeaturableModel
         super();
 
         final Transformable transformable = addFeatureAndGet(new TransformableModel(setup));
-        final Sprite surface;
-        if (setup.getSurface() != null)
-        {
-            final SpriteAnimated anim = getSprite(setup, setup.getSurface());
-            anim.prepare();
-            surface = anim;
-            transformable.setSize(anim.getTileWidth(), anim.getTileHeight());
-        }
-        else
-        {
-            final ImageBuffer buffer = Graphics.createImageBuffer(16, 16);
-            final Graphic g = buffer.createGraphic();
-            g.setColor(ColorRgba.RED);
-            g.drawRect(0, 0, buffer.getWidth(), buffer.getHeight(), true);
-            g.dispose();
-
-            surface = Drawable.loadSprite(buffer);
-            surface.prepare();
-            transformable.setSize(surface.getWidth(), surface.getHeight());
-        }
-
+        final Sprite surface = getSprite(setup, transformable);
         surface.setOrigin(Origin.BOTTOM_LEFT);
 
         addFeature(new RefreshableModel(extrp ->
