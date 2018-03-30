@@ -20,6 +20,7 @@ package com.b3dgs.lionengine.editor.object.world.updater;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.b3dgs.lionengine.core.swt.MouseSwt;
 import com.b3dgs.lionengine.editor.ObjectRepresentation;
 import com.b3dgs.lionengine.editor.object.world.ObjectControl;
 import com.b3dgs.lionengine.editor.world.PaletteModel;
@@ -32,7 +33,6 @@ import com.b3dgs.lionengine.game.feature.Refreshable;
 import com.b3dgs.lionengine.game.feature.Services;
 import com.b3dgs.lionengine.game.feature.Transformable;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
-import com.b3dgs.lionengine.io.swt.Mouse;
 import com.b3dgs.lionengine.util.UtilMath;
 
 /**
@@ -95,11 +95,11 @@ public class WorldInteractionObject implements WorldMouseClickListener, WorldMou
     {
         if (!objectControl.isDragging())
         {
-            if (click == Mouse.LEFT && !objectControl.hasOver() && !objectControl.hasSelection())
+            if (click == MouseSwt.LEFT && !objectControl.hasOver() && !objectControl.hasSelection())
             {
                 objectControl.addAt(mx, my);
             }
-            else if (click == Mouse.RIGHT)
+            else if (click == MouseSwt.RIGHT)
             {
                 objectControl.removeFrom(mx, my);
             }
@@ -160,7 +160,7 @@ public class WorldInteractionObject implements WorldMouseClickListener, WorldMou
     private void updateDragging(int click, int oldMx, int oldMy, int mx, int my)
     {
         objectControl.updateMouseOver(mx, my);
-        if (click == Mouse.LEFT)
+        if (click == MouseSwt.LEFT)
         {
             objectControl.updateDragging(oldMx, oldMy, mx, my);
         }
@@ -289,7 +289,7 @@ public class WorldInteractionObject implements WorldMouseClickListener, WorldMou
         {
             updateDragging(click, oldMx, oldMy, mx, my);
         }
-        else if (click == Mouse.LEFT && palette.isPalette(PaletteType.SELECTION))
+        else if (click == MouseSwt.LEFT && palette.isPalette(PaletteType.SELECTION))
         {
             updateSelection(oldMx, oldMy, mx, my);
         }

@@ -38,6 +38,7 @@ import org.eclipse.swt.widgets.TreeItem;
 
 import com.b3dgs.lionengine.Media;
 import com.b3dgs.lionengine.core.Medias;
+import com.b3dgs.lionengine.core.swt.MouseSwt;
 import com.b3dgs.lionengine.editor.ObjectListListener;
 import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
 import com.b3dgs.lionengine.editor.map.group.editor.GroupList;
@@ -75,7 +76,6 @@ import com.b3dgs.lionengine.game.feature.tile.map.transition.MapTileTransitionMo
 import com.b3dgs.lionengine.game.feature.tile.map.transition.circuit.MapTileCircuitModel;
 import com.b3dgs.lionengine.game.feature.tile.map.viewer.MapTileViewerModel;
 import com.b3dgs.lionengine.graphic.SpriteTiled;
-import com.b3dgs.lionengine.io.swt.Mouse;
 
 /**
  * Edit map tile groups dialog.
@@ -341,7 +341,7 @@ public class GroupsAssignDialog extends AbstractDialog implements WorldView, Foc
      */
     private void changeGroup(int click, Tile tile, String newGroup)
     {
-        if (click == Mouse.RIGHT)
+        if (click == MouseSwt.RIGHT)
         {
             mapGroup.changeGroup(tile, null);
         }

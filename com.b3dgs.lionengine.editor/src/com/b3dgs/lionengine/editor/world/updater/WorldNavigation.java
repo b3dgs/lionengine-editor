@@ -17,12 +17,12 @@
  */
 package com.b3dgs.lionengine.editor.world.updater;
 
+import com.b3dgs.lionengine.core.swt.KeyboardSwt;
 import com.b3dgs.lionengine.editor.world.PaletteModel;
 import com.b3dgs.lionengine.editor.world.PaletteType;
 import com.b3dgs.lionengine.game.feature.Camera;
 import com.b3dgs.lionengine.game.feature.Services;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
-import com.b3dgs.lionengine.io.swt.Keyboard;
 
 /**
  * Handle the world navigation by using keyboard arrows key as input or mouse drag.
@@ -100,8 +100,8 @@ public class WorldNavigation implements WorldMouseMoveListener, WorldKeyboardLis
     @Override
     public void onKeyPushed(Integer key)
     {
-        final double vx = getSpeed(Keyboard.LEFT, Keyboard.RIGHT, key);
-        final double vy = getSpeed(Keyboard.DOWN, Keyboard.UP, key);
+        final double vx = getSpeed(KeyboardSwt.LEFT, KeyboardSwt.RIGHT, key);
+        final double vy = getSpeed(KeyboardSwt.DOWN, KeyboardSwt.UP, key);
         final double scale = zoom.getScale();
         final int speedX = map.getTileWidth() * GRID_MOVEMENT_SENSIBILITY;
         final int speedY = map.getTileHeight() * GRID_MOVEMENT_SENSIBILITY;

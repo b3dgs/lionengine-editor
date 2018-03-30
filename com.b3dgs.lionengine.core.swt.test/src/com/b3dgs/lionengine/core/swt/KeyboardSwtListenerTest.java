@@ -27,7 +27,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.b3dgs.lionengine.InputDeviceKeyListener;
-import com.b3dgs.lionengine.io.swt.Keyboard;
 
 /**
  * Test the key listener.
@@ -76,8 +75,8 @@ public class KeyboardSwtListenerTest
         });
 
         final Shell shell = new Shell(ToolsSwt.getDisplay());
-        listener.keyPressed(createEvent(shell, Keyboard.UP));
-        listener.keyReleased(createEvent(shell, Keyboard.UP));
+        listener.keyPressed(createEvent(shell, KeyboardSwt.UP));
+        listener.keyReleased(createEvent(shell, KeyboardSwt.UP));
         shell.dispose();
 
         Assert.assertTrue(reachedPressed.get());

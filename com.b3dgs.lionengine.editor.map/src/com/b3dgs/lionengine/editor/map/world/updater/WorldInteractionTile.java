@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.b3dgs.lionengine.LionEngineException;
+import com.b3dgs.lionengine.core.swt.MouseSwt;
 import com.b3dgs.lionengine.editor.map.sheet.palette.SheetPaletteType;
 import com.b3dgs.lionengine.editor.map.sheet.palette.SheetsPaletteModel;
 import com.b3dgs.lionengine.editor.properties.PropertiesModel;
@@ -42,7 +43,6 @@ import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroup;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroupModel;
 import com.b3dgs.lionengine.game.feature.tile.map.transition.MapTileTransition;
 import com.b3dgs.lionengine.game.feature.tile.map.transition.circuit.MapTileCircuit;
-import com.b3dgs.lionengine.io.swt.Mouse;
 
 /**
  * Handle the interaction with tiles.
@@ -250,7 +250,7 @@ public class WorldInteractionTile implements WorldMouseClickListener, WorldMouse
         {
             updatePointerTile(mx, my, click);
         }
-        if (click == Mouse.MIDDLE)
+        if (click == MouseSwt.MIDDLE)
         {
             checkPastProperty();
         }

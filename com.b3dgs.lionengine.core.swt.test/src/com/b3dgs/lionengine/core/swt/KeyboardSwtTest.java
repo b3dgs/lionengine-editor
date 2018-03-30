@@ -26,8 +26,6 @@ import org.eclipse.swt.widgets.Widget;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.b3dgs.lionengine.io.swt.Keyboard;
-
 /**
  * Test the keyboard class.
  */
@@ -58,18 +56,18 @@ public class KeyboardSwtTest
         ScreenSwtTest.checkMultipleDisplaySupport();
         final KeyboardSwt keyboard = new KeyboardSwt();
 
-        Assert.assertFalse(keyboard.isPressed(Keyboard.ALT));
-        Assert.assertFalse(keyboard.isPressed(Keyboard.BACK_SPACE));
-        Assert.assertFalse(keyboard.isPressed(Keyboard.CONTROL));
-        Assert.assertFalse(keyboard.isPressed(Keyboard.DOWN));
-        Assert.assertFalse(keyboard.isPressed(Keyboard.ENTER));
-        Assert.assertFalse(keyboard.isPressed(Keyboard.ESCAPE));
-        Assert.assertFalse(keyboard.isPressed(Keyboard.LEFT));
-        Assert.assertFalse(keyboard.isPressed(Keyboard.RIGHT));
-        Assert.assertFalse(keyboard.isPressed(Keyboard.BACK_SPACE));
-        Assert.assertFalse(keyboard.isPressed(Keyboard.TAB));
-        Assert.assertFalse(keyboard.isPressed(Keyboard.UP));
-        Assert.assertFalse(keyboard.isPressedOnce(Keyboard.UP));
+        Assert.assertFalse(keyboard.isPressed(KeyboardSwt.ALT));
+        Assert.assertFalse(keyboard.isPressed(KeyboardSwt.BACK_SPACE));
+        Assert.assertFalse(keyboard.isPressed(KeyboardSwt.CONTROL));
+        Assert.assertFalse(keyboard.isPressed(KeyboardSwt.DOWN));
+        Assert.assertFalse(keyboard.isPressed(KeyboardSwt.ENTER));
+        Assert.assertFalse(keyboard.isPressed(KeyboardSwt.ESCAPE));
+        Assert.assertFalse(keyboard.isPressed(KeyboardSwt.LEFT));
+        Assert.assertFalse(keyboard.isPressed(KeyboardSwt.RIGHT));
+        Assert.assertFalse(keyboard.isPressed(KeyboardSwt.BACK_SPACE));
+        Assert.assertFalse(keyboard.isPressed(KeyboardSwt.TAB));
+        Assert.assertFalse(keyboard.isPressed(KeyboardSwt.UP));
+        Assert.assertFalse(keyboard.isPressedOnce(KeyboardSwt.UP));
     }
 
     /**
@@ -82,16 +80,16 @@ public class KeyboardSwtTest
         final KeyboardSwt keyboard = new KeyboardSwt();
         final Shell shell = new Shell(ToolsSwt.getDisplay());
 
-        keyboard.keyPressed(createEvent(shell, Keyboard.ALT));
-        Assert.assertTrue(keyboard.isPressed(Keyboard.ALT));
-        Assert.assertTrue(keyboard.isPressedOnce(Keyboard.ALT));
-        Assert.assertFalse(keyboard.isPressedOnce(Keyboard.ALT));
-        Assert.assertEquals(keyboard.getKeyCode(), Keyboard.ALT);
+        keyboard.keyPressed(createEvent(shell, KeyboardSwt.ALT));
+        Assert.assertTrue(keyboard.isPressed(KeyboardSwt.ALT));
+        Assert.assertTrue(keyboard.isPressedOnce(KeyboardSwt.ALT));
+        Assert.assertFalse(keyboard.isPressedOnce(KeyboardSwt.ALT));
+        Assert.assertEquals(keyboard.getKeyCode(), KeyboardSwt.ALT);
         Assert.assertEquals(keyboard.getKeyName(), ' ');
         Assert.assertTrue(keyboard.used());
 
-        keyboard.keyReleased(createEvent(shell, Keyboard.ALT));
-        Assert.assertFalse(keyboard.isPressed(Keyboard.ALT));
+        keyboard.keyReleased(createEvent(shell, KeyboardSwt.ALT));
+        Assert.assertFalse(keyboard.isPressed(KeyboardSwt.ALT));
         Assert.assertFalse(keyboard.used());
     }
 
@@ -105,25 +103,25 @@ public class KeyboardSwtTest
         final KeyboardSwt keyboard = new KeyboardSwt();
         final Shell shell = new Shell(ToolsSwt.getDisplay());
 
-        keyboard.setHorizontalControlNegative(Keyboard.LEFT);
-        keyboard.setVerticalControlNegative(Keyboard.DOWN);
-        keyboard.setHorizontalControlPositive(Keyboard.RIGHT);
-        keyboard.setVerticalControlPositive(Keyboard.UP);
+        keyboard.setHorizontalControlNegative(KeyboardSwt.LEFT);
+        keyboard.setVerticalControlNegative(KeyboardSwt.DOWN);
+        keyboard.setHorizontalControlPositive(KeyboardSwt.RIGHT);
+        keyboard.setVerticalControlPositive(KeyboardSwt.UP);
 
-        keyboard.keyPressed(createEvent(shell, Keyboard.RIGHT));
+        keyboard.keyPressed(createEvent(shell, KeyboardSwt.RIGHT));
         Assert.assertEquals(1.0, keyboard.getHorizontalDirection(), 0.0001);
-        keyboard.keyReleased(createEvent(shell, Keyboard.RIGHT));
-        keyboard.keyPressed(createEvent(shell, Keyboard.LEFT));
+        keyboard.keyReleased(createEvent(shell, KeyboardSwt.RIGHT));
+        keyboard.keyPressed(createEvent(shell, KeyboardSwt.LEFT));
         Assert.assertEquals(-1.0, keyboard.getHorizontalDirection(), 0.0001);
-        keyboard.keyReleased(createEvent(shell, Keyboard.LEFT));
+        keyboard.keyReleased(createEvent(shell, KeyboardSwt.LEFT));
         Assert.assertEquals(0.0, keyboard.getHorizontalDirection(), 0.0001);
 
-        keyboard.keyPressed(createEvent(shell, Keyboard.UP));
+        keyboard.keyPressed(createEvent(shell, KeyboardSwt.UP));
         Assert.assertEquals(1.0, keyboard.getVerticalDirection(), 0.0001);
-        keyboard.keyReleased(createEvent(shell, Keyboard.UP));
-        keyboard.keyPressed(createEvent(shell, Keyboard.DOWN));
+        keyboard.keyReleased(createEvent(shell, KeyboardSwt.UP));
+        keyboard.keyPressed(createEvent(shell, KeyboardSwt.DOWN));
         Assert.assertEquals(-1.0, keyboard.getVerticalDirection(), 0.0001);
-        keyboard.keyReleased(createEvent(shell, Keyboard.DOWN));
+        keyboard.keyReleased(createEvent(shell, KeyboardSwt.DOWN));
         Assert.assertEquals(0.0, keyboard.getVerticalDirection(), 0.0001);
 
         shell.dispose();
@@ -140,25 +138,25 @@ public class KeyboardSwtTest
         final Shell shell = new Shell(ToolsSwt.getDisplay());
         final AtomicBoolean left = new AtomicBoolean(false);
 
-        keyboard.addActionPressed(Keyboard.LEFT, () -> left.set(true));
-        keyboard.addActionPressed(Keyboard.LEFT, () -> left.set(true));
-        keyboard.addActionReleased(Keyboard.LEFT, () -> left.set(false));
-        keyboard.addActionReleased(Keyboard.LEFT, () -> left.set(false));
+        keyboard.addActionPressed(KeyboardSwt.LEFT, () -> left.set(true));
+        keyboard.addActionPressed(KeyboardSwt.LEFT, () -> left.set(true));
+        keyboard.addActionReleased(KeyboardSwt.LEFT, () -> left.set(false));
+        keyboard.addActionReleased(KeyboardSwt.LEFT, () -> left.set(false));
         Assert.assertFalse(left.get());
 
-        keyboard.keyPressed(createEvent(shell, Keyboard.LEFT));
+        keyboard.keyPressed(createEvent(shell, KeyboardSwt.LEFT));
         Assert.assertTrue(left.get());
 
-        keyboard.keyReleased(createEvent(shell, Keyboard.LEFT));
+        keyboard.keyReleased(createEvent(shell, KeyboardSwt.LEFT));
         Assert.assertFalse(left.get());
 
         keyboard.removeActionsPressed();
         keyboard.removeActionsReleased();
 
-        keyboard.keyPressed(createEvent(shell, Keyboard.LEFT));
+        keyboard.keyPressed(createEvent(shell, KeyboardSwt.LEFT));
         Assert.assertFalse(left.get());
 
-        keyboard.keyReleased(createEvent(shell, Keyboard.LEFT));
+        keyboard.keyReleased(createEvent(shell, KeyboardSwt.LEFT));
         Assert.assertFalse(left.get());
 
         shell.dispose();

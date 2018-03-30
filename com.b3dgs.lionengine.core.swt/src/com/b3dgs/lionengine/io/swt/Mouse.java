@@ -24,13 +24,6 @@ import com.b3dgs.lionengine.io.InputDevicePointer;
  */
 public interface Mouse extends InputDevicePointer
 {
-    /** Left click. */
-    int LEFT = 1;
-    /** Middle click. */
-    int MIDDLE = 2;
-    /** Right click. */
-    int RIGHT = 3;
-
     /**
      * Add an action that will be triggered on pressed state.
      * <p>

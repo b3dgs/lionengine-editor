@@ -24,6 +24,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 
@@ -35,6 +36,28 @@ import com.b3dgs.lionengine.io.swt.Keyboard;
  */
 public final class KeyboardSwt implements Keyboard, KeyListener
 {
+    /** Arrow up key. */
+    public static final Integer UP = Integer.valueOf(SWT.ARROW_UP);
+    /** Arrow down key. */
+    public static final Integer DOWN = Integer.valueOf(SWT.ARROW_DOWN);
+    /** Arrow right key. */
+    public static final Integer RIGHT = Integer.valueOf(SWT.ARROW_RIGHT);
+    /** Arrow left key. */
+    public static final Integer LEFT = Integer.valueOf(SWT.ARROW_LEFT);
+    /** CTRL key. */
+    public static final Integer CONTROL = Integer.valueOf(SWT.CONTROL);
+    /** ALT key. */
+    public static final Integer ALT = Integer.valueOf(SWT.ALT);
+    /** Escape key. */
+    public static final Integer ESCAPE = Integer.valueOf(SWT.ESC);
+    /** Enter key. */
+    public static final Integer ENTER = Integer.valueOf(SWT.LF);
+    /** Back Space key. */
+    public static final Integer BACK_SPACE = Integer.valueOf(SWT.BS);
+    /** Tab key. */
+    public static final Integer TAB = Integer.valueOf(SWT.TAB);
+    /** No key code value. */
+    public static final Integer NO_KEY_CODE = Integer.valueOf(-1);
     /** Empty key name. */
     private static final char EMPTY_KEY_NAME = ' ';
 

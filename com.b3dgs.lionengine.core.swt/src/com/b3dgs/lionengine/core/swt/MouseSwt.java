@@ -26,6 +26,13 @@ import com.b3dgs.lionengine.io.swt.Mouse;
  */
 public final class MouseSwt implements Mouse
 {
+    /** Left click. */
+    public static final int LEFT = 1;
+    /** Middle click. */
+    public static final int MIDDLE = 2;
+    /** Right click. */
+    public static final int RIGHT = 3;
+
     /** Move click. */
     private final MouseClickSwt clicker = new MouseClickSwt();
     /** Mouse move. */

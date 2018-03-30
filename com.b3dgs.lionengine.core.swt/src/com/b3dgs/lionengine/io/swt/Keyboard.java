@@ -17,8 +17,6 @@
  */
 package com.b3dgs.lionengine.io.swt;
 
-import org.eclipse.swt.SWT;
-
 import com.b3dgs.lionengine.io.InputDeviceDirectional;
 
 /**
@@ -26,29 +24,6 @@ import com.b3dgs.lionengine.io.InputDeviceDirectional;
  */
 public interface Keyboard extends InputDeviceDirectional
 {
-    /** Arrow up key. */
-    Integer UP = Integer.valueOf(SWT.ARROW_UP);
-    /** Arrow down key. */
-    Integer DOWN = Integer.valueOf(SWT.ARROW_DOWN);
-    /** Arrow right key. */
-    Integer RIGHT = Integer.valueOf(SWT.ARROW_RIGHT);
-    /** Arrow left key. */
-    Integer LEFT = Integer.valueOf(SWT.ARROW_LEFT);
-    /** CTRL key. */
-    Integer CONTROL = Integer.valueOf(SWT.CONTROL);
-    /** ALT key. */
-    Integer ALT = Integer.valueOf(SWT.ALT);
-    /** Escape key. */
-    Integer ESCAPE = Integer.valueOf(SWT.ESC);
-    /** Enter key. */
-    Integer ENTER = Integer.valueOf(SWT.LF);
-    /** Back Space key. */
-    Integer BACK_SPACE = Integer.valueOf(SWT.BS);
-    /** Tab key. */
-    Integer TAB = Integer.valueOf(SWT.TAB);
-    /** No key code value. */
-    Integer NO_KEY_CODE = Integer.valueOf(-1);
-
     /**
      * Add an action that will be triggered on pressed state.
      * <p>
@@ -110,7 +85,7 @@ public interface Keyboard extends InputDeviceDirectional
     /**
      * Get the current pressed key code.
      * 
-     * @return The pressed key code (<code>{@link Keyboard#NO_KEY_CODE}</code> if key never pressed).
+     * @return The pressed key code (<code>-1</code> if key never pressed).
      */
     Integer getKeyCode();
 

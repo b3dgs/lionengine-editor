@@ -286,9 +286,12 @@ public final class ToolsSwt
         final int height = sourceData.height;
 
         final Rectangle rectangle = new Rectangle(0, 0, width, height);
-        final Rectangle r = rectangle.rotate(angle);
+        rectangle.rotate(angle);
 
-        final ImageData newData = new ImageData(r.getWidth(), r.getHeight(), sourceData.depth, sourceData.palette);
+        final ImageData newData = new ImageData(rectangle.getWidth(),
+                                                rectangle.getHeight(),
+                                                sourceData.depth,
+                                                sourceData.palette);
         newData.transparentPixel = sourceData.transparentPixel;
 
         final Device device = image.getDevice();
@@ -301,7 +304,9 @@ public final class ToolsSwt
 
         transform.setElements(cos, sin, -sin, cos, (float) (width / 2.0), (float) (height / 2.0));
         gc.setTransform(transform);
-        gc.drawImage(image, (int) ((r.getWidth() - width) / 2.0), (int) ((r.getHeight() - height) / 2.0));
+        gc.drawImage(image,
+                     (int) ((rectangle.getWidth() - width) / 2.0),
+                     (int) ((rectangle.getHeight() - height) / 2.0));
         gc.dispose();
 
         return rotated;
