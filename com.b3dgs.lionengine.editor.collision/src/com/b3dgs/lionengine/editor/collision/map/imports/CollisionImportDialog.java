@@ -24,7 +24,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
 import com.b3dgs.lionengine.Media;
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.project.Project;
 import com.b3dgs.lionengine.editor.project.ProjectModel;
 import com.b3dgs.lionengine.editor.toolbar.SetPointerCollisionHandler;
@@ -44,7 +44,7 @@ import com.b3dgs.lionengine.game.feature.tile.map.collision.MapTileCollisionMode
 /**
  * Represents the import map dialog.
  */
-public class CollisionImportDialog extends AbstractDialog
+public class CollisionImportDialog extends DialogAbstract
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "import.png");

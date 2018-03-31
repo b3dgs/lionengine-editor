@@ -35,7 +35,7 @@ import org.eclipse.swt.widgets.TreeItem;
 import com.b3dgs.lionengine.Constant;
 import com.b3dgs.lionengine.LionEngineException;
 import com.b3dgs.lionengine.editor.ObjectListListener;
-import com.b3dgs.lionengine.editor.ObjectProperties;
+import com.b3dgs.lionengine.editor.ObjectPropertiesAbstract;
 import com.b3dgs.lionengine.editor.map.group.editor.GroupList;
 import com.b3dgs.lionengine.editor.utility.control.UtilCombo;
 import com.b3dgs.lionengine.editor.utility.control.UtilText;
@@ -59,7 +59,7 @@ import com.b3dgs.lionengine.graphic.ImageBuffer;
  * Represents the formulas properties edition view.
  */
 // CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
-public class FormulaProperties extends ObjectProperties<CollisionFormula>
+public class FormulaProperties extends ObjectPropertiesAbstract<CollisionFormula>
                                implements ObjectListListener<CollisionFormula>
 {
     /**

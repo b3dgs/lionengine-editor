@@ -48,7 +48,7 @@ import com.b3dgs.lionengine.util.UtilFile;
 /**
  * Represents the resource dialog, allowing to select resources from project folder.
  */
-public class ResourceDialog extends AbstractDialog
+public class ResourceDialog extends DialogAbstract
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "resource.png");

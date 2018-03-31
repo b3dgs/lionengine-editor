@@ -26,13 +26,13 @@ import org.eclipse.swt.widgets.Text;
 
 import com.b3dgs.lionengine.Animation;
 import com.b3dgs.lionengine.editor.ObjectListListener;
-import com.b3dgs.lionengine.editor.ObjectProperties;
+import com.b3dgs.lionengine.editor.ObjectPropertiesAbstract;
 import com.b3dgs.lionengine.graphic.SpriteAnimated;
 
 /**
  * Represents the animation properties edition view.
  */
-public class AnimationProperties extends ObjectProperties<Animation> implements ObjectListListener<Animation>
+public class AnimationProperties extends ObjectPropertiesAbstract<Animation> implements ObjectListListener<Animation>
 {
     /** Maximum frame. */
     private final int maxFrame;

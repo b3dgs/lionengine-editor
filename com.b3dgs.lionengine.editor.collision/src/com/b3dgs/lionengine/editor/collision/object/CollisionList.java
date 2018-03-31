@@ -19,7 +19,7 @@ package com.b3dgs.lionengine.editor.collision.object;
 
 import java.util.Collection;
 
-import com.b3dgs.lionengine.editor.ObjectList;
+import com.b3dgs.lionengine.editor.ObjectListAbstract;
 import com.b3dgs.lionengine.game.Configurer;
 import com.b3dgs.lionengine.game.feature.collidable.Collision;
 import com.b3dgs.lionengine.game.feature.collidable.CollisionConfig;
@@ -27,7 +27,7 @@ import com.b3dgs.lionengine.game.feature.collidable.CollisionConfig;
 /**
  * Represents the collisions list, allowing to add and remove {@link Collision}.
  */
-public class CollisionList extends ObjectList<Collision>
+public class CollisionList extends ObjectListAbstract<Collision>
 {
     /** Configurer reference. */
     private final Configurer configurer;

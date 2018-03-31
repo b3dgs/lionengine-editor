@@ -23,7 +23,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TreeItem;
 
-import com.b3dgs.lionengine.editor.dialog.AbstractEditor;
+import com.b3dgs.lionengine.editor.dialog.EditorAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.game.Configurer;
 import com.b3dgs.lionengine.game.feature.collidable.Collision;
@@ -33,7 +33,7 @@ import com.b3dgs.lionengine.io.Xml;
 /**
  * Collision with object editor.
  */
-public class CollisionsObjectEditDialog extends AbstractEditor
+public class CollisionsObjectEditDialog extends EditorAbstract
 {
     /** Dialog icon. */
     private static final Image ICON = UtilIcon.get("collision-editor", "dialog.png");

@@ -32,7 +32,7 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 
 import com.b3dgs.lionengine.Media;
-import com.b3dgs.lionengine.editor.ObjectList;
+import com.b3dgs.lionengine.editor.ObjectListAbstract;
 import com.b3dgs.lionengine.editor.utility.control.UtilButton;
 import com.b3dgs.lionengine.editor.utility.dialog.UtilDialog;
 
@@ -115,7 +115,7 @@ public class LevelRipWidget
     private void createButtonAdd(Composite parent)
     {
         final Button addLevelRip = new Button(parent, SWT.PUSH);
-        addLevelRip.setImage(ObjectList.ICON_ADD);
+        addLevelRip.setImage(ObjectListAbstract.ICON_ADD);
         addLevelRip.setToolTipText(Messages.AddLevelRip);
         UtilButton.setAction(addLevelRip, this::onAddLevelRip);
     }
@@ -128,7 +128,7 @@ public class LevelRipWidget
     private void createButtonRemove(Composite parent)
     {
         final Button removeLevelRip = new Button(parent, SWT.PUSH);
-        removeLevelRip.setImage(ObjectList.ICON_REMOVE);
+        removeLevelRip.setImage(ObjectListAbstract.ICON_REMOVE);
         removeLevelRip.setToolTipText(Messages.RemoveLevelRip);
         UtilButton.setAction(removeLevelRip, this::onRemoveLevelRip);
     }

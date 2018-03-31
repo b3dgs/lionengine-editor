@@ -33,7 +33,7 @@ import org.eclipse.swt.widgets.Text;
 
 import com.b3dgs.lionengine.Media;
 import com.b3dgs.lionengine.core.Medias;
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.utility.control.UtilButton;
 import com.b3dgs.lionengine.editor.utility.control.UtilText;
@@ -46,7 +46,7 @@ import com.b3dgs.lionengine.util.UtilFile;
 /**
  * Represents the sheets edition dialog.
  */
-public class SheetsEditDialog extends AbstractDialog
+public class SheetsEditDialog extends DialogAbstract
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "edit.png");

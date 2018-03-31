@@ -32,7 +32,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import com.b3dgs.lionengine.LionEngineException;
 import com.b3dgs.lionengine.Media;
-import com.b3dgs.lionengine.editor.dialog.AbstractProgressDialog;
+import com.b3dgs.lionengine.editor.dialog.ProgressDialogAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.world.WorldModel;
 import com.b3dgs.lionengine.game.feature.tile.map.LevelRipConverter;
@@ -41,7 +41,7 @@ import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
 /**
  * Map import progress dialog.
  */
-public class MapImportProgressDialog extends AbstractProgressDialog
+public class MapImportProgressDialog extends ProgressDialogAbstract
                                      implements LevelRipConverter.ProgressListener, LevelRipConverter.Canceler
 {
     /** Icon. */

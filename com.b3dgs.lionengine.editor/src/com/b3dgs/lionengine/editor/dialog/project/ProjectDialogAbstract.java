@@ -30,7 +30,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.project.Project;
 import com.b3dgs.lionengine.editor.utility.control.UtilButton;
 
@@ -38,7 +38,7 @@ import com.b3dgs.lionengine.editor.utility.control.UtilButton;
  * Represents the abstract project dialog.
  */
 // CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
-public abstract class AbstractProjectDialog extends AbstractDialog
+public abstract class ProjectDialogAbstract extends DialogAbstract
 {
     /** Jar text. */
     private static final String JAR_TEXT = "JAR";
@@ -73,7 +73,7 @@ public abstract class AbstractProjectDialog extends AbstractDialog
      * @param headerDesc The header description.
      * @param headerIcon The header icon.
      */
-    public AbstractProjectDialog(Shell parent, String title, String headerTitle, String headerDesc, Image headerIcon)
+    public ProjectDialogAbstract(Shell parent, String title, String headerTitle, String headerDesc, Image headerIcon)
     {
         super(parent, title, headerTitle, headerDesc, headerIcon);
     }
@@ -154,7 +154,7 @@ public abstract class AbstractProjectDialog extends AbstractDialog
 
         projectClassesText = new Text(classesArea, SWT.BORDER);
         projectClassesText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-        projectClassesText.setTextLimit(AbstractDialog.MAX_CHAR);
+        projectClassesText.setTextLimit(DialogAbstract.MAX_CHAR);
 
         projectClassesBrowseJar = createBrowseButton(classesArea, projectClassesText, false, "*.jar");
         projectClassesBrowseJar.setText(JAR_TEXT);
@@ -178,7 +178,7 @@ public abstract class AbstractProjectDialog extends AbstractDialog
 
         projectLibrariesText = new Text(librariesArea, SWT.BORDER);
         projectLibrariesText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-        projectLibrariesText.setTextLimit(AbstractDialog.MAX_CHAR);
+        projectLibrariesText.setTextLimit(DialogAbstract.MAX_CHAR);
 
         projectLibrariesBrowse = createBrowseButton(librariesArea, projectLibrariesText, true);
     }
@@ -200,7 +200,7 @@ public abstract class AbstractProjectDialog extends AbstractDialog
 
         projectResourcesText = new Text(resourcesArea, SWT.BORDER);
         projectResourcesText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-        projectResourcesText.setTextLimit(AbstractDialog.MAX_CHAR);
+        projectResourcesText.setTextLimit(DialogAbstract.MAX_CHAR);
 
         projectResourcesBrowse = createBrowseButton(resourcesArea, projectResourcesText, true);
     }

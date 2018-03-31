@@ -20,7 +20,7 @@ package com.b3dgs.lionengine.editor.collisioncategory.editor;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.b3dgs.lionengine.editor.ObjectList;
+import com.b3dgs.lionengine.editor.ObjectListAbstract;
 import com.b3dgs.lionengine.game.Configurer;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.Axis;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionCategory;
@@ -30,7 +30,7 @@ import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionGroup;
 /**
  * Represents the collision category list, allowing to add and remove {@link CollisionCategory}.
  */
-public class CollisionCategoryList extends ObjectList<CollisionCategory>
+public class CollisionCategoryList extends ObjectListAbstract<CollisionCategory>
 {
     /** Configurer reference. */
     private final Configurer configurer;

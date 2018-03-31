@@ -19,13 +19,13 @@ package com.b3dgs.lionengine.editor.pathfinding.properties.editor;
 
 import java.util.Collection;
 
-import com.b3dgs.lionengine.editor.ObjectList;
+import com.b3dgs.lionengine.editor.ObjectListAbstract;
 import com.b3dgs.lionengine.game.feature.tile.map.pathfinding.MovementTile;
 
 /**
  * Represents the movements list, allowing to add and remove {@link MovementTile}.
  */
-public class MovementList extends ObjectList<MovementTile>
+public class MovementList extends ObjectListAbstract<MovementTile>
 {
     /**
      * Create movement list and associate its properties.

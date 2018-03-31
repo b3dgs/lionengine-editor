@@ -40,7 +40,7 @@ import com.b3dgs.lionengine.Media;
 import com.b3dgs.lionengine.core.Medias;
 import com.b3dgs.lionengine.core.swt.MouseSwt;
 import com.b3dgs.lionengine.editor.ObjectListListener;
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.map.group.editor.GroupList;
 import com.b3dgs.lionengine.editor.map.group.editor.GroupProperties;
 import com.b3dgs.lionengine.editor.map.world.renderer.WorldSelectedTiles;
@@ -81,7 +81,7 @@ import com.b3dgs.lionengine.graphic.SpriteTiled;
  * Edit map tile groups dialog.
  */
 // CHECKSTYLE IGNORE LINE: DataAbstractionCoupling|FanOutComplexity
-public class GroupsAssignDialog extends AbstractDialog implements WorldView, Focusable, KeyListener,
+public class GroupsAssignDialog extends DialogAbstract implements WorldView, Focusable, KeyListener,
                                 TileSelectionListener, ObjectListListener<TileGroup>
 {
     /** Icon. */

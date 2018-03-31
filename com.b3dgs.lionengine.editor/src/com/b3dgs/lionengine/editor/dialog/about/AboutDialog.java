@@ -29,7 +29,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import com.b3dgs.lionengine.Constant;
 import com.b3dgs.lionengine.editor.Activator;
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.utility.control.UtilButton;
 import com.b3dgs.lionengine.editor.utility.control.UtilSwt;
@@ -78,7 +78,7 @@ public class AboutDialog
      */
     private static void createBottom(Shell dialog, Composite bottom)
     {
-        final Button okButton = UtilButton.create(bottom, Messages.Ok, AbstractDialog.ICON_EXIT);
+        final Button okButton = UtilButton.create(bottom, Messages.Ok, DialogAbstract.ICON_EXIT);
         final GridData data = new GridData();
         data.widthHint = BUTTON_OK_WIDTH;
         okButton.setLayoutData(data);

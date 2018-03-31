@@ -22,7 +22,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import com.b3dgs.lionengine.Media;
-import com.b3dgs.lionengine.editor.ObjectList;
+import com.b3dgs.lionengine.editor.ObjectListAbstract;
 import com.b3dgs.lionengine.editor.ObjectListListener;
 import com.b3dgs.lionengine.editor.world.WorldModel;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
@@ -35,7 +35,7 @@ import com.b3dgs.lionengine.io.Xml;
 /**
  * Represents the categories list, allowing to add and remove pathfinding categories.
  */
-public class CategoryList extends ObjectList<PathCategory> implements ObjectListListener<PathCategory>
+public class CategoryList extends ObjectListAbstract<PathCategory> implements ObjectListListener<PathCategory>
 {
     /** Pathfinding config. */
     private Media config;

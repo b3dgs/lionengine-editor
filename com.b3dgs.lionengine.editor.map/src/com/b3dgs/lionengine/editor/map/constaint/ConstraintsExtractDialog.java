@@ -25,7 +25,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import com.b3dgs.lionengine.Media;
 import com.b3dgs.lionengine.core.Medias;
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.utility.dialog.UtilDialog;
 import com.b3dgs.lionengine.editor.widget.BrowseWidget;
@@ -40,7 +40,7 @@ import com.b3dgs.lionengine.util.UtilFolder;
 /**
  * Represents the export map tile constraints dialog.
  */
-public class ConstraintsExtractDialog extends AbstractDialog
+public class ConstraintsExtractDialog extends DialogAbstract
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "constraints-extract.png");

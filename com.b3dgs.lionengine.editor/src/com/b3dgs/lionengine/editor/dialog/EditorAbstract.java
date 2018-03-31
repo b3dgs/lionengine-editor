@@ -34,7 +34,7 @@ import com.b3dgs.lionengine.editor.utility.control.UtilSwt;
 /**
  * Abstract editor.
  */
-public abstract class AbstractEditor implements MDirtyable
+public abstract class EditorAbstract implements MDirtyable
 {
     /** Shell reference. */
     private final Shell shell;
@@ -52,7 +52,7 @@ public abstract class AbstractEditor implements MDirtyable
      * @param title The editor title.
      * @param icon The editor icon.
      */
-    public AbstractEditor(Composite parent, String title, Image icon)
+    public EditorAbstract(Composite parent, String title, Image icon)
     {
         this.title = title;
         shell = new Shell(parent.getDisplay(), SWT.APPLICATION_MODAL | SWT.DIALOG_TRIM);
@@ -126,7 +126,7 @@ public abstract class AbstractEditor implements MDirtyable
         bottom.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false));
 
         final Button exit = UtilButton.create(bottom, Messages.Exit, null);
-        exit.setImage(AbstractDialog.ICON_EXIT);
+        exit.setImage(DialogAbstract.ICON_EXIT);
         UtilButton.setAction(exit, () ->
         {
             onExit();

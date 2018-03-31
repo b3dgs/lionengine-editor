@@ -20,7 +20,7 @@ package com.b3dgs.lionengine.editor.pathfinding.properties.editor;
 import java.util.Collections;
 import java.util.Map;
 
-import com.b3dgs.lionengine.editor.ObjectList;
+import com.b3dgs.lionengine.editor.ObjectListAbstract;
 import com.b3dgs.lionengine.game.Configurer;
 import com.b3dgs.lionengine.game.feature.tile.map.pathfinding.PathData;
 import com.b3dgs.lionengine.game.feature.tile.map.pathfinding.PathfindableConfig;
@@ -28,7 +28,7 @@ import com.b3dgs.lionengine.game.feature.tile.map.pathfinding.PathfindableConfig
 /**
  * Represents the path list, allowing to add and remove {@link PathData}.
  */
-public class PathList extends ObjectList<PathData>
+public class PathList extends ObjectListAbstract<PathData>
 {
     /**
      * Create path list and associate its properties.

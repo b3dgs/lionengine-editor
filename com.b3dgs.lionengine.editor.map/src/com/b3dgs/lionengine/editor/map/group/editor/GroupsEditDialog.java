@@ -28,7 +28,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TreeItem;
 
 import com.b3dgs.lionengine.Media;
-import com.b3dgs.lionengine.editor.dialog.AbstractEditor;
+import com.b3dgs.lionengine.editor.dialog.EditorAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.world.WorldModel;
 import com.b3dgs.lionengine.game.feature.tile.TileGroup;
@@ -38,7 +38,7 @@ import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroup;
 /**
  * Represents the groups edition dialog.
  */
-public class GroupsEditDialog extends AbstractEditor
+public class GroupsEditDialog extends EditorAbstract
 {
     /** Icon. */
     public static final Image ICON = UtilIcon.get("dialog", "edit.png");

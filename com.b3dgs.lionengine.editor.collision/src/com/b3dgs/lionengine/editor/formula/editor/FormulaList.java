@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.b3dgs.lionengine.Media;
-import com.b3dgs.lionengine.editor.ObjectList;
+import com.b3dgs.lionengine.editor.ObjectListAbstract;
 import com.b3dgs.lionengine.editor.ObjectListListener;
 import com.b3dgs.lionengine.editor.world.WorldModel;
 import com.b3dgs.lionengine.game.feature.tile.TileGroupsConfig;
@@ -39,7 +39,7 @@ import com.b3dgs.lionengine.io.Xml;
 /**
  * Represents the formulas list, allowing to add and remove {@link CollisionFormula}.
  */
-public class FormulaList extends ObjectList<CollisionFormula> implements ObjectListListener<CollisionFormula>
+public class FormulaList extends ObjectListAbstract<CollisionFormula> implements ObjectListListener<CollisionFormula>
 {
     /**
      * Remove the formula from configuration.

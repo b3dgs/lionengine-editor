@@ -32,7 +32,7 @@ import org.eclipse.swt.widgets.Shell;
 import com.b3dgs.lionengine.Media;
 import com.b3dgs.lionengine.core.Medias;
 import com.b3dgs.lionengine.core.drawable.Drawable;
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.utility.control.UtilButton;
 import com.b3dgs.lionengine.editor.utility.dialog.UtilDialog;
@@ -45,7 +45,7 @@ import com.b3dgs.lionengine.graphic.SpriteTiled;
 /**
  * Edit map tile groups dialog.
  */
-public class GroupsEditDialog extends AbstractDialog
+public class GroupsEditDialog extends DialogAbstract
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "groups-edit.png");
@@ -210,7 +210,7 @@ public class GroupsEditDialog extends AbstractDialog
         content.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
         final Composite levelsArea = createLevelsArea(content);
-        next = UtilButton.create(levelsArea, com.b3dgs.lionengine.editor.dialog.Messages.Next, AbstractDialog.ICON_OK);
+        next = UtilButton.create(levelsArea, com.b3dgs.lionengine.editor.dialog.Messages.Next, DialogAbstract.ICON_OK);
         next.setEnabled(false);
         UtilButton.setAction(next, this::next);
     }

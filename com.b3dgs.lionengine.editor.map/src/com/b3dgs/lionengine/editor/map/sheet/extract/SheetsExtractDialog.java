@@ -31,7 +31,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import com.b3dgs.lionengine.Media;
 import com.b3dgs.lionengine.core.Medias;
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.validator.InputValidator;
 import com.b3dgs.lionengine.editor.widget.BrowseWidget;
@@ -49,7 +49,7 @@ import com.b3dgs.lionengine.graphic.SpriteTiled;
  * Extract sheets dialog.
  */
 // CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
-public class SheetsExtractDialog extends AbstractDialog
+public class SheetsExtractDialog extends DialogAbstract
 {
     /** Sheets default extension. */
     public static final String SHEET_EXTENSION = ".png";

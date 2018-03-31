@@ -40,7 +40,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import com.b3dgs.lionengine.Media;
 import com.b3dgs.lionengine.core.Medias;
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.utility.control.UtilButton;
 import com.b3dgs.lionengine.editor.world.WorldModel;
@@ -56,7 +56,7 @@ import com.b3dgs.lionengine.util.UtilMath;
  * Edit minimap dialog.
  */
 // CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
-public class MinimapEditDialog extends AbstractDialog
+public class MinimapEditDialog extends DialogAbstract
 {
     /** Editor folder. */
     private static final String EDITOR = "editor";

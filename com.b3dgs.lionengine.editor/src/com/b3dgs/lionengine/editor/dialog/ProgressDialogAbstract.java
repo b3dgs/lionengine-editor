@@ -30,7 +30,7 @@ import com.b3dgs.lionengine.editor.utility.control.UtilSwt;
 /**
  * Abstract progress dialog.
  */
-public abstract class AbstractProgressDialog extends AbstractDialog
+public abstract class ProgressDialogAbstract extends DialogAbstract
 {
     /** Progress bar. */
     private ProgressBar progress;
@@ -44,7 +44,7 @@ public abstract class AbstractProgressDialog extends AbstractDialog
      * @param headerDesc The header description.
      * @param headerIcon The header icon.
      */
-    public AbstractProgressDialog(Shell parent, String title, String headerTitle, String headerDesc, Image headerIcon)
+    public ProgressDialogAbstract(Shell parent, String title, String headerTitle, String headerDesc, Image headerIcon)
     {
         super(parent, title, headerTitle, headerDesc, headerIcon);
     }

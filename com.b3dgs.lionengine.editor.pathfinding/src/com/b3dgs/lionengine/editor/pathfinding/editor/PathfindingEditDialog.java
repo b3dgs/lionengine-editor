@@ -26,7 +26,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TreeItem;
 
 import com.b3dgs.lionengine.Constant;
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.utility.control.UtilSwt;
 import com.b3dgs.lionengine.editor.utility.dialog.UtilDialog;
@@ -42,7 +42,7 @@ import com.b3dgs.lionengine.io.Xml;
 /**
  * Edit map tile path dialog.
  */
-public class PathfindingEditDialog extends AbstractDialog
+public class PathfindingEditDialog extends DialogAbstract
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "edit.png");

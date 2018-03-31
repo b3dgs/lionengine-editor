@@ -27,7 +27,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.TreeItem;
 
 import com.b3dgs.lionengine.editor.ObjectListListener;
-import com.b3dgs.lionengine.editor.ObjectProperties;
+import com.b3dgs.lionengine.editor.ObjectPropertiesAbstract;
 import com.b3dgs.lionengine.editor.collision.map.editor.CollisionGroupList;
 import com.b3dgs.lionengine.editor.utility.control.UtilCombo;
 import com.b3dgs.lionengine.editor.utility.control.UtilText;
@@ -39,7 +39,7 @@ import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionGroup;
 /**
  * Represents the collision category properties edition view.
  */
-public class CollisionCategoryProperties extends ObjectProperties<CollisionCategory>
+public class CollisionCategoryProperties extends ObjectPropertiesAbstract<CollisionCategory>
                                          implements ObjectListListener<CollisionCategory>
 {
     /** Groups. */

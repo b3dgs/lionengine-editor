@@ -27,7 +27,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 
 import com.b3dgs.lionengine.editor.ObjectListListener;
-import com.b3dgs.lionengine.editor.ObjectProperties;
+import com.b3dgs.lionengine.editor.ObjectPropertiesAbstract;
 import com.b3dgs.lionengine.editor.utility.control.UtilCombo;
 import com.b3dgs.lionengine.editor.utility.control.UtilText;
 import com.b3dgs.lionengine.editor.world.WorldModel;
@@ -38,7 +38,7 @@ import com.b3dgs.lionengine.game.feature.tile.map.pathfinding.PathData;
 /**
  * Represents the animation properties edition view.
  */
-public class PathProperties extends ObjectProperties<PathData> implements ObjectListListener<PathData>
+public class PathProperties extends ObjectPropertiesAbstract<PathData> implements ObjectListListener<PathData>
 {
     /** Diagonal flag. */
     private final MovementList movements = new MovementList();

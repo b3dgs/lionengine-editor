@@ -27,7 +27,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
 import com.b3dgs.lionengine.Verbose;
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.project.ProjectFactory;
 import com.b3dgs.lionengine.editor.project.ProjectFactory.Info;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
@@ -36,7 +36,7 @@ import com.b3dgs.lionengine.util.UtilFolder;
 /**
  * Represents the new project dialog.
  */
-public class ProjectImportDialog extends AbstractProjectDialog
+public class ProjectImportDialog extends ProjectDialogAbstract
 {
     /** Project imported verbose. */
     private static final String VERBOSE_PROJECT_IMPORTED = "Project imported: ";
@@ -149,22 +149,22 @@ public class ProjectImportDialog extends AbstractProjectDialog
         boolean enabled = true;
         if (!hasClasses && !hasResources && !hasLibraries)
         {
-            setTipsMessage(AbstractDialog.ICON_ERROR, Messages.ImportProjectDialog_InfoBoth);
+            setTipsMessage(DialogAbstract.ICON_ERROR, Messages.ImportProjectDialog_InfoBoth);
             enabled = false;
         }
         else if (!hasClasses)
         {
-            setTipsMessage(AbstractDialog.ICON_ERROR, Messages.ImportProjectDialog_InfoClasses);
+            setTipsMessage(DialogAbstract.ICON_ERROR, Messages.ImportProjectDialog_InfoClasses);
             enabled = false;
         }
         else if (!hasLibraries)
         {
-            setTipsMessage(AbstractDialog.ICON_ERROR, Messages.ImportProjectDialog_InfoLibraries);
+            setTipsMessage(DialogAbstract.ICON_ERROR, Messages.ImportProjectDialog_InfoLibraries);
             enabled = false;
         }
         else if (!hasResources)
         {
-            setTipsMessage(AbstractDialog.ICON_ERROR, Messages.ImportProjectDialog_InfoResources);
+            setTipsMessage(DialogAbstract.ICON_ERROR, Messages.ImportProjectDialog_InfoResources);
             enabled = false;
         }
         finish.setEnabled(enabled);
@@ -285,7 +285,7 @@ public class ProjectImportDialog extends AbstractProjectDialog
             catch (final IOException exception)
             {
                 Verbose.exception(exception, Messages.ImportProjectDialog_InvalidImport);
-                setTipsMessage(AbstractDialog.ICON_ERROR, Messages.ImportProjectDialog_InvalidImport);
+                setTipsMessage(DialogAbstract.ICON_ERROR, Messages.ImportProjectDialog_InvalidImport);
                 tipsLabel.setVisible(true);
                 finish.setEnabled(false);
             }

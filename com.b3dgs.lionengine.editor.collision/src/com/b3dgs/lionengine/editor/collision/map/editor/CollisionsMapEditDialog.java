@@ -27,7 +27,7 @@ import org.eclipse.swt.widgets.TreeItem;
 
 import com.b3dgs.lionengine.Constant;
 import com.b3dgs.lionengine.Media;
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.world.WorldModel;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
@@ -41,7 +41,7 @@ import com.b3dgs.lionengine.io.Xml;
 /**
  * Represents the collisions map edition dialog.
  */
-public class CollisionsMapEditDialog extends AbstractDialog
+public class CollisionsMapEditDialog extends DialogAbstract
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "edit.png");

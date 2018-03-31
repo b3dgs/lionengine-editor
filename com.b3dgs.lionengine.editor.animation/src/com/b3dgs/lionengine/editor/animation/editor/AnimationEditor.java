@@ -28,7 +28,7 @@ import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.TreeItem;
 
 import com.b3dgs.lionengine.Animation;
-import com.b3dgs.lionengine.editor.dialog.AbstractEditor;
+import com.b3dgs.lionengine.editor.dialog.EditorAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.game.AnimationConfig;
 import com.b3dgs.lionengine.game.Configurer;
@@ -38,7 +38,7 @@ import com.b3dgs.lionengine.io.Xml;
  * Animation editor dialog.
  */
 // CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
-public class AnimationEditor extends AbstractEditor
+public class AnimationEditor extends EditorAbstract
 {
     /** Dialog icon. */
     public static final Image ICON = UtilIcon.get("dialog", "animation-edit.png");

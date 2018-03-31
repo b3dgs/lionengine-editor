@@ -25,14 +25,15 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.TreeItem;
 
 import com.b3dgs.lionengine.editor.ObjectListListener;
-import com.b3dgs.lionengine.editor.ObjectProperties;
+import com.b3dgs.lionengine.editor.ObjectPropertiesAbstract;
 import com.b3dgs.lionengine.editor.map.group.editor.GroupList;
 import com.b3dgs.lionengine.game.feature.tile.map.pathfinding.PathCategory;
 
 /**
  * Represents the path category properties edition view.
  */
-public class CategoryProperties extends ObjectProperties<PathCategory> implements ObjectListListener<PathCategory>
+public class CategoryProperties extends ObjectPropertiesAbstract<PathCategory>
+                                implements ObjectListListener<PathCategory>
 {
     /** Groups tree. */
     private final GroupList groups = new GroupList();

@@ -20,14 +20,14 @@ package com.b3dgs.lionengine.editor.animation.editor;
 import java.util.Collection;
 
 import com.b3dgs.lionengine.Animation;
-import com.b3dgs.lionengine.editor.ObjectList;
+import com.b3dgs.lionengine.editor.ObjectListAbstract;
 import com.b3dgs.lionengine.game.AnimationConfig;
 import com.b3dgs.lionengine.game.Configurer;
 
 /**
  * Represents the animation list, allowing to add and remove {@link Animation}.
  */
-public class AnimationList extends ObjectList<Animation>
+public class AnimationList extends ObjectListAbstract<Animation>
 {
     /** Animation default speed. */
     private static final double DEFAULT_SPEED = 0.1;

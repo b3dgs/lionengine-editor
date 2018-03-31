@@ -25,13 +25,13 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 
 import com.b3dgs.lionengine.editor.ObjectListListener;
-import com.b3dgs.lionengine.editor.ObjectProperties;
+import com.b3dgs.lionengine.editor.ObjectPropertiesAbstract;
 import com.b3dgs.lionengine.game.feature.collidable.Collision;
 
 /**
  * Represents the collisions properties edition view.
  */
-public class CollisionProperties extends ObjectProperties<Collision> implements ObjectListListener<Collision>
+public class CollisionProperties extends ObjectPropertiesAbstract<Collision> implements ObjectListListener<Collision>
 {
     /** Horizontal offset. */
     private Text offsetX;

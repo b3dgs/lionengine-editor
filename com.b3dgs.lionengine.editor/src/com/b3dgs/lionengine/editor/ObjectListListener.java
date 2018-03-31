@@ -20,7 +20,7 @@ package com.b3dgs.lionengine.editor;
 import com.b3dgs.lionengine.Nameable;
 
 /**
- * Notify object selection from {@link ObjectList}.
+ * Notify object selection from {@link ObjectListAbstract}.
  * 
  * @param <T> The object type handled by the list.
  */

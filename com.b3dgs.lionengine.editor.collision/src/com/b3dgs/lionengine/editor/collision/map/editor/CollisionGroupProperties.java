@@ -25,7 +25,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.TreeItem;
 
 import com.b3dgs.lionengine.editor.ObjectListListener;
-import com.b3dgs.lionengine.editor.ObjectProperties;
+import com.b3dgs.lionengine.editor.ObjectPropertiesAbstract;
 import com.b3dgs.lionengine.editor.formula.editor.FormulaList;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionFormula;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionGroup;
@@ -33,7 +33,7 @@ import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionGroup;
 /**
  * Represents the collisions properties edition view.
  */
-public class CollisionGroupProperties extends ObjectProperties<CollisionGroup>
+public class CollisionGroupProperties extends ObjectPropertiesAbstract<CollisionGroup>
                                       implements ObjectListListener<CollisionGroup>
 {
     /** Formulas tree. */

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.b3dgs.lionengine.Media;
-import com.b3dgs.lionengine.editor.ObjectList;
+import com.b3dgs.lionengine.editor.ObjectListAbstract;
 import com.b3dgs.lionengine.editor.ObjectListListener;
 import com.b3dgs.lionengine.editor.world.WorldModel;
 import com.b3dgs.lionengine.game.feature.tile.TileGroup;
@@ -35,7 +35,7 @@ import com.b3dgs.lionengine.io.Xml;
 /**
  * Represents the groups list, allowing to add and remove {@link TileGroup}.
  */
-public class GroupList extends ObjectList<TileGroup> implements ObjectListListener<TileGroup>
+public class GroupList extends ObjectListAbstract<TileGroup> implements ObjectListListener<TileGroup>
 {
     /**
      * Create the group list.

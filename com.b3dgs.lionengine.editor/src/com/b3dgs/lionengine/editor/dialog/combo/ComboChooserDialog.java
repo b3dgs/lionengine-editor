@@ -29,7 +29,7 @@ import org.eclipse.swt.widgets.Dialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.utility.control.UtilButton;
 import com.b3dgs.lionengine.editor.utility.control.UtilSwt;
@@ -77,7 +77,7 @@ public class ComboChooserDialog extends Dialog
 
         final Button finish = UtilButton.create(area,
                                                 com.b3dgs.lionengine.editor.dialog.Messages.Finish,
-                                                AbstractDialog.ICON_OK);
+                                                DialogAbstract.ICON_OK);
         final AtomicReference<String> choice = new AtomicReference<>();
         UtilButton.setAction(finish, () ->
         {

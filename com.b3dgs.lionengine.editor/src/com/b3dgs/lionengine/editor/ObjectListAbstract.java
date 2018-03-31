@@ -50,7 +50,7 @@ import com.b3dgs.lionengine.editor.validator.InputValidator;
  * @param <T> The object type handled by the list.
  */
 // CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
-public abstract class ObjectList<T extends Nameable>
+public abstract class ObjectListAbstract<T extends Nameable>
 {
     /** Icon add. */
     public static final Image ICON_ADD = UtilIcon.get("add.png");
@@ -68,7 +68,7 @@ public abstract class ObjectList<T extends Nameable>
     /** Class type. */
     private final Class<T> type;
     /** Properties. */
-    private final ObjectProperties<T> properties;
+    private final ObjectPropertiesAbstract<T> properties;
     /** Objects list. */
     private Tree objectsTree;
     /** Selected item. */
@@ -83,7 +83,7 @@ public abstract class ObjectList<T extends Nameable>
      * 
      * @param type The list class type.
      */
-    public ObjectList(Class<T> type)
+    public ObjectListAbstract(Class<T> type)
     {
         this(type, null);
     }
@@ -94,7 +94,7 @@ public abstract class ObjectList<T extends Nameable>
      * @param type The list class type.
      * @param properties The properties reference.
      */
-    public ObjectList(Class<T> type, ObjectProperties<T> properties)
+    public ObjectListAbstract(Class<T> type, ObjectPropertiesAbstract<T> properties)
     {
         this.type = type;
         this.properties = properties;
@@ -396,7 +396,7 @@ public abstract class ObjectList<T extends Nameable>
     private void createAddObjectToolItem(final ToolBar toolbar)
     {
         final ToolItem addObject = new ToolItem(toolbar, SWT.PUSH);
-        addObject.setImage(ObjectList.ICON_ADD);
+        addObject.setImage(ObjectListAbstract.ICON_ADD);
         addObject.addSelectionListener(new SelectionAdapter()
         {
             @Override
@@ -418,7 +418,7 @@ public abstract class ObjectList<T extends Nameable>
         final InputDialog inputDialog = new InputDialog(parent,
                                                         Messages.ObjectList_AddObject_Title,
                                                         Messages.ObjectList_AddObject_Text,
-                                                        ObjectList.DEFAULT_NEW_OBJECT_NAME,
+                                                        ObjectListAbstract.DEFAULT_NEW_OBJECT_NAME,
                                                         new InputValidator(InputValidator.NAME_MATCH, error));
         if (inputDialog.open() == Window.OK)
         {
@@ -446,7 +446,7 @@ public abstract class ObjectList<T extends Nameable>
     private void createRemoveObjectToolItem(ToolBar toolbar)
     {
         final ToolItem removeObject = new ToolItem(toolbar, SWT.PUSH);
-        removeObject.setImage(ObjectList.ICON_REMOVE);
+        removeObject.setImage(ObjectListAbstract.ICON_REMOVE);
         removeObject.addSelectionListener(new SelectionAdapter()
         {
             @Override

@@ -30,7 +30,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.map.group.editor.GroupsEditDialog;
 import com.b3dgs.lionengine.editor.map.world.updater.WorldInteractionTile;
 import com.b3dgs.lionengine.editor.utility.control.UtilButton;
@@ -43,7 +43,7 @@ import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroup;
 /**
  * Represents the tile group chooser.
  */
-public class GroupChooser extends AbstractDialog
+public class GroupChooser extends DialogAbstract
 {
     /** Dialog minimum width. */
     private static final int DIALOG_MIN_WIDTH = 256;

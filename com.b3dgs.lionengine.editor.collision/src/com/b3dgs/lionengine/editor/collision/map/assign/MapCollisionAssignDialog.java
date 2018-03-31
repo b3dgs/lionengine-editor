@@ -28,7 +28,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 import com.b3dgs.lionengine.editor.collision.CollisionVerifier;
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.utility.control.UtilButton;
 import com.b3dgs.lionengine.editor.utility.control.UtilText;
@@ -39,7 +39,7 @@ import com.b3dgs.lionengine.editor.world.view.WorldPart;
 /**
  * Allows to configure the assigned collision from mouse on map.
  */
-public class MapCollisionAssignDialog extends AbstractDialog
+public class MapCollisionAssignDialog extends DialogAbstract
 {
     /** Icon. */
     private static final Image ICON = UtilIcon.get("dialog", "assign-collision.png");

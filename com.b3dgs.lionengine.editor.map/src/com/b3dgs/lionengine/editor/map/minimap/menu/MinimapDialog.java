@@ -39,7 +39,7 @@ import org.eclipse.swt.widgets.Text;
 
 import com.b3dgs.lionengine.Media;
 import com.b3dgs.lionengine.core.Medias;
-import com.b3dgs.lionengine.editor.dialog.AbstractDialog;
+import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.utility.Focusable;
 import com.b3dgs.lionengine.editor.utility.control.UtilButton;
 import com.b3dgs.lionengine.editor.utility.control.UtilSwt;
@@ -216,13 +216,13 @@ public final class MinimapDialog implements MouseListener, MouseMoveListener, Mo
         browse.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
         UtilButton.setAction(browse, this::selectConfig);
 
-        final Button automatic = UtilButton.create(content, Messages.Generate, AbstractDialog.ICON_OK);
+        final Button automatic = UtilButton.create(content, Messages.Generate, DialogAbstract.ICON_OK);
         automatic.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
         UtilButton.setAction(automatic, () -> actionAutomatic(config.getText()));
 
         final Button finish = UtilButton.create(content,
                                                 com.b3dgs.lionengine.editor.dialog.Messages.Finish,
-                                                AbstractDialog.ICON_OK);
+                                                DialogAbstract.ICON_OK);
         finish.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
         UtilButton.setAction(finish, () -> openMinimapShell(parentShell));
     }

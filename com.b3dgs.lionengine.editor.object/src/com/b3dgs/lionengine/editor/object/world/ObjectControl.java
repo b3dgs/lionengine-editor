@@ -147,8 +147,8 @@ public class ObjectControl
                 final ObjectRepresentation object = factory.create(media, ObjectRepresentation.class);
                 final Point point = UtilWorld.getPoint(camera, mx, my);
                 final Transformable transformable = object.getFeature(Transformable.class);
-                transformable.teleport(UtilMath.getRounded(point.getX(), map.getTileWidth()),
-                                       UtilMath.getRounded(point.getY(), map.getTileHeight()));
+                transformable.teleport(UtilMath.getRounded(point.getX(), map.isCreated() ? map.getTileWidth() : 1),
+                                       UtilMath.getRounded(point.getY(), map.isCreated() ? map.getTileHeight() : 1));
                 transformable.getFeature(Refreshable.class).update(1.0);
                 handler.add(object);
             }

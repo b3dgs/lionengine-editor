@@ -28,7 +28,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
-import com.b3dgs.lionengine.editor.dialog.AbstractProgressDialog;
+import com.b3dgs.lionengine.editor.dialog.ProgressDialogAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.utility.control.UtilSwt;
 import com.b3dgs.lionengine.game.feature.tile.TilesExtractor;
@@ -37,7 +37,7 @@ import com.b3dgs.lionengine.graphic.ImageBuffer;
 /**
  * Extract sheets progress dialog.
  */
-public class SheetsExtractProgressDialog extends AbstractProgressDialog
+public class SheetsExtractProgressDialog extends ProgressDialogAbstract
                                          implements TilesExtractor.ProgressListener, TilesExtractor.Canceler
 {
     /** Icon. */

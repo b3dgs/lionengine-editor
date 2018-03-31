@@ -45,7 +45,7 @@ import com.b3dgs.lionengine.editor.world.view.WorldPart;
  * Represents the abstract dialog.
  */
 // CHECKSTYLE IGNORE LINE: DataAbstractionCoupling
-public abstract class AbstractDialog extends Dialog implements MDirtyable
+public abstract class DialogAbstract extends Dialog implements MDirtyable
 {
     /** Dialog folder. */
     public static final String DIALOG_FOLDER = "dialog";
@@ -102,7 +102,7 @@ public abstract class AbstractDialog extends Dialog implements MDirtyable
      * @param headerDesc The header description.
      * @param headerIcon The header icon.
      */
-    public AbstractDialog(Shell parent, String title, String headerTitle, String headerDesc, Image headerIcon)
+    public DialogAbstract(Shell parent, String title, String headerTitle, String headerDesc, Image headerIcon)
     {
         this(parent, title, headerTitle, headerDesc, headerIcon, SWT.DIALOG_TRIM);
     }
@@ -117,7 +117,7 @@ public abstract class AbstractDialog extends Dialog implements MDirtyable
      * @param headerIcon The header icon.
      * @param type The dialogue type.
      */
-    public AbstractDialog(Shell parent, String title, String headerTitle, String headerDesc, Image headerIcon, int type)
+    public DialogAbstract(Shell parent, String title, String headerTitle, String headerDesc, Image headerIcon, int type)
     {
         super(parent);
         dialogTitle = title;
@@ -285,11 +285,11 @@ public abstract class AbstractDialog extends Dialog implements MDirtyable
         buttonArea.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
         buttonArea.setLayout(new GridLayout(2, true));
 
-        finish = UtilButton.create(buttonArea, Messages.Finish, AbstractDialog.ICON_OK);
+        finish = UtilButton.create(buttonArea, Messages.Finish, DialogAbstract.ICON_OK);
         finish.setEnabled(false);
         UtilButton.setAction(finish, this::close);
 
-        cancel = UtilButton.create(buttonArea, Messages.Cancel, AbstractDialog.ICON_CANCEL);
+        cancel = UtilButton.create(buttonArea, Messages.Cancel, DialogAbstract.ICON_CANCEL);
         UtilButton.setAction(cancel, () ->
         {
             canceled = true;
