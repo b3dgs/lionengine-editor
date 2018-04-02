@@ -38,6 +38,7 @@ import com.b3dgs.lionengine.game.feature.Refreshable;
 import com.b3dgs.lionengine.game.feature.Services;
 import com.b3dgs.lionengine.game.feature.Transformable;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
+import com.b3dgs.lionengine.geom.Area;
 import com.b3dgs.lionengine.geom.Point;
 import com.b3dgs.lionengine.geom.Rectangle;
 import com.b3dgs.lionengine.util.UtilMath;
@@ -177,14 +178,14 @@ public class ObjectControl
     /**
      * Select all objects inside the selection area.
      * 
-     * @param selectionArea The selection area.
+     * @param selection The selection area.
      */
-    public void selectObjects(Rectangle selectionArea)
+    public void selectObjects(Area selection)
     {
         for (final ObjectRepresentation object : handler.get(ObjectRepresentation.class))
         {
             final Rectangle rectangle = object.getRectangle();
-            if (selectionArea.contains(rectangle) || selectionArea.intersects(rectangle))
+            if (selection.contains(rectangle) || selection.intersects(rectangle))
             {
                 setObjectSelection(object, true);
             }
