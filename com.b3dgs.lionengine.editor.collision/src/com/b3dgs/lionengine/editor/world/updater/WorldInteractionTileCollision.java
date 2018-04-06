@@ -27,6 +27,8 @@ import java.util.TreeMap;
 
 import com.b3dgs.lionengine.Constant;
 import com.b3dgs.lionengine.Media;
+import com.b3dgs.lionengine.UtilMath;
+import com.b3dgs.lionengine.Xml;
 import com.b3dgs.lionengine.editor.collision.CollisionVerifier;
 import com.b3dgs.lionengine.editor.collision.map.assign.MapCollisionAssignDialog;
 import com.b3dgs.lionengine.editor.toolbar.FormulaItem;
@@ -52,8 +54,6 @@ import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionRange;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.MapTileCollision;
 import com.b3dgs.lionengine.geom.Line;
 import com.b3dgs.lionengine.geom.Point;
-import com.b3dgs.lionengine.io.Xml;
-import com.b3dgs.lionengine.util.UtilMath;
 
 /**
  * Handle the interaction with tiles collision.

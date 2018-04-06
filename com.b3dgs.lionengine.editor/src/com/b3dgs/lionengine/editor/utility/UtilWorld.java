@@ -24,6 +24,7 @@ import java.util.HashSet;
 import com.b3dgs.lionengine.LionEngineException;
 import com.b3dgs.lionengine.Media;
 import com.b3dgs.lionengine.Shape;
+import com.b3dgs.lionengine.Xml;
 import com.b3dgs.lionengine.game.feature.tile.Tile;
 import com.b3dgs.lionengine.game.feature.tile.TileConfig;
 import com.b3dgs.lionengine.game.feature.tile.TileGroupsConfig;
@@ -31,7 +32,6 @@ import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroup;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionGroup;
 import com.b3dgs.lionengine.geom.Point;
-import com.b3dgs.lionengine.io.Xml;
 
 /**
  * Series of tool functions around the editor world.

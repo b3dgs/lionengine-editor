@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.b3dgs.lionengine.Media;
+import com.b3dgs.lionengine.Xml;
 import com.b3dgs.lionengine.editor.ObjectListAbstract;
 import com.b3dgs.lionengine.editor.ObjectListListener;
 import com.b3dgs.lionengine.editor.world.WorldModel;
@@ -29,7 +30,6 @@ import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionFormula;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionGroup;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionGroupConfig;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.MapTileCollision;
-import com.b3dgs.lionengine.io.Xml;
 
 /**
  * Represents the collisions list, allowing to add and remove {@link CollisionGroup}.

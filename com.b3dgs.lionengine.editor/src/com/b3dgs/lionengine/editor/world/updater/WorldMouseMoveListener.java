@@ -30,9 +30,9 @@ public interface WorldMouseMoveListener
     /**
      * Called when the mouse moved.
      * 
-     * @param click The click number ({@link com.b3dgs.lionengine.core.swt.MouseSwt#LEFT},
-     *            {@link com.b3dgs.lionengine.core.swt.MouseSwt#RIGHT},
-     *            {@link com.b3dgs.lionengine.core.swt.MouseSwt#MIDDLE}.
+     * @param click The click number ({@link com.b3dgs.lionengine.swt.graphic.MouseSwt#LEFT},
+     *            {@link com.b3dgs.lionengine.swt.graphic.MouseSwt#RIGHT},
+     *            {@link com.b3dgs.lionengine.swt.graphic.MouseSwt#MIDDLE}.
      * @param oldMx The old horizontal location.
      * @param oldMy The old vertical location.
      * @param mx The current horizontal location.

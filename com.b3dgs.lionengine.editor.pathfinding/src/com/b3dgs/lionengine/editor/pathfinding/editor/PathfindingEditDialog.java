@@ -26,6 +26,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TreeItem;
 
 import com.b3dgs.lionengine.Constant;
+import com.b3dgs.lionengine.Xml;
 import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.utility.control.UtilSwt;
@@ -37,7 +38,6 @@ import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
 import com.b3dgs.lionengine.game.feature.tile.map.pathfinding.MapTilePath;
 import com.b3dgs.lionengine.game.feature.tile.map.pathfinding.PathCategory;
 import com.b3dgs.lionengine.game.feature.tile.map.pathfinding.PathfindingConfig;
-import com.b3dgs.lionengine.io.Xml;
 
 /**
  * Edit map tile path dialog.

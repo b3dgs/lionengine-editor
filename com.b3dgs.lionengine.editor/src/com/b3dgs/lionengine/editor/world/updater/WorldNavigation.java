@@ -17,12 +17,12 @@
  */
 package com.b3dgs.lionengine.editor.world.updater;
 
-import com.b3dgs.lionengine.core.swt.KeyboardSwt;
 import com.b3dgs.lionengine.editor.world.PaletteModel;
 import com.b3dgs.lionengine.editor.world.PaletteType;
 import com.b3dgs.lionengine.game.feature.Camera;
 import com.b3dgs.lionengine.game.feature.Services;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
+import com.b3dgs.lionengine.swt.graphic.KeyboardSwt;
 
 /**
  * Handle the world navigation by using keyboard arrows key as input or mouse drag.

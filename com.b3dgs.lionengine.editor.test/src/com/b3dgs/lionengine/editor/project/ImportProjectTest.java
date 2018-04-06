@@ -33,10 +33,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.b3dgs.lionengine.LionEngineException;
+import com.b3dgs.lionengine.UtilFolder;
 import com.b3dgs.lionengine.editor.Activator;
 import com.b3dgs.lionengine.editor.UtilNl;
 import com.b3dgs.lionengine.editor.dialog.project.Messages;
-import com.b3dgs.lionengine.util.UtilFolder;
 
 /**
  * Test the import project.

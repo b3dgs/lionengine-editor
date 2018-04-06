@@ -26,6 +26,8 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 
+import com.b3dgs.lionengine.Xml;
+import com.b3dgs.lionengine.XmlReader;
 import com.b3dgs.lionengine.editor.project.ProjectModel;
 import com.b3dgs.lionengine.editor.properties.PropertiesPart;
 import com.b3dgs.lionengine.editor.properties.PropertiesProviderObject;
@@ -35,10 +37,8 @@ import com.b3dgs.lionengine.game.Configurer;
 import com.b3dgs.lionengine.game.FramesConfig;
 import com.b3dgs.lionengine.game.SizeConfig;
 import com.b3dgs.lionengine.game.SurfaceConfig;
-import com.b3dgs.lionengine.graphic.ImageHeader;
-import com.b3dgs.lionengine.graphic.ImageInfo;
-import com.b3dgs.lionengine.io.Xml;
-import com.b3dgs.lionengine.io.XmlReader;
+import com.b3dgs.lionengine.graphic.drawable.ImageHeader;
+import com.b3dgs.lionengine.graphic.drawable.ImageInfo;
 
 /**
  * Element properties part.

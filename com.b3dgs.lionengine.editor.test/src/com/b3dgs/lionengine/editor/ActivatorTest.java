@@ -23,7 +23,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.b3dgs.lionengine.core.Engine;
+import com.b3dgs.lionengine.Engine;
 
 /**
  * Test the editor activator.

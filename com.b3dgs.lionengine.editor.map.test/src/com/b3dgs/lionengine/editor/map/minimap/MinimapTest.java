@@ -28,14 +28,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.b3dgs.lionengine.core.Medias;
+import com.b3dgs.lionengine.Medias;
+import com.b3dgs.lionengine.UtilTests;
 import com.b3dgs.lionengine.editor.UtilEditorTests;
 import com.b3dgs.lionengine.editor.map.UtilNl;
 import com.b3dgs.lionengine.editor.map.imports.MapImportDialogTest;
 import com.b3dgs.lionengine.editor.project.ImportProjectTest;
 import com.b3dgs.lionengine.editor.world.WorldModel;
 import com.b3dgs.lionengine.game.feature.tile.map.MinimapConfig;
-import com.b3dgs.lionengine.util.UtilTests;
 
 /**
  * Test the minimap generation.

@@ -37,8 +37,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TreeItem;
 
 import com.b3dgs.lionengine.Media;
-import com.b3dgs.lionengine.core.Medias;
-import com.b3dgs.lionengine.core.swt.MouseSwt;
+import com.b3dgs.lionengine.Medias;
 import com.b3dgs.lionengine.editor.ObjectListListener;
 import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.map.group.editor.GroupList;
@@ -67,6 +66,8 @@ import com.b3dgs.lionengine.game.feature.tile.TileGroupsConfig;
 import com.b3dgs.lionengine.game.feature.tile.TileRef;
 import com.b3dgs.lionengine.game.feature.tile.map.LevelRipConverter;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
+import com.b3dgs.lionengine.game.feature.tile.map.MapTileAppender;
+import com.b3dgs.lionengine.game.feature.tile.map.MapTileAppenderModel;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileGame;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroup;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroupModel;
@@ -75,7 +76,8 @@ import com.b3dgs.lionengine.game.feature.tile.map.collision.MapTileCollisionRend
 import com.b3dgs.lionengine.game.feature.tile.map.transition.MapTileTransitionModel;
 import com.b3dgs.lionengine.game.feature.tile.map.transition.circuit.MapTileCircuitModel;
 import com.b3dgs.lionengine.game.feature.tile.map.viewer.MapTileViewerModel;
-import com.b3dgs.lionengine.graphic.SpriteTiled;
+import com.b3dgs.lionengine.graphic.drawable.SpriteTiled;
+import com.b3dgs.lionengine.swt.graphic.MouseSwt;
 
 /**
  * Edit map tile groups dialog.
@@ -101,6 +103,8 @@ public class GroupsAssignDialog extends DialogAbstract implements WorldView, Foc
     private final GroupList groupList = new GroupList(properties);
     /** Map reference. */
     private final MapTile map;
+    /** Map appender reference. */
+    private final MapTileAppender appender;
     /** Map group. */
     private final MapTileGroup mapGroup;
     /** Part service. */
@@ -132,6 +136,7 @@ public class GroupsAssignDialog extends DialogAbstract implements WorldView, Foc
         map.addFeature(new MapTileTransitionModel(services));
         map.addFeature(new MapTileCircuitModel(services));
         map.addFeature(new MapTileViewerModel(services));
+        appender = map.addFeatureAndGet(new MapTileAppenderModel(services));
 
         services.add(new Selection());
 
@@ -191,7 +196,7 @@ public class GroupsAssignDialog extends DialogAbstract implements WorldView, Foc
             }
             mapPart.loadSheets(sheets);
             LevelRipConverter.start(levelRip, mapPart);
-            map.append(mapPart, offsetX, offsetY);
+            appender.append(mapPart, offsetX, offsetY);
 
             offsetX += mapPart.getInTileWidth();
             if (count >= size)

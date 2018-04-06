@@ -21,6 +21,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
+import com.b3dgs.lionengine.UtilFolder;
 import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.utility.dialog.UtilDialog;
@@ -31,7 +32,6 @@ import com.b3dgs.lionengine.game.feature.tile.map.LevelRipConverter;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroup;
 import com.b3dgs.lionengine.game.feature.tile.map.TileSheetsConfig;
-import com.b3dgs.lionengine.util.UtilFolder;
 
 /**
  * Represents the import map dialog.

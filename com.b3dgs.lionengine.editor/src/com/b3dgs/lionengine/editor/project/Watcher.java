@@ -27,8 +27,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.eclipse.swt.widgets.Tree;
 
+import com.b3dgs.lionengine.UtilFolder;
 import com.b3dgs.lionengine.Verbose;
-import com.b3dgs.lionengine.util.UtilFolder;
 
 /**
  * Folders modification watcher.

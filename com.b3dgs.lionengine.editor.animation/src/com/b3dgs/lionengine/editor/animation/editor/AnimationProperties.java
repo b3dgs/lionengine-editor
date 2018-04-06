@@ -27,7 +27,7 @@ import org.eclipse.swt.widgets.Text;
 import com.b3dgs.lionengine.Animation;
 import com.b3dgs.lionengine.editor.ObjectListListener;
 import com.b3dgs.lionengine.editor.ObjectPropertiesAbstract;
-import com.b3dgs.lionengine.graphic.SpriteAnimated;
+import com.b3dgs.lionengine.graphic.drawable.SpriteAnimated;
 
 /**
  * Represents the animation properties edition view.

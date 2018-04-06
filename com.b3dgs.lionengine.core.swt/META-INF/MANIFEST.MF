@@ -8,5 +8,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.swt,
  com.b3dgs.lionengine.core
 Bundle-ClassPath: .
-Export-Package: com.b3dgs.lionengine.core.swt,
- com.b3dgs.lionengine.io.swt
+Export-Package: com.b3dgs.lionengine.swt,
+ com.b3dgs.lionengine.swt.graphic

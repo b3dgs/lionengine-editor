@@ -31,13 +31,13 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.b3dgs.lionengine.UtilFolder;
 import com.b3dgs.lionengine.editor.UtilEditorTests;
 import com.b3dgs.lionengine.editor.object.UtilNl;
 import com.b3dgs.lionengine.editor.project.ImportProjectTest;
 import com.b3dgs.lionengine.editor.utility.UtilPart;
 import com.b3dgs.lionengine.editor.world.view.WorldPart;
 import com.b3dgs.lionengine.game.feature.FeaturableConfig;
-import com.b3dgs.lionengine.util.UtilFolder;
 
 /**
  * Test the object add and remove action.

@@ -20,6 +20,7 @@ package com.b3dgs.lionengine.editor.surface.handler;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.swt.widgets.Tree;
 
+import com.b3dgs.lionengine.Xml;
 import com.b3dgs.lionengine.editor.properties.PropertiesPart;
 import com.b3dgs.lionengine.editor.surface.properties.PropertiesSurface;
 import com.b3dgs.lionengine.editor.utility.UtilPart;
@@ -27,9 +28,8 @@ import com.b3dgs.lionengine.editor.utility.dialog.UtilDialog;
 import com.b3dgs.lionengine.game.Configurer;
 import com.b3dgs.lionengine.game.SizeConfig;
 import com.b3dgs.lionengine.game.SurfaceConfig;
-import com.b3dgs.lionengine.graphic.ImageHeader;
-import com.b3dgs.lionengine.graphic.ImageInfo;
-import com.b3dgs.lionengine.io.Xml;
+import com.b3dgs.lionengine.graphic.drawable.ImageHeader;
+import com.b3dgs.lionengine.graphic.drawable.ImageInfo;
 
 /**
  * Set surface handler.

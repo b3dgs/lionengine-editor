@@ -22,6 +22,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import com.b3dgs.lionengine.Media;
+import com.b3dgs.lionengine.Xml;
 import com.b3dgs.lionengine.editor.ObjectListAbstract;
 import com.b3dgs.lionengine.editor.ObjectListListener;
 import com.b3dgs.lionengine.editor.world.WorldModel;
@@ -30,7 +31,6 @@ import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionGroup;
 import com.b3dgs.lionengine.game.feature.tile.map.pathfinding.MapTilePath;
 import com.b3dgs.lionengine.game.feature.tile.map.pathfinding.PathCategory;
 import com.b3dgs.lionengine.game.feature.tile.map.pathfinding.PathfindingConfig;
-import com.b3dgs.lionengine.io.Xml;
 
 /**
  * Represents the categories list, allowing to add and remove pathfinding categories.

@@ -28,11 +28,11 @@ import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.TreeItem;
 
 import com.b3dgs.lionengine.Animation;
+import com.b3dgs.lionengine.Xml;
 import com.b3dgs.lionengine.editor.dialog.EditorAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.game.AnimationConfig;
 import com.b3dgs.lionengine.game.Configurer;
-import com.b3dgs.lionengine.io.Xml;
 
 /**
  * Animation editor dialog.

@@ -20,11 +20,11 @@ package com.b3dgs.lionengine.editor.map.minimap.project;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.swt.widgets.Shell;
 
+import com.b3dgs.lionengine.UtilFile;
+import com.b3dgs.lionengine.Xml;
 import com.b3dgs.lionengine.editor.project.ProjectModel;
 import com.b3dgs.lionengine.editor.validator.InputValidator;
 import com.b3dgs.lionengine.game.feature.tile.map.MinimapConfig;
-import com.b3dgs.lionengine.io.Xml;
-import com.b3dgs.lionengine.util.UtilFile;
 
 /**
  * Add a minimap descriptor in the selected folder.
