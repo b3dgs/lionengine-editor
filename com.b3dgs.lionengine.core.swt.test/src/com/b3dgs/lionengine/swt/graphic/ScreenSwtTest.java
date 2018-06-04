@@ -66,7 +66,7 @@ public final class ScreenSwtTest
         }
         catch (final SWTError error)
         {
-            Assumptions.assumeTrue(ERROR_MULTIPLE_DISPLAY.contains(error.getMessage()), ERROR_MULTIPLE_DISPLAY);
+            Assumptions.assumeTrue(error.getMessage().contains(ERROR_MULTIPLE_DISPLAY), error.getMessage());
         }
     }
 
@@ -86,25 +86,6 @@ public final class ScreenSwtTest
     public static void afterTests()
     {
         Engine.terminate();
-    }
-
-    /**
-     * Create screen.
-     * 
-     * @param config The config to test with.
-     * @return The created screen.
-     */
-    private static Screen createScreen(Config config)
-    {
-        try
-        {
-            return Graphics.createScreen(config);
-        }
-        catch (final SWTError error)
-        {
-            Assumptions.assumeTrue(ERROR_MULTIPLE_DISPLAY.contains(error.getMessage()), ERROR_MULTIPLE_DISPLAY);
-            return null;
-        }
     }
 
     /**
@@ -183,7 +164,7 @@ public final class ScreenSwtTest
      */
     private void testScreen(Config config)
     {
-        final Screen screen = createScreen(config);
+        final Screen screen = Graphics.createScreen(config);
         screen.addKeyListener(new InputDeviceKeyListener()
         {
             @Override
@@ -199,14 +180,8 @@ public final class ScreenSwtTest
             }
         });
         assertFalse(screen.isReady());
-        try
-        {
-            screen.start();
-        }
-        catch (final IllegalArgumentException exception)
-        {
-            Assumptions.assumeFalse(exception.getMessage().contains("Argument not valid"), exception.getMessage());
-        }
+
+        screen.start();
         screen.awaitReady();
         screen.preUpdate();
         screen.update();
