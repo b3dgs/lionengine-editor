@@ -20,15 +20,11 @@ package com.b3dgs.lionengine.swt.graphic;
 import static com.b3dgs.lionengine.UtilAssert.assertEquals;
 import static com.b3dgs.lionengine.UtilAssert.assertFalse;
 import static com.b3dgs.lionengine.UtilAssert.assertNotNull;
-import static com.b3dgs.lionengine.UtilAssert.assertThrowsPrefix;
-import static com.b3dgs.lionengine.UtilAssert.assertTimeout;
 import static com.b3dgs.lionengine.UtilAssert.assertTrue;
 
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.eclipse.swt.SWTError;
+import org.eclipse.swt.widgets.Monitor;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.BeforeAll;
@@ -37,6 +33,7 @@ import org.junit.jupiter.api.Test;
 import com.b3dgs.lionengine.Config;
 import com.b3dgs.lionengine.Engine;
 import com.b3dgs.lionengine.InputDeviceKeyListener;
+import com.b3dgs.lionengine.LionEngineException;
 import com.b3dgs.lionengine.Medias;
 import com.b3dgs.lionengine.Resolution;
 import com.b3dgs.lionengine.UtilTests;
@@ -52,23 +49,6 @@ public final class ScreenSwtTest
 {
     /** Image media. */
     private static final String IMAGE = "image.png";
-    /** Error multiple display. */
-    private static final String ERROR_MULTIPLE_DISPLAY = "Not implemented [multiple displays]";
-
-    /**
-     * Check multiple display capability.
-     */
-    public static void checkMultipleDisplaySupport()
-    {
-        try
-        {
-            assertNotNull(ToolsSwt.getDisplay());
-        }
-        catch (final SWTError error)
-        {
-            Assumptions.assumeFalse(error.getMessage().contains(ERROR_MULTIPLE_DISPLAY), error.getMessage());
-        }
-    }
 
     /**
      * Prepare test.
@@ -89,39 +69,18 @@ public final class ScreenSwtTest
     }
 
     /**
-     * Create screen.
-     * 
-     * @param config The config to test with.
-     * @return The created screen.
-     */
-    private static Screen createScreen(Config config)
-    {
-        try
-        {
-            return Graphics.createScreen(config);
-        }
-        catch (final SWTError error)
-        {
-            Assumptions.assumeFalse(error.getMessage().contains(ERROR_MULTIPLE_DISPLAY), error.getMessage());
-            return null;
-        }
-    }
-
-    /**
      * Test the windowed screen.
      */
     @Test
     public void testWindowed()
     {
-        checkMultipleDisplaySupport();
-
         final Config config = new Config(com.b3dgs.lionengine.UtilTests.RESOLUTION_320_240,
                                          32,
                                          true,
                                          Medias.create(IMAGE));
         config.setSource(com.b3dgs.lionengine.UtilTests.RESOLUTION_320_240);
 
-        assertTimeout(10_000L, () -> testScreen(config));
+        testScreen(config);
     }
 
     /**
@@ -130,20 +89,13 @@ public final class ScreenSwtTest
     @Test
     public void testFullscreen()
     {
-        checkMultipleDisplaySupport();
+        final Monitor monitor = ToolsSwt.getDisplay().getPrimaryMonitor();
 
-        final GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-        if (gd.isFullScreenSupported())
-        {
-            final int width = gd.getDisplayMode().getWidth();
-            final int height = gd.getDisplayMode().getHeight();
+        final Resolution resolution = new Resolution(monitor.getBounds().width, monitor.getBounds().height, 60);
+        final Config config = new Config(resolution, 32, false, Medias.create(IMAGE));
+        config.setSource(resolution);
 
-            final Resolution resolution = new Resolution(width, height, 60);
-            final Config config = new Config(resolution, 32, false, Medias.create(IMAGE));
-            config.setSource(resolution);
-
-            assertTimeout(10_000L, () -> testScreen(config));
-        }
+        testScreen(config);
     }
 
     /**
@@ -152,13 +104,23 @@ public final class ScreenSwtTest
     @Test
     public void testWindowedFail()
     {
-        checkMultipleDisplaySupport();
-
         final Resolution resolution = new Resolution(Integer.MAX_VALUE, Integer.MAX_VALUE, 0);
         final Config config = new Config(resolution, 32, true);
         config.setSource(resolution);
 
-        assertThrowsPrefix(() -> testScreen(config), ScreenWindowedSwt.ERROR_WINDOWED);
+        final Screen screen = Graphics.createScreen(config);
+        try
+        {
+            screen.start();
+        }
+        catch (final LionEngineException exception)
+        {
+            assertTrue(ScreenWindowedSwt.ERROR_WINDOWED.equals(exception.getMessage()));
+        }
+        catch (final Throwable exception)
+        {
+            Assumptions.assumeFalse("Argument not valid".equals(exception.getMessage()));
+        }
     }
 
     /**
@@ -167,13 +129,23 @@ public final class ScreenSwtTest
     @Test
     public void testFullscreenFail()
     {
-        checkMultipleDisplaySupport();
-
         final Resolution resolution = new Resolution(Integer.MAX_VALUE, Integer.MAX_VALUE, 0);
         final Config config = new Config(resolution, 32, false);
         config.setSource(resolution);
 
-        assertThrowsPrefix(() -> testScreen(config), ScreenFullSwt.ERROR_FULL_SCREEN);
+        final Screen screen = Graphics.createScreen(config);
+        try
+        {
+            screen.start();
+        }
+        catch (final LionEngineException exception)
+        {
+            assertTrue(ScreenFullSwt.ERROR_FULL_SCREEN.equals(exception.getMessage()));
+        }
+        catch (final Throwable exception)
+        {
+            Assumptions.assumeFalse("Argument not valid".equals(exception.getMessage()));
+        }
     }
 
     /**
@@ -183,7 +155,7 @@ public final class ScreenSwtTest
      */
     private void testScreen(Config config)
     {
-        final Screen screen = createScreen(config);
+        final Screen screen = Graphics.createScreen(config);
         screen.addKeyListener(new InputDeviceKeyListener()
         {
             @Override
@@ -199,13 +171,14 @@ public final class ScreenSwtTest
             }
         });
         assertFalse(screen.isReady());
+
         try
         {
             screen.start();
         }
-        catch (final IllegalArgumentException exception)
+        catch (final Throwable exception)
         {
-            Assumptions.assumeFalse(exception.getMessage().contains("Argument not valid"), exception.getMessage());
+            Assumptions.assumeFalse("Not implemented [multiple displays]".equals(exception.getMessage()));
         }
         screen.awaitReady();
         screen.preUpdate();
