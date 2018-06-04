@@ -89,6 +89,25 @@ public final class ScreenSwtTest
     }
 
     /**
+     * Create screen.
+     * 
+     * @param config The config to test with.
+     * @return The created screen.
+     */
+    private static Screen createScreen(Config config)
+    {
+        try
+        {
+            return Graphics.createScreen(config);
+        }
+        catch (final SWTError error)
+        {
+            Assumptions.assumeFalse(error.getMessage().contains(ERROR_MULTIPLE_DISPLAY), error.getMessage());
+            return null;
+        }
+    }
+
+    /**
      * Test the windowed screen.
      */
     @Test
@@ -164,7 +183,7 @@ public final class ScreenSwtTest
      */
     private void testScreen(Config config)
     {
-        final Screen screen = Graphics.createScreen(config);
+        final Screen screen = createScreen(config);
         screen.addKeyListener(new InputDeviceKeyListener()
         {
             @Override
@@ -180,8 +199,14 @@ public final class ScreenSwtTest
             }
         });
         assertFalse(screen.isReady());
-
-        screen.start();
+        try
+        {
+            screen.start();
+        }
+        catch (final IllegalArgumentException exception)
+        {
+            Assumptions.assumeFalse(exception.getMessage().contains("Argument not valid"), exception.getMessage());
+        }
         screen.awaitReady();
         screen.preUpdate();
         screen.update();
