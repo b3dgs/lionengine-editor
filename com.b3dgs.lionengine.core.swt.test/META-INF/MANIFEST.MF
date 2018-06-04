@@ -8,7 +8,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.swt,
  com.b3dgs.lionengine.core,
  com.b3dgs.lionengine.core.swt,
- org.junit;bundle-version="4.12.0"
+ org.junit.jupiter.api;bundle-version="5.0.0",
+ org.opentest4j;bundle-version="1.0.0"
 Bundle-ClassPath: .,
- lib/lionengine-core-9.0.0-20180406.151920-9-tests.jar
+ lib/lionengine-core-9.0.0-20180604.145635-12-tests.jar
 Automatic-Module-Name: com.b3dgs.lionengine.core.swt.test

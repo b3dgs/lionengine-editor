@@ -45,9 +45,9 @@ import com.b3dgs.lionengine.graphic.Transparency;
 public final class FactoryGraphicSwt implements FactoryGraphic
 {
     /** Reading image message. */
-    private static final String ERROR_IMAGE_READING = "Error on reading image !";
+    static final String ERROR_IMAGE_READING = "Error on reading image !";
     /** Save image message. */
-    private static final String ERROR_IMAGE_SAVE = "Unable to save image: ";
+    static final String ERROR_IMAGE_SAVE = "Unable to save image: ";
 
     /**
      * Constructor.
@@ -64,6 +64,8 @@ public final class FactoryGraphicSwt implements FactoryGraphic
     @Override
     public Screen createScreen(Config config)
     {
+        Check.notNull(config);
+
         if (config.isWindowed())
         {
             return new ScreenWindowedSwt(config);
@@ -92,8 +94,8 @@ public final class FactoryGraphicSwt implements FactoryGraphic
     @Override
     public ImageBuffer createImageBuffer(int width, int height)
     {
-        Check.superiorOrEqual(width, 0);
-        Check.superiorOrEqual(height, 0);
+        Check.superiorStrict(width, 0);
+        Check.superiorStrict(height, 0);
 
         final Image image = ToolsSwt.createImage(width, height, ToolsSwt.getTransparency(Transparency.OPAQUE));
         final ImageBufferSwt buffer = new ImageBufferSwt(image);
@@ -109,8 +111,8 @@ public final class FactoryGraphicSwt implements FactoryGraphic
     @Override
     public ImageBuffer createImageBuffer(int width, int height, ColorRgba transparency)
     {
-        Check.superiorOrEqual(width, 0);
-        Check.superiorOrEqual(height, 0);
+        Check.superiorStrict(width, 0);
+        Check.superiorStrict(height, 0);
 
         final Image image = ToolsSwt.createImage(width, height, transparency);
         return new ImageBufferSwt(image);
@@ -123,9 +125,9 @@ public final class FactoryGraphicSwt implements FactoryGraphic
         {
             return new ImageBufferSwt(ToolsSwt.getDisplay(), ToolsSwt.getImageData(input));
         }
-        catch (final SWTException | IOException exception)
+        catch (final SWTException | LionEngineException | IOException exception)
         {
-            throw new LionEngineException(exception, ERROR_IMAGE_READING);
+            throw new LionEngineException(exception, media, ERROR_IMAGE_READING);
         }
     }
 
@@ -180,13 +182,15 @@ public final class FactoryGraphicSwt implements FactoryGraphic
     @Override
     public void saveImage(ImageBuffer image, Media media)
     {
+        Check.notNull(media);
+
         try (OutputStream output = media.getOutputStream())
         {
             ToolsSwt.saveImage((Image) image.getSurface(), output);
         }
-        catch (final SWTException | IOException exception)
+        catch (final SWTException | NullPointerException | IOException exception)
         {
-            throw new LionEngineException(exception, ERROR_IMAGE_SAVE);
+            throw new LionEngineException(exception, media, ERROR_IMAGE_SAVE);
         }
     }
 

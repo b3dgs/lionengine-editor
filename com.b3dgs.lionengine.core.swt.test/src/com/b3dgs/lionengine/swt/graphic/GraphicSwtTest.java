@@ -17,22 +17,22 @@
  */
 package com.b3dgs.lionengine.swt.graphic;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import com.b3dgs.lionengine.graphic.GraphicTest;
 import com.b3dgs.lionengine.graphic.Graphics;
 
 /**
- * Test the graphic class.
+ * Test {@link GraphicSwt}.
  */
-public class GraphicSwtTest extends GraphicTest
+public final class GraphicSwtTest extends GraphicTest
 {
     /**
      * Prepare test.
      */
-    @BeforeClass
-    public static void setUp()
+    @BeforeAll
+    public static void beforeTests()
     {
         Graphics.setFactoryGraphic(new FactoryGraphicSwt());
     }

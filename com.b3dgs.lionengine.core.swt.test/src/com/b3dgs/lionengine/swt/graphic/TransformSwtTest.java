@@ -17,21 +17,21 @@
  */
 package com.b3dgs.lionengine.swt.graphic;
 
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeAll;
 
 import com.b3dgs.lionengine.graphic.Graphics;
 import com.b3dgs.lionengine.graphic.TransformTest;
 
 /**
- * Test the transform class.
+ * Test {@link TransformSwt}.
  */
-public class TransfortSwtTest extends TransformTest
+public final class TransformSwtTest extends TransformTest
 {
     /**
      * Prepare test.
      */
-    @BeforeClass
-    public static void setUp()
+    @BeforeAll
+    public static void beforeTests()
     {
         Graphics.setFactoryGraphic(new FactoryGraphicSwt());
     }

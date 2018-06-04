@@ -17,21 +17,26 @@
  */
 package com.b3dgs.lionengine.swt.graphic;
 
+import static com.b3dgs.lionengine.UtilAssert.assertEquals;
+import static com.b3dgs.lionengine.UtilAssert.assertFalse;
+import static com.b3dgs.lionengine.UtilAssert.assertNotNull;
+import static com.b3dgs.lionengine.UtilAssert.assertThrowsPrefix;
+import static com.b3dgs.lionengine.UtilAssert.assertTimeout;
+import static com.b3dgs.lionengine.UtilAssert.assertTrue;
+
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.swt.SWTError;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Assume;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assumptions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import com.b3dgs.lionengine.Config;
 import com.b3dgs.lionengine.Engine;
 import com.b3dgs.lionengine.InputDeviceKeyListener;
-import com.b3dgs.lionengine.LionEngineException;
 import com.b3dgs.lionengine.Medias;
 import com.b3dgs.lionengine.Resolution;
 import com.b3dgs.lionengine.UtilTests;
@@ -41,12 +46,10 @@ import com.b3dgs.lionengine.graphic.Screen;
 import com.b3dgs.lionengine.graphic.ScreenListener;
 
 /**
- * Test the screen class.
+ * Test {@link ScreenSwtAbstract}, {@link ScreenWindowedSwt} and {@link ScreenFullSwt}.
  */
-public class ScreenSwtTest
+public final class ScreenSwtTest
 {
-    /** Test timeout in milliseconds. */
-    private static final long TIMEOUT = 5000L;
     /** Image media. */
     private static final String IMAGE = "image.png";
     /** Error multiple display. */
@@ -59,19 +62,19 @@ public class ScreenSwtTest
     {
         try
         {
-            Assert.assertNotNull(ToolsSwt.getDisplay());
+            assertNotNull(ToolsSwt.getDisplay());
         }
         catch (final SWTError error)
         {
-            Assume.assumeFalse(ERROR_MULTIPLE_DISPLAY, ERROR_MULTIPLE_DISPLAY.contains(error.getMessage()));
+            Assumptions.assumeFalse(ERROR_MULTIPLE_DISPLAY.contains(error.getMessage()), ERROR_MULTIPLE_DISPLAY);
         }
     }
 
     /**
      * Prepare test.
      */
-    @BeforeClass
-    public static void setUp()
+    @BeforeAll
+    public static void beforeTests()
     {
         EngineSwt.start(ScreenSwtTest.class.getName(), Version.DEFAULT, ScreenSwtTest.class);
     }
@@ -79,8 +82,8 @@ public class ScreenSwtTest
     /**
      * Clean up test.
      */
-    @AfterClass
-    public static void cleanUp()
+    @AfterAll
+    public static void afterTests()
     {
         Engine.terminate();
     }
@@ -88,20 +91,24 @@ public class ScreenSwtTest
     /**
      * Test the windowed screen.
      */
-    @Test(timeout = TIMEOUT)
+    @Test
     public void testWindowed()
     {
         checkMultipleDisplaySupport();
 
-        final Config config = new Config(UtilTests.RESOLUTION_320_240, 32, true, Medias.create(IMAGE));
-        config.setSource(UtilTests.RESOLUTION_320_240);
-        testScreen(config);
+        final Config config = new Config(com.b3dgs.lionengine.UtilTests.RESOLUTION_320_240,
+                                         32,
+                                         true,
+                                         Medias.create(IMAGE));
+        config.setSource(com.b3dgs.lionengine.UtilTests.RESOLUTION_320_240);
+
+        assertTimeout(10_000L, () -> testScreen(config));
     }
 
     /**
      * Test the full screen.
      */
-    @Test(timeout = TIMEOUT)
+    @Test
     public void testFullscreen()
     {
         checkMultipleDisplaySupport();
@@ -116,14 +123,14 @@ public class ScreenSwtTest
             final Config config = new Config(resolution, 32, false, Medias.create(IMAGE));
             config.setSource(resolution);
 
-            testScreen(config);
+            assertTimeout(10_000L, () -> testScreen(config));
         }
     }
 
     /**
      * Test the windowed with wrong resolution.
      */
-    @Test(timeout = TIMEOUT, expected = LionEngineException.class)
+    @Test
     public void testWindowedFail()
     {
         checkMultipleDisplaySupport();
@@ -131,13 +138,14 @@ public class ScreenSwtTest
         final Resolution resolution = new Resolution(Integer.MAX_VALUE, Integer.MAX_VALUE, 0);
         final Config config = new Config(resolution, 32, true);
         config.setSource(resolution);
-        testScreen(config);
+
+        assertThrowsPrefix(() -> testScreen(config), ScreenWindowedSwt.ERROR_WINDOWED);
     }
 
     /**
      * Test the full screen with wrong resolution.
      */
-    @Test(timeout = TIMEOUT, expected = LionEngineException.class)
+    @Test
     public void testFullscreenFail()
     {
         checkMultipleDisplaySupport();
@@ -145,7 +153,8 @@ public class ScreenSwtTest
         final Resolution resolution = new Resolution(Integer.MAX_VALUE, Integer.MAX_VALUE, 0);
         final Config config = new Config(resolution, 32, false);
         config.setSource(resolution);
-        testScreen(config);
+
+        assertThrowsPrefix(() -> testScreen(config), ScreenFullSwt.ERROR_FULL_SCREEN);
     }
 
     /**
@@ -170,7 +179,7 @@ public class ScreenSwtTest
                 // Mock
             }
         });
-        Assert.assertFalse(screen.isReady());
+        assertFalse(screen.isReady());
         screen.start();
         screen.awaitReady();
         screen.preUpdate();
@@ -180,12 +189,14 @@ public class ScreenSwtTest
         screen.update();
         screen.requestFocus();
         screen.onSourceChanged(UtilTests.RESOLUTION_320_240);
-        Assert.assertNotNull(screen.getConfig());
-        Assert.assertNotNull(screen.getGraphic());
-        Assert.assertTrue(screen.getReadyTimeOut() > -1L);
-        Assert.assertTrue(screen.getX() > -1);
-        Assert.assertTrue(screen.getY() > -1);
-        Assert.assertTrue(screen.isReady());
+
+        assertNotNull(screen.getConfig());
+        assertNotNull(screen.getGraphic());
+        assertTrue(screen.getReadyTimeOut() > -1L);
+        assertTrue(screen.getX() > -1);
+        assertTrue(screen.getY() > -1);
+        assertTrue(screen.isReady());
+
         final AtomicBoolean focus = new AtomicBoolean();
         final AtomicBoolean disposed = new AtomicBoolean();
         screen.addListener(new ScreenListener()
@@ -210,13 +221,13 @@ public class ScreenSwtTest
         });
 
         ((ScreenSwtAbstract) screen).focusGained(null);
-        Assert.assertTrue(focus.get());
+        assertTrue(focus.get());
 
         ((ScreenSwtAbstract) screen).focusLost(null);
-        Assert.assertFalse(focus.get());
+        assertFalse(focus.get());
 
         screen.dispose();
-        Assert.assertTrue(disposed.get());
+        assertTrue(disposed.get());
 
         screen.setIcon(null);
         screen.addKeyListener(new InputDeviceKeyListener()
@@ -237,7 +248,8 @@ public class ScreenSwtTest
         screen.requestFocus();
         screen.hideCursor();
         screen.showCursor();
-        Assert.assertEquals(0, screen.getX());
-        Assert.assertEquals(0, screen.getY());
+
+        assertEquals(0, screen.getX());
+        assertEquals(0, screen.getY());
     }
 }

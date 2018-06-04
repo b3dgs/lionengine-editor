@@ -54,6 +54,25 @@ public abstract class ScreenSwtAbstract extends ScreenAbstract implements FocusL
     /** Max ready time in millisecond. */
     private static final long READY_TIMEOUT = 5000L;
 
+    /**
+     * Get screen title.
+     * 
+     * @return The screen title.
+     */
+    private static String getTitle()
+    {
+        final StringBuilder builder = new StringBuilder(Constant.BYTE_4);
+        if (Engine.isStarted())
+        {
+            builder.append(Engine.getProgramName()).append(Constant.SPACE).append(Engine.getProgramVersion());
+        }
+        else
+        {
+            builder.append(Constant.ENGINE_NAME).append(Constant.SPACE).append(Constant.ENGINE_VERSION);
+        }
+        return builder.toString();
+    }
+
     /** Current display. */
     protected final Display display;
     /** Hidden cursor instance. */
@@ -117,7 +136,7 @@ public abstract class ScreenSwtAbstract extends ScreenAbstract implements FocusL
             shell = new Shell(display, SWT.NO_TRIM | SWT.ON_TOP);
             shell.setBounds(display.getPrimaryMonitor().getBounds());
         }
-        shell.setText(Engine.getProgramName() + Constant.SPACE + Engine.getProgramVersion());
+        shell.setText(getTitle());
         shell.addDisposeListener(event -> onDisposed());
         return shell;
     }

@@ -17,16 +17,19 @@
  */
 package com.b3dgs.lionengine.swt.graphic;
 
-import java.io.IOException;
+import static com.b3dgs.lionengine.UtilAssert.assertEquals;
+import static com.b3dgs.lionengine.UtilAssert.assertNotEquals;
+import static com.b3dgs.lionengine.UtilAssert.assertNotNull;
+import static com.b3dgs.lionengine.UtilAssert.assertTrue;
+
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import com.b3dgs.lionengine.UtilReflection;
 import com.b3dgs.lionengine.graphic.ColorRgba;
@@ -35,17 +38,15 @@ import com.b3dgs.lionengine.graphic.ImageBuffer;
 import com.b3dgs.lionengine.graphic.Transparency;
 
 /**
- * Test the image buffer class.
+ * Test {@link ImageBufferSwt}.
  */
-public class ImageBufferSwtTest
+public final class ImageBufferSwtTest
 {
     /**
      * Prepare test.
-     * 
-     * @throws IOException If error.
      */
-    @BeforeClass
-    public static void setUp() throws IOException
+    @BeforeAll
+    public static void beforeTests()
     {
         Graphics.setFactoryGraphic(new FactoryGraphicSwt());
     }
@@ -53,8 +54,8 @@ public class ImageBufferSwtTest
     /**
      * Clean test.
      */
-    @AfterClass
-    public static void cleanUp()
+    @AfterAll
+    public static void afterTests()
     {
         Graphics.setFactoryGraphic(null);
     }
@@ -77,23 +78,23 @@ public class ImageBufferSwtTest
         final ImageData data = buffer.getImageData();
         final ImageBuffer image = new ImageBufferSwt(buffer);
 
-        Assert.assertNotNull(image.createGraphic());
-        Assert.assertEquals(buffer, UtilReflection.getMethod(image, "getBuffer"));
+        assertNotNull(image.createGraphic());
+        assertEquals(buffer, UtilReflection.getMethod(image, "getBuffer"));
 
         image.prepare();
-        Assert.assertNotEquals(buffer, image.getSurface());
+        assertNotEquals(buffer, image.getSurface());
 
-        Assert.assertEquals(-1, image.getRgb(0, 0));
-        Assert.assertNotNull(image.getRgb(0, 0, 1, 1, new int[1], 0, 0));
-        Assert.assertEquals(Transparency.OPAQUE, image.getTransparency());
-        Assert.assertEquals(data.width, image.getWidth());
-        Assert.assertEquals(data.height, image.getHeight());
+        assertEquals(-1, image.getRgb(0, 0));
+        assertNotNull(image.getRgb(0, 0, 1, 1, new int[1], 0, 0));
+        assertEquals(Transparency.OPAQUE, image.getTransparency());
+        assertEquals(data.width, image.getWidth());
+        assertEquals(data.height, image.getHeight());
 
         image.setRgb(0, 0, ColorRgba.BLUE.getRgba());
-        Assert.assertEquals(ColorRgba.BLUE.getRgba(), image.getRgb(0, 0));
+        assertEquals(ColorRgba.BLUE.getRgba(), image.getRgb(0, 0));
         image.setRgb(0, 0, 0, 0, new int[1], 0, 0);
 
-        Assert.assertEquals(Transparency.BITMASK, ImageBufferSwt.getTransparency(SWT.TRANSPARENCY_MASK));
+        assertEquals(Transparency.BITMASK, ImageBufferSwt.getTransparency(SWT.TRANSPARENCY_MASK));
 
         image.dispose();
     }
@@ -106,14 +107,10 @@ public class ImageBufferSwtTest
     {
         final ImageBuffer image = Graphics.createImageBuffer(100, 100, ColorRgba.RED);
 
-        Assert.assertTrue(image.getTransparency()
-                          + " "
-                          + image.getTransparentColor(),
-                          image.getTransparency() == Transparency.BITMASK
-                                                         && ColorRgba.RED.equals(image.getTransparentColor())
-                                                         || image.getTransparency() == Transparency.TRANSLUCENT
-                                                            && image.getTransparentColor() == null);
-        Assert.assertEquals(Transparency.TRANSLUCENT, ImageBufferSwt.getTransparency(SWT.TRANSPARENCY_ALPHA));
-        Assert.assertEquals(Transparency.OPAQUE, ImageBufferSwt.getTransparency(-1));
+        assertTrue(image.getTransparency() == Transparency.BITMASK && ColorRgba.RED.equals(image.getTransparentColor())
+                   || image.getTransparency() == Transparency.TRANSLUCENT && image.getTransparentColor() == null,
+                   image.getTransparency() + " " + image.getTransparentColor());
+        assertEquals(Transparency.TRANSLUCENT, ImageBufferSwt.getTransparency(SWT.TRANSPARENCY_ALPHA));
+        assertEquals(Transparency.OPAQUE, ImageBufferSwt.getTransparency(-1));
     }
 }

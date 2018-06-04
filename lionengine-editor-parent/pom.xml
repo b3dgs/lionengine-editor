@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.b3dgs</groupId>
         <artifactId>b3dgs-parent</artifactId>
-        <version>1.0.8</version>
+        <version>1.0.9-SNAPSHOT</version>
     </parent>
     <groupId>com.b3dgs.lionengine.editor</groupId>
     <artifactId>lionengine-editor-parent</artifactId>
@@ -14,6 +14,21 @@
     <name>LionEngine Editor</name>
     <description>Java 2D Game Engine</description>
     <url>https://github.com/b3dgs/lionengine-editor</url>
+    <modules>
+        <module>../com.b3dgs.lionengine.editor.target</module>
+        <module>../com.b3dgs.lionengine.core.swt</module>
+        <module>../com.b3dgs.lionengine.core.swt.test</module>
+        <module>../com.b3dgs.lionengine.editor</module>
+        <module>../com.b3dgs.lionengine.editor.test</module>
+        <module>../com.b3dgs.lionengine.editor.object</module>
+        <module>../com.b3dgs.lionengine.editor.object.test</module>
+        <module>../com.b3dgs.lionengine.editor.map</module>
+        <module>../com.b3dgs.lionengine.editor.map.test</module>
+        <module>../com.b3dgs.lionengine.editor.animation</module>
+        <module>../com.b3dgs.lionengine.editor.animation.test</module>
+        <module>../com.b3dgs.lionengine.editor.collision</module>
+        <module>../com.b3dgs.lionengine.editor.pathfinding</module>
+    </modules>
     <scm>
         <url>https://github.com/b3dgs/lionengine-editor</url>
         <connection>scm:git:git@github.com:b3dgs/lionengine-editor.git</connection>
@@ -92,6 +107,14 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-maven-plugin</artifactId>
             </plugin>
@@ -103,79 +126,17 @@
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-versions-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-surefire-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
     <profiles>
         <profile>
-            <id>release</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <modules>
-                <module>../com.b3dgs.lionengine.editor.target</module>
-                <module>../com.b3dgs.lionengine.core.swt</module>
-                <module>../com.b3dgs.lionengine.core.swt.test</module>
-                <module>../com.b3dgs.lionengine.editor</module>
-                <module>../com.b3dgs.lionengine.editor.test</module>
-                <module>../com.b3dgs.lionengine.editor.object</module>
-                <module>../com.b3dgs.lionengine.editor.object.test</module>
-                <module>../com.b3dgs.lionengine.editor.map</module>
-                <module>../com.b3dgs.lionengine.editor.map.test</module>
-                <module>../com.b3dgs.lionengine.editor.animation</module>
-                <module>../com.b3dgs.lionengine.editor.animation.test</module>
-                <module>../com.b3dgs.lionengine.editor.collision</module>
-                <module>../com.b3dgs.lionengine.editor.pathfinding</module>
-                <module>../com.b3dgs.lionengine.editor.repository</module>
-                <module>../com.b3dgs.lionengine.editor.product</module>
-            </modules>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
             <id>travis</id>
-            <modules>
-                <module>../com.b3dgs.lionengine.editor.target</module>
-                <module>../com.b3dgs.lionengine.core.swt</module>
-                <module>../com.b3dgs.lionengine.core.swt.test</module>
-                <module>../com.b3dgs.lionengine.editor</module>
-                <module>../com.b3dgs.lionengine.editor.test</module>
-                <module>../com.b3dgs.lionengine.editor.object</module>
-                <module>../com.b3dgs.lionengine.editor.object.test</module>
-                <module>../com.b3dgs.lionengine.editor.map</module>
-                <module>../com.b3dgs.lionengine.editor.map.test</module>
-                <module>../com.b3dgs.lionengine.editor.animation</module>
-                <module>../com.b3dgs.lionengine.editor.animation.test</module>
-                <module>../com.b3dgs.lionengine.editor.collision</module>
-                <module>../com.b3dgs.lionengine.editor.pathfinding</module>
-            </modules>
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.eclipse.tycho</groupId>
-                        <artifactId>tycho-surefire-plugin</artifactId>
-                    </plugin>
                     <plugin>
                         <groupId>org.jacoco</groupId>
                         <artifactId>jacoco-maven-plugin</artifactId>
@@ -183,6 +144,21 @@
                     <plugin>
                         <groupId>org.sonarsource.scanner.maven</groupId>
                         <artifactId>sonar-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>release</id>
+            <modules>
+                <module>../com.b3dgs.lionengine.editor.repository</module>
+                <module>../com.b3dgs.lionengine.editor.product</module>
+            </modules>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
                     </plugin>
                 </plugins>
             </build>

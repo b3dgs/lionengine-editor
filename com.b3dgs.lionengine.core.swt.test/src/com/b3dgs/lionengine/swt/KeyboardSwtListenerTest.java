@@ -17,14 +17,15 @@
  */
 package com.b3dgs.lionengine.swt;
 
+import static com.b3dgs.lionengine.UtilAssert.assertTrue;
+
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Widget;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.b3dgs.lionengine.InputDeviceKeyListener;
 import com.b3dgs.lionengine.swt.graphic.KeyboardSwt;
@@ -33,9 +34,9 @@ import com.b3dgs.lionengine.swt.graphic.ScreenSwtTest;
 import com.b3dgs.lionengine.swt.graphic.ToolsSwt;
 
 /**
- * Test the key listener.
+ * Test {@link KeyboardSwtListener}.
  */
-public class KeyboardSwtListenerTest
+public final class KeyboardSwtListenerTest
 {
     /**
      * Create a key event.
@@ -50,6 +51,7 @@ public class KeyboardSwtListenerTest
         event.widget = widget;
         event.keyCode = key.intValue();
         event.character = ' ';
+
         return new KeyEvent(event);
     }
 
@@ -62,7 +64,6 @@ public class KeyboardSwtListenerTest
         ScreenSwtTest.checkMultipleDisplaySupport();
         final AtomicBoolean reachedPressed = new AtomicBoolean(false);
         final AtomicBoolean reachedReleased = new AtomicBoolean(false);
-
         final KeyboardSwtListener listener = new KeyboardSwtListener(new InputDeviceKeyListener()
         {
             @Override
@@ -83,7 +84,7 @@ public class KeyboardSwtListenerTest
         listener.keyReleased(createEvent(shell, KeyboardSwt.UP));
         shell.dispose();
 
-        Assert.assertTrue(reachedPressed.get());
-        Assert.assertTrue(reachedReleased.get());
+        assertTrue(reachedPressed.get());
+        assertTrue(reachedReleased.get());
     }
 }

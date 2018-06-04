@@ -17,6 +17,13 @@
  */
 package com.b3dgs.lionengine.swt.graphic;
 
+import static com.b3dgs.lionengine.UtilAssert.assertEquals;
+import static com.b3dgs.lionengine.UtilAssert.assertFalse;
+import static com.b3dgs.lionengine.UtilAssert.assertNotNull;
+import static com.b3dgs.lionengine.UtilAssert.assertPrivateConstructor;
+import static com.b3dgs.lionengine.UtilAssert.assertThrows;
+import static com.b3dgs.lionengine.UtilAssert.assertTrue;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,29 +35,26 @@ import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.PaletteData;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-import com.b3dgs.lionengine.LionEngineException;
 import com.b3dgs.lionengine.Media;
 import com.b3dgs.lionengine.Medias;
 import com.b3dgs.lionengine.UtilEnum;
-import com.b3dgs.lionengine.UtilTests;
 import com.b3dgs.lionengine.graphic.ColorRgba;
 import com.b3dgs.lionengine.graphic.Transparency;
 
 /**
- * Test the tools class.
+ * Test {@link ToolsSwt}.
  */
-public class ToolsSwtTest
+public final class ToolsSwtTest
 {
     /**
      * Prepare test.
      */
-    @BeforeClass
-    public static void prepare()
+    @BeforeAll
+    public static void beforeTests()
     {
         Medias.setLoadFromJar(ToolsSwtTest.class);
     }
@@ -58,21 +62,19 @@ public class ToolsSwtTest
     /**
      * Clean up test.
      */
-    @AfterClass
-    public static void cleanUp()
+    @AfterAll
+    public static void afterTests()
     {
         Medias.setLoadFromJar(null);
     }
 
     /**
      * Test the constructor.
-     * 
-     * @throws Throwable If error.
      */
-    @Test(expected = LionEngineException.class)
-    public void testConstructor() throws Throwable
+    @Test
+    public void testConstructor()
     {
-        UtilTests.testPrivateConstructor(ToolsSwt.class);
+        assertPrivateConstructor(ToolsSwt.class);
     }
 
     /**
@@ -81,19 +83,11 @@ public class ToolsSwtTest
     @Test
     public void testTransparency()
     {
-        try
-        {
-            Assert.assertNotEquals(0, ToolsSwt.getTransparency(UtilEnum.make(Transparency.class, "FAIL")));
-            Assert.fail();
-        }
-        catch (final LionEngineException exception)
-        {
-            Assert.assertNotNull(exception);
-        }
+        assertThrows(() -> ToolsSwt.getTransparency(UtilEnum.make(Transparency.class, "FAIL")), "Unknown enum: FAIL");
 
-        Assert.assertEquals(SWT.TRANSPARENCY_NONE, ToolsSwt.getTransparency(Transparency.OPAQUE));
-        Assert.assertEquals(SWT.TRANSPARENCY_PIXEL, ToolsSwt.getTransparency(Transparency.BITMASK));
-        Assert.assertEquals(SWT.TRANSPARENCY_ALPHA, ToolsSwt.getTransparency(Transparency.TRANSLUCENT));
+        assertEquals(SWT.TRANSPARENCY_NONE, ToolsSwt.getTransparency(Transparency.OPAQUE));
+        assertEquals(SWT.TRANSPARENCY_PIXEL, ToolsSwt.getTransparency(Transparency.BITMASK));
+        assertEquals(SWT.TRANSPARENCY_ALPHA, ToolsSwt.getTransparency(Transparency.TRANSLUCENT));
     }
 
     /**
@@ -125,28 +119,27 @@ public class ToolsSwtTest
         final Display display = ToolsSwt.getDisplay();
         final Image image = ToolsSwt.createImage(100, 100, SWT.TRANSPARENCY_NONE);
 
-        Assert.assertNotNull(image);
-        Assert.assertNotNull(ToolsSwt.getRasterBuffer(image, 1, 1, 1, 1, 1, 1, 1));
-        Assert.assertNotNull(ToolsSwt.flipHorizontal(image));
-        Assert.assertNotNull(ToolsSwt.flipVertical(image));
-        Assert.assertNotNull(ToolsSwt.resize(image, 10, 10));
-        Assert.assertNotNull(ToolsSwt.rotate(image, 90));
-        Assert.assertNotNull(ToolsSwt.splitImage(image, 1, 1));
-        Assert.assertNotNull(ToolsSwt.applyMask(image, ColorRgba.BLACK.getRgba()));
-        Assert.assertNotNull(ToolsSwt.applyMask(image, ColorRgba.WHITE.getRgba()));
+        assertNotNull(image);
+        assertNotNull(ToolsSwt.getRasterBuffer(image, 1, 1, 1, 1, 1, 1, 1));
+        assertNotNull(ToolsSwt.flipHorizontal(image));
+        assertNotNull(ToolsSwt.flipVertical(image));
+        assertNotNull(ToolsSwt.resize(image, 10, 10));
+        assertNotNull(ToolsSwt.rotate(image, 90));
+        assertNotNull(ToolsSwt.splitImage(image, 1, 1));
+        assertNotNull(ToolsSwt.applyMask(image, ColorRgba.BLACK.getRgba()));
+        assertNotNull(ToolsSwt.applyMask(image, ColorRgba.WHITE.getRgba()));
 
         image.dispose();
 
         final Media media = Medias.create("image.png");
-
         try (InputStream input = media.getInputStream())
         {
             final Image buffer = ToolsSwt.getImage(display, input);
-            Assert.assertNotNull(buffer);
+            assertNotNull(buffer);
 
             try (InputStream input2 = media.getInputStream())
             {
-                Assert.assertNotNull(ToolsSwt.getImageData(input2));
+                assertNotNull(ToolsSwt.getImageData(input2));
             }
             finally
             {
@@ -154,7 +147,7 @@ public class ToolsSwtTest
             }
         }
 
-        Assert.assertNotNull(ToolsSwt.createHiddenCursor(display));
+        assertNotNull(ToolsSwt.createHiddenCursor(display));
     }
 
     /**
@@ -168,7 +161,7 @@ public class ToolsSwtTest
 
         try
         {
-            Assert.assertEquals(image.getImageData().width, copy.getImageData().width);
+            assertEquals(image.getImageData().width, copy.getImageData().width);
         }
         finally
         {
@@ -191,7 +184,7 @@ public class ToolsSwtTest
         try (InputStream input = media.getInputStream())
         {
             final Image image = ToolsSwt.getImage(ToolsSwt.getDisplay(), input);
-            Assert.assertNotNull(image);
+            assertNotNull(image);
 
             final Media save = Medias.create("test");
             try (OutputStream output = save.getOutputStream())
@@ -202,28 +195,22 @@ public class ToolsSwtTest
             {
                 image.dispose();
             }
-            Assert.assertTrue(save.getFile().exists());
-            Assert.assertTrue(save.getFile().delete());
-            Assert.assertFalse(save.getFile().exists());
+            assertTrue(save.getFile().exists());
+            assertTrue(save.getFile().delete());
+            assertFalse(save.getFile().exists());
         }
     }
 
     /**
      * Test the get fail.
-     * 
-     * @throws IOException If error.
      */
-    @Test(expected = LionEngineException.class)
-    public void testGetFail() throws IOException
+    @Test
+    public void testGetFail()
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final Media media = Medias.create("image.xml");
 
-        try (InputStream input = media.getInputStream())
-        {
-            final Image image = ToolsSwt.getImage(ToolsSwt.getDisplay(), input);
-            Assert.assertNotNull(image);
-        }
+        assertThrows(() -> media.getInputStream(), "[image.xml] Cannot open the media !");
     }
 
     /**
@@ -231,7 +218,7 @@ public class ToolsSwtTest
      * 
      * @throws IOException If error.
      */
-    @Test(expected = SWTException.class)
+    @Test
     public void testGetIoFail() throws IOException
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
@@ -239,8 +226,9 @@ public class ToolsSwtTest
 
         try (InputStream input = media.getInputStream())
         {
-            final Image image = ToolsSwt.getImage(ToolsSwt.getDisplay(), input);
-            Assert.assertNotNull(image);
+            assertThrows(SWTException.class,
+                         () -> ToolsSwt.getImage(ToolsSwt.getDisplay(), input),
+                         "Unsupported or unrecognized format");
         }
     }
 }

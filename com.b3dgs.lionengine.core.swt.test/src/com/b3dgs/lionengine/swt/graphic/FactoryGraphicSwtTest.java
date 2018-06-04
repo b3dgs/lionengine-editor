@@ -17,6 +17,10 @@
  */
 package com.b3dgs.lionengine.swt.graphic;
 
+import static com.b3dgs.lionengine.UtilAssert.assertEquals;
+import static com.b3dgs.lionengine.UtilAssert.assertNotEquals;
+import static com.b3dgs.lionengine.UtilAssert.assertThrows;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,14 +28,13 @@ import java.io.OutputStream;
 import java.util.Collection;
 
 import org.eclipse.swt.SWT;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Assume;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-import com.b3dgs.lionengine.LionEngineException;
+import com.b3dgs.lionengine.FactoryMediaDefault;
 import com.b3dgs.lionengine.Media;
+import com.b3dgs.lionengine.Medias;
 import com.b3dgs.lionengine.graphic.FactoryGraphicTest;
 import com.b3dgs.lionengine.graphic.Graphics;
 import com.b3dgs.lionengine.graphic.ImageBuffer;
@@ -44,24 +47,23 @@ public class FactoryGraphicSwtTest extends FactoryGraphicTest
 {
     /**
      * Prepare test.
-     * 
-     * @throws IOException If error.
      */
-    @BeforeClass
-    public static void setUp() throws IOException
+    @BeforeAll
+    public static void setUp()
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
-        prepare();
+        Medias.setFactoryMedia(new FactoryMediaDefault());
+        Medias.setLoadFromJar(FactoryGraphicSwtTest.class);
         Graphics.setFactoryGraphic(new FactoryGraphicSwt());
-        loadResources();
     }
 
     /**
      * Clean test.
      */
-    @AfterClass
+    @AfterAll
     public static void cleanUp()
     {
+        Medias.setLoadFromJar(null);
         Graphics.setFactoryGraphic(null);
     }
 
@@ -72,22 +74,25 @@ public class FactoryGraphicSwtTest extends FactoryGraphicTest
     @Override
     public void testRotate()
     {
+        final ImageBuffer image = Graphics.getImageBuffer(Medias.create("image.png"));
+        image.prepare();
         final ImageBuffer rotate = Graphics.rotate(image, 90);
 
-        Assert.assertNotEquals(image, rotate);
-        Assert.assertEquals(image.getWidth(), rotate.getHeight());
-        Assert.assertEquals(image.getHeight(), rotate.getWidth());
+        assertNotEquals(image, rotate);
+        assertEquals(image.getWidth(), rotate.getHeight());
+        assertEquals(image.getHeight(), rotate.getWidth());
 
         rotate.dispose();
+        image.dispose();
     }
 
     /**
      * Test the get image buffer exception case.
      */
-    @Test(expected = LionEngineException.class)
+    @Test
     public void testGetImageBufferException()
     {
-        Graphics.getImageBuffer(new Media()
+        assertThrows(() -> Graphics.getImageBuffer(new Media()
         {
             @Override
             public String getName()
@@ -143,18 +148,17 @@ public class FactoryGraphicSwtTest extends FactoryGraphicTest
             {
                 return false;
             }
-        });
+        }), "[null] " + FactoryGraphicSwt.ERROR_IMAGE_READING);
     }
 
     /**
      * Test the save image exception case.
      */
-    @Test(expected = LionEngineException.class)
+    @Test
     public void testSaveImageException()
     {
-        Graphics.saveImage(new ImageBufferMock(16, 32)
+        assertThrows(() -> Graphics.saveImage(new ImageBufferMock(16, 32)
         {
-            @SuppressWarnings("unchecked")
             @Override
             public <T> T getSurface()
             {
@@ -216,23 +220,6 @@ public class FactoryGraphicSwtTest extends FactoryGraphicTest
             {
                 return false;
             }
-        });
-    }
-
-    /*
-     * FactoryGraphicTest
-     */
-
-    @Override
-    public void testCreateScreen()
-    {
-        Assume.assumeFalse("Unable to perform this test", false);
-    }
-
-    @Override
-    @Test
-    public void testCreateText()
-    {
-        // Skip to allow enum hack
+        }), "[null] " + FactoryGraphicSwt.ERROR_IMAGE_SAVE);
     }
 }
