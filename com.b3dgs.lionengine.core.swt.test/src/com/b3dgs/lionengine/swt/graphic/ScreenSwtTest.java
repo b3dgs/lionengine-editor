@@ -66,7 +66,7 @@ public final class ScreenSwtTest
         }
         catch (final SWTError error)
         {
-            Assumptions.assumeTrue(error.getMessage().contains(ERROR_MULTIPLE_DISPLAY), error.getMessage());
+            Assumptions.assumeFalse(error.getMessage().contains(ERROR_MULTIPLE_DISPLAY), error.getMessage());
         }
     }
 
