@@ -24,6 +24,7 @@ import static com.b3dgs.lionengine.UtilAssert.assertTrue;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import org.eclipse.swt.SWTError;
 import org.eclipse.swt.widgets.Monitor;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assumptions;
@@ -49,6 +50,22 @@ public final class ScreenSwtTest
 {
     /** Image media. */
     private static final String IMAGE = "image.png";
+
+    /**
+     * Check multiple display capability.
+     */
+    public static void checkMultipleDisplaySupport()
+    {
+        try
+        {
+            assertNotNull(ToolsSwt.getDisplay());
+        }
+        catch (final SWTError error)
+        {
+            Assumptions.assumeTrue(error.getMessage().contains("Not implemented [multiple displays]"),
+                                   error.getMessage());
+        }
+    }
 
     /**
      * Prepare test.
