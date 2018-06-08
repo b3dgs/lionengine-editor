@@ -95,7 +95,6 @@ public final class ScreenSwtTest
                                          32,
                                          true,
                                          Medias.create(IMAGE));
-        config.setSource(com.b3dgs.lionengine.UtilTests.RESOLUTION_320_240);
 
         testScreen(config);
     }
@@ -110,7 +109,6 @@ public final class ScreenSwtTest
 
         final Resolution resolution = new Resolution(monitor.getBounds().width, monitor.getBounds().height, 60);
         final Config config = new Config(resolution, 32, false, Medias.create(IMAGE));
-        config.setSource(resolution);
 
         testScreen(config);
     }
@@ -123,8 +121,6 @@ public final class ScreenSwtTest
     {
         final Resolution resolution = new Resolution(Integer.MAX_VALUE, Integer.MAX_VALUE, 0);
         final Config config = new Config(resolution, 32, true);
-        config.setSource(resolution);
-
         final Screen screen = Graphics.createScreen(config);
         try
         {
@@ -148,8 +144,6 @@ public final class ScreenSwtTest
     {
         final Resolution resolution = new Resolution(Integer.MAX_VALUE, Integer.MAX_VALUE, 0);
         final Config config = new Config(resolution, 32, false);
-        config.setSource(resolution);
-
         final Screen screen = Graphics.createScreen(config);
         try
         {

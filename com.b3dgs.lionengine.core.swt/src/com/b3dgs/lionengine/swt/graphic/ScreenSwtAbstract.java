@@ -355,7 +355,7 @@ public abstract class ScreenSwtAbstract extends ScreenAbstract implements FocusL
     @Override
     public void onSourceChanged(Resolution source)
     {
-        ((MouseSwt) getInputDevice(Mouse.class)).setConfig(config);
+        ((MouseSwt) getInputDevice(Mouse.class)).setConfig(config.getOutput(), source);
     }
 
     /*

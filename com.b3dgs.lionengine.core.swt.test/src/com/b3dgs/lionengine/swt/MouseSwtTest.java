@@ -29,7 +29,6 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;
 import org.junit.jupiter.api.Test;
 
-import com.b3dgs.lionengine.Config;
 import com.b3dgs.lionengine.Resolution;
 import com.b3dgs.lionengine.swt.graphic.MouseClickSwt;
 import com.b3dgs.lionengine.swt.graphic.MouseMoveSwt;
@@ -50,11 +49,9 @@ public final class MouseSwtTest
     public static MouseSwt createMouse()
     {
         final Resolution resolution = new Resolution(320, 240, 60);
-        final Config config = new Config(resolution, 32, false);
-        config.setSource(resolution);
 
         final MouseSwt mouse = new MouseSwt();
-        mouse.setConfig(config);
+        mouse.setConfig(resolution, resolution);
 
         return mouse;
     }
