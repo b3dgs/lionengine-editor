@@ -67,16 +67,6 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/technology/swtbot/releases/2.6.0/</url>
         </repository>
-        <repository>
-            <id>snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
     </repositories>
     <build>
         <sourceDirectory>src</sourceDirectory>
