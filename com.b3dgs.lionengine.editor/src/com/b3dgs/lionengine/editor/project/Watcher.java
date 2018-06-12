@@ -108,7 +108,6 @@ final class Watcher implements Runnable
             catch (final IOException exception)
             {
                 Verbose.exception(exception);
-                continue;
             }
         }
     }
