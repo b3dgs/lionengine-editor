@@ -1,22 +1,5 @@
-# LionEngine Editor
-[![Build Status](https://travis-ci.org/b3dgs/lionengine-editor.svg?branch=lionengine-editor-9.0.0)](https://travis-ci.org/b3dgs/lionengine) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=com.b3dgs.lionengine.editor%3Alionengine-editor-parent&metric=coverage)](https://sonarcloud.io/dashboard?id=com.b3dgs.lionengine.editor%3Alionengine-editor-parent) [![Lines of code](https://sonarcloud.io/api/project_badges/measure?project=com.b3dgs.lionengine.editor%3Alionengine-editor-parent&metric=ncloc)](https://sonarcloud.io/dashboard?id=com.b3dgs.lionengine.editor%3Alionengine-editor-parent) [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-<table>
-    <tr>
-        <td>
-            <a href="http://www.b3dgs.com/v7/page.php?lang=en&section=lionengine"><img src="http://www.b3dgs.com/v7/projects/lionengine/lionengine.jpg"/></a>
-        </td>
-        <td>
-            <h4 align="center">Summary</h4>
-            <div align="left">
-                <ul>
-                    <li><a href="#presentation">Presentation</a></li>
-                    <li><a href="#general-features">General features</a></li>
-                    <li><a href="#download">Download</a></li>
-                </ul>
-            </div>
-        </td>
-    </tr>
-</table>
+| [![Build Status](https://travis-ci.org/b3dgs/lionengine-editor.svg?branch=lionengine-editor-9.0.0)](https://travis-ci.org/b3dgs/lionengine)<br>[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=com.b3dgs.lionengine.editor%3Alionengine-editor-parent&metric=coverage)](https://sonarcloud.io/dashboard?id=com.b3dgs.lionengine.editor%3Alionengine-editor-parent)<br>[![Lines of code](https://sonarcloud.io/api/project_badges/measure?project=com.b3dgs.lionengine.editor%3Alionengine-editor-parent&metric=ncloc)](https://sonarcloud.io/dashboard?id=com.b3dgs.lionengine.editor%3Alionengine-editor-parent)<br>[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) | <a href="https://www.b3dgs.com/v7/page.php?lang=en&section=lionengine"><img hspace="170" src="https://user-images.githubusercontent.com/34600369/41530953-b6f4554a-72e9-11e8-9ab1-e49d390a9117.png" width="200"/></a> | [Presentation](#presentation)<br>[General features](#general-features)<br>[Download](#download) |
+|:---|:---:|---:|
 
 ## Presentation
 
@@ -51,5 +34,5 @@ The __LionEngine Editor__ is designed to help game development by providing a se
 
 ## Download
 
-* [Go to website](http://www.b3dgs.com/v7/page.php?lang=en&section=lionengine)
-* [Last version](https://lionengine.b3dgs.com/v8-4/page.php?lang=en&section=downloads)
+|[Go to website](http://www.b3dgs.com/v7/page.php?lang=en&section=lionengine)|[Last version](https://lionengine.b3dgs.com/v8-4/page.php?lang=en&section=downloads)|
+|---|---|
