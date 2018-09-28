@@ -195,8 +195,8 @@ public final class FactoryGraphicSwt implements FactoryGraphic
     }
 
     @Override
-    public ImageBuffer getRasterBuffer(ImageBuffer image, int fr, int fg, int fb, int er, int eg, int eb, int ref)
+    public ImageBuffer getRasterBuffer(ImageBuffer image, double fr, double fg, double fb)
     {
-        return new ImageBufferSwt(ToolsSwt.getRasterBuffer((Image) image.getSurface(), fr, fg, fb, er, eg, eb, ref));
+        return new ImageBufferSwt(ToolsSwt.getRasterBuffer((Image) image.getSurface(), fr, fg, fb));
     }
 }

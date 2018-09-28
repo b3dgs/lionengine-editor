@@ -103,7 +103,7 @@ public final class ToolsSwtTest
         });
         final ImageData data = new ImageData(16, 16, 8, palette);
         data.transparentPixel = 0;
-        ToolsSwt.getRasterBuffer(new Image(image.getDevice(), data), 0, 0, 0, 0, 0, 0, 1);
+        ToolsSwt.getRasterBuffer(new Image(image.getDevice(), data), 0, 0, 0);
     }
 
     /**
@@ -120,7 +120,7 @@ public final class ToolsSwtTest
         final Image image = ToolsSwt.createImage(100, 100, SWT.TRANSPARENCY_NONE);
 
         assertNotNull(image);
-        assertNotNull(ToolsSwt.getRasterBuffer(image, 1, 1, 1, 1, 1, 1, 1));
+        assertNotNull(ToolsSwt.getRasterBuffer(image, 1, 1, 1));
         assertNotNull(ToolsSwt.flipHorizontal(image));
         assertNotNull(ToolsSwt.flipVertical(image));
         assertNotNull(ToolsSwt.resize(image, 10, 10));

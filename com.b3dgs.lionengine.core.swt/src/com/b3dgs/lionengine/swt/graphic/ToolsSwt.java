@@ -421,15 +421,11 @@ public final class ToolsSwt
      * @param fr The first red.
      * @param fg The first green.
      * @param fb The first blue.
-     * @param er The end red.
-     * @param eg The end green.
-     * @param eb The end blue.
-     * @param refSize The reference size.
      * @return The rastered image.
      * @throws SWTException If error on getting data.
      */
     // CHECKSTYLE IGNORE LINE: ExecutableStatementCount
-    public static Image getRasterBuffer(Image image, int fr, int fg, int fb, int er, int eg, int eb, int refSize)
+    public static Image getRasterBuffer(Image image, double fr, double fg, double fb)
     {
         final ImageData data = image.getImageData();
         final PaletteData palette = data.palette;
@@ -446,31 +442,19 @@ public final class ToolsSwt
             }
         }
 
-        final int divisorRed = 0x010000;
-        final int divisorGreen = 0x000100;
-        final int divisorBlue = 0x000001;
-
-        final double sr = -((er - fr) / (double) divisorRed) / refSize;
-        final double sg = -((eg - fg) / (double) divisorGreen) / refSize;
-        final double sb = -((eb - fb) / (double) divisorBlue) / refSize;
-
         int lastPixel = newColorsPixel.size();
         final int[][] pixels = new int[data.width][data.height];
         for (int i = 0; i < data.width; i++)
         {
             for (int j = 0; j < data.height; j++)
             {
-                final int r = (int) (sr * (j % refSize)) * divisorRed;
-                final int g = (int) (sg * (j % refSize)) * divisorGreen;
-                final int b = (int) (sb * (j % refSize)) * divisorBlue;
-
                 final int pixel = data.getPixel(i, j);
                 if (pixel != data.transparentPixel)
                 {
                     final RGB rgb = palette.getRGB(pixel);
                     final ColorRgba colorRgba = new ColorRgba(rgb.red, rgb.green, rgb.blue);
 
-                    final int filter = UtilColor.filterRgb(colorRgba.getRgba(), fr + r, fg + g, fb + b);
+                    final int filter = UtilColor.multiplyRgb(colorRgba.getRgba(), fr, fg, fb);
                     final ColorRgba output = new ColorRgba(filter);
 
                     final Integer rasterRgba = Integer.valueOf(output.getRgba());
