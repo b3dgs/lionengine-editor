@@ -18,17 +18,13 @@
 package com.b3dgs.lionengine.editor.project;
 
 import java.io.File;
-import java.io.Serializable;
 import java.util.Comparator;
 
 /**
  * Comparator that prior directory first.
  */
-public final class DirectoryFolderComparator implements Comparator<File>, Serializable
+public final class DirectoryFolderComparator implements Comparator<File>
 {
-    /** Serial UID. */
-    private static final long serialVersionUID = 5918350780715048779L;
-
     /**
      * Create comparator.
      */
