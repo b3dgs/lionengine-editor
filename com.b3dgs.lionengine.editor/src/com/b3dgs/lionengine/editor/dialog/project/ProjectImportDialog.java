@@ -222,14 +222,7 @@ public class ProjectImportDialog extends ProjectDialogAbstract
     {
         final File projectPath = new File(projectLocationText.getText());
         hasProject = ProjectFactory.exists(projectPath);
-        if (hasProject)
-        {
-            finish.setEnabled(false);
-        }
-        else
-        {
-            finish.setEnabled(true);
-        }
+        finish.setEnabled(!hasProject);
         checkClassesExistence();
         checkResourcesExistence();
     }
