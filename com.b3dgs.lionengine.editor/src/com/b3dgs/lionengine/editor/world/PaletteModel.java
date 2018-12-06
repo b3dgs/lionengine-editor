@@ -54,6 +54,6 @@ public class PaletteModel
      */
     public boolean isPalette(PaletteType type)
     {
-        return palette.equals(type);
+        return palette == type;
     }
 }
