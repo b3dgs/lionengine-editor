@@ -5,7 +5,7 @@
 
 The __LionEngine Editor__ is designed to help game development by providing a set of tool for general object edition and map generation.
 
-<a href="http://lionengine.b3dgs.com/v8-4/page.php?lang=en&section=home"><img src="http://lionengine.b3dgs.com/v8-4/img/home/overview_en.png"/></a>
+<a href="http://lionengine.b3dgs.com/v9-0/page.php?lang=en&section=home"><img src="http://lionengine.b3dgs.com/v9-0/img/home/overview_en.png"/></a>
 
 ## General Features
 
@@ -34,5 +34,5 @@ The __LionEngine Editor__ is designed to help game development by providing a se
 
 ## Download
 
-|[Go to website](http://www.b3dgs.com/v7/page.php?lang=en&section=lionengine)|[Last version](https://lionengine.b3dgs.com/v8-4/page.php?lang=en&section=downloads)|
+|[Go to website](http://www.b3dgs.com/v7/page.php?lang=en&section=lionengine)|[Last version](https://lionengine.b3dgs.com/v9-0/page.php?lang=en&section=downloads)|
 |---|---|
