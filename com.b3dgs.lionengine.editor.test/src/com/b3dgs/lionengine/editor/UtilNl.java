@@ -19,11 +19,12 @@ package com.b3dgs.lionengine.editor;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
+import java.util.Locale;
 import java.util.Properties;
 
 import org.eclipse.core.runtime.Platform;
 
+import com.b3dgs.lionengine.Constant;
 import com.b3dgs.lionengine.LionEngineException;
 
 /**
@@ -31,21 +32,25 @@ import com.b3dgs.lionengine.LionEngineException;
  */
 public class UtilNl
 {
-    private static final String NL = Platform.getNL();
-    private static final char NL_SEPARATOR = '_';
+    private static final String[] NLS =
+    {
+        "fr"
+    };
     private static final String NL_FOLDER = "OSGI-INF/l10n/";
-    private static final String NL_FILE_PREFIX = "bundle_";
+    private static final String NL_REPLACER = "%NL%";
+    private static final String NL_FILE_PREFIX = "bundle" + NL_REPLACER;
     private static final String NL_FILE_EXTENSION = ".properties";
-    private static final String NL_FILE = NL_FOLDER
-                                          + NL_FILE_PREFIX
-                                          + NL.substring(0, NL.indexOf(NL_SEPARATOR))
-                                          + NL_FILE_EXTENSION;
-    private static final URL NL_PROPERTIES_FILE = Platform.getBundle(Activator.PLUGIN_ID).getResource(NL_FILE);
     private static final Properties PROPERTIES = new Properties();
 
     static
     {
-        try (InputStream input = NL_PROPERTIES_FILE.openConnection().getInputStream())
+        System.out.println(NL_FOLDER + NL_FILE_PREFIX.replace(NL_REPLACER, getNl()) + NL_FILE_EXTENSION);
+        try (InputStream input = Platform.getBundle(Activator.PLUGIN_ID)
+                                         .getResource(NL_FOLDER
+                                                      + NL_FILE_PREFIX.replace(NL_REPLACER, getNl())
+                                                      + NL_FILE_EXTENSION)
+                                         .openConnection()
+                                         .getInputStream())
         {
             PROPERTIES.load(input);
         }
@@ -53,6 +58,24 @@ public class UtilNl
         {
             throw new LionEngineException(exception);
         }
+    }
+
+    /**
+     * Get NL value.
+     * 
+     * @return The NL value, empty if default.
+     */
+    private static String getNl()
+    {
+        final String nl = Platform.getNL();
+        for (final String current : NLS)
+        {
+            if (nl.toLowerCase(Locale.ENGLISH).contains(current))
+            {
+                return Constant.UNDERSCORE + current;
+            }
+        }
+        return Constant.EMPTY_STRING;
     }
 
     /**
