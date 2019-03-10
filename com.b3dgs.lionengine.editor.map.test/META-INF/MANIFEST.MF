@@ -32,4 +32,4 @@ Import-Package: javax.annotation;version="1.0.0",
  org.osgi.framework;version="1.3.0"
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
- lib/lionengine-core-9.0.1-20190309.150925-1-tests.jar
+ lib/lionengine-core-9.0.1-20190310.102040-2-tests.jar
