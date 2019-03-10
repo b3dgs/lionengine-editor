@@ -28,6 +28,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 import com.b3dgs.lionengine.Nameable;
+import com.b3dgs.lionengine.editor.utility.control.UtilButton;
 import com.b3dgs.lionengine.editor.utility.control.UtilCombo;
 import com.b3dgs.lionengine.editor.utility.control.UtilText;
 
@@ -102,6 +103,20 @@ public abstract class ObjectPropertiesAbstract<T extends Nameable>
         if (!text.isDisposed())
         {
             UtilText.setDefaultValue(text, value);
+        }
+    }
+
+    /**
+     * Set the button default selection by checking if it is not disposed.
+     * 
+     * @param button The button reference.
+     * @param selected The button selection.
+     */
+    protected static void setValueDefault(Button button, boolean selected)
+    {
+        if (!button.isDisposed())
+        {
+            UtilButton.setDefaultValue(button, selected);
         }
     }
 

@@ -123,6 +123,19 @@ public final class UtilButton
     }
 
     /**
+     * Set the default button selection, and register dirty.
+     * 
+     * @param button The button reference.
+     * @param selected The button default selection.
+     */
+    public static void setDefaultValue(Button button, boolean selected)
+    {
+        registerDirty(button, false);
+        button.setSelection(selected);
+        registerDirty(button, true);
+    }
+
+    /**
      * Set the button action.
      * 
      * @param button The button reference.

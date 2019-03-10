@@ -36,6 +36,10 @@ public final class Messages extends NLS
     public static String Preview;
     /** Edit formulas template. */
     public static String Template;
+    /** Flag area. */
+    public static String Flag;
+    /** Glue flag. */
+    public static String Glue;
     /** Edit formulas range. */
     public static String Range;
     /** Range output. */
