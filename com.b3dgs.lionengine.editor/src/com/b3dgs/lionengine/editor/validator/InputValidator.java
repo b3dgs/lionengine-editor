@@ -39,7 +39,7 @@ public class InputValidator implements IInputValidator
     /** Must match a name. */
     public static final String NAME_MATCH = "[a-zA-z0-9]+";
     /** Must match a double. */
-    public static final String DOUBLE_MATCH = "[0-9]{1,13}(\\.[0-9]*)?";
+    public static final String DOUBLE_MATCH = "^-?[0-9]{1,13}(\\.[0-9]*)?";
     /** Must match an integer. */
     public static final String INTEGER_MATCH = "^-?[0-9]{0,9}";
     /** Must match a positive integer. */
