@@ -24,7 +24,6 @@ import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
@@ -38,7 +37,6 @@ import com.b3dgs.lionengine.LionEngineException;
 import com.b3dgs.lionengine.editor.ObjectListListener;
 import com.b3dgs.lionengine.editor.ObjectPropertiesAbstract;
 import com.b3dgs.lionengine.editor.map.group.editor.GroupList;
-import com.b3dgs.lionengine.editor.utility.control.UtilButton;
 import com.b3dgs.lionengine.editor.utility.control.UtilCombo;
 import com.b3dgs.lionengine.editor.utility.control.UtilText;
 import com.b3dgs.lionengine.editor.validator.InputValidator;
@@ -127,8 +125,6 @@ public class FormulaProperties extends ObjectPropertiesAbstract<CollisionFormula
     private Combo type;
     /** Last type data. */
     private CollisionFunctionType lastType;
-    /** Flag glue. */
-    private Button glue;
     /** Output type. */
     private Combo output;
     /** Minimum X. */
@@ -258,16 +254,6 @@ public class FormulaProperties extends ObjectPropertiesAbstract<CollisionFormula
             final CollisionFormula formula = ((FormulaTemplate) template.getData()).getFormula(map);
             notifyObjectSelected(formula);
         });
-    }
-
-    /**
-     * Create the flag properties.
-     * 
-     * @param parent The parent composite.
-     */
-    private void createTextFlag(Composite parent)
-    {
-        glue = UtilButton.createCheck(Messages.Glue, parent);
     }
 
     /**
@@ -411,7 +397,7 @@ public class FormulaProperties extends ObjectPropertiesAbstract<CollisionFormula
     protected void createTextFields(Composite parent)
     {
         final Composite composite = new Composite(parent, SWT.NONE);
-        final int items = 4;
+        final int items = 3;
         composite.setLayout(new GridLayout(items, false));
 
         final Group preview = new Group(composite, SWT.NONE);
@@ -420,12 +406,6 @@ public class FormulaProperties extends ObjectPropertiesAbstract<CollisionFormula
         preview.setText(Messages.Preview);
         createPreview(preview);
         createTemplate(preview);
-
-        final Group flag = new Group(composite, SWT.NONE);
-        flag.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-        flag.setLayout(new GridLayout(1, false));
-        flag.setText(Messages.Flag);
-        createTextFlag(flag);
 
         final Group range = new Group(composite, SWT.NONE);
         range.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
@@ -466,7 +446,7 @@ public class FormulaProperties extends ObjectPropertiesAbstract<CollisionFormula
         addGroups(constraint, Orientation.WEST, constraintsLeft);
         addGroups(constraint, Orientation.EAST, constraintsRight);
 
-        return new CollisionFormula(name, range, function, constraint, glue.getSelection());
+        return new CollisionFormula(name, range, function, constraint);
     }
 
     /**
@@ -487,8 +467,6 @@ public class FormulaProperties extends ObjectPropertiesAbstract<CollisionFormula
     @Override
     public void notifyObjectSelected(CollisionFormula formula)
     {
-        setValueDefault(glue, formula.isGlue());
-
         final CollisionRange range = formula.getRange();
         output.setText(range.getOutput().name());
         output.setData(range.getOutput());
@@ -521,8 +499,6 @@ public class FormulaProperties extends ObjectPropertiesAbstract<CollisionFormula
 
         setValueDefault(linearA, Constant.EMPTY_STRING);
         setValueDefault(linearB, Constant.EMPTY_STRING);
-
-        setValueDefault(glue, false);
 
         output.setData(null);
         type.setData(null);
