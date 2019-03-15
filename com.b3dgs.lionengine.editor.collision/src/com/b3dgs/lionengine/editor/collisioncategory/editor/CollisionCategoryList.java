@@ -67,12 +67,13 @@ public class CollisionCategoryList extends ObjectListAbstract<CollisionCategory>
                                      category.getAxis(),
                                      category.getOffsetX(),
                                      category.getOffsetY(),
+                                     category.isGlue(),
                                      category.getGroups());
     }
 
     @Override
     protected CollisionCategory createObject(String name)
     {
-        return new CollisionCategory(name, Axis.Y, 0, 0, new ArrayList<CollisionGroup>());
+        return new CollisionCategory(name, Axis.Y, 0, 0, true, new ArrayList<CollisionGroup>());
     }
 }

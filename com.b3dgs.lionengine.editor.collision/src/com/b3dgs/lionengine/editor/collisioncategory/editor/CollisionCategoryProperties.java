@@ -20,6 +20,7 @@ package com.b3dgs.lionengine.editor.collisioncategory.editor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
@@ -29,6 +30,7 @@ import org.eclipse.swt.widgets.TreeItem;
 import com.b3dgs.lionengine.editor.ObjectListListener;
 import com.b3dgs.lionengine.editor.ObjectPropertiesAbstract;
 import com.b3dgs.lionengine.editor.collision.map.editor.CollisionGroupList;
+import com.b3dgs.lionengine.editor.utility.control.UtilButton;
 import com.b3dgs.lionengine.editor.utility.control.UtilCombo;
 import com.b3dgs.lionengine.editor.utility.control.UtilText;
 import com.b3dgs.lionengine.editor.validator.InputValidator;
@@ -50,6 +52,8 @@ public class CollisionCategoryProperties extends ObjectPropertiesAbstract<Collis
     private Text offsetX;
     /** Offset Y. */
     private Text offsetY;
+    /** Glue flag. */
+    private Button glue;
 
     /**
      * Create a collision category properties.
@@ -85,6 +89,7 @@ public class CollisionCategoryProperties extends ObjectPropertiesAbstract<Collis
         UtilText.addVerify(offsetX, InputValidator.INTEGER_MATCH);
         offsetY = UtilText.create(Messages.OffsetY, fieldsArea);
         UtilText.addVerify(offsetY, InputValidator.INTEGER_MATCH);
+        glue = UtilButton.createCheck(Messages.Glue, fieldsArea);
 
         final Group groupsArea = new Group(parent, SWT.NONE);
         groupsArea.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
@@ -102,6 +107,7 @@ public class CollisionCategoryProperties extends ObjectPropertiesAbstract<Collis
                                      (Axis) axis.getData(),
                                      Integer.parseInt(offsetX.getText()),
                                      Integer.parseInt(offsetY.getText()),
+                                     glue.getSelection(),
                                      groups.getObjects());
     }
 
@@ -115,6 +121,7 @@ public class CollisionCategoryProperties extends ObjectPropertiesAbstract<Collis
         axis.setText(category.getAxis().name());
         offsetX.setText(String.valueOf(category.getOffsetX()));
         offsetY.setText(String.valueOf(category.getOffsetY()));
+        glue.setSelection(category.isGlue());
 
         for (final TreeItem item : groups.getTree().getItems())
         {

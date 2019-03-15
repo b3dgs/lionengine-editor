@@ -34,6 +34,8 @@ public final class Messages extends NLS
     public static String OffsetX;
     /** Collision category offset y. */
     public static String OffsetY;
+    /** Collision category glue. */
+    public static String Glue;
     /** Collision category groups. */
     public static String Groups;
 
