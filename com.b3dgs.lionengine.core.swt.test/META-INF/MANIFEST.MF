@@ -11,5 +11,5 @@ Require-Bundle: org.eclipse.swt,
  org.junit.jupiter.api;bundle-version="5.0.0",
  org.opentest4j;bundle-version="1.0.0"
 Bundle-ClassPath: .,
- lib/lionengine-core-9.0.1-20190314.204031-4-tests.jar
+ lib/lionengine-core-9.0.1-20190420.115709-6-tests.jar
 Automatic-Module-Name: com.b3dgs.lionengine.core.swt.test
