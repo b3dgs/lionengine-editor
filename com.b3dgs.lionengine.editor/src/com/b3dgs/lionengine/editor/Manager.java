@@ -30,7 +30,6 @@ import com.b3dgs.lionengine.editor.utility.UtilPart;
 /**
  * Manage the product life cycle.
  */
-@SuppressWarnings("restriction")
 public class Manager
 {
     /**

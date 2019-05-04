@@ -58,14 +58,14 @@
     </dependencies>
     <repositories>
         <repository>
-            <id>oxygen</id>
-            <url>http://download.eclipse.org/releases/oxygen</url>
+            <id>eclipse</id>
+            <url>http://download.eclipse.org/releases/2019-03</url>
             <layout>p2</layout>
         </repository>
         <repository>
             <id>swtbot</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/technology/swtbot/releases/2.6.0/</url>
+            <url>http://download.eclipse.org/technology/swtbot/releases/2.7.0/</url>
         </repository>
         <repository>
             <id>snapshots</id>

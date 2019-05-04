@@ -23,10 +23,10 @@
     </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_hWtDwPKQEeWpu_NQCohogQ" featurename="children" parentElementId="com.b3dgs.lionengine.editor.menu.window" positionInList="">
-    <elements xsi:type="menu:DirectMenuItem" xmi:id="_lVTAQPKQEeWpu_NQCohogQ" elementId="" label="%menu.view.minimap" iconURI="platform:/plugin/com.b3dgs.lionengine.editor.map/icons/menu/minimap.png" contributionURI="bundleclass://com.b3dgs.lionengine.editor.map/com.b3dgs.lionengine.editor.map.minimap.menu.MinimapHandler">
+    <elements xsi:type="menu:DirectMenuItem" xmi:id="_lVTAQPKQEeWpu_NQCohogQ" elementId="com.b3dgs.lionengine.editor.menu.view.minimap" label="%menu.view.minimap" iconURI="platform:/plugin/com.b3dgs.lionengine.editor.map/icons/menu/minimap.png" contributionURI="bundleclass://com.b3dgs.lionengine.editor.map/com.b3dgs.lionengine.editor.map.minimap.menu.MinimapHandler">
       <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_lVTAQfKQEeWpu_NQCohogQ" coreExpressionId="com.b3dgs.lionengine.editor.map.test"/>
     </elements>
-    <elements xsi:type="menu:DirectMenuItem" xmi:id="_mVJ6wPKQEeWpu_NQCohogQ" elementId="" label="%menu.view.palette" iconURI="platform:/plugin/com.b3dgs.lionengine.editor.map/icons/menu/palette.png" contributionURI="bundleclass://com.b3dgs.lionengine.editor.map/com.b3dgs.lionengine.editor.map.sheet.palette.SheetsPaletteHandler">
+    <elements xsi:type="menu:DirectMenuItem" xmi:id="_mVJ6wPKQEeWpu_NQCohogQ" elementId="com.b3dgs.lionengine.editor.menu.view.palette" label="%menu.view.palette" iconURI="platform:/plugin/com.b3dgs.lionengine.editor.map/icons/menu/palette.png" contributionURI="bundleclass://com.b3dgs.lionengine.editor.map/com.b3dgs.lionengine.editor.map.sheet.palette.SheetsPaletteHandler">
       <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_mVJ6wfKQEeWpu_NQCohogQ" coreExpressionId="com.b3dgs.lionengine.editor.map.test"/>
     </elements>
   </fragments>
