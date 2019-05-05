@@ -30,6 +30,7 @@ import com.b3dgs.lionengine.editor.ObjectRepresentation;
 import com.b3dgs.lionengine.editor.object.ObjectsTester;
 import com.b3dgs.lionengine.editor.project.ProjectModel;
 import com.b3dgs.lionengine.editor.utility.UtilWorld;
+import com.b3dgs.lionengine.game.FeatureProvider;
 import com.b3dgs.lionengine.game.feature.Camera;
 import com.b3dgs.lionengine.game.feature.Factory;
 import com.b3dgs.lionengine.game.feature.Featurable;
@@ -209,7 +210,7 @@ public class ObjectControl
      * @param object The object reference.
      * @param over <code>true</code> if mouse if over, <code>false</code> else.
      */
-    public void setMouseOver(ObjectRepresentation object, boolean over)
+    public void setMouseOver(FeatureProvider object, boolean over)
     {
         objectsOver.put(object.getFeature(Transformable.class), Boolean.valueOf(over));
     }
@@ -220,7 +221,7 @@ public class ObjectControl
      * @param object The object reference.
      * @param selected <code>true</code> if selected, <code>false</code> else.
      */
-    public void setObjectSelection(ObjectRepresentation object, boolean selected)
+    public void setObjectSelection(FeatureProvider object, boolean selected)
     {
         objectsSelection.put(object.getFeature(Transformable.class), Boolean.valueOf(selected));
     }

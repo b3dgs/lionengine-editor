@@ -92,7 +92,7 @@ public class SheetsExtractDialog extends DialogAbstract
      */
     public void save()
     {
-        if (destination.getMedia() != null && !tileWidth.isEmpty() && !tileHeight.isEmpty())
+        if (destination.getMedia() != null && tileWidth.getValue().isPresent() && tileHeight.getValue().isPresent())
         {
             final String folder = getFolder();
             int i = 0;
@@ -150,7 +150,7 @@ public class SheetsExtractDialog extends DialogAbstract
     void checkFinish()
     {
         final boolean hasRips = !levelRips.getLevelRips().isEmpty();
-        final boolean hasSize = !tileWidth.isEmpty() && !tileHeight.isEmpty();
+        final boolean hasSize = tileWidth.getValue().isPresent() && tileHeight.getValue().isPresent();
         final boolean finished = hasRips && hasSize && destination.getMedia() != null;
 
         finish.setEnabled(finished);

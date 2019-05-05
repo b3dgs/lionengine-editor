@@ -20,7 +20,6 @@ package com.b3dgs.lionengine.editor.widget;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.eclipse.swt.widgets.Composite;
@@ -37,8 +36,6 @@ public class TextWidget
     private final Collection<TextWidgetListener> listeners = new HashSet<>();
     /** Text value. */
     private final AtomicReference<Integer> value = new AtomicReference<>();
-    /** Empty flag. */
-    private final AtomicBoolean empty = new AtomicBoolean(true);
 
     /**
      * Create widget.
@@ -54,8 +51,7 @@ public class TextWidget
         text.addModifyListener(event ->
         {
             final String content = text.getText();
-            empty.set(content.isEmpty());
-            if (empty.get())
+            if (content.isEmpty())
             {
                 value.set(null);
             }
@@ -99,16 +95,6 @@ public class TextWidget
     public Optional<Integer> getValue()
     {
         return Optional.ofNullable(value.get());
-    }
-
-    /**
-     * Check if text content is empty.
-     * 
-     * @return <code>true</code> if empty, <code>false</code> else.
-     */
-    public boolean isEmpty()
-    {
-        return empty.get();
     }
 
     /**
