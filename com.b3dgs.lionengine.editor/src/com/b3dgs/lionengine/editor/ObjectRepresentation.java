@@ -141,4 +141,14 @@ public class ObjectRepresentation extends FeaturableModel
     {
         return rectangle;
     }
+
+    /*
+     * FeaturableModel
+     */
+
+    @Override
+    public boolean isLoadFeaturesEnabled()
+    {
+        return false;
+    }
 }

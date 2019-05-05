@@ -21,8 +21,11 @@ import com.b3dgs.lionengine.game.feature.Camera;
 import com.b3dgs.lionengine.game.feature.ComponentDisplayable;
 import com.b3dgs.lionengine.game.feature.ComponentRefreshable;
 import com.b3dgs.lionengine.game.feature.Factory;
+import com.b3dgs.lionengine.game.feature.Featurable;
 import com.b3dgs.lionengine.game.feature.Handler;
 import com.b3dgs.lionengine.game.feature.Services;
+import com.b3dgs.lionengine.game.feature.Spawner;
+import com.b3dgs.lionengine.game.feature.Transformable;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileGame;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroupModel;
@@ -66,6 +69,13 @@ public class WorldModel
 
         final Selection selection = new Selection();
         services.add(selection);
+
+        services.add((Spawner) (media, x, y) ->
+        {
+            final Featurable featurable = factory.create(media);
+            featurable.getFeature(Transformable.class).teleport(x, y);
+            handler.add(featurable);
+        });
 
         map.addFeature(new MapTileViewerModel(services));
         map.addFeature(new MapTileGroupModel());
