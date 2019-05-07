@@ -39,8 +39,8 @@
     </children>
     <mainMenu xmi:id="_RgxMyccnEeO6QsMPtNpkHg" elementId="menu:org.eclipse.ui.main.menu">
       <children xsi:type="menu:Menu" xmi:id="_RgxMyscnEeO6QsMPtNpkHg" elementId="com.b3dgs.lionengine.editor.menu.file" label="%menu.file" iconURI="">
-        <children xsi:type="menu:DirectMenuItem" xmi:id="_Mdn1YEsdEeS9gtv_zEGnhw" elementId="" label="%menu.file.import-project" iconURI="platform:/plugin/com.b3dgs.lionengine.editor/icons/menu/project-import.png" contributionURI="bundleclass://com.b3dgs.lionengine.editor/com.b3dgs.lionengine.editor.dialog.project.ProjectImportHandler"/>
-        <children xsi:type="menu:DirectMenuItem" xmi:id="_R5dL8EsdEeS9gtv_zEGnhw" elementId="" label="%menu.file.exit" iconURI="platform:/plugin/com.b3dgs.lionengine.editor/icons/dialog/exit.png" contributionURI="bundleclass://com.b3dgs.lionengine.editor/com.b3dgs.lionengine.editor.dialog.exit.ExitHandler"/>
+        <children xsi:type="menu:DirectMenuItem" xmi:id="_Mdn1YEsdEeS9gtv_zEGnhw" elementId="com.b3dgs.lionengine.editor.menu.file.import" label="%menu.file.import-project" iconURI="platform:/plugin/com.b3dgs.lionengine.editor/icons/menu/project-import.png" contributionURI="bundleclass://com.b3dgs.lionengine.editor/com.b3dgs.lionengine.editor.dialog.project.ProjectImportHandler"/>
+        <children xsi:type="menu:DirectMenuItem" xmi:id="_R5dL8EsdEeS9gtv_zEGnhw" elementId="com.b3dgs.lionengine.editor.menu.file.exit" label="%menu.file.exit" iconURI="platform:/plugin/com.b3dgs.lionengine.editor/icons/dialog/exit.png" contributionURI="bundleclass://com.b3dgs.lionengine.editor/com.b3dgs.lionengine.editor.dialog.exit.ExitHandler"/>
       </children>
       <children xsi:type="menu:Menu" xmi:id="_pXb_8G9-EeWXTKDefNFrEg" elementId="com.b3dgs.lionengine.editor.menu.window" label="%menu.view"/>
       <children xsi:type="menu:Menu" xmi:id="_RgxMzscnEeO6QsMPtNpkHg" elementId="com.b3dgs.lionengine.editor.menu.help" label="%menu.help" mnemonics="">

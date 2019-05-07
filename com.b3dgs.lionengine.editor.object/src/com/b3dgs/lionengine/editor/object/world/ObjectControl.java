@@ -32,12 +32,12 @@ import com.b3dgs.lionengine.editor.project.ProjectModel;
 import com.b3dgs.lionengine.editor.utility.UtilWorld;
 import com.b3dgs.lionengine.game.FeatureProvider;
 import com.b3dgs.lionengine.game.feature.Camera;
-import com.b3dgs.lionengine.game.feature.Factory;
 import com.b3dgs.lionengine.game.feature.Featurable;
 import com.b3dgs.lionengine.game.feature.Handler;
 import com.b3dgs.lionengine.game.feature.Identifiable;
 import com.b3dgs.lionengine.game.feature.Refreshable;
 import com.b3dgs.lionengine.game.feature.Services;
+import com.b3dgs.lionengine.game.feature.Spawner;
 import com.b3dgs.lionengine.game.feature.Transformable;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
 import com.b3dgs.lionengine.geom.Area;
@@ -55,8 +55,8 @@ public class ObjectControl
     private final Map<Transformable, Boolean> objectsSelection = new HashMap<>();
     /** Camera reference. */
     private final Camera camera;
-    /** Factory reference. */
-    private final Factory factory;
+    /** Spawner reference. */
+    private final Spawner spawner;
     /** Map reference. */
     private final MapTile map;
     /** Handler object. */
@@ -71,10 +71,12 @@ public class ObjectControl
      */
     public ObjectControl(Services services)
     {
+        super();
+
         camera = services.get(Camera.class);
-        factory = services.get(Factory.class);
         map = services.get(MapTile.class);
         handler = services.get(Handler.class);
+        spawner = services.get(Spawner.class);
     }
 
     /**
@@ -146,13 +148,11 @@ public class ObjectControl
         {
             try
             {
-                final ObjectRepresentation object = factory.create(media, ObjectRepresentation.class);
                 final Point point = UtilWorld.getPoint(camera, mx, my);
-                final Transformable transformable = object.getFeature(Transformable.class);
-                transformable.teleport(UtilMath.getRounded(point.getX(), map.isCreated() ? map.getTileWidth() : 1),
-                                       UtilMath.getRounded(point.getY(), map.isCreated() ? map.getTileHeight() : 1));
-                transformable.getFeature(Refreshable.class).update(1.0);
-                handler.add(object);
+                final int x = UtilMath.getRounded(point.getX(), map.isCreated() ? map.getTileWidth() : 1);
+                final int y = UtilMath.getRounded(point.getY(), map.isCreated() ? map.getTileHeight() : 1);
+                final Featurable featurable = spawner.spawn(media, x, y);
+                featurable.getFeature(Refreshable.class).update(1.0);
             }
             catch (final LionEngineException exception)
             {

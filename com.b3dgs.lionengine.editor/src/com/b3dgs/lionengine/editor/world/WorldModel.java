@@ -17,12 +17,14 @@
  */
 package com.b3dgs.lionengine.editor.world;
 
+import com.b3dgs.lionengine.editor.ObjectRepresentation;
 import com.b3dgs.lionengine.game.feature.Camera;
 import com.b3dgs.lionengine.game.feature.ComponentDisplayable;
 import com.b3dgs.lionengine.game.feature.ComponentRefreshable;
 import com.b3dgs.lionengine.game.feature.Factory;
 import com.b3dgs.lionengine.game.feature.Featurable;
 import com.b3dgs.lionengine.game.feature.Handler;
+import com.b3dgs.lionengine.game.feature.HandlerPersister;
 import com.b3dgs.lionengine.game.feature.Services;
 import com.b3dgs.lionengine.game.feature.Spawner;
 import com.b3dgs.lionengine.game.feature.Transformable;
@@ -54,6 +56,8 @@ public class WorldModel
     private final Camera camera = services.create(Camera.class);
     /** Map reference. */
     private final MapTile map = services.create(MapTileGame.class);
+    /** Handler persister reference. */
+    private final HandlerPersister handlerPersister;
     /** Minimap reference. */
     private final Minimap minimap = new Minimap(map);
 
@@ -65,6 +69,7 @@ public class WorldModel
         final Handler handler = services.create(Handler.class);
         handler.addComponent(new ComponentRefreshable());
         handler.addComponent(new ComponentDisplayable());
+        handlerPersister = services.add(new HandlerPersisterEditor(services));
         services.add(new PaletteModel());
 
         final Selection selection = new Selection();
@@ -72,9 +77,10 @@ public class WorldModel
 
         services.add((Spawner) (media, x, y) ->
         {
-            final Featurable featurable = factory.create(media);
+            final Featurable featurable = factory.create(media, ObjectRepresentation.class);
             featurable.getFeature(Transformable.class).teleport(x, y);
             handler.add(featurable);
+            return featurable;
         });
 
         map.addFeature(new MapTileViewerModel(services));
@@ -124,6 +130,16 @@ public class WorldModel
     public MapTile getMap()
     {
         return map;
+    }
+
+    /**
+     * Get the handler persister reference.
+     * 
+     * @return The handler persister reference.
+     */
+    public HandlerPersister getHandlerPersister()
+    {
+        return handlerPersister;
     }
 
     /**
