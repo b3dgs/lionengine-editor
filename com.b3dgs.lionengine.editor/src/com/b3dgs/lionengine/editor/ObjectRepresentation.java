@@ -18,6 +18,7 @@
 package com.b3dgs.lionengine.editor;
 
 import com.b3dgs.lionengine.LionEngineException;
+import com.b3dgs.lionengine.Media;
 import com.b3dgs.lionengine.Origin;
 import com.b3dgs.lionengine.Verbose;
 import com.b3dgs.lionengine.editor.world.WorldModel;
@@ -105,6 +106,8 @@ public class ObjectRepresentation extends FeaturableModel
     private final Rectangle rectangle = new Rectangle();
     /** Camera reference. */
     private final Camera camera = WorldModel.INSTANCE.getCamera();
+    /** Media path. */
+    private final Media media;
 
     /**
      * Create the object.
@@ -115,6 +118,8 @@ public class ObjectRepresentation extends FeaturableModel
     public ObjectRepresentation(Setup setup)
     {
         super();
+
+        media = setup.getMedia();
 
         final Transformable transformable = addFeatureAndGet(new TransformableModel(setup));
         final Sprite surface = getSprite(setup, transformable);
@@ -150,5 +155,11 @@ public class ObjectRepresentation extends FeaturableModel
     public boolean isLoadFeaturesEnabled()
     {
         return false;
+    }
+
+    @Override
+    public Media getMedia()
+    {
+        return media;
     }
 }
