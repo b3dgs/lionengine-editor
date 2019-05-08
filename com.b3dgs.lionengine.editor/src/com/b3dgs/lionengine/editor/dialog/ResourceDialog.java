@@ -36,6 +36,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 
+import com.b3dgs.lionengine.Constant;
 import com.b3dgs.lionengine.Media;
 import com.b3dgs.lionengine.Medias;
 import com.b3dgs.lionengine.UtilFile;
@@ -253,9 +254,22 @@ public class ResourceDialog extends DialogAbstract
     }
 
     @Override
+    protected void onCanceled()
+    {
+        selection.clear();
+    }
+
+    @Override
     protected void onFinish()
     {
-        // Nothing to do
+        if (!openSave && Type.FOLDER == type)
+        {
+            final String extension = Constant.DOT
+                                     + (extensions.isEmpty() ? Constant.EMPTY_STRING : extensions.iterator().next());
+            final Media selected = Medias.create(selection.iterator().next().getPath(), filename.getText() + extension);
+            selection.clear();
+            selection.add(selected);
+        }
     }
 
     /**
