@@ -33,6 +33,9 @@ import com.b3dgs.lionengine.graphic.Graphics;
  */
 public class EngineSwt extends Engine
 {
+    /** User directory property. */
+    private static final String PROPERTY_USER_DIR = "user.dir";
+
     /**
      * Start engine. Has to be called before anything and only one time, in the main.
      * 
@@ -124,7 +127,7 @@ public class EngineSwt extends Engine
         Graphics.setFactoryGraphic(new FactoryGraphicSwt());
         if (resourcesDir != null)
         {
-            final String workingDir = Constant.getSystemProperty("user.dir", Constant.EMPTY_STRING);
+            final String workingDir = Constant.getSystemProperty(PROPERTY_USER_DIR, Constant.EMPTY_STRING);
             Verbose.info("Resources directory = ", UtilFolder.getPath(workingDir, resourcesDir));
         }
         else if (classResource != null)

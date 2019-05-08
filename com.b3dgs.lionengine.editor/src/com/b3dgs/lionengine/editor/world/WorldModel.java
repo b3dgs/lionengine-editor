@@ -56,8 +56,10 @@ public class WorldModel
     private final Camera camera = services.create(Camera.class);
     /** Map reference. */
     private final MapTile map = services.create(MapTileGame.class);
+    /** Handler reference. */
+    private final Handler handler = services.create(Handler.class);
     /** Handler persister reference. */
-    private final HandlerPersister handlerPersister;
+    private final HandlerPersister handlerPersister = services.create(HandlerPersisterEditor.class);
     /** Minimap reference. */
     private final Minimap minimap = new Minimap(map);
 
@@ -66,10 +68,8 @@ public class WorldModel
      */
     protected WorldModel()
     {
-        final Handler handler = services.create(Handler.class);
         handler.addComponent(new ComponentRefreshable());
         handler.addComponent(new ComponentDisplayable());
-        handlerPersister = services.add(new HandlerPersisterEditor(services));
         services.add(new PaletteModel());
 
         final Selection selection = new Selection();
@@ -130,6 +130,16 @@ public class WorldModel
     public MapTile getMap()
     {
         return map;
+    }
+
+    /**
+     * Get the handler reference.
+     * 
+     * @return The handler reference.
+     */
+    public Handler getHandler()
+    {
+        return handler;
     }
 
     /**
