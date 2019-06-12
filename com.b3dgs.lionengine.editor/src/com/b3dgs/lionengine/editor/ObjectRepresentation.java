@@ -24,6 +24,7 @@ import com.b3dgs.lionengine.Verbose;
 import com.b3dgs.lionengine.editor.world.WorldModel;
 import com.b3dgs.lionengine.game.Configurer;
 import com.b3dgs.lionengine.game.FramesConfig;
+import com.b3dgs.lionengine.game.SizeConfig;
 import com.b3dgs.lionengine.game.feature.Camera;
 import com.b3dgs.lionengine.game.feature.DisplayableModel;
 import com.b3dgs.lionengine.game.feature.FeaturableModel;
@@ -61,8 +62,11 @@ public class ObjectRepresentation extends FeaturableModel
         {
             final SpriteAnimated sprite = getSprite(setup, setup.getSurface());
             sprite.prepare();
-            transformable.setSize(sprite.getTileWidth(), sprite.getTileHeight());
-
+            if (!setup.hasNode(SizeConfig.NODE_SIZE))
+            {
+                transformable.setSize(sprite.getTileWidth(), sprite.getTileHeight());
+            }
+            sprite.setFrameOffsets((sprite.getTileWidth() - transformable.getWidth()) / 2, 0);
             return sprite;
         }
         catch (@SuppressWarnings("unused") final LionEngineException exception)
@@ -75,7 +79,10 @@ public class ObjectRepresentation extends FeaturableModel
 
             final Sprite sprite = Drawable.loadSprite(buffer);
             sprite.prepare();
-            transformable.setSize(sprite.getWidth(), sprite.getHeight());
+            if (!setup.hasNode(SizeConfig.NODE_SIZE))
+            {
+                transformable.setSize(sprite.getWidth(), sprite.getHeight());
+            }
 
             return sprite;
         }

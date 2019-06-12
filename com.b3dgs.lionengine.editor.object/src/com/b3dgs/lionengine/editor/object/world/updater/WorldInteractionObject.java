@@ -58,6 +58,8 @@ public class WorldInteractionObject implements WorldMouseClickListener, WorldMou
      */
     public WorldInteractionObject(Services services)
     {
+        super();
+
         objectControl = services.create(ObjectControl.class);
         selection = services.get(Selection.class);
         palette = services.get(PaletteModel.class);
@@ -185,10 +187,8 @@ public class WorldInteractionObject implements WorldMouseClickListener, WorldMou
      */
     private void alignToGrid(Transformable transformable)
     {
-        transformable.teleport(UtilMath.getRounded(transformable.getX() + transformable.getWidth() / 2.0,
-                                                   map.isCreated() ? map.getTileWidth() : 1),
-                               UtilMath.getRounded(transformable.getY() + transformable.getHeight() / 2.0,
-                                                   map.isCreated() ? map.getTileHeight() : 1));
+        transformable.teleport(UtilMath.getRounded(transformable.getX(), map.isCreated() ? map.getTileWidth() : 1),
+                               UtilMath.getRounded(transformable.getY(), map.isCreated() ? map.getTileHeight() : 1));
         transformable.getFeature(Refreshable.class).update(1.0);
     }
 
