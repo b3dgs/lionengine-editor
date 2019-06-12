@@ -39,8 +39,6 @@ cache:
     - '$HOME/.sonar/cache'
 
 before_script:
- - sh -e /etc/init.d/xvfb start
- - sleep 10
  - metacity --sm-disable --replace &
  - sleep 10
 
