@@ -9,7 +9,7 @@
     </parent>
     <groupId>com.b3dgs.lionengine.editor</groupId>
     <artifactId>lionengine-editor-parent</artifactId>
-    <version>9.0.1</version>
+    <version>9.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>LionEngine Editor</name>
     <description>Java 2D Game Engine</description>
@@ -41,7 +41,7 @@
     </ciManagement>
     <properties>
         <radial.base-package>com.b3dgs.lionengine.editor</radial.base-package>
-        <sonar-branch>lionengine-editor-9.0.1</sonar-branch>
+        <sonar-branch>lionengine-editor-9.0.2</sonar-branch>
     </properties>
     <dependencies>
         <dependency>
