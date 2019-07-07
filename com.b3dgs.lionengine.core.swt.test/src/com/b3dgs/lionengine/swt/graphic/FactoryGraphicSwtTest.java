@@ -158,6 +158,7 @@ public class FactoryGraphicSwtTest extends FactoryGraphicTest
     {
         assertThrows(() -> Graphics.saveImage(new ImageBufferMock(16, 32)
         {
+            @SuppressWarnings("unchecked")
             @Override
             public <T> T getSurface()
             {
