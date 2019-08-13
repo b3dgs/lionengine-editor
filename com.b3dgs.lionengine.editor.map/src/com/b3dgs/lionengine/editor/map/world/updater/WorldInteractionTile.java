@@ -187,12 +187,9 @@ public class WorldInteractionTile implements WorldMouseClickListener, WorldMouse
         final TileRef tilePalette = SheetsPaletteModel.INSTANCE.getSelectedTile();
         if (tile != null && tilePalette != null)
         {
-            final Tile newTile = map.createTile(tilePalette.getSheet(),
-                                                tilePalette.getNumber(),
-                                                tile.getX(),
-                                                tile.getY());
-            map.setTile(newTile);
+            map.setTile(tile.getInTileX(), tile.getInTileY(), tilePalette.getSheet(), tilePalette.getNumber());
 
+            final Tile newTile = map.getTile(tile.getInTileX(), tile.getInTileY());
             final TileGroupType groupType = mapGroup.getType(newTile);
             if (TileGroupType.PLAIN == groupType)
             {
