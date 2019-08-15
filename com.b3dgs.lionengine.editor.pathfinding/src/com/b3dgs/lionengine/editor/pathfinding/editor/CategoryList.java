@@ -90,15 +90,19 @@ public class CategoryList extends ObjectListAbstract<PathCategory> implements Ob
     @Override
     public void notifyObjectDeleted(PathCategory category)
     {
-        final Xml node = new Xml(config);
         final Collection<Xml> toRemove = new ArrayList<>();
-        for (final Xml nodePath : node.getChildren(PathfindingConfig.PATHFINDING))
+
+        final Xml node = new Xml(config);
+        final Collection<Xml> children = node.getChildren(PathfindingConfig.PATHFINDING);
+        for (final Xml nodePath : children)
         {
             if (CollisionGroup.same(nodePath.readString(PathfindingConfig.CATEGORY), category.getName()))
             {
                 toRemove.add(nodePath);
             }
         }
+        children.clear();
+
         for (final Xml remove : toRemove)
         {
             node.removeChild(remove);

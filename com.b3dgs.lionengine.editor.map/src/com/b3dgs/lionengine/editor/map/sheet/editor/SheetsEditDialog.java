@@ -177,6 +177,7 @@ public class SheetsEditDialog extends DialogAbstract
                 }
             }
         }
+        nodeSheets.clear();
     }
 
     /*

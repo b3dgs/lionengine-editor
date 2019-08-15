@@ -48,20 +48,25 @@ public class FormulaList extends ObjectListAbstract<CollisionFormula> implements
      */
     private static void removeFormula(Media formulasConfig, CollisionFormula formula)
     {
-        final Xml node = new Xml(formulasConfig);
         final Collection<Xml> toRemove = new ArrayList<>();
-        for (final Xml nodeFormula : node.getChildren(CollisionFormulaConfig.NODE_FORMULA))
+
+        final Xml node = new Xml(formulasConfig);
+        final Collection<Xml> children = node.getChildren(CollisionFormulaConfig.NODE_FORMULA);
+        for (final Xml nodeFormula : children)
         {
             if (CollisionGroup.same(nodeFormula.readString(TileGroupsConfig.ATT_GROUP_NAME), formula.getName()))
             {
                 toRemove.add(nodeFormula);
             }
         }
+        children.clear();
+
         for (final Xml remove : toRemove)
         {
             node.removeChild(remove);
         }
         toRemove.clear();
+
         node.save(formulasConfig);
     }
 

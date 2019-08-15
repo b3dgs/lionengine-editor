@@ -96,20 +96,26 @@ public class GroupList extends ObjectListAbstract<TileGroup> implements ObjectLi
     {
         final MapTileGroup mapGroup = WorldModel.INSTANCE.getMap().getFeature(MapTileGroup.class);
         final Media config = mapGroup.getGroupsConfig();
-        final Xml node = new Xml(config);
+
         final Collection<Xml> toRemove = new ArrayList<>();
-        for (final Xml nodeGroup : node.getChildren(TileGroupsConfig.NODE_GROUP))
+
+        final Xml node = new Xml(config);
+        final Collection<Xml> children = node.getChildren(TileGroupsConfig.NODE_GROUP);
+        for (final Xml nodeGroup : children)
         {
             if (CollisionGroup.same(nodeGroup.readString(TileGroupsConfig.ATT_GROUP_NAME), group.getName()))
             {
                 toRemove.add(nodeGroup);
             }
         }
+        children.clear();
+
         for (final Xml remove : toRemove)
         {
             node.removeChild(remove);
         }
         toRemove.clear();
+
         node.save(config);
         mapGroup.loadGroups(config);
     }

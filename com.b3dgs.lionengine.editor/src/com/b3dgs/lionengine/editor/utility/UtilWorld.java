@@ -96,7 +96,9 @@ public final class UtilWorld
     public static void changeTileGroup(Xml root, String oldGroup, String newGroup, Tile tile)
     {
         final Collection<Point> toAdd = new HashSet<>();
-        for (final Xml nodeGroup : root.getChildren(TileGroupsConfig.NODE_GROUP))
+
+        final Collection<Xml> children = root.getChildren(TileGroupsConfig.NODE_GROUP);
+        for (final Xml nodeGroup : children)
         {
             removeOldGroup(nodeGroup, oldGroup, tile);
             if (CollisionGroup.same(nodeGroup.readString(TileGroupsConfig.ATT_GROUP_NAME), newGroup))
@@ -107,8 +109,9 @@ public final class UtilWorld
                     toAdd.add(point);
                 }
             }
-
         }
+        children.clear();
+
         if (!TileGroupsConfig.REMOVE_GROUP_NAME.equals(newGroup))
         {
             final Xml newNode = getNewNode(root, newGroup);
@@ -131,10 +134,12 @@ public final class UtilWorld
      */
     private static void removeOldGroup(Xml nodeGroup, String oldGroup, Tile tile)
     {
-        final Collection<Xml> toRemove = new ArrayList<>();
         if (CollisionGroup.same(nodeGroup.readString(TileGroupsConfig.ATT_GROUP_NAME), oldGroup))
         {
-            for (final Xml nodeTile : nodeGroup.getChildren(TileConfig.NODE_TILE))
+            final Collection<Xml> toRemove = new ArrayList<>();
+
+            final Collection<Xml> children = nodeGroup.getChildren(TileConfig.NODE_TILE);
+            for (final Xml nodeTile : children)
             {
                 if (nodeTile.readInteger(TileConfig.ATT_TILE_SHEET) == tile.getSheet().intValue()
                     && nodeTile.readInteger(TileConfig.ATT_TILE_NUMBER) == tile.getNumber())
@@ -142,12 +147,14 @@ public final class UtilWorld
                     toRemove.add(nodeTile);
                 }
             }
+            children.clear();
+
             for (final Xml remove : toRemove)
             {
                 nodeGroup.removeChild(remove);
             }
+            toRemove.clear();
         }
-        toRemove.clear();
     }
 
     /**
@@ -159,13 +166,16 @@ public final class UtilWorld
      */
     private static Xml getNewNode(Xml node, String newGroup)
     {
-        for (final Xml nodeGroup : node.getChildren(TileGroupsConfig.NODE_GROUP))
+        final Collection<Xml> children = node.getChildren(TileGroupsConfig.NODE_GROUP);
+        for (final Xml nodeGroup : children)
         {
             if (newGroup.equals(nodeGroup.readString(TileGroupsConfig.ATT_GROUP_NAME)))
             {
                 return nodeGroup;
             }
         }
+        children.clear();
+
         final Xml newGroupNode = node.createChild(TileGroupsConfig.NODE_GROUP);
         newGroupNode.writeString(TileGroupsConfig.ATT_GROUP_NAME, newGroup);
 

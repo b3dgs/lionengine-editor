@@ -43,20 +43,25 @@ public class CollisionGroupList extends ObjectListAbstract<CollisionGroup> imple
      */
     private static void removeCollision(Media collisionsConfig, CollisionGroup collision)
     {
-        final Xml node = new Xml(collisionsConfig);
         final Collection<Xml> toRemove = new ArrayList<>();
-        for (final Xml nodeFormula : node.getChildren(CollisionGroupConfig.NODE_COLLISION))
+
+        final Xml node = new Xml(collisionsConfig);
+        final Collection<Xml> children = node.getChildren(CollisionGroupConfig.NODE_COLLISION);
+        for (final Xml nodeFormula : children)
         {
             if (CollisionGroup.same(nodeFormula.readString(CollisionGroupConfig.ATT_GROUP), collision.getName()))
             {
                 toRemove.add(nodeFormula);
             }
         }
+        children.clear();
+
         for (final Xml remove : toRemove)
         {
             node.removeChild(remove);
         }
         toRemove.clear();
+
         node.save(collisionsConfig);
     }
 
