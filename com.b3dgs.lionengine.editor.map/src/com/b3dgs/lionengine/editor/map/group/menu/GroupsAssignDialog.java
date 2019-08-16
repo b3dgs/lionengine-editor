@@ -19,6 +19,7 @@ package com.b3dgs.lionengine.editor.map.group.menu;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -62,7 +63,6 @@ import com.b3dgs.lionengine.game.feature.tile.Tile;
 import com.b3dgs.lionengine.game.feature.tile.TileGroup;
 import com.b3dgs.lionengine.game.feature.tile.TileGroupType;
 import com.b3dgs.lionengine.game.feature.tile.TileGroupsConfig;
-import com.b3dgs.lionengine.game.feature.tile.TileRef;
 import com.b3dgs.lionengine.game.feature.tile.map.LevelRipConverter;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileAppender;
@@ -81,7 +81,6 @@ import com.b3dgs.lionengine.swt.graphic.MouseSwt;
 /**
  * Edit map tile groups dialog.
  */
-// CHECKSTYLE IGNORE LINE: DataAbstractionCoupling|FanOutComplexity
 public class GroupsAssignDialog extends DialogAbstract implements WorldView, Focusable, KeyListener,
                                 TileSelectionListener, ObjectListListener<TileGroup>
 {
@@ -173,7 +172,7 @@ public class GroupsAssignDialog extends DialogAbstract implements WorldView, Foc
      * @param sheets The sheets used.
      * @param levelRips The level rips.
      */
-    public void load(Collection<SpriteTiled> sheets, Collection<Media> levelRips)
+    public void load(List<SpriteTiled> sheets, Collection<Media> levelRips)
     {
         int offsetX = 0;
         int offsetY = 0;
@@ -214,7 +213,7 @@ public class GroupsAssignDialog extends DialogAbstract implements WorldView, Foc
      */
     private Collection<TileGroup> getGroups()
     {
-        final Map<String, Collection<TileRef>> groupsRef = new HashMap<>();
+        final Map<String, Set<Integer>> groupsRef = new HashMap<>();
         for (int ty = 0; ty < map.getInTileHeight(); ty++)
         {
             for (int tx = 0; tx < map.getInTileWidth(); tx++)
@@ -226,9 +225,9 @@ public class GroupsAssignDialog extends DialogAbstract implements WorldView, Foc
                 }
             }
         }
-        final Set<Entry<String, Collection<TileRef>>> set = groupsRef.entrySet();
+        final Set<Entry<String, Set<Integer>>> set = groupsRef.entrySet();
         final Collection<TileGroup> groups = new HashSet<>(set.size());
-        for (final Entry<String, Collection<TileRef>> entry : set)
+        for (final Entry<String, Set<Integer>> entry : set)
         {
             final String name = entry.getKey();
             final TileGroupType type;
@@ -251,7 +250,7 @@ public class GroupsAssignDialog extends DialogAbstract implements WorldView, Foc
      * @param groups The group list reference.
      * @param tile The tile to add.
      */
-    private void addToGroup(Map<String, Collection<TileRef>> groups, Tile tile)
+    private void addToGroup(Map<String, Set<Integer>> groups, Tile tile)
     {
         final String group = mapGroup.getGroup(tile);
         if (group != null)
@@ -260,8 +259,8 @@ public class GroupsAssignDialog extends DialogAbstract implements WorldView, Foc
             {
                 groups.put(group, new HashSet<>());
             }
-            final Collection<TileRef> tiles = groups.get(group);
-            tiles.add(new TileRef(tile));
+            final Set<Integer> tiles = groups.get(group);
+            tiles.add(tile.getKey());
         }
     }
 
@@ -441,9 +440,7 @@ public class GroupsAssignDialog extends DialogAbstract implements WorldView, Foc
             for (int tx = 0; tx < map.getInTileWidth(); tx++)
             {
                 final Tile current = map.getTile(tx, ty);
-                if (current != null
-                    && current.getSheet().equals(tile.getSheet())
-                    && current.getNumber() == tile.getNumber())
+                if (current != null && current.getNumber() == tile.getNumber())
                 {
                     changeGroup(click, current, newGroup);
                 }

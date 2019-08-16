@@ -35,7 +35,6 @@ import com.b3dgs.lionengine.game.feature.Services;
 import com.b3dgs.lionengine.game.feature.tile.Tile;
 import com.b3dgs.lionengine.game.feature.tile.TileGroupType;
 import com.b3dgs.lionengine.game.feature.tile.TileGroupsConfig;
-import com.b3dgs.lionengine.game.feature.tile.TileRef;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroup;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroupModel;
@@ -184,10 +183,10 @@ public class WorldInteractionTile implements WorldMouseClickListener, WorldMouse
      */
     private void updateTileEdition(Tile tile)
     {
-        final TileRef tilePalette = SheetsPaletteModel.INSTANCE.getSelectedTile();
-        if (tile != null && tilePalette != null)
+        final int tilePalette = SheetsPaletteModel.INSTANCE.getSelectedTile();
+        if (tile != null)
         {
-            map.setTile(tile.getInTileX(), tile.getInTileY(), tilePalette.getSheet(), tilePalette.getNumber());
+            map.setTile(tile.getInTileX(), tile.getInTileY(), tilePalette);
 
             final Tile newTile = map.getTile(tile.getInTileX(), tile.getInTileY());
             final TileGroupType groupType = mapGroup.getType(newTile);

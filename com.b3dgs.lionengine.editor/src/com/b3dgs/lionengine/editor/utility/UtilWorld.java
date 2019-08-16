@@ -95,7 +95,7 @@ public final class UtilWorld
      */
     public static void changeTileGroup(Xml root, String oldGroup, String newGroup, Tile tile)
     {
-        final Collection<Point> toAdd = new HashSet<>();
+        final Collection<Integer> toAdd = new HashSet<>();
 
         final Collection<Xml> children = root.getChildren(TileGroupsConfig.NODE_GROUP);
         for (final Xml nodeGroup : children)
@@ -103,11 +103,7 @@ public final class UtilWorld
             removeOldGroup(nodeGroup, oldGroup, tile);
             if (CollisionGroup.same(nodeGroup.readString(TileGroupsConfig.ATT_GROUP_NAME), newGroup))
             {
-                final Point point = new Point(tile.getSheet().intValue(), tile.getNumber());
-                if (!toAdd.contains(point))
-                {
-                    toAdd.add(point);
-                }
+                toAdd.add(tile.getKey());
             }
         }
         children.clear();
@@ -115,11 +111,10 @@ public final class UtilWorld
         if (!TileGroupsConfig.REMOVE_GROUP_NAME.equals(newGroup))
         {
             final Xml newNode = getNewNode(root, newGroup);
-            for (final Point current : toAdd)
+            for (final Integer current : toAdd)
             {
                 final Xml node = newNode.createChild(TileConfig.NODE_TILE);
-                node.writeInteger(TileConfig.ATT_TILE_SHEET, current.getX());
-                node.writeInteger(TileConfig.ATT_TILE_NUMBER, current.getY());
+                node.writeInteger(TileConfig.ATT_TILE_NUMBER, current.intValue());
             }
         }
         toAdd.clear();
@@ -141,8 +136,7 @@ public final class UtilWorld
             final Collection<Xml> children = nodeGroup.getChildren(TileConfig.NODE_TILE);
             for (final Xml nodeTile : children)
             {
-                if (nodeTile.readInteger(TileConfig.ATT_TILE_SHEET) == tile.getSheet().intValue()
-                    && nodeTile.readInteger(TileConfig.ATT_TILE_NUMBER) == tile.getNumber())
+                if (nodeTile.readInteger(TileConfig.ATT_TILE_NUMBER) == tile.getNumber())
                 {
                     toRemove.add(nodeTile);
                 }

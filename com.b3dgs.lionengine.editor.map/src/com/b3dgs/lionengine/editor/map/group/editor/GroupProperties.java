@@ -16,8 +16,8 @@
  */
 package com.b3dgs.lionengine.editor.map.group.editor;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.TreeSet;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -30,7 +30,6 @@ import com.b3dgs.lionengine.editor.ObjectPropertiesAbstract;
 import com.b3dgs.lionengine.editor.utility.control.UtilCombo;
 import com.b3dgs.lionengine.game.feature.tile.TileGroup;
 import com.b3dgs.lionengine.game.feature.tile.TileGroupType;
-import com.b3dgs.lionengine.game.feature.tile.TileRef;
 
 /**
  * Represents the tile group properties edition view.
@@ -38,7 +37,7 @@ import com.b3dgs.lionengine.game.feature.tile.TileRef;
 public class GroupProperties extends ObjectPropertiesAbstract<TileGroup> implements ObjectListListener<TileGroup>
 {
     /** Associated tiles. */
-    private final Collection<TileRef> tiles = new ArrayList<>();
+    private final Collection<Integer> tiles = new TreeSet<>();
     /** Group type flag. */
     private Combo type;
 
@@ -67,7 +66,7 @@ public class GroupProperties extends ObjectPropertiesAbstract<TileGroup> impleme
     @Override
     protected TileGroup createObject(String name)
     {
-        return new TileGroup(name, (TileGroupType) type.getData(), new ArrayList<>(tiles));
+        return new TileGroup(name, (TileGroupType) type.getData(), new TreeSet<>(tiles));
     }
 
     /*

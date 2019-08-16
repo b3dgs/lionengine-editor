@@ -43,8 +43,6 @@ public class PropertiesTile implements PropertiesProviderTile
 {
     /** Tile group icon. */
     private static final Image ICON_GROUP = UtilIcon.get(FOLDER, "tilegroup.png");
-    /** Tile sheet icon. */
-    private static final Image ICON_SHEET = UtilIcon.get(FOLDER, "tilesheet.png");
     /** Tile number icon. */
     private static final Image ICON_NUMBER = UtilIcon.get(FOLDER, "tilenumber.png");
     /** Tile size icon. */
@@ -106,20 +104,6 @@ public class PropertiesTile implements PropertiesProviderTile
                 onDoubleClick(properties, selection, tile);
             }
         });
-    }
-
-    /**
-     * Create the attribute sheet number.
-     * 
-     * @param properties The properties tree reference.
-     * @param tile The tile reference.
-     */
-    private static void createAttributeTileSheet(Tree properties, Tile tile)
-    {
-        final TreeItem item = new TreeItem(properties, SWT.NONE);
-        PropertiesPart.createLine(item, Messages.TileSheet, String.valueOf(tile.getSheet()));
-        item.setData(TileConfig.ATT_TILE_SHEET);
-        item.setImage(PropertiesTile.ICON_SHEET);
     }
 
     /**
@@ -195,7 +179,6 @@ public class PropertiesTile implements PropertiesProviderTile
     public void setInput(Tree properties, Tile tile)
     {
         createAttributeTileGroup(properties, tile);
-        createAttributeTileSheet(properties, tile);
         createAttributeTileNumber(properties, tile);
         createAttributeTileSize(properties, tile);
         createAttributeTileFeatures(properties, tile);

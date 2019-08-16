@@ -85,7 +85,7 @@ public class MapImportDialogTest
         Assert.assertTrue(map.isCreated());
         Assert.assertEquals(16, map.getTileWidth());
         Assert.assertEquals(16, map.getTileHeight());
-        Assert.assertEquals(1, map.getSheets().size());
+        Assert.assertEquals(1, map.getSheetsNumber());
 
         Assert.assertEquals(212, map.getInTileWidth());
         Assert.assertEquals(15, map.getInTileHeight());

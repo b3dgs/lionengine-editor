@@ -17,6 +17,7 @@
 package com.b3dgs.lionengine.editor.map;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
@@ -81,7 +82,7 @@ public final class ExtractAllHandler
         final SheetsExtractDialog sheetsExtractDialog = new SheetsExtractDialog(shell);
         sheetsExtractDialog.open();
 
-        final Collection<SpriteTiled> sheets = sheetsExtractDialog.getSheets();
+        final List<SpriteTiled> sheets = sheetsExtractDialog.getSheets();
         if (!sheets.isEmpty())
         {
             final Collection<Media> levels = sheetsExtractDialog.getLevelRips();
@@ -95,6 +96,7 @@ public final class ExtractAllHandler
             {
                 saveAll(sheetsExtractDialog, groupsAssignDialog, levels);
             }
+            sheets.clear();
         }
     }
 }

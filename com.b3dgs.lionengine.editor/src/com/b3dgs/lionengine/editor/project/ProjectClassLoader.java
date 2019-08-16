@@ -355,19 +355,22 @@ public class ProjectClassLoader
         String name = current.replace(Property.EXTENSION_CLASS, Constant.EMPTY_STRING)
                              .replace(File.separator, Constant.DOT)
                              .replace(Constant.SLASH, Constant.DOT);
-        if (root != null)
+        if (!name.isEmpty())
         {
-            name = name.replace(root.getPath(), Constant.EMPTY_STRING);
-        }
-        if (name.charAt(0) == '.')
-        {
-            name = name.substring(1);
-        }
+            if (root != null)
+            {
+                name = name.replace(root.getPath(), Constant.EMPTY_STRING);
+            }
+            if (name.charAt(0) == '.')
+            {
+                name = name.substring(1);
+            }
 
-        final Class<?> clazz = getClass(name);
-        if (type.isAssignableFrom(clazz) && clazz != type)
-        {
-            return clazz.asSubclass(type);
+            final Class<?> clazz = getClass(name);
+            if (type.isAssignableFrom(clazz) && clazz != type)
+            {
+                return clazz.asSubclass(type);
+            }
         }
         return null;
     }

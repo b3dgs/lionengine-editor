@@ -16,8 +16,6 @@
  */
 package com.b3dgs.lionengine.editor.map.sheet.palette;
 
-import com.b3dgs.lionengine.game.feature.tile.TileRef;
-
 /**
  * Contains the sheets palette data.
  */
@@ -27,7 +25,7 @@ public class SheetsPaletteModel
     public static final SheetsPaletteModel INSTANCE = new SheetsPaletteModel();
 
     /** Selected palette tile. */
-    private TileRef tile = new TileRef(Integer.valueOf(0), 0);
+    private int tile = 0;
     /** Sheet palette type. */
     private SheetPaletteType type = SheetPaletteType.SELECTION;
 
@@ -44,7 +42,7 @@ public class SheetsPaletteModel
      * 
      * @param tile The selected tile, <code>null</code> if none.
      */
-    public void setSelectedTile(TileRef tile)
+    public void setSelectedTile(int tile)
     {
         this.tile = tile;
     }
@@ -64,7 +62,7 @@ public class SheetsPaletteModel
      * 
      * @return The selected tile, <code>null</code> if none.
      */
-    public TileRef getSelectedTile()
+    public int getSelectedTile()
     {
         return tile;
     }

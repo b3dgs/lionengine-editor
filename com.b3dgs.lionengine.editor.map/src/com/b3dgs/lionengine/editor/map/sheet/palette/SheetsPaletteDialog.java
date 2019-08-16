@@ -42,7 +42,6 @@ import com.b3dgs.lionengine.editor.utility.control.UtilButton;
 import com.b3dgs.lionengine.editor.utility.control.UtilSwt;
 import com.b3dgs.lionengine.editor.utility.control.UtilText;
 import com.b3dgs.lionengine.editor.world.WorldModel;
-import com.b3dgs.lionengine.game.feature.tile.TileRef;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
 import com.b3dgs.lionengine.game.feature.tile.map.transition.MapTileTransition;
 import com.b3dgs.lionengine.game.feature.tile.map.transition.Transition;
@@ -108,7 +107,7 @@ public final class SheetsPaletteDialog implements MouseListener, Focusable
     /** Rendering composite. */
     private final Composite composite;
     /** Available tiles. */
-    private final List<TileRef> available = new ArrayList<>();
+    private final List<Integer> available = new ArrayList<>();
     /** GC composite. */
     private GC gc;
     /** Simple palette mode. */
@@ -136,9 +135,10 @@ public final class SheetsPaletteDialog implements MouseListener, Focusable
 
         int width = 0;
         int height = 0;
-        for (final Integer id : map.getSheets())
+        final int sheetsCount = map.getSheetsNumber();
+        for (int sheetId = 0; sheetId < sheetsCount; sheetId++)
         {
-            final SpriteTiled sheet = map.getSheet(id);
+            final SpriteTiled sheet = map.getSheet(sheetId);
             width = Math.max(width, sheet.getWidth());
             height = Math.max(height, sheet.getHeight());
         }
@@ -196,7 +196,7 @@ public final class SheetsPaletteDialog implements MouseListener, Focusable
         final int items = 3;
         area.setLayout(new GridLayout(items, false));
 
-        final int sheetsNumber = map.getSheets().size() - 1;
+        final int sheetsNumber = map.getSheetsNumber() - 1;
 
         final Button previous = UtilButton.create(area, Messages.Decrease, null);
         final Text sheetIdText = UtilText.create(Messages.CurrentSheet, area);
@@ -248,7 +248,7 @@ public final class SheetsPaletteDialog implements MouseListener, Focusable
             final Point size = composite.getSize();
             gc.fillRectangle(0, 0, size.x, size.y);
 
-            final Collection<TileRef> centered = getCenterTiles();
+            final Collection<Integer> centered = getCenterTiles();
             if (simple && !centered.isEmpty())
             {
                 horizontalTiles = renderPaletteSimple(centered);
@@ -275,12 +275,12 @@ public final class SheetsPaletteDialog implements MouseListener, Focusable
      */
     private int renderPaletteFull()
     {
-        final SpriteTiled sheet = map.getSheet(sheetId);
+        final SpriteTiled sheet = map.getSheet(sheetId.intValue());
 
         available.clear();
         for (int i = 0; i < sheet.getTilesHorizontal() * sheet.getTilesVertical(); i++)
         {
-            available.add(new TileRef(sheetId, i));
+            available.add(Integer.valueOf(i));
         }
 
         gc.dispose();
@@ -299,7 +299,7 @@ public final class SheetsPaletteDialog implements MouseListener, Focusable
      * @param centered The center tiles.
      * @return The number of horizontal tiles.
      */
-    private int renderPaletteSimple(Collection<TileRef> centered)
+    private int renderPaletteSimple(Collection<Integer> centered)
     {
         final int horizontalTiles = Math.max(Constant.DECADE, (int) Math.floor(Math.sqrt(centered.size())));
         final ImageBuffer sheet = getCenterTilesSheet(centered, horizontalTiles);
@@ -345,7 +345,7 @@ public final class SheetsPaletteDialog implements MouseListener, Focusable
      * @param horizontalTiles The number of horizontal tiles.
      * @return The center tiles sheet.
      */
-    private ImageBuffer getCenterTilesSheet(Collection<TileRef> tiles, int horizontalTiles)
+    private ImageBuffer getCenterTilesSheet(Collection<Integer> tiles, int horizontalTiles)
     {
         available.clear();
         available.addAll(tiles);
@@ -359,10 +359,11 @@ public final class SheetsPaletteDialog implements MouseListener, Focusable
         final Graphic g = buff.createGraphic();
 
         int id = 0;
-        for (final TileRef tile : tiles)
+        for (final Integer tile : tiles)
         {
-            final SpriteTiled sheet = map.getSheet(tile.getSheet());
-            sheet.setTile(tile.getNumber());
+            final int sheetId = (int) Math.floor(number / (double) map.getTilesPerSheet());
+            final SpriteTiled sheet = map.getSheet(sheetId);
+            sheet.setTile(tile.intValue());
 
             final int x = id % horizontalTiles * tw;
             final int y = id / horizontalTiles * th;
@@ -380,9 +381,9 @@ public final class SheetsPaletteDialog implements MouseListener, Focusable
      * 
      * @return The center tiles.
      */
-    private Collection<TileRef> getCenterTiles()
+    private Collection<Integer> getCenterTiles()
     {
-        final Collection<TileRef> centerTiles = new HashSet<>();
+        final Collection<Integer> centerTiles = new HashSet<>();
         final MapTileTransition mapTransition = map.getFeature(MapTileTransition.class);
         for (final Transition transition : mapTransition.getTransitions())
         {
@@ -403,11 +404,11 @@ public final class SheetsPaletteDialog implements MouseListener, Focusable
     {
         final int x = (int) Math.floor(event.x / (double) map.getTileWidth());
         final int y = (int) Math.floor(event.y / (double) map.getTileHeight());
-        final int n = x + y * map.getSheet(sheetId).getTilesHorizontal();
+        final int n = x + y * map.getSheet(sheetId.intValue()).getTilesHorizontal();
         if (n < available.size())
         {
             number = n;
-            SheetsPaletteModel.INSTANCE.setSelectedTile(available.get(number));
+            SheetsPaletteModel.INSTANCE.setSelectedTile(available.get(number).intValue());
         }
         render();
     }

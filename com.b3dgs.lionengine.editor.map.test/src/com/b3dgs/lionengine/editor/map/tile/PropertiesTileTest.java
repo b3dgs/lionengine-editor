@@ -87,7 +87,7 @@ public class PropertiesTileTest
 
         setPaletteTile(BOT);
         BOT.canvas(1).click(view.get().x + 1, view.get().y + view.get().height - 1);
-        BOT.waitUntil(Conditions.treeHasRows(BOT.tree(1), 5));
+        BOT.waitUntil(Conditions.treeHasRows(BOT.tree(1), 4));
 
         Assert.assertEquals(MapTileGroupModel.NO_GROUP_NAME, getTileGroupValue(BOT));
 

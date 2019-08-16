@@ -18,6 +18,7 @@ package com.b3dgs.lionengine.editor.map.group.editor;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.TreeSet;
 
 import com.b3dgs.lionengine.Media;
 import com.b3dgs.lionengine.Xml;
@@ -27,7 +28,6 @@ import com.b3dgs.lionengine.editor.world.WorldModel;
 import com.b3dgs.lionengine.game.feature.tile.TileGroup;
 import com.b3dgs.lionengine.game.feature.tile.TileGroupType;
 import com.b3dgs.lionengine.game.feature.tile.TileGroupsConfig;
-import com.b3dgs.lionengine.game.feature.tile.TileRef;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroup;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionGroup;
 
@@ -78,7 +78,7 @@ public class GroupList extends ObjectListAbstract<TileGroup> implements ObjectLi
     @Override
     protected TileGroup createObject(String name)
     {
-        return new TileGroup(name, TileGroupType.NONE, new ArrayList<TileRef>());
+        return new TileGroup(name, TileGroupType.NONE, new TreeSet<Integer>());
     }
 
     /*

@@ -44,7 +44,6 @@ import com.b3dgs.lionengine.editor.dialog.DialogAbstract;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.utility.control.UtilButton;
 import com.b3dgs.lionengine.editor.world.WorldModel;
-import com.b3dgs.lionengine.game.feature.tile.TileRef;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
 import com.b3dgs.lionengine.game.feature.tile.map.MinimapConfig;
 import com.b3dgs.lionengine.geom.Point;
@@ -121,21 +120,21 @@ public class MinimapEditDialog extends DialogAbstract
      */
     private void load(Device device)
     {
-        final Map<TileRef, ColorRgba> colors = MinimapConfig.imports(minimap);
-        for (final Map.Entry<TileRef, ColorRgba> current : colors.entrySet())
+        final Map<Integer, ColorRgba> colors = MinimapConfig.imports(minimap);
+        for (final Map.Entry<Integer, ColorRgba> current : colors.entrySet())
         {
-            final TileRef tile = current.getKey();
-            if (!data.containsKey(tile.getSheet()))
+            final Integer tile = current.getKey();
+            if (!data.containsKey(tile))
             {
-                data.put(tile.getSheet(), new HashMap<>());
+                data.put(tile, new HashMap<>());
             }
 
-            final int th = map.getSheet(tile.getSheet()).getTilesHorizontal();
-            final int x = tile.getNumber() % th;
-            final int y = tile.getNumber() / th;
+            final int th = map.getSheet(tile.intValue()).getTilesHorizontal();
+            final int x = tile.intValue() % th;
+            final int y = tile.intValue() / th;
             final ColorRgba c = current.getValue();
             final Color color = new Color(device, c.getRed(), c.getGreen(), c.getBlue(), c.getAlpha());
-            data.get(tile.getSheet()).put(new Point(x, y), color);
+            data.get(tile).put(new Point(x, y), color);
         }
     }
 
@@ -149,16 +148,17 @@ public class MinimapEditDialog extends DialogAbstract
     {
         int maxWidth = 0;
         int maxHeight = 0;
-        for (final Integer currentSheet : map.getSheets())
+        final int sheetsCount = map.getSheetsNumber();
+        for (int sheetId = 0; sheetId < sheetsCount; sheetId++)
         {
-            final SpriteTiled sprite = map.getSheet(currentSheet);
+            final SpriteTiled sprite = map.getSheet(sheetId);
             maxWidth = Math.max(maxWidth, sprite.getWidth());
             maxHeight = Math.max(maxHeight, sprite.getHeight());
         }
 
         final Label sheetLabel = new Label(parent, SWT.BORDER);
         sheetLabel.setLayoutData(new GridData(maxWidth, maxHeight));
-        sheetLabel.setImage(map.getSheet(Integer.valueOf(sheet)).getSurface().getSurface());
+        sheetLabel.setImage(map.getSheet(sheet).getSurface().getSurface());
         sheetLabel.addPaintListener(event ->
         {
             final GC gc = event.gc;
@@ -240,7 +240,7 @@ public class MinimapEditDialog extends DialogAbstract
         sheet = UtilMath.clamp(next, 0, map.getSheetsNumber() - 1);
         if (!sheetLabel.isDisposed())
         {
-            sheetLabel.setImage(map.getSheet(Integer.valueOf(sheet)).getSurface().getSurface());
+            sheetLabel.setImage(map.getSheet(sheet).getSurface().getSurface());
             sheetLabel.redraw();
         }
         changeColor(colorLabel, getSheetColor());
@@ -330,17 +330,17 @@ public class MinimapEditDialog extends DialogAbstract
     @Override
     protected void onFinish()
     {
-        final Map<TileRef, ColorRgba> tiles = new HashMap<>();
+        final Map<Integer, ColorRgba> tiles = new HashMap<>();
         for (final Map.Entry<Integer, Map<Point, Color>> sheetEntry : data.entrySet())
         {
             final Integer currentSheet = sheetEntry.getKey();
             for (final Map.Entry<Point, Color> current : sheetEntry.getValue().entrySet())
             {
                 final Point point = current.getKey();
-                final int number = point.getX() + point.getY() * map.getSheet(currentSheet).getTilesHorizontal();
+                final int number = point.getX()
+                                   + point.getY() * map.getSheet(currentSheet.intValue()).getTilesHorizontal();
                 final Color color = current.getValue();
-                tiles.put(new TileRef(currentSheet, number),
-                          new ColorRgba(color.getRed(), color.getGreen(), color.getBlue()));
+                tiles.put(Integer.valueOf(number), new ColorRgba(color.getRed(), color.getGreen(), color.getBlue()));
             }
         }
 

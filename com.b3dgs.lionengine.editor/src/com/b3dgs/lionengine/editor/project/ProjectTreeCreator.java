@@ -307,8 +307,10 @@ public class ProjectTreeCreator
         }
         if (!relative.isEmpty())
         {
-            return Medias.create(relative.substring(1));
+            return Medias.create(relative.substring(1)
+                                         .replace(File.separator, Medias.getSeparator())
+                                         .split(Medias.getSeparator()));
         }
-        return Medias.create(relative);
+        return Medias.create(relative.replace(File.separator, Medias.getSeparator()).split(Medias.getSeparator()));
     }
 }

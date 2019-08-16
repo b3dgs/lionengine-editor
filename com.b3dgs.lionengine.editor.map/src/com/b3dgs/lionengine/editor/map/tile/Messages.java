@@ -37,8 +37,6 @@ public final class Messages extends NLS
     public static String Add;
     /** Tile group property. */
     public static String TileGroup;
-    /** Tile sheet property. */
-    public static String TileSheet;
     /** Tile number property. */
     public static String TileNumber;
     /** Tile size property. */

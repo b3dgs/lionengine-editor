@@ -19,6 +19,7 @@ package com.b3dgs.lionengine.editor.map.sheet.extract;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -70,7 +71,7 @@ public class SheetsExtractDialog extends DialogAbstract
     /** Extraction destination location. */
     private BrowseWidget destination;
     /** Extraction cache. */
-    private Collection<SpriteTiled> sheets;
+    private List<SpriteTiled> sheets;
 
     /**
      * Create the dialog.
@@ -134,13 +135,13 @@ public class SheetsExtractDialog extends DialogAbstract
      * 
      * @return The extracted tile sheets.
      */
-    public Collection<SpriteTiled> getSheets()
+    public List<SpriteTiled> getSheets()
     {
         if (sheets == null)
         {
-            return Collections.emptySet();
+            return Collections.emptyList();
         }
-        return Collections.unmodifiableCollection(sheets);
+        return Collections.unmodifiableList(sheets);
     }
 
     /**
@@ -209,10 +210,10 @@ public class SheetsExtractDialog extends DialogAbstract
      * 
      * @return The sheets name list.
      */
-    private Collection<String> getSheetNames()
+    private List<String> getSheetNames()
     {
         final int size = getSheets().size();
-        final Collection<String> sheetsName = new ArrayList<>(size);
+        final List<String> sheetsName = new ArrayList<>(size);
         for (int i = 0; i < size; i++)
         {
             sheetsName.add(i + SHEET_EXTENSION);

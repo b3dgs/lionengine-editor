@@ -17,7 +17,7 @@
 package com.b3dgs.lionengine.editor.map.group.menu;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.swt.SWT;
@@ -60,12 +60,12 @@ public class GroupsEditDialog extends DialogAbstract
      * @param folder The folder root.
      * @return The loaded sheets.
      */
-    public static Collection<SpriteTiled> loadSheets(TileSheetsConfig config, String folder)
+    public static List<SpriteTiled> loadSheets(TileSheetsConfig config, String folder)
     {
         final int tw = config.getTileWidth();
         final int th = config.getTileHeight();
-        final Collection<String> configSheets = config.getSheets();
-        final Collection<SpriteTiled> sheets = new ArrayList<>(configSheets.size());
+        final List<String> configSheets = config.getSheets();
+        final List<SpriteTiled> sheets = new ArrayList<>(configSheets.size());
         for (final String sheet : configSheets)
         {
             final Media media = Medias.create(folder, sheet);
@@ -74,6 +74,7 @@ public class GroupsEditDialog extends DialogAbstract
             surface.prepare();
             sheets.add(surface);
         }
+        configSheets.clear();
         return sheets;
     }
 
@@ -184,7 +185,7 @@ public class GroupsEditDialog extends DialogAbstract
         final TileSheetsConfig config = TileSheetsConfig.imports(sheetsMedia);
         final GroupsAssignDialog assign = new GroupsAssignDialog(partService, dialog);
         final String folderPath = sheetsMedia.getParentPath();
-        final Collection<SpriteTiled> sheetsLoaded = loadSheets(config, folderPath);
+        final List<SpriteTiled> sheetsLoaded = loadSheets(config, folderPath);
         if (sheetsLoaded.isEmpty())
         {
             UtilDialog.error(getParent(), Messages.ErrorSheet_Title, Messages.ErrorSheet_Message);
