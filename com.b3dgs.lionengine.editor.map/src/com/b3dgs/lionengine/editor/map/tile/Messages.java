@@ -41,10 +41,6 @@ public final class Messages extends NLS
     public static String TileNumber;
     /** Tile size property. */
     public static String TileSize;
-    /** Tile features property. */
-    public static String TileFeatures;
-    /** Tile feature property. */
-    public static String TileFeature;
 
     /**
      * Initialize.

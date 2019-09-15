@@ -30,7 +30,6 @@ import com.b3dgs.lionengine.editor.utility.UtilIcon;
 import com.b3dgs.lionengine.editor.utility.UtilWorld;
 import com.b3dgs.lionengine.editor.world.WorldModel;
 import com.b3dgs.lionengine.editor.world.view.WorldPart;
-import com.b3dgs.lionengine.game.Feature;
 import com.b3dgs.lionengine.game.feature.tile.Tile;
 import com.b3dgs.lionengine.game.feature.tile.TileConfig;
 import com.b3dgs.lionengine.game.feature.tile.TileGroupsConfig;
@@ -47,10 +46,6 @@ public class PropertiesTile implements PropertiesProviderTile
     private static final Image ICON_NUMBER = UtilIcon.get(FOLDER, "tilenumber.png");
     /** Tile size icon. */
     private static final Image ICON_SIZE = UtilIcon.get(FOLDER, "tilesize.png");
-    /** Tile features icon. */
-    private static final Image ICON_FEATURES = UtilIcon.get(FOLDER, "tilefeatures.png");
-    /** Tile feature icon. */
-    private static final Image ICON_FEATURE = UtilIcon.get(FOLDER, "tilefeature.png");
 
     /**
      * Called on double click.
@@ -135,35 +130,6 @@ public class PropertiesTile implements PropertiesProviderTile
     }
 
     /**
-     * Create the attribute tile features.
-     * 
-     * @param properties The properties tree reference.
-     * @param tile The tile reference.
-     */
-    private static void createAttributeTileFeatures(Tree properties, Tile tile)
-    {
-        final TreeItem features = new TreeItem(properties, SWT.NONE);
-        features.setText(Messages.TileFeatures);
-        features.setImage(PropertiesTile.ICON_FEATURES);
-
-        for (final Feature feature : tile.getFeatures())
-        {
-            final TreeItem item = new TreeItem(features, SWT.NONE);
-            item.setText(Messages.TileFeature);
-            item.setImage(PropertiesTile.ICON_FEATURE);
-
-            final Class<?> clazz = feature.getClass();
-            for (final Class<?> type : clazz.getInterfaces())
-            {
-                if (Feature.class.isAssignableFrom(type))
-                {
-                    PropertiesPart.createLine(item, type.getSimpleName(), clazz.getName());
-                }
-            }
-        }
-    }
-
-    /**
      * Create properties.
      */
     public PropertiesTile()
@@ -181,6 +147,5 @@ public class PropertiesTile implements PropertiesProviderTile
         createAttributeTileGroup(properties, tile);
         createAttributeTileNumber(properties, tile);
         createAttributeTileSize(properties, tile);
-        createAttributeTileFeatures(properties, tile);
     }
 }

@@ -24,10 +24,11 @@ import org.eclipse.swt.widgets.TreeItem;
 import com.b3dgs.lionengine.editor.properties.PropertiesPart;
 import com.b3dgs.lionengine.editor.properties.PropertiesProviderTile;
 import com.b3dgs.lionengine.editor.utility.UtilIcon;
+import com.b3dgs.lionengine.editor.world.WorldModel;
 import com.b3dgs.lionengine.game.feature.tile.Tile;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionFormula;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionFormulaConfig;
-import com.b3dgs.lionengine.game.feature.tile.map.collision.TileCollision;
+import com.b3dgs.lionengine.game.feature.tile.map.collision.MapTileCollision;
 
 /**
  * Element properties part.
@@ -45,14 +46,16 @@ public class PropertiesFormula implements PropertiesProviderTile
      * @param properties The properties tree reference.
      * @param tile The tile reference.
      */
-    private static void createAttributeTileCollisionFormulas(Tree properties, TileCollision tile)
+    private static void createAttributeTileCollisionFormulas(Tree properties, Tile tile)
     {
         final TreeItem item = new TreeItem(properties, SWT.NONE);
         item.setText(Messages.TileCollisionFormulas);
         item.setData(CollisionFormulaConfig.NODE_FORMULAS);
         item.setImage(PropertiesFormula.ICON_FORMULAS);
 
-        for (final CollisionFormula formula : tile.getCollisionFormulas())
+        final MapTileCollision mapCollision = WorldModel.INSTANCE.getMap().getFeature(MapTileCollision.class);
+
+        for (final CollisionFormula formula : mapCollision.getCollisionFormulas(tile))
         {
             final TreeItem current = new TreeItem(item, SWT.NONE);
             PropertiesPart.createLine(current, Messages.TileCollisionFormula, formula.getName());
@@ -76,10 +79,6 @@ public class PropertiesFormula implements PropertiesProviderTile
     @Override
     public void setInput(Tree properties, Tile tile)
     {
-        if (tile.hasFeature(TileCollision.class))
-        {
-            final TileCollision tileCollision = tile.getFeature(TileCollision.class);
-            createAttributeTileCollisionFormulas(properties, tileCollision);
-        }
+        createAttributeTileCollisionFormulas(properties, tile);
     }
 }

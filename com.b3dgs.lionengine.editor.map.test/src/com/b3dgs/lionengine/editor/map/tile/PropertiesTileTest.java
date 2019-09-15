@@ -87,7 +87,7 @@ public class PropertiesTileTest
 
         setPaletteTile(BOT);
         BOT.canvas(1).click(view.get().x + 1, view.get().y + view.get().height - 1);
-        BOT.waitUntil(Conditions.treeHasRows(BOT.tree(1), 4));
+        BOT.waitUntil(Conditions.treeHasRows(BOT.tree(1), 3));
 
         Assert.assertEquals(MapTileGroupModel.NO_GROUP_NAME, getTileGroupValue(BOT));
 
@@ -95,8 +95,6 @@ public class PropertiesTileTest
 
         BOT.tree(1).getTreeItem(com.b3dgs.lionengine.editor.map.tile.Messages.TileGroup).select();
         Assert.assertEquals(Constant.EMPTY_STRING, getTileGroupValue(BOT));
-
-        BOT.tree(1).getTreeItem(com.b3dgs.lionengine.editor.map.tile.Messages.TileFeatures).expand();
     }
 
     /**
