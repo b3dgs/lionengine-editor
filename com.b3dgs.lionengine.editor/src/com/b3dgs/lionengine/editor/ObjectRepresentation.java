@@ -123,11 +123,11 @@ public class ObjectRepresentation extends FeaturableModel
      */
     public ObjectRepresentation(Setup setup)
     {
-        super();
+        super(WorldModel.INSTANCE.getServices(), setup);
 
         media = setup.getMedia();
 
-        final Transformable transformable = addFeatureAndGet(new TransformableModel(setup));
+        final Transformable transformable = addFeatureAndGet(new TransformableModel(services, setup));
         final Sprite surface = getSprite(setup, transformable);
         surface.setOrigin(Origin.BOTTOM_LEFT);
 
