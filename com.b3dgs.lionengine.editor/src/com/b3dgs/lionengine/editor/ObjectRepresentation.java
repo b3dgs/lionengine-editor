@@ -127,7 +127,8 @@ public class ObjectRepresentation extends FeaturableModel
 
         media = setup.getMedia();
 
-        final Transformable transformable = addFeatureAndGet(new TransformableModel(services, setup));
+        final Transformable transformable = addFeatureAndGet(new TransformableModel(WorldModel.INSTANCE.getServices(),
+                                                                                    setup));
         final Sprite surface = getSprite(setup, transformable);
         surface.setOrigin(Origin.BOTTOM_LEFT);
 
