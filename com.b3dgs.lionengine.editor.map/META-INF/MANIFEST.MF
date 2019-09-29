@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: com.b3dgs.lionengine.editor.map;singleton:=true
-Bundle-Version: 9.0.2.qualifier
+Bundle-Version: 9.0.2
 Bundle-ClassPath: .
 Bundle-Vendor: %Bundle-Vendor
 Bundle-Localization: OSGI-INF/l10n/bundle
@@ -44,6 +44,6 @@ Require-Bundle: javax.inject;bundle-version="1.0.0",
  com.b3dgs.lionengine.game;bundle-version="9.0.2",
  com.b3dgs.lionengine.editor;bundle-version="9.0.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-License: http://www.gnu.org/licenses/gpl-2.0.txt
+Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 Import-Package: javax.annotation;version="1.0.0",
  org.osgi.framework;version="1.3.0"
