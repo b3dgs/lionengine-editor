@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.b3dgs.lionengine.editor</groupId>
         <artifactId>lionengine-editor-parent</artifactId>
-        <version>9.0.2</version>
+        <version>9.0.3</version>
         <relativePath>../lionengine-editor-parent</relativePath>
     </parent>
     <artifactId>com.b3dgs.lionengine.editor.pathfinding</artifactId>
