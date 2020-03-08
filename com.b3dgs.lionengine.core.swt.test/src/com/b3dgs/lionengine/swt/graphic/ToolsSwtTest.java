@@ -225,9 +225,16 @@ public final class ToolsSwtTest
 
         try (InputStream input = media.getInputStream())
         {
-            assertThrows(SWTException.class,
-                         () -> ToolsSwt.getImage(ToolsSwt.getDisplay(), input),
-                         "Unsupported or unrecognized format");
+            try
+            {
+                ToolsSwt.getImage(ToolsSwt.getDisplay(), input);
+                org.junit.jupiter.api.Assertions.fail();
+            }
+            catch (final SWTException exception)
+            {
+                assertTrue(exception.getLocalizedMessage().contains("Unsupported or unrecognized format")
+                           || exception.getLocalizedMessage().contains("Invalid image"));
+            }
         }
     }
 }
