@@ -10,9 +10,6 @@
     <artifactId>lionengine-editor-test-parent</artifactId>
     <packaging>pom</packaging>
     <name>LionEngine Editor Test Parent</name>
-    <properties>
-        <tycho.testArgLine>-Xmx512m</tycho.testArgLine>
-    </properties>
     <build>
         <testSourceDirectory>src</testSourceDirectory>
         <pluginManagement>
