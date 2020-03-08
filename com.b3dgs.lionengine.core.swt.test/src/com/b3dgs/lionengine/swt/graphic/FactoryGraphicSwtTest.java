@@ -48,7 +48,7 @@ public class FactoryGraphicSwtTest extends FactoryGraphicTest
      * Prepare test.
      */
     @BeforeAll
-    public static void setUp()
+    public static void beforeTests()
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         Medias.setFactoryMedia(new FactoryMediaDefault());
@@ -60,7 +60,7 @@ public class FactoryGraphicSwtTest extends FactoryGraphicTest
      * Clean test.
      */
     @AfterAll
-    public static void cleanUp()
+    public static void afterTests()
     {
         Medias.setLoadFromJar(null);
         Graphics.setFactoryGraphic(null);
@@ -125,7 +125,7 @@ public class FactoryGraphicSwtTest extends FactoryGraphicTest
                     @Override
                     public int read() throws IOException
                     {
-                        return 0;
+                        return -1;
                     }
                 };
             }

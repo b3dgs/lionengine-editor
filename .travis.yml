@@ -31,7 +31,6 @@ before_install:
  - sudo apt-get install gnome-themes-standard
  - sudo apt-get install metacity
  - sudo apt-get install libwebkit-dev
- - export MAVEN_OPTS="-Xms1G -Xmx2G -XX:PermSize=512m"
 
 cache:
   apt: true
