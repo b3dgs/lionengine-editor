@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: LionEngine Core SWT Test
 Bundle-SymbolicName: com.b3dgs.lionengine.core.swt.test;singleton:=true
-Bundle-Version: 9.0.3
+Bundle-Version: 9.0.4.qualifier
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.swt,
@@ -11,5 +11,5 @@ Require-Bundle: org.eclipse.swt,
  org.junit.jupiter.api;bundle-version="5.0.0",
  org.opentest4j;bundle-version="1.0.0"
 Bundle-ClassPath: .,
- lib/lionengine-core-9.0.3-tests.jar
+ lib/lionengine-core-9.0.4-20200308.130611-1-tests.jar
 Automatic-Module-Name: com.b3dgs.lionengine.core.swt.test
