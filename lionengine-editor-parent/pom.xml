@@ -124,12 +124,6 @@
     <profiles>
         <profile>
             <id>travis</id>
-            <properties>
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
-        </profile>
-        <profile>
-            <id>sonar</id>
             <build>
                 <plugins>
                     <plugin>
