@@ -42,7 +42,6 @@
     <properties>
         <radial.base-package>com.b3dgs.lionengine.editor</radial.base-package>
         <sonar-branch>lionengine-editor-9.0.4</sonar-branch>
-        <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
     </properties>
     <dependencies>
         <dependency>
