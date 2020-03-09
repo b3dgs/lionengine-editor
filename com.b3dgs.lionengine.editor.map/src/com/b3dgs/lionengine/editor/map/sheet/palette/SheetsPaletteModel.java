@@ -25,7 +25,7 @@ public class SheetsPaletteModel
     public static final SheetsPaletteModel INSTANCE = new SheetsPaletteModel();
 
     /** Selected palette tile. */
-    private int tile = 0;
+    private int tile;
     /** Sheet palette type. */
     private SheetPaletteType type = SheetPaletteType.SELECTION;
 
