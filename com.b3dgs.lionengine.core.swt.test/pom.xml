@@ -83,9 +83,6 @@
                 <executions>
                     <execution>
                         <id>report</id>
-                        <configuration>
-                            <outputDirectory>${jacoco.aggregate}</outputDirectory>
-                        </configuration>
                         <goals>
                             <goal>report-aggregate</goal>
                         </goals>
