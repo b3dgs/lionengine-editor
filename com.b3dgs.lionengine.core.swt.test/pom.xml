@@ -12,7 +12,6 @@
     <name>LionEngine Core SWT Test</name>
     <properties>
         <sonar.skip>true</sonar.skip>
-        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../com.b3dgs.lionengine.core.swt/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
     <dependencies>
         <dependency>

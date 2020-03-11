@@ -12,6 +12,5 @@
     <name>LionEngine Editor Animation Test</name>
     <properties>
         <sonar.skip>true</sonar.skip>
-        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../com.b3dgs.lionengine.editor.animation/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 </project>
