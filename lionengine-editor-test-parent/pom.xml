@@ -10,9 +10,6 @@
     <artifactId>lionengine-editor-test-parent</artifactId>
     <packaging>pom</packaging>
     <name>LionEngine Editor Test Parent</name>
-    <properties>
-        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../${project.artifactId}/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
-    </properties>
     <build>
         <testSourceDirectory>src</testSourceDirectory>
         <pluginManagement>
