@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.b3dgs.lionengine.editor</groupId>
@@ -14,6 +14,11 @@
         <sonar.skip>true</sonar.skip>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.b3dgs.lionengine</groupId>
             <artifactId>lionengine-core</artifactId>
@@ -35,6 +40,7 @@
                 <artifactId>tycho-surefire-plugin</artifactId>
                 <configuration>
                     <useUIHarness>false</useUIHarness>
+                    <providerHint>junit5</providerHint>
                 </configuration>
             </plugin>
             <plugin>

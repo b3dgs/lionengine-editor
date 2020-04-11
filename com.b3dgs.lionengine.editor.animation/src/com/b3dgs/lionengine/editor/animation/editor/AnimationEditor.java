@@ -153,7 +153,7 @@ public class AnimationEditor extends EditorAbstract
         animationList.save();
 
         final Xml root = configurer.getRoot();
-        root.removeChildren(AnimationConfig.ANIMATION);
+        root.removeChild(AnimationConfig.NODE_ANIMATIONS);
 
         for (final TreeItem item : animationList.getTree().getItems())
         {

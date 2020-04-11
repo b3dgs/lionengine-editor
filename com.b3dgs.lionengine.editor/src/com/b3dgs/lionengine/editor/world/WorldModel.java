@@ -27,7 +27,6 @@ import com.b3dgs.lionengine.game.feature.HandlerPersister;
 import com.b3dgs.lionengine.game.feature.Services;
 import com.b3dgs.lionengine.game.feature.Spawner;
 import com.b3dgs.lionengine.game.feature.Transformable;
-import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileGame;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroupModel;
 import com.b3dgs.lionengine.game.feature.tile.map.Minimap;
@@ -54,7 +53,7 @@ public class WorldModel
     /** Camera reference. */
     private final Camera camera = services.create(Camera.class);
     /** Map reference. */
-    private final MapTile map = services.create(MapTileGame.class);
+    private final MapTileGame map = services.create(MapTileGame.class);
     /** Handler reference. */
     private final Handler handler = services.create(Handler.class);
     /** Handler persister reference. */
@@ -84,11 +83,11 @@ public class WorldModel
 
         map.addFeature(new MapTileViewerModel(services));
         map.addFeature(new MapTileGroupModel());
-        map.addFeature(new MapTileTransitionModel(services));
-        map.addFeature(new MapTileCircuitModel(services));
-        map.addFeature(new MapTilePathModel(services));
-        map.addFeature(new MapTileCollisionModel(services));
-        map.addFeature(new MapTileCollisionRendererModel(services));
+        map.addFeature(new MapTileTransitionModel());
+        map.addFeature(new MapTileCircuitModel());
+        map.addFeature(new MapTilePathModel());
+        map.addFeature(new MapTileCollisionModel());
+        map.addFeature(new MapTileCollisionRendererModel());
     }
 
     /**
@@ -126,7 +125,7 @@ public class WorldModel
      * 
      * @return The map reference.
      */
-    public MapTile getMap()
+    public MapTileGame getMap()
     {
         return map;
     }

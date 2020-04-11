@@ -5,11 +5,11 @@ Bundle-SymbolicName: com.b3dgs.lionengine.core.swt.test;singleton:=true
 Bundle-Version: 9.0.4.qualifier
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.eclipse.swt,
- com.b3dgs.lionengine.core,
- com.b3dgs.lionengine.core.swt,
- org.junit.jupiter.api;bundle-version="5.0.0",
- org.opentest4j;bundle-version="1.0.0"
+Require-Bundle: org.eclipse.swt;bundle-version="3.113.0",
+ org.opentest4j;bundle-version="1.2.0",
+ junit-jupiter-api;bundle-version="5.6.1",
+ com.b3dgs.lionengine.core;bundle-version="9.0.4",
+ com.b3dgs.lionengine.core.swt;bundle-version="9.0.4"
 Bundle-ClassPath: .,
- lib/lionengine-core-9.0.4-20200308.130611-1-tests.jar
+ lib/lionengine-core-9.0.4-20200411.185233-3-tests.jar
 Automatic-Module-Name: com.b3dgs.lionengine.core.swt.test

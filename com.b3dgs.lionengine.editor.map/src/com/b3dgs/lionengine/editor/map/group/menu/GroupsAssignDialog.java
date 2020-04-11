@@ -100,7 +100,7 @@ public class GroupsAssignDialog extends DialogAbstract implements WorldView, Foc
     /** Groups list. */
     private final GroupList groupList = new GroupList(properties);
     /** Map reference. */
-    private final MapTile map;
+    private final MapTileGame map;
     /** Map appender reference. */
     private final MapTileAppender appender;
     /** Map group. */
@@ -129,12 +129,12 @@ public class GroupsAssignDialog extends DialogAbstract implements WorldView, Foc
         services.add(new Factory(services));
         map = services.create(MapTileGame.class);
         mapGroup = map.addFeatureAndGet(new MapTileGroupModel());
-        map.addFeature(new MapTileCollisionModel(services));
-        map.addFeature(new MapTileCollisionRendererModel(services));
-        map.addFeature(new MapTileTransitionModel(services));
-        map.addFeature(new MapTileCircuitModel(services));
+        map.addFeature(new MapTileCollisionModel());
+        map.addFeature(new MapTileCollisionRendererModel());
+        map.addFeature(new MapTileTransitionModel());
+        map.addFeature(new MapTileCircuitModel());
         map.addFeature(new MapTileViewerModel(services));
-        appender = map.addFeatureAndGet(new MapTileAppenderModel(services));
+        appender = map.addFeatureAndGet(new MapTileAppenderModel());
 
         services.add(new Selection());
 

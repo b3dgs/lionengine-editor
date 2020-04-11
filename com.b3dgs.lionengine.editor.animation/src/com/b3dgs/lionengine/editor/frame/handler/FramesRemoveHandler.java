@@ -54,7 +54,7 @@ public final class FramesRemoveHandler
         configurer.save();
         for (final TreeItem item : properties.getItems())
         {
-            if (FramesConfig.NODE_FRAMES.equals(item.getData()) || AnimationConfig.ANIMATION.equals(item.getData()))
+            if (FramesConfig.NODE_FRAMES.equals(item.getData()) || AnimationConfig.NODE_ANIMATION.equals(item.getData()))
             {
                 part.clear(item);
             }

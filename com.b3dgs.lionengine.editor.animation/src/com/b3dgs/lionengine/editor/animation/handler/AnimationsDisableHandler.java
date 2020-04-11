@@ -47,13 +47,13 @@ public final class AnimationsDisableHandler
     {
         final Tree tree = PropertiesModel.INSTANCE.getTree();
         final Configurer configurer = (Configurer) tree.getData();
-        configurer.getRoot().removeChildren(AnimationConfig.ANIMATION);
+        configurer.getRoot().removeChildren(AnimationConfig.NODE_ANIMATION);
         configurer.save();
 
         final PropertiesPart part = UtilPart.getPart(PropertiesPart.ID, PropertiesPart.class);
         for (final TreeItem item : tree.getItems())
         {
-            if (AnimationConfig.ANIMATION.equals(item.getData()))
+            if (AnimationConfig.NODE_ANIMATION.equals(item.getData()))
             {
                 part.clear(item);
             }

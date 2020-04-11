@@ -45,7 +45,7 @@ public class PropertiesAnimation implements PropertiesProviderObject
     {
         final TreeItem animationsItem = new TreeItem(properties, SWT.NONE);
         animationsItem.setText(Messages.Animations);
-        animationsItem.setData(AnimationConfig.ANIMATION);
+        animationsItem.setData(AnimationConfig.NODE_ANIMATIONS);
         animationsItem.setImage(ICON_ANIMATIONS);
     }
 
@@ -65,7 +65,7 @@ public class PropertiesAnimation implements PropertiesProviderObject
     public void setInput(Tree properties, Configurer configurer)
     {
         final Xml root = configurer.getRoot();
-        if (root.hasChild(AnimationConfig.ANIMATION))
+        if (root.hasChild(AnimationConfig.NODE_ANIMATIONS))
         {
             createAttributeAnimations(properties);
         }
@@ -75,7 +75,7 @@ public class PropertiesAnimation implements PropertiesProviderObject
     public boolean updateProperties(TreeItem item, Configurer configurer)
     {
         final Object data = item.getData();
-        if (AnimationConfig.ANIMATION.equals(data))
+        if (AnimationConfig.NODE_ANIMATIONS.equals(data))
         {
             final AnimationEditor animationEditor = new AnimationEditor(item.getParent(), configurer);
             animationEditor.create();

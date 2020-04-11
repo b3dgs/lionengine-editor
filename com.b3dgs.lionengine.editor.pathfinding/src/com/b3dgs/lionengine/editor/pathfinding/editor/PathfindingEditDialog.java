@@ -122,14 +122,14 @@ public class PathfindingEditDialog extends DialogAbstract
     {
         list.save();
 
-        final Xml root = new Xml(PathfindingConfig.PATHFINDING);
+        final Xml root = new Xml(PathfindingConfig.NODE_PATHFINDING);
         root.writeString(Constant.XML_HEADER, Constant.ENGINE_WEBSITE);
 
         for (final TreeItem item : list.getTree().getItems())
         {
             final PathCategory category = (PathCategory) item.getData();
-            final Xml nodeCategory = root.createChild(PathfindingConfig.TILE_PATH);
-            nodeCategory.writeString(PathfindingConfig.CATEGORY, category.getName());
+            final Xml nodeCategory = root.createChild(PathfindingConfig.NODE_TILE_PATH);
+            nodeCategory.writeString(PathfindingConfig.ATT_CATEGORY, category.getName());
 
             for (final String group : category.getGroups())
             {

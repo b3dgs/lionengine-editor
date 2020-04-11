@@ -47,12 +47,12 @@ public final class PropertiesAnimationTester extends PropertyTester
         final boolean result;
         if (PROPERTY_ANIMATIONS_ENABLE.equals(property) && model.hasProperty(FramesConfig.NODE_FRAMES))
         {
-            result = !model.hasProperty(AnimationConfig.ANIMATION);
+            result = !model.hasProperty(AnimationConfig.NODE_ANIMATION);
         }
-        else if (AnimationConfig.ANIMATION.equals(data)
+        else if (AnimationConfig.NODE_ANIMATION.equals(data)
                  && (PROPERTY_ANIMATIONS_EDIT.equals(property) || PROPERTY_ANIMATIONS_DISABLE.equals(property)))
         {
-            result = model.hasProperty(AnimationConfig.ANIMATION);
+            result = model.hasProperty(AnimationConfig.NODE_ANIMATION);
         }
         else
         {

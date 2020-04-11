@@ -48,7 +48,7 @@ public final class PathfindingAddHandler
     {
         InputValidator.getFile(parent, Messages.Title, Messages.Text, PathfindingConfig.FILENAME, file ->
         {
-            final Xml root = new Xml(UtilFile.removeExtension(PathfindingConfig.PATHFINDING));
+            final Xml root = new Xml(UtilFile.removeExtension(PathfindingConfig.NODE_PATHFINDING));
             root.save(ProjectModel.INSTANCE.getProject().getResourceMedia(file));
         });
     }

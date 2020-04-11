@@ -52,7 +52,7 @@ public final class SurfaceRemoveHandler
         final Configurer configurer = (Configurer) properties.getData();
         final Xml root = configurer.getRoot();
         root.removeChild(SurfaceConfig.NODE_SURFACE);
-        root.removeChildren(AnimationConfig.ANIMATION);
+        root.removeChildren(AnimationConfig.NODE_ANIMATION);
         configurer.save();
         for (final TreeItem item : properties.getItems())
         {
@@ -60,7 +60,7 @@ public final class SurfaceRemoveHandler
             if (SurfaceConfig.ATT_IMAGE.equals(data)
                 || SurfaceConfig.ATT_ICON.equals(data)
                 || FramesConfig.NODE_FRAMES.equals(data)
-                || AnimationConfig.ANIMATION.equals(data))
+                || AnimationConfig.NODE_ANIMATION.equals(data))
             {
                 part.clear(item);
             }

@@ -135,6 +135,23 @@ final class GraphicSwt implements Graphic
     }
 
     @Override
+    public void drawImage(ImageSurface image,
+                          int dx1,
+                          int dy1,
+                          int dx2,
+                          int dy2,
+                          int sx1,
+                          int sy1,
+                          int sx2,
+                          int sy2,
+                          int angle,
+                          int angleX,
+                          int angleY)
+    {
+        drawImage(image, dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2);
+    }
+
+    @Override
     public void drawRect(int x, int y, int width, int height, boolean fill)
     {
         if (width == 0 && height == 0)

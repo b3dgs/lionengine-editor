@@ -93,10 +93,10 @@ public class CategoryList extends ObjectListAbstract<PathCategory> implements Ob
         final Collection<Xml> toRemove = new ArrayList<>();
 
         final Xml node = new Xml(config);
-        final Collection<Xml> children = node.getChildren(PathfindingConfig.PATHFINDING);
+        final Collection<Xml> children = node.getChildren(PathfindingConfig.NODE_PATHFINDING);
         for (final Xml nodePath : children)
         {
-            if (CollisionGroup.same(nodePath.readString(PathfindingConfig.CATEGORY), category.getName()))
+            if (CollisionGroup.same(nodePath.readString(PathfindingConfig.ATT_CATEGORY), category.getName()))
             {
                 toRemove.add(nodePath);
             }
