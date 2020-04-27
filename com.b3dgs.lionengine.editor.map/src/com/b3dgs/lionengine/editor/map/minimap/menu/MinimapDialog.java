@@ -261,6 +261,7 @@ public final class MinimapDialog implements MouseListener, MouseMoveListener, Mo
         miniShell.setText(Messages.Title);
 
         final Canvas canvas = new Canvas(miniShell, SWT.DOUBLE_BUFFERED);
+        canvas.setToolTipText(Messages.Title);
         canvas.setLayoutData(new GridData(minimap.getWidth(), minimap.getHeight()));
         canvas.setBackgroundImage((Image) minimap.getSurface().getSurface());
         canvas.addMouseListener(this);
