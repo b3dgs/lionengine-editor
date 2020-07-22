@@ -25,7 +25,6 @@ import com.b3dgs.lionengine.editor.ObjectListAbstract;
 import com.b3dgs.lionengine.editor.ObjectListListener;
 import com.b3dgs.lionengine.editor.world.WorldModel;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
-import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionFormula;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionGroup;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionGroupConfig;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.MapTileCollision;
@@ -111,7 +110,7 @@ public class CollisionGroupList extends ObjectListAbstract<CollisionGroup> imple
     @Override
     protected CollisionGroup createObject(String name)
     {
-        return new CollisionGroup(name, new ArrayList<CollisionFormula>());
+        return new CollisionGroup(name, new ArrayList<>());
     }
 
     /*

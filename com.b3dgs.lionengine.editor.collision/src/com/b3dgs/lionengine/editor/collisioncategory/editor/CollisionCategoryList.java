@@ -24,7 +24,6 @@ import com.b3dgs.lionengine.game.Configurer;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.Axis;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionCategory;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionCategoryConfig;
-import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionGroup;
 
 /**
  * Represents the collision category list, allowing to add and remove {@link CollisionCategory}.
@@ -73,6 +72,6 @@ public class CollisionCategoryList extends ObjectListAbstract<CollisionCategory>
     @Override
     protected CollisionCategory createObject(String name)
     {
-        return new CollisionCategory(name, Axis.Y, 0, 0, true, new ArrayList<CollisionGroup>());
+        return new CollisionCategory(name, Axis.Y, 0, 0, true, new ArrayList<>());
     }
 }

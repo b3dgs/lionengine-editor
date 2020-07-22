@@ -78,7 +78,7 @@ public class GroupList extends ObjectListAbstract<TileGroup> implements ObjectLi
     @Override
     protected TileGroup createObject(String name)
     {
-        return new TileGroup(name, TileGroupType.NONE, new TreeSet<Integer>());
+        return new TileGroup(name, TileGroupType.NONE, new TreeSet<>());
     }
 
     /*

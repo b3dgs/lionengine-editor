@@ -74,7 +74,7 @@ public class CategoryList extends ObjectListAbstract<PathCategory> implements Ob
     @Override
     protected PathCategory createObject(String name)
     {
-        return new PathCategory(name, new HashSet<String>());
+        return new PathCategory(name, new HashSet<>());
     }
 
     /*
