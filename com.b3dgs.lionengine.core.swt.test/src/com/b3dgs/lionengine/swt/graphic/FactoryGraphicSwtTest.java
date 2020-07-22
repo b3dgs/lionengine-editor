@@ -42,7 +42,7 @@ import com.b3dgs.lionengine.graphic.ImageBufferMock;
 /**
  * Test the factory graphic provider class.
  */
-public class FactoryGraphicSwtTest extends FactoryGraphicTest
+final class FactoryGraphicSwtTest extends FactoryGraphicTest
 {
     /**
      * Prepare test.
@@ -89,7 +89,7 @@ public class FactoryGraphicSwtTest extends FactoryGraphicTest
      * Test the get image buffer exception case.
      */
     @Test
-    public void testGetImageBufferException()
+    void testGetImageBufferException()
     {
         assertThrows(() -> Graphics.getImageBuffer(new Media()
         {
@@ -154,7 +154,7 @@ public class FactoryGraphicSwtTest extends FactoryGraphicTest
      * Test the save image exception case.
      */
     @Test
-    public void testSaveImageException()
+    void testSaveImageException()
     {
         assertThrows(() -> Graphics.saveImage(new ImageBufferMock(16, 32)
         {

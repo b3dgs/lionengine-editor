@@ -31,4 +31,4 @@ Require-Bundle: javax.inject;bundle-version="1.0.0",
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
- lib/lionengine-core-9.0.4-20200411.185233-3-tests.jar
+ lib/lionengine-core-9.0.4-20200722.184018-4-tests.jar

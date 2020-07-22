@@ -25,7 +25,7 @@ import com.b3dgs.lionengine.graphic.Graphics;
 /**
  * Test {@link GraphicSwt}.
  */
-public final class GraphicSwtTest extends GraphicTest
+final class GraphicSwtTest extends GraphicTest
 {
     /**
      * Prepare test.
@@ -41,7 +41,7 @@ public final class GraphicSwtTest extends GraphicTest
      */
     @Override
     @Test
-    public void testGraphic()
+    protected void testGraphic()
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         super.testGraphic();

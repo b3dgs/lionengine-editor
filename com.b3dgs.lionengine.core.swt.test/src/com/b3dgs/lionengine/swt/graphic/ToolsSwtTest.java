@@ -47,7 +47,7 @@ import com.b3dgs.lionengine.graphic.Transparency;
 /**
  * Test {@link ToolsSwt}.
  */
-public final class ToolsSwtTest
+final class ToolsSwtTest
 {
     /**
      * Prepare test.
@@ -71,7 +71,7 @@ public final class ToolsSwtTest
      * Test the constructor.
      */
     @Test
-    public void testConstructor()
+    void testConstructor()
     {
         assertPrivateConstructor(ToolsSwt.class);
     }
@@ -80,7 +80,7 @@ public final class ToolsSwtTest
      * Test the transparency.
      */
     @Test
-    public void testTransparency()
+    void testTransparency()
     {
         assertThrows(() -> ToolsSwt.getTransparency(UtilEnum.make(Transparency.class, "FAIL")), "Unknown enum: FAIL");
 
@@ -93,7 +93,7 @@ public final class ToolsSwtTest
      * Test the get raster.
      */
     @Test
-    public void testGetRasterColor()
+    void testGetRasterColor()
     {
         final Image image = ToolsSwt.createImage(16, 16, SWT.TRANSPARENCY_PIXEL);
         final PaletteData palette = new PaletteData(new RGB[]
@@ -111,7 +111,7 @@ public final class ToolsSwtTest
      * @throws IOException If error.
      */
     @Test
-    public void testUtility() throws IOException
+    void testUtility() throws IOException
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
 
@@ -153,7 +153,7 @@ public final class ToolsSwtTest
      * Test the copy.
      */
     @Test
-    public void testCopy()
+    void testCopy()
     {
         final Image image = ToolsSwt.createImage(100, 100, SWT.TRANSPARENCY_NONE);
         final Image copy = ToolsSwt.getImage(image);
@@ -175,7 +175,7 @@ public final class ToolsSwtTest
      * @throws IOException If error.
      */
     @Test
-    public void testSave() throws IOException
+    void testSave() throws IOException
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final Media media = Medias.create("image.png");
@@ -204,7 +204,7 @@ public final class ToolsSwtTest
      * Test the get fail.
      */
     @Test
-    public void testGetFail()
+    void testGetFail()
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final Media media = Medias.create("image.xml");
@@ -218,7 +218,7 @@ public final class ToolsSwtTest
      * @throws IOException If error.
      */
     @Test
-    public void testGetIoFail() throws IOException
+    void testGetIoFail() throws IOException
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final Media media = Medias.create("raster.xml");

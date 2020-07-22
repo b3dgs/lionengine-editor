@@ -24,7 +24,7 @@ import com.b3dgs.lionengine.graphic.TransformTest;
 /**
  * Test {@link TransformSwt}.
  */
-public final class TransformSwtTest extends TransformTest
+final class TransformSwtTest extends TransformTest
 {
     /**
      * Prepare test.

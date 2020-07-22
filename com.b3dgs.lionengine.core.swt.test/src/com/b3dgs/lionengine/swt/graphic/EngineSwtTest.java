@@ -29,7 +29,7 @@ import com.b3dgs.lionengine.Version;
 /**
  * Test {@link EngineSwt}.
  */
-public final class EngineSwtTest
+final class EngineSwtTest
 {
     /**
      * Clean test.
@@ -44,7 +44,7 @@ public final class EngineSwtTest
      * Test start default already.
      */
     @Test
-    public void testDefaultAlready()
+    void testDefaultAlready()
     {
         EngineSwt.start(EngineSwtTest.class.getName(), Version.DEFAULT);
 
@@ -56,7 +56,7 @@ public final class EngineSwtTest
      * Test start without resources.
      */
     @Test
-    public void testNullResources()
+    void testNullResources()
     {
         assertThrows(() -> EngineSwt.start(EngineSwtTest.class.getName(), Version.DEFAULT, (String) null),
                      "Unexpected null argument !");
@@ -66,7 +66,7 @@ public final class EngineSwtTest
      * Test start with resources already started.
      */
     @Test
-    public void testResourcesAlready()
+    void testResourcesAlready()
     {
         EngineSwt.start(EngineSwtTest.class.getName(), Version.DEFAULT, Constant.EMPTY_STRING);
 
@@ -79,7 +79,7 @@ public final class EngineSwtTest
      * Test start with class already started.
      */
     @Test
-    public void testClass()
+    void testClass()
     {
         EngineSwt.start(EngineSwtTest.class.getName(), Version.DEFAULT, EngineSwtTest.class);
 

@@ -39,7 +39,7 @@ import com.b3dgs.lionengine.graphic.Transparency;
 /**
  * Test {@link ImageBufferSwt}.
  */
-public final class ImageBufferSwtTest
+final class ImageBufferSwtTest
 {
     /**
      * Prepare test.
@@ -68,7 +68,7 @@ public final class ImageBufferSwtTest
      * @throws NoSuchMethodException If error.
      */
     @Test
-    public void testImage() throws IllegalArgumentException,
+    void testImage() throws IllegalArgumentException,
             IllegalAccessException,
             InvocationTargetException,
             NoSuchMethodException
@@ -102,7 +102,7 @@ public final class ImageBufferSwtTest
      * Test the image transparency
      */
     @Test
-    public void testImageTransparency()
+    void testImageTransparency()
     {
         final ImageBuffer image = Graphics.createImageBuffer(100, 100, ColorRgba.RED);
 

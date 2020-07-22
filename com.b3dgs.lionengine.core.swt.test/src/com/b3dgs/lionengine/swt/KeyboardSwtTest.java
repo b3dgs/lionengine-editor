@@ -35,7 +35,7 @@ import com.b3dgs.lionengine.swt.graphic.ToolsSwt;
 /**
  * Test {@link KeyboardSwt}.
  */
-public final class KeyboardSwtTest
+final class KeyboardSwtTest
 {
     /**
      * Create a key event.
@@ -58,7 +58,7 @@ public final class KeyboardSwtTest
      * Test the keyboard not pressed state.
      */
     @Test
-    public void testNotPressed()
+    void testNotPressed()
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final KeyboardSwt keyboard = new KeyboardSwt();
@@ -81,7 +81,7 @@ public final class KeyboardSwtTest
      * Test the keyboard pressed.
      */
     @Test
-    public void testPressed()
+    void testPressed()
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final KeyboardSwt keyboard = new KeyboardSwt();
@@ -106,7 +106,7 @@ public final class KeyboardSwtTest
      * Test the keyboard directions.
      */
     @Test
-    public void testDirections()
+    void testDirections()
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final KeyboardSwt keyboard = new KeyboardSwt();
@@ -149,7 +149,7 @@ public final class KeyboardSwtTest
      * Test the keyboard events.
      */
     @Test
-    public void testEvents()
+    void testEvents()
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final KeyboardSwt keyboard = new KeyboardSwt();

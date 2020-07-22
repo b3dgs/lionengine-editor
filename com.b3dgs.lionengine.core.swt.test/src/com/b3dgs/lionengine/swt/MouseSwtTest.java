@@ -38,7 +38,7 @@ import com.b3dgs.lionengine.swt.graphic.ToolsSwt;
 /**
  * Test {@link MouseSwt}.
  */
-public final class MouseSwtTest
+final class MouseSwtTest
 {
     /**
      * Create a configured test mouse.
@@ -79,7 +79,7 @@ public final class MouseSwtTest
      * Test the mouse clicked state.
      */
     @Test
-    public void testClicked()
+    void testClicked()
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final MouseSwt mouse = createMouse();
@@ -116,7 +116,7 @@ public final class MouseSwtTest
      * Test the mouse click.
      */
     @Test
-    public void testClick()
+    void testClick()
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final MouseSwt mouse = createMouse();
@@ -136,7 +136,7 @@ public final class MouseSwtTest
      * Test the mouse on screen.
      */
     @Test
-    public void testLocation()
+    void testLocation()
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final MouseSwt mouse = createMouse();
@@ -159,7 +159,7 @@ public final class MouseSwtTest
      * Test the mouse move.
      */
     @Test
-    public void testMouse()
+    void testMouse()
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final MouseSwt mouse = createMouse();
@@ -184,7 +184,7 @@ public final class MouseSwtTest
      * Test the mouse event.
      */
     @Test
-    public void testEvent()
+    void testEvent()
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final MouseSwt mouse = createMouse();

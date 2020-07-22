@@ -88,7 +88,7 @@ public final class ScreenSwtTest
      * Test the windowed screen.
      */
     @Test
-    public void testWindowed()
+    void testWindowed()
     {
         final Config config = new Config(com.b3dgs.lionengine.UtilTests.RESOLUTION_320_240,
                                          32,
@@ -102,7 +102,7 @@ public final class ScreenSwtTest
      * Test the full screen.
      */
     @Test
-    public void testFullscreen()
+    void testFullscreen()
     {
         final Monitor monitor = ToolsSwt.getDisplay().getPrimaryMonitor();
 
@@ -116,7 +116,7 @@ public final class ScreenSwtTest
      * Test the windowed with wrong resolution.
      */
     @Test
-    public void testWindowedFail()
+    void testWindowedFail()
     {
         final Resolution resolution = new Resolution(Integer.MAX_VALUE, Integer.MAX_VALUE, 0);
         final Config config = new Config(resolution, 32, true);
@@ -139,7 +139,7 @@ public final class ScreenSwtTest
      * Test the full screen with wrong resolution.
      */
     @Test
-    public void testFullscreenFail()
+    void testFullscreenFail()
     {
         final Resolution resolution = new Resolution(Integer.MAX_VALUE, Integer.MAX_VALUE, 0);
         final Config config = new Config(resolution, 32, false);

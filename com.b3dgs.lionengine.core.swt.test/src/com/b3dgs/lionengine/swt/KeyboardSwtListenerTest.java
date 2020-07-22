@@ -35,7 +35,7 @@ import com.b3dgs.lionengine.swt.graphic.ToolsSwt;
 /**
  * Test {@link KeyboardSwtListener}.
  */
-public final class KeyboardSwtListenerTest
+final class KeyboardSwtListenerTest
 {
     /**
      * Create a key event.
@@ -58,7 +58,7 @@ public final class KeyboardSwtListenerTest
      * Test key listener.
      */
     @Test
-    public void testListener()
+    void testListener()
     {
         ScreenSwtTest.checkMultipleDisplaySupport();
         final AtomicBoolean reachedPressed = new AtomicBoolean(false);
