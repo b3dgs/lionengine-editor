@@ -141,7 +141,7 @@ public class SheetsExtractDialog extends DialogAbstract
         {
             return Collections.emptyList();
         }
-        return Collections.unmodifiableList(sheets);
+        return sheets;
     }
 
     /**
