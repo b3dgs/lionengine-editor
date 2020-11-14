@@ -17,18 +17,14 @@
 package com.b3dgs.lionengine.swt.graphic;
 
 import static com.b3dgs.lionengine.UtilAssert.assertEquals;
-import static com.b3dgs.lionengine.UtilAssert.assertThrows;
 import static com.b3dgs.lionengine.UtilAssert.assertTrue;
 
-import org.eclipse.swt.graphics.GC;
-import org.eclipse.swt.graphics.Image;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.b3dgs.lionengine.Align;
 import com.b3dgs.lionengine.Constant;
-import com.b3dgs.lionengine.UtilEnum;
 import com.b3dgs.lionengine.graphic.ColorRgba;
 import com.b3dgs.lionengine.graphic.Graphic;
 import com.b3dgs.lionengine.graphic.Graphics;
@@ -116,40 +112,5 @@ final class TextSwtTest
     {
         final Text text = Graphics.createText(Constant.FONT_DIALOG, 12, TextStyle.ITALIC);
         text.draw(g, 0, 0, VALUE);
-    }
-
-    /**
-     * Test text style error.
-     */
-    @Test
-    void testStyleUnknown()
-    {
-        assertThrows(() -> Graphics.createText(Constant.EMPTY_STRING, 10, UtilEnum.make(TextStyle.class, "FAIL")),
-                     "Unknown enum: FAIL");
-    }
-
-    /**
-     * Test text align unknown.
-     */
-    @Test
-    void testAlignUnknown()
-    {
-        final Text text = Graphics.createText(Constant.FONT_DIALOG, 12, TextStyle.NORMAL);
-        final Graphic g = Graphics.createGraphic();
-        final Image image = ToolsSwt.createImage(1, 1, java.awt.Transparency.OPAQUE);
-        final GC gc = new GC(image);
-        g.setGraphic(gc);
-
-        try
-        {
-            assertThrows(() -> text.draw(g, 0, 0, UtilEnum.make(Align.class, "FAIL"), Constant.EMPTY_STRING),
-                         "Unknown enum: FAIL");
-        }
-        finally
-        {
-            gc.dispose();
-            image.dispose();
-            g.dispose();
-        }
     }
 }

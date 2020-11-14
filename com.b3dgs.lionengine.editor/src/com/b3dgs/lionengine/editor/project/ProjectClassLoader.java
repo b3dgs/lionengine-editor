@@ -207,7 +207,7 @@ public class ProjectClassLoader
         final Class<? extends C> clazzRef = getClass(media, clazz);
         try
         {
-            final Object object = clazzRef.newInstance();
+            final Object object = clazzRef.getConstructor().newInstance();
             return clazz.cast(object);
         }
         catch (final ReflectiveOperationException exception)

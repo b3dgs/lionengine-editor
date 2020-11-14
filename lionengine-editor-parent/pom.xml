@@ -4,11 +4,11 @@
     <parent>
         <groupId>com.b3dgs</groupId>
         <artifactId>b3dgs-parent</artifactId>
-        <version>1.1.6</version>
+        <version>1.1.7-SNAPSHOT</version>
     </parent>
     <groupId>com.b3dgs.lionengine.editor</groupId>
     <artifactId>lionengine-editor-parent</artifactId>
-    <version>9.0.4</version>
+    <version>9.0.5-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>LionEngine Editor</name>
     <description>Java 2D Game Engine</description>
@@ -39,8 +39,10 @@
         <url>https://travis-ci.org/b3dgs/lionengine-editor</url>
     </ciManagement>
     <properties>
+        <jdk.version>11</jdk.version>
+        <maven.compiler.release>11</maven.compiler.release>
         <radial.base-package>com.b3dgs.lionengine.editor</radial.base-package>
-        <sonar-branch>lionengine-editor-9.0.4</sonar-branch>
+        <sonar-branch>lionengine-editor-9.0.5</sonar-branch>
         <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${project.artifactId}.test/${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
     <dependencies>
@@ -58,13 +60,13 @@
     <repositories>
         <repository>
             <id>eclipse</id>
-            <url>http://download.eclipse.org/releases/2020-03</url>
+            <url>http://download.eclipse.org/releases/2020-09</url>
             <layout>p2</layout>
         </repository>
         <repository>
             <id>swtbot</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/technology/swtbot/releases/2.8.0/</url>
+            <url>http://download.eclipse.org/technology/swtbot/releases/3.0.0/</url>
         </repository>
     </repositories>
     <build>

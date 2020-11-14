@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.b3dgs.lionengine.editor</groupId>
         <artifactId>lionengine-editor-parent</artifactId>
-        <version>9.0.4</version>
+        <version>9.0.5-SNAPSHOT</version>
         <relativePath>../lionengine-editor-parent</relativePath>
     </parent>
     <artifactId>lionengine-editor-test-parent</artifactId>
@@ -20,6 +20,13 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
                     <configuration>
                         <skip>true</skip>
                     </configuration>
