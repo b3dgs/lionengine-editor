@@ -99,7 +99,7 @@ public class WorldInteractionTileCollision implements CollisionVerifier, WorldMo
         else
         {
             marker.addTile(tile);
-            markers.put(Integer.valueOf(markers.keySet().size()), marker);
+            markers.put(Integer.valueOf(markers.size()), marker);
         }
     }
 
