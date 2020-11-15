@@ -51,7 +51,7 @@ public abstract class EditorAbstract implements MDirtyable
      * @param title The editor title.
      * @param icon The editor icon.
      */
-    public EditorAbstract(Composite parent, String title, Image icon)
+    protected EditorAbstract(Composite parent, String title, Image icon)
     {
         this.title = title;
         shell = new Shell(parent.getDisplay(), SWT.APPLICATION_MODAL | SWT.DIALOG_TRIM);

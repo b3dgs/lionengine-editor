@@ -43,7 +43,11 @@ public abstract class ProgressDialogAbstract extends DialogAbstract
      * @param headerDesc The header description.
      * @param headerIcon The header icon.
      */
-    public ProgressDialogAbstract(Shell parent, String title, String headerTitle, String headerDesc, Image headerIcon)
+    protected ProgressDialogAbstract(Shell parent,
+                                     String title,
+                                     String headerTitle,
+                                     String headerDesc,
+                                     Image headerIcon)
     {
         super(parent, title, headerTitle, headerDesc, headerIcon);
     }

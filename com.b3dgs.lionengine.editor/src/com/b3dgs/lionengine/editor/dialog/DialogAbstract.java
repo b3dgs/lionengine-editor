@@ -101,7 +101,7 @@ public abstract class DialogAbstract extends Dialog implements MDirtyable
      * @param headerDesc The header description.
      * @param headerIcon The header icon.
      */
-    public DialogAbstract(Shell parent, String title, String headerTitle, String headerDesc, Image headerIcon)
+    protected DialogAbstract(Shell parent, String title, String headerTitle, String headerDesc, Image headerIcon)
     {
         this(parent, title, headerTitle, headerDesc, headerIcon, SWT.DIALOG_TRIM);
     }
@@ -116,7 +116,12 @@ public abstract class DialogAbstract extends Dialog implements MDirtyable
      * @param headerIcon The header icon.
      * @param type The dialogue type.
      */
-    public DialogAbstract(Shell parent, String title, String headerTitle, String headerDesc, Image headerIcon, int type)
+    protected DialogAbstract(Shell parent,
+                             String title,
+                             String headerTitle,
+                             String headerDesc,
+                             Image headerIcon,
+                             int type)
     {
         super(parent);
         dialogTitle = title;

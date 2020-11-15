@@ -150,7 +150,7 @@ public abstract class ObjectPropertiesAbstract<T extends Nameable>
     /**
      * Create an object properties.
      */
-    public ObjectPropertiesAbstract()
+    protected ObjectPropertiesAbstract()
     {
         super();
     }

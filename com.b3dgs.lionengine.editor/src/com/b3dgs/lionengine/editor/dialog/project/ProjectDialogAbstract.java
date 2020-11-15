@@ -72,7 +72,7 @@ public abstract class ProjectDialogAbstract extends DialogAbstract
      * @param headerDesc The header description.
      * @param headerIcon The header icon.
      */
-    public ProjectDialogAbstract(Shell parent, String title, String headerTitle, String headerDesc, Image headerIcon)
+    protected ProjectDialogAbstract(Shell parent, String title, String headerTitle, String headerDesc, Image headerIcon)
     {
         super(parent, title, headerTitle, headerDesc, headerIcon);
     }

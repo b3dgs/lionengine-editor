@@ -82,7 +82,7 @@ public abstract class ObjectListAbstract<T extends Nameable>
      * 
      * @param type The list class type.
      */
-    public ObjectListAbstract(Class<T> type)
+    protected ObjectListAbstract(Class<T> type)
     {
         this(type, null);
     }
@@ -93,7 +93,7 @@ public abstract class ObjectListAbstract<T extends Nameable>
      * @param type The list class type.
      * @param properties The properties reference.
      */
-    public ObjectListAbstract(Class<T> type, ObjectPropertiesAbstract<T> properties)
+    protected ObjectListAbstract(Class<T> type, ObjectPropertiesAbstract<T> properties)
     {
         this.type = type;
         this.properties = properties;
