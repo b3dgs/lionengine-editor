@@ -34,12 +34,11 @@ import com.b3dgs.lionengine.editor.widget.BrowseWidget;
 import com.b3dgs.lionengine.editor.world.WorldModel;
 import com.b3dgs.lionengine.editor.world.view.WorldPart;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
-import com.b3dgs.lionengine.game.feature.tile.map.MapTileGame;
 import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroup;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionFormulaConfig;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.CollisionGroupConfig;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.MapTileCollision;
-import com.b3dgs.lionengine.game.feature.tile.map.collision.MapTileCollisionModel;
+import com.b3dgs.lionengine.helper.MapTileHelper;
 
 /**
  * Represents the import map dialog.
@@ -140,13 +139,8 @@ public class CollisionImportDialog extends DialogAbstract
     @Override
     protected void onFinish()
     {
-        final MapTileGame map = WorldModel.INSTANCE.getMap();
-        if (!map.hasFeature(MapTileCollision.class))
-        {
-            final MapTileCollision mapCollision = new MapTileCollisionModel();
-            map.addFeature(mapCollision);
-            mapCollision.prepare(map);
-        }
+        final MapTileHelper map = WorldModel.INSTANCE.getMap();
+
         final MapTileCollision mapCollision = map.getFeature(MapTileCollision.class);
         mapCollision.loadCollisions(formulas.getMedia(), collisions.getMedia());
 

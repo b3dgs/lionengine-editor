@@ -27,15 +27,9 @@ import com.b3dgs.lionengine.game.feature.HandlerPersister;
 import com.b3dgs.lionengine.game.feature.Services;
 import com.b3dgs.lionengine.game.feature.Spawner;
 import com.b3dgs.lionengine.game.feature.Transformable;
-import com.b3dgs.lionengine.game.feature.tile.map.MapTileGame;
-import com.b3dgs.lionengine.game.feature.tile.map.MapTileGroupModel;
 import com.b3dgs.lionengine.game.feature.tile.map.Minimap;
-import com.b3dgs.lionengine.game.feature.tile.map.collision.MapTileCollisionModel;
 import com.b3dgs.lionengine.game.feature.tile.map.collision.MapTileCollisionRendererModel;
-import com.b3dgs.lionengine.game.feature.tile.map.pathfinding.MapTilePathModel;
-import com.b3dgs.lionengine.game.feature.tile.map.transition.MapTileTransitionModel;
-import com.b3dgs.lionengine.game.feature.tile.map.transition.circuit.MapTileCircuitModel;
-import com.b3dgs.lionengine.game.feature.tile.map.viewer.MapTileViewerModel;
+import com.b3dgs.lionengine.helper.MapTileHelper;
 
 /**
  * Contains the objects of the world.
@@ -52,12 +46,12 @@ public class WorldModel
     private final Factory factory = services.create(Factory.class);
     /** Camera reference. */
     private final Camera camera = services.create(Camera.class);
-    /** Map reference. */
-    private final MapTileGame map = services.create(MapTileGame.class);
     /** Handler reference. */
     private final Handler handler = services.create(Handler.class);
     /** Handler persister reference. */
     private final HandlerPersister handlerPersister = services.create(HandlerPersisterEditor.class);
+    /** Map reference. */
+    private final MapTileHelper map = services.create(MapTileHelper.class);
     /** Minimap reference. */
     private final Minimap minimap = new Minimap(map);
 
@@ -70,6 +64,8 @@ public class WorldModel
         handler.addComponent(new ComponentDisplayable());
         services.add(new PaletteModel());
 
+        map.addFeature(new MapTileCollisionRendererModel());
+
         final Selection selection = new Selection();
         services.add(selection);
 
@@ -80,14 +76,6 @@ public class WorldModel
             handler.add(featurable);
             return featurable;
         });
-
-        map.addFeature(new MapTileViewerModel(services));
-        map.addFeature(new MapTileGroupModel());
-        map.addFeature(new MapTileTransitionModel());
-        map.addFeature(new MapTileCircuitModel());
-        map.addFeature(new MapTilePathModel());
-        map.addFeature(new MapTileCollisionModel());
-        map.addFeature(new MapTileCollisionRendererModel());
     }
 
     /**
@@ -125,7 +113,7 @@ public class WorldModel
      * 
      * @return The map reference.
      */
-    public MapTileGame getMap()
+    public MapTileHelper getMap()
     {
         return map;
     }

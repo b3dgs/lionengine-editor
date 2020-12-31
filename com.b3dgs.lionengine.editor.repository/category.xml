@@ -27,6 +27,9 @@
    <bundle id="com.b3dgs.lionengine.game">
       <category name="com.b3dgs.lionengine"/>
    </bundle>
+   <bundle id="com.b3dgs.lionengine.helper">
+      <category name="com.b3dgs.lionengine"/>
+   </bundle>
    <category-def name="com.b3dgs.lionengine" label="LionEngine Plugins">
       <description>
          Plugins dedicated to application compatible with the LionEngine.

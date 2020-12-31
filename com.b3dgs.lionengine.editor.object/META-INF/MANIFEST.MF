@@ -30,6 +30,7 @@ Require-Bundle: javax.inject;bundle-version="1.0.0",
  com.b3dgs.lionengine.core;bundle-version="9.0.5",
  com.b3dgs.lionengine.core.swt;bundle-version="9.0.5",
  com.b3dgs.lionengine.game;bundle-version="9.0.5",
+ com.b3dgs.lionengine.helper;bundle-version="9.0.5",
  com.b3dgs.lionengine.editor;bundle-version="9.0.5"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt

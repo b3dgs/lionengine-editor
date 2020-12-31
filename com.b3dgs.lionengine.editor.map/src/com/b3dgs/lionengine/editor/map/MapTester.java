@@ -19,7 +19,7 @@ package com.b3dgs.lionengine.editor.map;
 import org.eclipse.core.expressions.PropertyTester;
 
 import com.b3dgs.lionengine.editor.world.WorldModel;
-import com.b3dgs.lionengine.game.feature.tile.map.MapTile;
+import com.b3dgs.lionengine.helper.MapTileHelper;
 
 /**
  * Test if the map has been defined.
@@ -44,7 +44,7 @@ public final class MapTester extends PropertyTester
     @Override
     public boolean test(Object receiver, String property, Object[] args, Object expectedValue)
     {
-        final MapTile map = WorldModel.INSTANCE.getMap();
+        final MapTileHelper map = WorldModel.INSTANCE.getMap();
         final boolean result;
         if (PROPERTY_TEST.equals(property))
         {

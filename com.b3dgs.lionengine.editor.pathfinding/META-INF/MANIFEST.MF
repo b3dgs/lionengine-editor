@@ -27,6 +27,7 @@ Require-Bundle: javax.inject;bundle-version="1.0.0",
  com.b3dgs.lionengine.core;bundle-version="9.0.5",
  com.b3dgs.lionengine.core.swt;bundle-version="9.0.5",
  com.b3dgs.lionengine.game;bundle-version="9.0.5",
+ com.b3dgs.lionengine.helper;bundle-version="9.0.5",
  com.b3dgs.lionengine.editor;bundle-version="9.0.5",
  com.b3dgs.lionengine.editor.map;bundle-version="9.0.5",
  com.b3dgs.lionengine.editor.object;bundle-version="9.0.5"
