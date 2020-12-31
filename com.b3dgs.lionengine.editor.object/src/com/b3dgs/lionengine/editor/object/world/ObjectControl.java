@@ -29,7 +29,9 @@ import com.b3dgs.lionengine.editor.ObjectRepresentation;
 import com.b3dgs.lionengine.editor.object.ObjectsTester;
 import com.b3dgs.lionengine.editor.project.ProjectModel;
 import com.b3dgs.lionengine.editor.utility.UtilWorld;
+import com.b3dgs.lionengine.game.Configurer;
 import com.b3dgs.lionengine.game.FeatureProvider;
+import com.b3dgs.lionengine.game.SizeConfig;
 import com.b3dgs.lionengine.game.feature.Camera;
 import com.b3dgs.lionengine.game.feature.Featurable;
 import com.b3dgs.lionengine.game.feature.Handler;
@@ -150,7 +152,15 @@ public class ObjectControl
                 final Point point = UtilWorld.getPoint(camera, mx, my);
                 final int x = UtilMath.getRounded(point.getX(), map.isCreated() ? map.getTileWidth() : 1);
                 final int y = UtilMath.getRounded(point.getY(), map.isCreated() ? map.getTileHeight() : 1);
-                final Featurable featurable = spawner.spawn(media, x, y);
+
+                final Configurer configurer = new Configurer(media);
+                final SizeConfig size = SizeConfig.imports(configurer);
+
+                final double sx = x
+                                  + UtilMath.getRounded(size.getWidth(), map.getTileWidth()) / 2
+                                  - UtilMath.getRounded(size.getWidth() / 2.0, map.getTileWidth());
+
+                final Featurable featurable = spawner.spawn(media, sx, y);
                 featurable.getFeature(Refreshable.class).update(1.0);
             }
             catch (final LionEngineException exception)

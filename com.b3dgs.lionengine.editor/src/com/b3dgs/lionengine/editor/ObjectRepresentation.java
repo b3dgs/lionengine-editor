@@ -23,6 +23,7 @@ import com.b3dgs.lionengine.Verbose;
 import com.b3dgs.lionengine.editor.world.WorldModel;
 import com.b3dgs.lionengine.game.Configurer;
 import com.b3dgs.lionengine.game.FramesConfig;
+import com.b3dgs.lionengine.game.OriginConfig;
 import com.b3dgs.lionengine.game.SizeConfig;
 import com.b3dgs.lionengine.game.feature.Camera;
 import com.b3dgs.lionengine.game.feature.DisplayableModel;
@@ -65,7 +66,8 @@ public class ObjectRepresentation extends FeaturableModel
             {
                 transformable.setSize(sprite.getTileWidth(), sprite.getTileHeight());
             }
-            sprite.setFrameOffsets((sprite.getTileWidth() - transformable.getWidth()) / 2, 0);
+            final FramesConfig frames = FramesConfig.imports(setup);
+            sprite.setFrameOffsets(frames.getOffsetX(), frames.getOffsetY());
             return sprite;
         }
         catch (@SuppressWarnings("unused") final LionEngineException exception)
@@ -114,6 +116,8 @@ public class ObjectRepresentation extends FeaturableModel
     private final Camera camera = WorldModel.INSTANCE.getCamera();
     /** Media path. */
     private final Media media;
+    /** Origin. */
+    private final Origin origin;
 
     /**
      * Create the object.
@@ -130,12 +134,16 @@ public class ObjectRepresentation extends FeaturableModel
         final Transformable transformable = addFeatureAndGet(new TransformableModel(WorldModel.INSTANCE.getServices(),
                                                                                     setup));
         final Sprite surface = getSprite(setup, transformable);
-        surface.setOrigin(Origin.BOTTOM_LEFT);
+        origin = OriginConfig.imports(setup);
+
+        final FramesConfig framesData = FramesConfig.imports(setup);
+        surface.setFrameOffsets(framesData.getOffsetX(), framesData.getOffsetY());
+        surface.setOrigin(origin);
 
         addFeature(new RefreshableModel(extrp ->
         {
-            rectangle.set(camera.getViewpointX(transformable.getX()),
-                          camera.getViewpointY(transformable.getY()) - transformable.getHeight(),
+            rectangle.set(camera.getViewpointX(origin.getX(transformable.getX(), transformable.getWidth())),
+                          camera.getViewpointY(origin.getY(transformable.getY(), -transformable.getHeight())),
                           transformable.getWidth(),
                           transformable.getHeight());
             surface.setLocation(camera, transformable);
@@ -152,6 +160,16 @@ public class ObjectRepresentation extends FeaturableModel
     public Rectangle getRectangle()
     {
         return rectangle;
+    }
+
+    /**
+     * Get the origin.
+     * 
+     * @return The origin.
+     */
+    public Origin getOrigin()
+    {
+        return origin;
     }
 
     /*

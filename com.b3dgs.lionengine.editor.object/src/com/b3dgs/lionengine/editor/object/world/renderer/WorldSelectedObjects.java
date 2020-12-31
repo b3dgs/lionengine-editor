@@ -16,6 +16,8 @@
  */
 package com.b3dgs.lionengine.editor.object.world.renderer;
 
+import com.b3dgs.lionengine.Origin;
+import com.b3dgs.lionengine.editor.ObjectRepresentation;
 import com.b3dgs.lionengine.editor.object.world.ObjectControl;
 import com.b3dgs.lionengine.editor.world.renderer.WorldRenderListener;
 import com.b3dgs.lionengine.game.feature.Camera;
@@ -61,13 +63,19 @@ public class WorldSelectedObjects implements WorldRenderListener
     {
         g.setColor(COLOR_ENTITY_SELECTION);
 
-        for (final Transformable object : handlerObject.get(Transformable.class))
+        for (final ObjectRepresentation object : handlerObject.get(ObjectRepresentation.class))
         {
-            if (objectControl.isOver(object) || objectControl.isSelected(object))
+            final Transformable transformable = object.getFeature(Transformable.class);
+            if (objectControl.isOver(transformable) || objectControl.isSelected(transformable))
             {
-                final int x = (int) (camera.getViewpointX(object.getX()) * scale);
-                final int y = (int) ((camera.getViewpointY(object.getY()) - object.getHeight()) * scale);
-                g.drawRect(x, y, (int) (object.getWidth() * scale), (int) (object.getHeight() * scale), true);
+                final Origin origin = object.getOrigin();
+                final double x = camera.getViewpointX(origin.getX(transformable.getX(), transformable.getWidth()));
+                final double y = camera.getViewpointY(origin.getY(transformable.getY(), -transformable.getHeight()));
+                g.drawRect((int) (x * scale),
+                           (int) (y * scale),
+                           (int) (transformable.getWidth() * scale),
+                           (int) (transformable.getHeight() * scale),
+                           true);
             }
         }
     }
