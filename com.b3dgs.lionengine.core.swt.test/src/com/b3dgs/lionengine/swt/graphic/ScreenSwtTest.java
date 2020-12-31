@@ -21,6 +21,7 @@ import static com.b3dgs.lionengine.UtilAssert.assertFalse;
 import static com.b3dgs.lionengine.UtilAssert.assertNotNull;
 import static com.b3dgs.lionengine.UtilAssert.assertTrue;
 
+import java.util.Collections;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.swt.SWTError;
@@ -238,7 +239,7 @@ public final class ScreenSwtTest
         screen.dispose();
         assertTrue(disposed.get());
 
-        screen.setIcon(null);
+        screen.setIcons(Collections.emptyList());
         screen.addKeyListener(new InputDeviceKeyListener()
         {
             @Override

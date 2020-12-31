@@ -16,6 +16,9 @@
  */
 package com.b3dgs.lionengine.swt.graphic;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.eclipse.swt.SWT;
@@ -33,7 +36,9 @@ import com.b3dgs.lionengine.Constant;
 import com.b3dgs.lionengine.Engine;
 import com.b3dgs.lionengine.InputDeviceKeyListener;
 import com.b3dgs.lionengine.LionEngineException;
+import com.b3dgs.lionengine.Media;
 import com.b3dgs.lionengine.Resolution;
+import com.b3dgs.lionengine.Verbose;
 import com.b3dgs.lionengine.graphic.Graphic;
 import com.b3dgs.lionengine.graphic.ScreenAbstract;
 import com.b3dgs.lionengine.graphic.ScreenListener;
@@ -311,14 +316,21 @@ public abstract class ScreenSwtAbstract extends ScreenAbstract implements FocusL
     }
 
     @Override
-    public void setIcon(final String filename)
+    public void setIcons(final Collection<Media> icons)
     {
         if (!display.isDisposed())
         {
             display.syncExec(() ->
             {
-                final Image icon = new Image(display, filename);
-                frame.setImage(icon);
+                try (InputStream input = icons.iterator().next().getInputStream())
+                {
+                    final Image icon = new Image(display, input);
+                    frame.setImage(icon);
+                }
+                catch (final IOException exception)
+                {
+                    Verbose.exception(exception);
+                }
             });
         }
     }
