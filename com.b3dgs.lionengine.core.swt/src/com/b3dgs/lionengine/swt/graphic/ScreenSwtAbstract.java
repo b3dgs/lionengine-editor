@@ -318,7 +318,7 @@ public abstract class ScreenSwtAbstract extends ScreenAbstract implements FocusL
     @Override
     public void setIcons(final Collection<Media> icons)
     {
-        if (!display.isDisposed())
+        if (!display.isDisposed() && !icons.isEmpty())
         {
             display.syncExec(() ->
             {
