@@ -27,7 +27,6 @@ import com.b3dgs.lionengine.editor.project.ProjectPart;
 import com.b3dgs.lionengine.editor.utility.UtilPart;
 import com.b3dgs.lionengine.editor.world.WorldModel;
 import com.b3dgs.lionengine.editor.world.view.WorldPart;
-import com.b3dgs.lionengine.game.feature.Factory;
 
 /**
  * Import project handler implementation.
@@ -43,8 +42,7 @@ public final class ProjectImportHandler
     {
         ProjectModel.INSTANCE.setProject(project);
 
-        final Factory factory = WorldModel.INSTANCE.getFactory();
-        factory.setClassLoader(project.getLoader().getClassLoader());
+        WorldModel.INSTANCE.getServices().add(project.getLoader().getClassLoader());
 
         final WorldPart worldPart = WorldModel.INSTANCE.getServices().get(WorldPart.class);
         worldPart.setToolBarEnabled(true);
@@ -65,8 +63,7 @@ public final class ProjectImportHandler
     {
         ProjectModel.INSTANCE.setProject(project);
 
-        final Factory factory = WorldModel.INSTANCE.getFactory();
-        factory.setClassLoader(project.getLoader().getClassLoader());
+        WorldModel.INSTANCE.getServices().add(project.getLoader().getClassLoader());
 
         final WorldPart worldPart = WorldModel.INSTANCE.getServices().get(WorldPart.class);
         worldPart.setToolBarEnabled(true);
