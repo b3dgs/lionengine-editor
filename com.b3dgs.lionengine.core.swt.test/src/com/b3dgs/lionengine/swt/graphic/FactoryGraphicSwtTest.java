@@ -20,19 +20,13 @@ import static com.b3dgs.lionengine.UtilAssert.assertEquals;
 import static com.b3dgs.lionengine.UtilAssert.assertNotEquals;
 import static com.b3dgs.lionengine.UtilAssert.assertThrows;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Collection;
-
 import org.eclipse.swt.SWT;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.b3dgs.lionengine.FactoryMediaDefault;
-import com.b3dgs.lionengine.Media;
+import com.b3dgs.lionengine.MediaMock;
 import com.b3dgs.lionengine.Medias;
 import com.b3dgs.lionengine.graphic.FactoryGraphicTest;
 import com.b3dgs.lionengine.graphic.Graphics;
@@ -91,63 +85,7 @@ final class FactoryGraphicSwtTest extends FactoryGraphicTest
     @Test
     void testGetImageBufferException()
     {
-        assertThrows(() -> Graphics.getImageBuffer(new Media()
-        {
-            @Override
-            public String getName()
-            {
-                return null;
-            }
-
-            @Override
-            public String getPath()
-            {
-                return null;
-            }
-
-            @Override
-            public String getParentPath()
-            {
-                return null;
-            }
-
-            @Override
-            public OutputStream getOutputStream()
-            {
-                return null;
-            }
-
-            @Override
-            public InputStream getInputStream()
-            {
-                return new InputStream()
-                {
-                    @Override
-                    public int read() throws IOException
-                    {
-                        return -1;
-                    }
-                };
-            }
-
-            @Override
-            public File getFile()
-            {
-                return null;
-            }
-
-            @Override
-            public Collection<Media> getMedias()
-            {
-                return null;
-            }
-
-            @Override
-            public boolean exists()
-            {
-                return false;
-            }
-        }), "[null] " + FactoryGraphicSwt.ERROR_IMAGE_READING);
+        assertThrows(() -> Graphics.getImageBuffer(new MediaMock()), "[null] " + FactoryGraphicSwt.ERROR_IMAGE_READING);
     }
 
     /**
@@ -164,62 +102,6 @@ final class FactoryGraphicSwtTest extends FactoryGraphicTest
             {
                 return (T) ToolsSwt.createImage(100, 100, SWT.TRANSPARENCY_NONE);
             }
-        }, new Media()
-        {
-            @Override
-            public String getName()
-            {
-                return null;
-            }
-
-            @Override
-            public String getPath()
-            {
-                return null;
-            }
-
-            @Override
-            public String getParentPath()
-            {
-                return null;
-            }
-
-            @Override
-            public OutputStream getOutputStream()
-            {
-                return new OutputStream()
-                {
-                    @Override
-                    public void write(int b) throws IOException
-                    {
-                        throw new IOException();
-                    }
-                };
-            }
-
-            @Override
-            public InputStream getInputStream()
-            {
-                return null;
-            }
-
-            @Override
-            public File getFile()
-            {
-                return null;
-            }
-
-            @Override
-            public Collection<Media> getMedias()
-            {
-                return null;
-            }
-
-            @Override
-            public boolean exists()
-            {
-                return false;
-            }
-        }), "[null] " + FactoryGraphicSwt.ERROR_IMAGE_SAVE);
+        }, new MediaMock()), "[null] " + FactoryGraphicSwt.ERROR_IMAGE_SAVE);
     }
 }
