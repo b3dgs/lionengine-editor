@@ -253,6 +253,7 @@ public final class FactoryGraphicSwt implements FactoryGraphic
         for (int i = 0; i < buffers.length; i++)
         {
             buffers[i] = new ImageBufferSwt(image.getSurface());
+            buffers[i].prepare();
         }
         return buffers;
     }
@@ -276,6 +277,8 @@ public final class FactoryGraphicSwt implements FactoryGraphic
     {
         // TODO To be implemented !
         final ImageBuffer buffer = getImageBuffer(image);
+        buffer.prepare();
+
         return new ImageBuffer[]
         {
             new ImageBufferSwt(buffer.getSurface())

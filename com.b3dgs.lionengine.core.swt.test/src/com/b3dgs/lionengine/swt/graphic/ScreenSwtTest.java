@@ -132,7 +132,7 @@ public final class ScreenSwtTest
         }
         catch (final Throwable exception)
         {
-            assertTrue("Argument not valid".equals(exception.getMessage()));
+            assertEquals("Argument not valid", exception.getMessage());
         }
     }
 
@@ -155,7 +155,7 @@ public final class ScreenSwtTest
         }
         catch (final Throwable exception)
         {
-            assertTrue("Argument not valid".equals(exception.getMessage()));
+            assertEquals("Argument not valid", exception.getMessage());
         }
     }
 
